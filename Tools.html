@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US Staffing tools by- NANDAN</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/rvv9tQ4/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/0qQy2LG/favicon-16x16.png">
+
+  <style>
+    .time-table {
+      font-family: Arial, sans-serif;
+      margin-top: 20px;
+    }
+    .infotable50, .infotable2b {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .contentfont2, .time-left-wide, .time-center-wide, .time-right-wide {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+
+        .fixed-width {
+            width: 800px;
+        }
+    </style>
+
+<table>
+    <tr>
+        <td class="fixed-width"><img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif" width="800" height="420" alt="United States Time Zone Map" class="map600">
+
+
+<div class="time-table">
+  <table class="infotable50">
+    <tbody>
+      <tr class="contentfont2">
+        <td class="time-left-wide">Hawaii Time</td>
+        <td class="time-left-wide">Alaska Time</td>
+        <td class="time-center-wide">Pacific Time</td>
+      </tr>
+      <tr>
+        <td class="time-left-wide" id="hawaii-time"></td>
+        <td class="time-left-wide" id="alaska-time"></td>
+        <td class="time-center-wide" id="pacific-time"></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="infotable2b">
+    <tbody>
+      <tr class="contentfont2">
+        <td class="time-left-wide">Mountain Time</td>
+        <td class="time-left-wide">Central Time</td>
+        <td class="time-right-wide">Eastern Time</td>
+      </tr>
+      <tr>
+        <td class="time-left-wide" id="mountain-time"></td>
+        <td class="time-left-wide" id="central-time"></td>
+        <td class="time-right-wide" id="eastern-time"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function updateTimes() {
+    // Get current UTC time
+    const now = new Date();
+
+    // Set time zones
+    const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
+    const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
+    const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+    const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
+    const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
+    const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+    // Update HTML with formatted times
+    document.getElementById("hawaii-time").textContent = formatTime(hawaiiTime);
+    document.getElementById("alaska-time").textContent = formatTime(alaskaTime);
+    document.getElementById("pacific-time").textContent = formatTime(pacificTime);
+    document.getElementById("mountain-time").textContent = formatTime(mountainTime);
+    document.getElementById("central-time").textContent = formatTime(centralTime);
+    document.getElementById("eastern-time").textContent = formatTime(easternTime);
+  }
+
+  function formatTime(date) {
+    const options = {
+      weekday: 'long',
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZoneName: 'short'
+    };
+    return date.toLocaleString('en-US', options);
+  }
+
+  // Update times initially and set interval to update every second
+  updateTimes();
+  setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
+</script>
+
+</td>
+        <td>
+<h2>USA Federal Holidays 2024 <button id="showCalendarBtn">Show Calendar</button></h2>
+
+
+<table>
+  <tr>
+    <th>Holiday</th>
+    <th>Date</th>
+    <th>Day</th>
+  </tr>
+  <tr>
+    <td>New Year's Day</td>
+    <td>January 1, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Martin Luther King Jr. Day</td>
+    <td>January 15, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Washington's Birthday</td>
+    <td>February 19, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Memorial Day</td>
+    <td>May 28, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Independence Day</td>
+    <td>July 4, 2024</td>
+    <td>Thursday</td>
+  </tr>
+  <tr>
+    <td>Labor Day</td>
+    <td>September 3, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Columbus Day</td>
+    <td>October 8, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Veterans Day</td>
+    <td>November 11, 2024</td>
+    <td>Monday</td>
+  </tr>
+  <tr>
+    <td>Thanksgiving Day</td>
+    <td>November 22, 2024</td>
+    <td>Thursday</td>
+  </tr>
+  <tr>
+    <td>Christmas Day</td>
+    <td>December 25, 2024</td>
+    <td>Wednesday</td>
+  </tr>
+</table>
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      font-weight: bold;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      font-weight: bold;
+    }
+  </style>
+<h2>Rate Converter (Approx.)</h2>
+
+<!-- C2C to W2 Conversion -->
+
+C2C: <input type="number" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
+
+<!-- W2 to C2C Conversion -->
+
+W2: <input type="number" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
+
+<script>
+function convertC2CtoW2() {
+  var c2cRate = parseFloat(document.getElementById("c2cRate").value);
+
+  if (!isNaN(c2cRate)) {
+    var w2Rate = c2cRate - (c2cRate * 0.15);
+    document.getElementById("w2Rate").value = w2Rate.toFixed(2);
+  } else {
+    document.getElementById("w2Rate").value = "";
+  }
+}
+
+function convertW2toC2C() {
+  var w2Rate = parseFloat(document.getElementById("w2Rate").value);
+
+  if (!isNaN(w2Rate)) {
+    var c2cRate = w2Rate + 10;
+    document.getElementById("c2cRate").value = c2cRate.toFixed(2);
+  } else {
+    document.getElementById("c2cRate").value = "";
+  }
+}
+</script>
+
+</td>
+    </tr>
+</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/rvv9tQ4/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/0qQy2LG/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f1f1f1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div id="calendarPopup" class="popup">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <!-- Calendar content goes here -->
+    <div id="calendar"></div>
+</div>
+
+<script>
+    document.getElementById('showCalendarBtn').addEventListener('click', function() {
+        document.getElementById('calendarPopup').style.display = 'block';
+        initializeCalendar();
+    });
+
+    function closePopup() {
+        document.getElementById('calendarPopup').style.display = 'none';
+    }
+
+    function initializeCalendar() {
+        $('#calendar').fullCalendar({
+            // Add FullCalendar options and events for the year 2024
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            events: [
+                // Add your events here if needed
+            ]
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
