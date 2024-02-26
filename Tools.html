@@ -1,187 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>US Staffing tools by- NANDAN</title>
-<link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/rvv9tQ4/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/0qQy2LG/favicon-16x16.png">
+  <title>Staffing Tools from NANDAN</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 
   <style>
+    /* Add overflow and adjust table width */
+   
+
     .time-table {
-      font-family: Arial, sans-serif;
-      margin-top: 20px;
+      width: 100%; /* Adjust the width of the time table */
+
     }
-    .infotable50, .infotable2b {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    .contentfont2, .time-left-wide, .time-center-wide, .time-right-wide {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
+
+    table.infotable2b,
+    table.infotable50 {
+      width: 100%; /* Adjust the width of these tables */
     }
   </style>
 </head>
+
 <body>
 
-<style>
-        table {
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+  <div class="container">
+    <style>
+      .cursive-text {
+        font-family: cursive;
+      }
+
+      .profile-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .linkedin-icon {
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .linkedin-icon a {
+        margin-left: 5px;
+        text-decoration: none;
+        color: #000; /* Change the color as needed */
+      }
+
+      .linkedin-icon i {
+        font-size: 24px; /* Adjust the size as needed */
+        color: #000; /* LinkedIn blue color */
+      }
+    </style>
+
+    <a class="navbar-brand cursive-text" href="#">USA Staffing tools</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">Tools</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#services">Holidays</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Add the profile image with a link -->
+    <div class="profile-image">
+      <a href="https://securebugs.github.io/Nandan/profile.html" target="_blank">
+        <img src="https://media.licdn.com/dms/image/D4D03AQFyM6YR0uAmUA/profile-displayphoto-shrink_800_800/0/1666274067480?e=1714608000&v=beta&t=m2uCXxap1jypeCpYiuAJ1BTUZF2N6DBwUIyzyGm7lIo" alt="Nandan Thakur">
+      </a>
+    </div>
+
+    <!-- Add the combined LinkedIn icon without text -->
+    <div class="linkedin-icon">
+      <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="tab-content">
+          <div id="home" class="tab-pane active">
+
+            <style>
+              table {
+                width: 150%;
+                border-collapse: collapse;
+              }
+
+              th,
+              td {
+                border: 1px solid #ddd;
+                padding: 5px;
+                text-align: left;
+              }
+
+              th {
+                background-color: #f2f2f2;
+              }
+
+              /* Adjust column widths */
+              .column-70 {
+                width: 60%;
+              }
+
+              .column-30 {
+                width: 30%;
+                overflow: auto;
+              }
+ .column-700 {
+                width: 30%;
+              }
+
+ .column-400 {
+                width: 40%;
+              }
+              .column-300 {
+                width: 70%;
+                overflow: auto;
+              }
+
+            </style>
+
+            <table>
+              <tr>
+                <th class="column-70"><center><h2>State Map</h2></center></th>
+                <th class="column-300"><center><h2>Time Now</h2></center></th>
+              </tr>
+              <tr>
+                <td class="column-70">
+                  <img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif"
+                    alt="USA Time Zone Map">
+                </td>
+                <td class="column-300">
+                  <div class="time-table">
+                    <table class="infotable2b">
+                      <tbody>
+                        <tr class="contentfont2">
+                          <td class="time-right-wide">Eastern Time</td>
+                          <td class="time-left-wide">Central Time</td>
+                        </tr>
+                        <tr>
+                          <td class="time-right-wide" id="eastern-time"></td>
+                          <td class="time-left-wide" id="central-time"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table class="infotable2b">
+                      <tbody>
+                        <tr class="contentfont2">
+                          <td class="time-left-wide">Mountain Time</td>
+                          <td class="time-center-wide">Pacific Time</td>
+                        </tr>
+                        <tr>
+                          <td class="time-left-wide" id="mountain-time"></td>
+                          <td class="time-center-wide" id="pacific-time"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table class="infotable50">
+                      <tbody>
+                        <tr class="contentfont2">
+                          <td class="time-left-wide">Hawaii Time</td>
+                          <td class="time-left-wide">Alaska Time</td>
+                        </tr>
+                        <tr>
+                          <td class="time-left-wide" id="hawaii-time"></td>
+                          <td class="time-left-wide" id="alaska-time"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                  <script>
+                    function updateTimes() {
+                      // Get current UTC time
+                      const now = new Date();
+
+                      // Set time zones
+                      const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
+                      const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
+                      const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+                      const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
+                      const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
+                      const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+                      // Update HTML with formatted times
+                      document.getElementById("hawaii-time").textContent = formatTime(hawaiiTime);
+                      document.getElementById("alaska-time").textContent = formatTime(alaskaTime);
+                      document.getElementById("pacific-time").textContent = formatTime(pacificTime);
+                      document.getElementById("mountain-time").textContent = formatTime(mountainTime);
+                      document.getElementById("central-time").textContent = formatTime(centralTime);
+                      document.getElementById("eastern-time").textContent = formatTime(easternTime);
+                    }
+
+                    function formatTime(date) {
+                      const options = {
+                        weekday: 'long',
+                        month: 'numeric',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        second: 'numeric',
+                        timeZoneName: 'short'
+                      };
+                      return date.toLocaleString('en-US', options);
+                    }
+
+                    // Update times initially and set interval to update every second
+                    updateTimes();
+                    setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
+                  </script>
+
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div id="about" class="tab-pane">
+      <table>
+  <tr>
+    <th class="column-400"><h2>Email Extractor <button class="fa-button">
+
+        !
+    </button>
+    <div class="hover-message">
+<span class="badge rounded-pill bg-primary">You can search "Updatig vendor hotlist" on Linkedin</span> ->
+<span class="badge rounded-pill bg-success">Then open a post and Go to Comment, load all Comments</span> ->
+<span class="badge rounded-pill bg-dark">Copy everything including emails from comments at once</span> ->
+<span class="badge rounded-pill bg-danger">paste it below to get vendor emails.</span>
+</div></h2>
+ <style>
+ .fa-button {
+    padding: 3px;
+ background-color: #ddccff;
+    }
+        .hover-message {
+            display: none;
+            margin: 8px;
+width:60%;
+            position: absolute;
+            background-color: #f2f2f2;
+            color: #000;
+            padding: 2px;
+font-size: 17px; 
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .fa-button:hover + .hover-message {
+            display: inline;
+        }
+sup {
+      font-size: 0.4em; /* Adjust the font size as needed */
+    }
+    </style>
+
+    
+
+
+
+</th>
+    <th class="column-30"> <center><h2>Rate Converter<sup> (Approx.)</sup></h2></center></th>
+<th class="column-30"><center><h2>Important Links</h2></center></th>
+     
+
+ 
+  </tr>
+  <tr>
+    <td class="column-400">
+      <style>
+    
+        #inputText {
             width: 100%;
-            border-collapse: collapse;
+            height: 130px;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
-        th, td {
-            border: 1px solid black;
-            padding: 5px;
-            text-align: left;
+        #emailList {
+            width: 100%;
+            height: 140px;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
-        .fixed-width {
-            width: 800px;
+        button {
+            padding: 10px;
+margin-bottom: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #noEmailMessage {
+            color: red;
+        }
+
+        #totalEmails {
+            margin-top: 10px;
         }
     </style>
 
-<table>
-    <tr>
-        <td class="fixed-width"><img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif" width="800" height="420" alt="United States Time Zone Map" class="map600">
+    <textarea id="inputText" placeholder="Paste copied items here..."></textarea>
+   
+
+    <h4>Extracted Emails:</h4> <p id="noEmailMessage"></p>
+    <p id="totalEmails"></p>
+    <textarea id="emailList" readonly></textarea>
+    <center> <button onclick="extractEmails()">Extract Emails</button></center>
+
+    <script>
+        function extractEmails() {
+            const inputText = document.getElementById('inputText').value;
+            const emailList = document.getElementById('emailList');
+            const noEmailMessage = document.getElementById('noEmailMessage');
+            const totalEmails = document.getElementById('totalEmails');
+            
+            // Regular expression to match email addresses
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
+
+            // Extract emails from the input text using the regular expression
+            const extractedEmails = inputText.match(emailRegex) || [];
+
+            // Display the extracted emails or a message if no emails are found
+            if (extractedEmails.length > 0) {
+                emailList.value = extractedEmails.join('\n');
+                noEmailMessage.textContent = '';
+                
+                // Display the total number of emails found
+                totalEmails.textContent = `Total email(s) found: ${extractedEmails.length}`;
+            } else {
+                emailList.value = '';
+                noEmailMessage.textContent = 'No email extracted/found.';
+                totalEmails.textContent = '';
+
+                // Hide the message after 6 seconds
+                setTimeout(function() {
+                    noEmailMessage.textContent = '';
+                }, 6000);
+            }
+        }
+    </script>
+    </td>
 
 
-<div class="time-table">
-  <table class="infotable50">
-    <tbody>
-      <tr class="contentfont2">
-        <td class="time-left-wide">Hawaii Time</td>
-        <td class="time-left-wide">Alaska Time</td>
-        <td class="time-center-wide">Pacific Time</td>
-      </tr>
-      <tr>
-        <td class="time-left-wide" id="hawaii-time"></td>
-        <td class="time-left-wide" id="alaska-time"></td>
-        <td class="time-center-wide" id="pacific-time"></td>
-      </tr>
-    </tbody>
-  </table>
-  <table class="infotable2b">
-    <tbody>
-      <tr class="contentfont2">
-        <td class="time-left-wide">Mountain Time</td>
-        <td class="time-left-wide">Central Time</td>
-        <td class="time-right-wide">Eastern Time</td>
-      </tr>
-      <tr>
-        <td class="time-left-wide" id="mountain-time"></td>
-        <td class="time-left-wide" id="central-time"></td>
-        <td class="time-right-wide" id="eastern-time"></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-<script>
-  function updateTimes() {
-    // Get current UTC time
-    const now = new Date();
-
-    // Set time zones
-    const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
-    const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
-    const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
-    const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
-    const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-    const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-
-    // Update HTML with formatted times
-    document.getElementById("hawaii-time").textContent = formatTime(hawaiiTime);
-    document.getElementById("alaska-time").textContent = formatTime(alaskaTime);
-    document.getElementById("pacific-time").textContent = formatTime(pacificTime);
-    document.getElementById("mountain-time").textContent = formatTime(mountainTime);
-    document.getElementById("central-time").textContent = formatTime(centralTime);
-    document.getElementById("eastern-time").textContent = formatTime(easternTime);
-  }
-
-  function formatTime(date) {
-    const options = {
-      weekday: 'long',
-      month: 'numeric',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric',
-      timeZoneName: 'short'
-    };
-    return date.toLocaleString('en-US', options);
-  }
-
-  // Update times initially and set interval to update every second
-  updateTimes();
-  setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
-</script>
-
-</td>
-        <td>
-<h2>USA Federal Holidays 2024 <button id="showCalendarBtn">Show Calendar</button></h2>
-
-
-<table>
-  <tr>
-    <th>Holiday</th>
-    <th>Date</th>
-    <th>Day</th>
-  </tr>
-  <tr>
-    <td>New Year's Day</td>
-    <td>January 1, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Martin Luther King Jr. Day</td>
-    <td>January 15, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Washington's Birthday</td>
-    <td>February 19, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Memorial Day</td>
-    <td>May 28, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Independence Day</td>
-    <td>July 4, 2024</td>
-    <td>Thursday</td>
-  </tr>
-  <tr>
-    <td>Labor Day</td>
-    <td>September 3, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Columbus Day</td>
-    <td>October 8, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Veterans Day</td>
-    <td>November 11, 2024</td>
-    <td>Monday</td>
-  </tr>
-  <tr>
-    <td>Thanksgiving Day</td>
-    <td>November 22, 2024</td>
-    <td>Thursday</td>
-  </tr>
-  <tr>
-    <td>Christmas Day</td>
-    <td>December 25, 2024</td>
-    <td>Wednesday</td>
-  </tr>
-</table>
-
+    <td class="column-30">
 <style>
     body {
       font-family: Arial, sans-serif;
@@ -218,114 +425,566 @@
       font-weight: bold;
     }
   </style>
-<h2>Rate Converter (Approx.)</h2>
 
+<center>
 <!-- C2C to W2 Conversion -->
 
 C2C: <input type="number" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
 
-<!-- W2 to C2C Conversion -->
+</br><b>&#10607;</b></br>
 
 W2: <input type="number" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
 
+</br><b>&#10607;</b></br>
+
+1099: 
+<input type="number" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()">
+
+</br>
+</br>
+<span id="c2cLabel" class="badge bg-primary">C2C Rate</span>
+</br>
+<span id="w2Label" class="badge bg-dark">W2 Rate</span>
+</br>
+<span id="1099Label" class="badge bg-success">1099 Rate</span>
+</center>
+</td>
+<td class="column-30">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        i {
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #0366d6; /* Link color */
+        }
+    </style>
+
+
+<ul>
+    <li>
+        <i class="fa fa-magnet"></i>
+        <a href="https://hiring.monster.com/signin.aspx" target="_blank">Monster</a>
+    </li>
+    <li>
+        <i class="fa fa-binoculars"></i>
+        <a href="https://www.dice.com/employer/login/" target="_blank">Dice</a>
+    </li>
+    <li>
+<li>
+        <i class="fa fa-search-plus"></i>
+        <a href="https://www.benchinfo.com/employer/auth/login" target="_blank">BenchInfo</a>
+    </li>
+      
+    <li>
+        <i class="fas fa-user-tie"></i>
+        <a href="https://prohirespowerhouse.com/" target="_blank">ProHire</a>
+    </li>
+    <li>
+        <i class="far fa-building"></i>
+        <a href="https://talenthire.ceipal.com/signin" target="_blank">Ciepal</a>
+    </li>
+    <li>
+        <i class="far fa-envelope"></i>
+        <a href="https://outlook.office365.com/mail/" target="_blank">Outlook</a>
+    </li>
+<li>
+
+  <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+    </li>
+
+<li>
+<i class="fa fa-crop"></i>
+        <a href="https://www.online-convert.com/" target="_blank">Converter</a>
+    </li>
+
+<li>
+
+<i class="fa fa-file"></i>
+        <a href="https://www.online-convert.com/" target="_blank">E-sign</a>
+    </li>
+
+
+</ul>
+
+
+ 
+
+</td>
+  </tr>
+
+
+</table>
+          </div>
+          <div id="services" class="tab-pane">
+            
+<table>
+              <tr>
+                <th class="column-700"><center><h2>Calender</h2></center></th>
+<th class="column-70"><center><h2>Holidays</h2></center></th>
+                
+              </tr>
+              <tr>
+                <td class="column-700">
+                  
+  <style>
+    /* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.wrapper {
+  width: 450px;
+  background: #fff;
+  /* for black */
+  /* background: #222; */
+  /* color: #fff; */
+   border: 2px solid #fff; 
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+.wrapper header {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .icons {
+  display: flex;
+padding: 25px 30px 10px;
+  justify-content: space-between;
+}
+header .icons span {
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child {
+  margin-right: -10px;
+}
+header .icons span:hover {
+  background: #f2f2f2;
+}
+header .current-date {
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+.calendar {
+  padding: 10px;
+}
+.calendar ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days {
+  margin-bottom: 20px;
+}
+.calendar li {
+  color: #333;
+  /* for black */
+  /* color: #fff; */
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li {
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li {
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days li.inactive {
+  color: #aaa;
+}
+.days li.active {
+  color: #fff;
+}
+.days li::before {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before {
+  background: #3cafcf;
+}
+.days li:not(.active):hover::before {
+  background: #f2f2f2;
+  /*  for black */
+  /*  background: #333; */
+}
+  </style>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'>
+
+<div class="wrapper">
+  <header>
+    <p class="current-date"></p>
+    <div class="icons">
+      <span id="prev" class="material-symbols-rounded"><</span>
+      <span id="next" class="material-symbols-rounded">></span>
+    </div>
+  </header>
+  <div class="calendar">
+    <ul class="weeks">
+      <li>Sun</li>
+      <li>Mon</li>
+      <li>Tue</li>
+      <li>Wed</li>
+      <li>Thu</li>
+      <li>Fri</li>
+      <li>Sat</li>
+    </ul>
+    <ul class="days"></ul>
+  </div>
+</div>
+
+
 <script>
-function convertC2CtoW2() {
-  var c2cRate = parseFloat(document.getElementById("c2cRate").value);
+  const daysTag = document.querySelector(".days"),
+        currentDate = document.querySelector(".current-date"),
+        prevNextIcon = document.querySelectorAll(".icons span");
 
-  if (!isNaN(c2cRate)) {
-    var w2Rate = c2cRate - (c2cRate * 0.15);
-    document.getElementById("w2Rate").value = w2Rate.toFixed(2);
-  } else {
-    document.getElementById("w2Rate").value = "";
-  }
-}
+  let date = new Date(),
+      currYear = date.getFullYear(),
+      currMonth = date.getMonth();
 
-function convertW2toC2C() {
-  var w2Rate = parseFloat(document.getElementById("w2Rate").value);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
 
-  if (!isNaN(w2Rate)) {
-    var c2cRate = w2Rate + 10;
-    document.getElementById("c2cRate").value = c2cRate.toFixed(2);
-  } else {
-    document.getElementById("c2cRate").value = "";
-  }
-}
+  const renderCalendar = () => {
+    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(),
+        lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
+        lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(),
+        lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
+    let liTag = "";
+
+    for (let i = firstDayofMonth; i > 0; i--) {
+      liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+    }
+
+    for (let i = 1; i <= lastDateofMonth; i++) {
+      let isToday =
+        i === date.getDate() &&
+        currMonth === new Date().getMonth() &&
+        currYear === new Date().getFullYear()
+          ? "active"
+          : "";
+      liTag += `<li class="${isToday}">${i}</li>`;
+    }
+
+    for (let i = lastDayofMonth; i < 6; i++) {
+      liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
+    }
+    currentDate.innerText = `${months[currMonth]} ${currYear}`;
+    daysTag.innerHTML = liTag;
+  };
+  renderCalendar();
+
+  prevNextIcon.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+      if (currMonth < 0 || currMonth > 11) {
+        date = new Date(currYear, currMonth, new Date().getDate());
+        currYear = date.getFullYear();
+        currMonth = date.getMonth();
+      } else {
+        date = new Date();
+      }
+      renderCalendar();
+    });
+  });
 </script>
 
 </td>
+<td class="column-70">
+<style>
+.cal{
+width: 100%;
+  box-sizing: border-box;
+margin-top:-50px;
+}
+</style>
+ <table class="cal">
+    <tr>
+      <th>Holiday</th>
+      <th>Date</th>
+      <th>Day</th>
     </tr>
-</table>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/rvv9tQ4/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/0qQy2LG/favicon-16x16.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <style>
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #f1f1f1;
-            padding: 20px;
-            border: 1px solid #ccc;
-            z-index: 1;
-        }
+    <tr>
+      <td>New Year’s Day</td>
+      <td>January 1, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Martin Luther King Jr. Day</td>
+      <td>January 15, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Washington’s Birthday (Presidents Day)</td>
+      <td>February 19, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Memorial Day</td>
+      <td>May 27, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Independence Day</td>
+      <td>July 4, 2024</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <td>Labor Day</td>
+      <td>September 2, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Columbus Day</td>
+      <td>October 14, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Veterans Day</td>
+      <td>November 11, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Thanksgiving Day</td>
+      <td>November 28, 2024</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <td>Christmas Day</td>
+      <td>December 25, 2024</td>
+      <td>Wednesday</td>
+    </tr>
+  </table>
+</td>      </table>
 
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
+          </div>
+          <div id="contact" class="tab-pane">
 
+        <p>Directly connect with me through LinkedIn <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">
+        <i class="fab fa-linkedin"></i></a></p>
 
-
-<div id="calendarPopup" class="popup">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <!-- Calendar content goes here -->
-    <div id="calendar"></div>
-</div>
-
+<form class="my-form">
+  <div class="container">
+    <h1>Get in touch!</h1>
+</br>
+    <ul>
+      <li>
+        <select>
+          <option selected disabled>-- Please choose an option --</option>
+          <option>Request Quote</option>
+          <option>Send Resume</option>
+          <option>Other</option>      
+        </select>
+      </li>
+      <li>
+        <div class="grid grid-2">
+          <input type="text" placeholder="Name" required>  
+          <input type="text" placeholder="Surname" required>
+        </div>
+      </li>
+      <li>
+        <div class="grid grid-2">
+          <input type="email" placeholder="Email" required>  
+          <input type="tel" placeholder="Phone">
+        </div>
+      </li>    
+      <li>
+        <textarea placeholder="Message"></textarea>
+      </li>   
+      <li>
+        <input type="checkbox" id="terms">
+        <label for="terms">I have read and agreed with <a href="#">the terms and conditions.</a></label>
+      </li>  
+      <li>
+        <div class="grid grid-3">
+          <button class="btn-grid" type="submit">
+            <span class="back">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
+            </span>
+            <span class="front">SUBMIT</span>
+          </button>
+          <button class="btn-grid" type="reset">
+            <span class="back">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+            </span>
+            <span class="front">RESET</span>
+          </button> 
+        </div>
+      </li>    
+    </ul>
 <script>
-    document.getElementById('showCalendarBtn').addEventListener('click', function() {
-        document.getElementById('calendarPopup').style.display = 'block';
-        initializeCalendar();
+const checkbox = document.querySelector('.my-form input[type="checkbox"]');
+const btns = document.querySelectorAll(".my-form button");
+
+checkbox.addEventListener("change", function() {
+  const checked = this.checked;
+  for (const btn of btns) {
+    checked ? (btn.disabled = false) : (btn.disabled = true);
+  }
+});
+</script>
+  </div>
+</form>
+<footer>
+  <div class="container">
+    
+  </div>
+</footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center p-3 bg-dark text-white">
+    <small>&copy; 2024 USA Staffing Tools   <a href='https://www.free-counters.org/'>-</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6478a3f5eea3b045fb7bc61c0e4d480fb250c487'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1151223/t/5"></script></small></br>
+ <small>Made with <span>❤</span> by <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">Nandan Thakur</a>
+    </small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIeHb8QvQ5z9TTPq4yBcEJ4EKm6LqK+pEd+T4N3DkbsTStwza4fTq0" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get all tabs
+      var tabs = document.querySelectorAll('.nav-link');
+
+      // Iterate over each tab and add click event listener
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Remove 'active' class from all tabs and tab panes
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            document.getElementById(t.getAttribute('href').substring(1)).classList.remove('active');
+          });
+
+          // Add 'active' class to the clicked tab
+          this.classList.add('active');
+
+          // Show the corresponding tab pane
+          var targetTab = document.getElementById(this.getAttribute('href').substring(1));
+          targetTab.classList.add('active');
+        });
+      });
     });
 
-    function closePopup() {
-        document.getElementById('calendarPopup').style.display = 'none';
-    }
+   function convertC2CtoW2() {
+    var c2cRate = parseFloat(document.getElementById("c2cRate").value);
 
-    function initializeCalendar() {
-        $('#calendar').fullCalendar({
-            // Add FullCalendar options and events for the year 2024
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            events: [
-                // Add your events here if needed
-            ]
-        });
+    if (!isNaN(c2cRate)) {
+      var w2Rate = c2cRate - (c2cRate * 0.15);
+      document.getElementById("w2Rate").value = w2Rate.toFixed(2);
+      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
+      document.getElementById("c2cLabel").textContent = "C2C rate is " + c2cRate.toFixed(2);
+      document.getElementById("1099Rate").value = c2cRate.toFixed(2);
+      document.getElementById("1099Label").textContent = "1099 rate is " + c2cRate.toFixed(2);
+    } else {
+      document.getElementById("w2Rate").value = "";
+      document.getElementById("w2Label").textContent = "W2?";
+      document.getElementById("c2cLabel").textContent = "C2C?";
+      document.getElementById("1099Rate").value = "";
+      document.getElementById("1099Label").textContent = "1099?";
     }
-</script>
+  }
+
+  function convertW2toC2C() {
+    var w2Rate = parseFloat(document.getElementById("w2Rate").value);
+
+    if (!isNaN(w2Rate)) {
+      var c2cRate = w2Rate + 10;
+      document.getElementById("c2cRate").value = c2cRate.toFixed(2);
+      document.getElementById("c2cLabel").textContent = "C2C rate is " + c2cRate.toFixed(2);
+      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
+      document.getElementById("1099Rate").value = c2cRate.toFixed(2);
+      document.getElementById("1099Label").textContent = "1099 rate is " + c2cRate.toFixed(2);
+    } else {
+      document.getElementById("c2cRate").value = "";
+      document.getElementById("c2cLabel").textContent = "C2C?";
+      document.getElementById("w2Label").textContent = "W2?";
+      document.getElementById("1099Rate").value = "";
+      document.getElementById("1099Label").textContent = "1099?";
+    }
+  }
+
+  function convert1099() {
+    var rate1099 = parseFloat(document.getElementById("1099Rate").value);
+
+    if (!isNaN(rate1099)) {
+      document.getElementById("c2cRate").value = rate1099.toFixed(2);
+      document.getElementById("1099Label").textContent = "1099 rate is " + rate1099.toFixed(2);
+      
+      var w2Rate = rate1099 - (rate1099 * 0.15);
+      document.getElementById("w2Rate").value = w2Rate.toFixed(2);
+      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
+      
+      document.getElementById("c2cLabel").textContent = "C2C rate is " + rate1099.toFixed(2);
+    } else {
+      document.getElementById("c2cRate").value = "";
+      document.getElementById("w2Rate").value = "";
+      document.getElementById("1099Label").textContent = "1099?";
+      document.getElementById("c2cLabel").textContent = "C2C?";
+      document.getElementById("w2Label").textContent = "W2?";
+    }
+  }
+  </script>
 
 </body>
-</html>
 
-
-</body>
 </html>
