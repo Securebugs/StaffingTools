@@ -248,6 +248,419 @@
                     setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
                   </script>
 
+                  
+<h2>USA Sate Lookup</h2>
+<label for="mobileNumber">State Code:</label>
+<input type="text" id="mobileNumber" class="form-control" placeholder="Enter 10-digit mobile number" onkeydown="if (event.key === 'Enter') lookupState()" />
+
+<button class="btn btn-primary" onclick="lookupState()">Find</button>
+</br>
+</br>
+<label id="stateLabel"></label>
+</br>
+ <table id="stateTable">
+     
+    </table>
+
+<script>
+    function lookupState() {
+        const mobileNumberInput = document.getElementById('mobileNumber');
+        const stateTable = document.getElementById('stateTable');
+        
+        const mobileNumber = mobileNumberInput.value.trim();
+
+         if (!mobileNumber || !/^\d+$/.test(mobileNumber) || mobileNumber.length < 3) {
+        stateLabel.textContent = 'Please enter atleast 3 Digit';
+
+        // Clear the error message after 2 seconds
+        setTimeout(() => {
+            stateLabel.textContent = '';
+        }, 2000);
+
+        return;
+    }
+
+
+        const firstThreeDigits = mobileNumber.substring(0, 3);
+        
+        const stateCodes = {
+            '205': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '251': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '256': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '334': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '659': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '938': { name: 'Alabama', capital: 'Montgomery', shortName: 'AL', founded: 'December 14, 1819', zipRange: '35004 to 36925' },
+            '907': { name: 'Alaska', capital: 'Juneau', shortName: 'AK', founded: 'January 3, 1959', zipRange: '99501 to 99950' },
+            '480': { name: 'Arizona', capital: 'Phoenix', shortName: 'AZ', founded: 'February 14, 1912', zipRange: '85001 to 86556' },
+            '520': { name: 'Arizona', capital: 'Phoenix', shortName: 'AZ', founded: 'February 14, 1912', zipRange: '85001 to 86556' },
+            '602': { name: 'Arizona', capital: 'Phoenix', shortName: 'AZ', founded: 'February 14, 1912', zipRange: '85001 to 86556' },
+            '623': { name: 'Arizona', capital: 'Phoenix', shortName: 'AZ', founded: 'February 14, 1912', zipRange: '85001 to 86556' },
+            '928': { name: 'Arizona', capital: 'Phoenix', shortName: 'AZ', founded: 'February 14, 1912', zipRange: '85001 to 86556' },
+            '479': { name: 'Arkansas', capital: 'Little Rock', shortName: 'AR', founded: 'June 15, 1836', zipRange: '71601 to 72959' },
+            '501': { name: 'Arkansas', capital: 'Little Rock', shortName: 'AR', founded: 'June 15, 1836', zipRange: '71601 to 72959' },
+            '870': { name: 'Arkansas', capital: 'Little Rock', shortName: 'AR', founded: 'June 15, 1836', zipRange: '71601 to 72959' },
+            '209': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '213': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '279': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '310': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '323': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '341': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '408': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '415': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '424': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '442': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '510': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '530': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '559': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '562': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '619': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '626': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '628': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '650': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '657': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '661': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '669': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '707': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '714': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '747': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '760': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '805': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '818': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '820': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '831': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '858': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '909': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '916': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '925': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '949': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '951': { name: 'California', capital: 'Sacramento', shortName: 'CA', founded: 'September 9, 1850', zipRange: '90001 to 96162' },
+            '303': { name: 'Colorado', capital: 'Denver', shortName: 'CO', founded: 'August 1, 1876', zipRange: '80001 to 81658' },
+            '719': { name: 'Colorado', capital: 'Denver', shortName: 'CO', founded: 'August 1, 1876', zipRange: '80001 to 81658' },
+            '720': { name: 'Colorado', capital: 'Denver', shortName: 'CO', founded: 'August 1, 1876', zipRange: '80001 to 81658' },
+            '970': { name: 'Colorado', capital: 'Denver', shortName: 'CO', founded: 'August 1, 1876', zipRange: '80001 to 81658' },
+            '203': { name: 'Connecticut', capital: 'Hartford', shortName: 'CT', founded: 'January 9, 1788', zipRange: '06001 to 06928' },
+            '475': { name: 'Connecticut', capital: 'Hartford', shortName: 'CT', founded: 'January 9, 1788', zipRange: '06001 to 06928' },
+            '860': { name: 'Connecticut', capital: 'Hartford', shortName: 'CT', founded: 'January 9, 1788', zipRange: '06001 to 06928' },
+            '959': { name: 'Connecticut', capital: 'Hartford', shortName: 'CT', founded: 'January 9, 1788', zipRange: '06001 to 06928' },
+            '302': { name: 'Delaware', capital: 'Dover', shortName: 'DE', founded: 'December 7, 1787', zipRange: '19901 to 19905' },
+            '239': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '305': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '321': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '352': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '386': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '407': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '561': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '689': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '727': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '754': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '772': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '786': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '813': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '850': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '863': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '904': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '941': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '954': { name: 'Florida', capital: 'Tallahassee', shortName: 'FL', founded: 'March 3, 1845', zipRange: '32004 to 34997' },
+            '229': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '404': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '470': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '478': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '678': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '706': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '762': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '770': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '912': { name: 'Georgia', capital: 'Atlanta', shortName: 'GA', founded: 'January 2, 1788', zipRange: '30001 to 31999' },
+            '808': { name: 'Hawaii', capital: 'Honolulu', shortName: 'HI', founded: 'August 21, 1959', zipRange: '96701 to 96898' },
+            '208': { name: 'Idaho', capital: 'Boise', shortName: 'ID', founded: 'July 3, 1890', zipRange: '83701 to 83799' },
+            '986': { name: 'Idaho', capital: 'Boise', shortName: 'ID', founded: 'July 3, 1890', zipRange: '83701 to 83799' },
+            '217': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '224': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '309': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '312': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '331': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '618': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '630': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '708': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '773': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '779': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '815': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '847': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '872': { name: 'Illinois', capital: 'Springfield', shortName: 'IL', founded: 'December 3, 1818', zipRange: '60001 to 62999' },
+            '219': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '260': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '317': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '463': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '574': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '765': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '812': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '930': { name: 'Indiana', capital: 'Indianapolis', shortName: 'IN', founded: 'December 11, 1816', zipRange: '46001 to 47997' },
+            '319': { name: 'Iowa', capital: 'Des Moines', shortName: 'IA', founded: 'December 28, 1846', zipRange: '50001 to 52809' },
+            '515': { name: 'Iowa', capital: 'Des Moines', shortName: 'IA', founded: 'December 28, 1846', zipRange: '50001 to 52809' },
+            '563': { name: 'Iowa', capital: 'Des Moines', shortName: 'IA', founded: 'December 28, 1846', zipRange: '50001 to 52809' },
+            '641': { name: 'Iowa', capital: 'Des Moines', shortName: 'IA', founded: 'December 28, 1846', zipRange: '50001 to 52809' },
+            '712': { name: 'Iowa', capital: 'Des Moines', shortName: 'IA', founded: 'December 28, 1846', zipRange: '50001 to 52809' },
+            '316': { name: 'Kansas', capital: 'Topeka', shortName: 'KS', founded: 'January 29, 1861', zipRange: '66002 to 67954' },
+            '620': { name: 'Kansas', capital: 'Topeka', shortName: 'KS', founded: 'January 29, 1861', zipRange: '66002 to 67954' },
+            '785': { name: 'Kansas', capital: 'Topeka', shortName: 'KS', founded: 'January 29, 1861', zipRange: '66002 to 67954' },
+            '913': { name: 'Kansas', capital: 'Topeka', shortName: 'KS', founded: 'January 29, 1861', zipRange: '66002 to 67954' },
+            '270': { name: 'Kentucky', capital: 'Frankfort', shortName: 'KY', founded: 'June 1, 1792', zipRange: '40003 to 42788' },
+            '364': { name: 'Kentucky', capital: 'Frankfort', shortName: 'KY', founded: 'June 1, 1792', zipRange: '40003 to 42788' },
+            '502': { name: 'Kentucky', capital: 'Frankfort', shortName: 'KY', founded: 'June 1, 1792', zipRange: '40003 to 42788' },
+            '606': { name: 'Kentucky', capital: 'Frankfort', shortName: 'KY', founded: 'June 1, 1792', zipRange: '40003 to 42788' },
+            '859': { name: 'Kentucky', capital: 'Frankfort', shortName: 'KY', founded: 'June 1, 1792', zipRange: '40003 to 42788' },
+            '225': { name: 'Louisiana', capital: 'Baton Rouge', shortName: 'LA', founded: 'April 30, 1812', zipRange: '70112 to 71232' },
+            '318': { name: 'Louisiana', capital: 'Baton Rouge', shortName: 'LA', founded: 'April 30, 1812', zipRange: '70112 to 71232' },
+            '337': { name: 'Louisiana', capital: 'Baton Rouge', shortName: 'LA', founded: 'April 30, 1812', zipRange: '70112 to 71232' },
+            '504': { name: 'Louisiana', capital: 'Baton Rouge', shortName: 'LA', founded: 'April 30, 1812', zipRange: '70112 to 71232' },
+            '985': { name: 'Louisiana', capital: 'Baton Rouge', shortName: 'LA', founded: 'April 30, 1812', zipRange: '70112 to 71232' },
+            '207': { name: 'Maine', capital: 'Augusta', shortName: 'ME', founded: 'March 15, 1820', zipRange: '04101 to 04992' },
+            '227': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '240': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '301': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '410': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '443': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '667': { name: 'Maryland', capital: 'Annapolis', shortName: 'MD', founded: 'April 28, 1788', zipRange: '20331 to 21930' },
+            '339': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '351': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '413': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '508': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '617': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '774': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '781': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '857': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '978': { name: 'Massachusetts', capital: 'Boston', shortName: 'MA', founded: 'February 6, 1788', zipRange: '02101 to 02298' },
+            '231': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '248': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '269': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '313': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '517': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '586': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '616': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '734': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '810': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '906': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '947': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '989': { name: 'Michigan', capital: 'Lansing', shortName: 'MI', founded: 'January 26, 1837', zipRange: '48201 to 49971' },
+            '218': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '320': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '507': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '612': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '651': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '763': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '952': { name: 'Minnesota', capital: 'Saint Paul', shortName: 'MN', founded: 'May 11, 1858', zipRange: '55101 to 56763' },
+            '228': { name: 'Mississippi', capital: 'Jackson', shortName: 'MS', founded: 'December 10, 1817', zipRange: '38601 to 39776' },
+            '601': { name: 'Mississippi', capital: 'Jackson', shortName: 'MS', founded: 'December 10, 1817', zipRange: '38601 to 39776' },
+            '662': { name: 'Mississippi', capital: 'Jackson', shortName: 'MS', founded: 'December 10, 1817', zipRange: '38601 to 39776' },
+            '769': { name: 'Mississippi', capital: 'Jackson', shortName: 'MS', founded: 'December 10, 1817', zipRange: '38601 to 39776' },
+            '314': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '417': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '573': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '636': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '660': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '816': { name: 'Missouri', capital: 'Jefferson City', shortName: 'MO', founded: 'August 10, 1821', zipRange: '63101 to 65899' },
+            '406': { name: 'Montana', capital: 'Helena', shortName: 'MT', founded: 'November 8, 1889', zipRange: '59001 to 59937' },
+            '308': { name: 'Nebraska', capital: 'Lincoln', shortName: 'NE', founded: 'March 1, 1867', zipRange: '68001 to 68118' },
+            '402': { name: 'Nebraska', capital: 'Lincoln', shortName: 'NE', founded: 'March 1, 1867', zipRange: '68001 to 68118' },
+            '531': { name: 'Nebraska', capital: 'Lincoln', shortName: 'NE', founded: 'March 1, 1867', zipRange: '68001 to 68118' },
+            '702': { name: 'Nevada', capital: 'Carson City', shortName: 'NV', founded: 'October 31, 1864', zipRange: '88901 to 89883' },
+            '725': { name: 'Nevada', capital: 'Carson City', shortName: 'NV', founded: 'October 31, 1864', zipRange: '88901 to 89883' },
+            '775': { name: 'Nevada', capital: 'Carson City', shortName: 'NV', founded: 'October 31, 1864', zipRange: '88901 to 89883' },
+            '603': { name: 'New Hampshire', capital: 'Concord', shortName: 'NH', founded: 'June 21, 1788', zipRange: '03217 to 03884' },
+            '201': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '551': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '609': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '640': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '732': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '848': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '856': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '862': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '908': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '973': { name: 'New Jersey', capital: 'Trenton', shortName: 'NJ', founded: 'December 18, 1787', zipRange: '07001 to 08989' },
+            '505': { name: 'New Mexico', capital: 'Santa Fe', shortName: 'NM', founded: 'January 6, 1912', zipRange: '87001 to 88441' },
+            '575': { name: 'New Mexico', capital: 'Santa Fe', shortName: 'NM', founded: 'January 6, 1912', zipRange: '87001 to 88441' },
+            '212': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '315': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '332': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '347': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '516': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '518': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '585': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '607': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '631': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '646': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '680': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '716': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '718': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '838': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '845': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '914': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '917': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '929': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '934': { name: 'New York', capital: 'Albany', shortName: 'NY', founded: 'July 26, 1788', zipRange: '10001 to 10292' },
+            '252': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '336': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '704': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '743': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '828': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '910': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '919': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '980': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '984': { name: 'North Carolina', capital: 'Raleigh', shortName: 'NC', founded: 'November 21, 1789', zipRange: '27501 to 28816' },
+            '701': { name: 'North Dakota', capital: 'Bismarck', shortName: 'ND', founded: 'November 2, 1889', zipRange: '58102 to 58109' },
+            '216': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '220': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '234': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '283': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '326': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '330': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '380': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '419': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '440': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '513': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '567': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '614': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '740': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '937': { name: 'Ohio', capital: 'Columbus', shortName: 'OH', founded: 'March 1, 1803', zipRange: '44101 to 44179' },
+            '405': { name: 'Oklahoma', capital: 'Oklahoma City', shortName: 'OK', founded: 'November 16, 1907', zipRange: '73101 to 73196' },
+            '539': { name: 'Oklahoma', capital: 'Oklahoma City', shortName: 'OK', founded: 'November 16, 1907', zipRange: '73101 to 73196' },
+            '572': { name: 'Oklahoma', capital: 'Oklahoma City', shortName: 'OK', founded: 'November 16, 1907', zipRange: '73101 to 73196' },
+            '580': { name: 'Oklahoma', capital: 'Oklahoma City', shortName: 'OK', founded: 'November 16, 1907', zipRange: '73101 to 73196' },
+            '918': { name: 'Oklahoma', capital: 'Oklahoma City', shortName: 'OK', founded: 'November 16, 1907', zipRange: '73101 to 73196' },
+            '458': { name: 'Oregon', capital: 'Salem', shortName: 'OR', founded: 'February 14, 1859', zipRange: '97201 to 97920' },
+            '503': { name: 'Oregon', capital: 'Salem', shortName: 'OR', founded: 'February 14, 1859', zipRange: '97201 to 97920' },
+            '541': { name: 'Oregon', capital: 'Salem', shortName: 'OR', founded: 'February 14, 1859', zipRange: '97201 to 97920' },
+            '971': { name: 'Oregon', capital: 'Salem', shortName: 'OR', founded: 'February 14, 1859', zipRange: '97201 to 97920' },
+            '215': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '223': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '267': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '272': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '412': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '445': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '484': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '570': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '610': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '717': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '724': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '814': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '878': { name: 'Pennsylvania', capital: 'Harrisburg', shortName: 'PA', founded: 'December 12, 1787', zipRange: '19001 to 19640' },
+            '401': { name: 'Rhode Island', capital: 'Providence', shortName: 'RI', founded: 'May 29, 1790', zipRange: '02801 to 02940' },
+            '803': { name: 'South Carolina', capital: 'Columbia', shortName: 'SC', founded: 'May 23, 1788', zipRange: '29001 to 29948' },
+            '839': { name: 'South Carolina', capital: 'Columbia', shortName: 'SC', founded: 'May 23, 1788', zipRange: '29001 to 29948' },
+            '843': { name: 'South Carolina', capital: 'Columbia', shortName: 'SC', founded: 'May 23, 1788', zipRange: '29001 to 29948' },
+            '854': { name: 'South Carolina', capital: 'Columbia', shortName: 'SC', founded: 'May 23, 1788', zipRange: '29001 to 29948' },
+            '864': { name: 'South Carolina', capital: 'Columbia', shortName: 'SC', founded: 'May 23, 1788', zipRange: '29001 to 29948' },
+            '605': { name: 'South Dakota', capital: 'Pierre', shortName: 'SD', founded: 'November 2, 1889', zipRange: '57001 to 57110' },
+            '423': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '615': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '629': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '731': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '865': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '901': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '931': { name: 'Tennessee', capital: 'Nashville', shortName: 'TN', founded: 'June 1, 1796', zipRange: '37201 to 37250' },
+            '210': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '214': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '254': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '281': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '325': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '346': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '361': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '409': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '430': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '432': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '469': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '512': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '682': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '713': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '726': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '737': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '806': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '817': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '830': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '832': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '903': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '915': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '936': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '940': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '956': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '972': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '979': { name: 'Texas', capital: 'Austin', shortName: 'TX', founded: 'December 29, 1845', zipRange: '73301 to 73344' },
+            '385': { name: 'Utah', capital: 'Salt Lake City', shortName: 'UT', founded: 'January 4, 1896', zipRange: '84101 to 84199' },
+            '435': { name: 'Utah', capital: 'Salt Lake City', shortName: 'UT', founded: 'January 4, 1896', zipRange: '84101 to 84199' },
+            '801': { name: 'Utah', capital: 'Salt Lake City', shortName: 'UT', founded: 'January 4, 1896', zipRange: '84101 to 84199' },
+            '802': { name: 'Vermont', capital: 'Montpelier', shortName: 'VT', founded: 'March 4, 1791', zipRange: '05601 to 05907' },
+            '276': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '434': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '540': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '571': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '703': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '757': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '804': { name: 'Virginia', capital: 'Richmond', shortName: 'VA', founded: 'June 25, 1788', zipRange: '23218 to 23298' },
+            '206': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '253': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '360': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '425': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '509': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '564': { name: 'Washington', capital: 'Olympia', shortName: 'WA', founded: 'November 11, 1889', zipRange: '98101 to 98199' },
+            '202': { name: 'Washington DC', capital: 'Washington DC', shortName: 'DC', founded: 'July 16, 1790', zipRange: '20001 to 20599' },
+            '304': { name: 'West Virginia', capital: 'Charleston', shortName: 'WV', founded: 'June 20, 1863', zipRange: '25301 to 25396' },
+            '681': { name: 'West Virginia', capital: 'Charleston', shortName: 'WV', founded: 'June 20, 1863', zipRange: '25301 to 25396' },
+            '262': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '414': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '534': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '608': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '715': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '920': { name: 'Wisconsin', capital: 'Madison', shortName: 'WI', founded: 'May 29, 1848', zipRange: '53201 to 53228' },
+            '307': { name: 'Wyoming', capital: 'Cheyenne', shortName: 'WY', founded: 'July 10, 1890', zipRange: '82001 to 82010' },
+            '684': { name: 'American Samoa', capital: 'Pago Pago', shortName: 'AS', founded: 'April 17, 1900', zipRange: '96799 to 96799' },
+            '671': { name: 'Guam', capital: 'Hagatna', shortName: 'GU', founded: 'August 7, 1898th', zipRange: '96910 to 96932' },
+            '670': { name: 'Marianas Island', capital: 'Saipan', shortName: 'MP', founded: 'January 9, 1978', zipRange: '96950 to 96950' },
+            '787': { name: 'Puerto Rico', capital: 'San Juan', shortName: 'PR', founded: 'July 25, 1898', zipRange: '00901 to 00988' },
+            '939': { name: 'Puerto Rico', capital: 'San Juan', shortName: 'PR', founded: 'July 25, 1898', zipRange: '00901 to 00988' },
+            '340': { name: 'US Virgin Islands', capital: 'Charlotte Amalie', shortName: 'VI', founded: 'March 31, 1917', zipRange: '00801 to 00804' },
+};
+
+   const stateInfo = stateCodes[firstThreeDigits] || { name: 'State Not Found', capital: '', shortName: '', founded: '', zipRange: '' };
+
+    stateTable.innerHTML = `
+        <tr>
+            <td colspan="2"><b style="color: red;">State:</b> ${stateInfo.name}</td>
+        </tr>
+        <tr>
+            <td colspan="2">${stateInfo.name === 'State Not Found' ? 'No additional information available' : `Capital: ${stateInfo.capital}, Founded: ${stateInfo.founded}, ZIP Range: ${stateInfo.zipRange}`}</td>
+        </tr>
+    `;
+
+    if (stateInfo.name === 'State Not Found') {
+        setTimeout(() => {
+            stateTable.innerHTML = ''; 
+        }, 3000);
+    }
+
+
+
+       stateTable.innerHTML = `
+               <tr>
+                <td><b style="color: red;">State:</b></td>
+                <td>${stateInfo.name} (${stateInfo.shortName})</td>
+            </tr>
+            <tr>
+                <td><b style="color: blue;">Capital:</b></td>
+                <td>${stateInfo.capital}</td>
+            </tr>
+            <tr>
+                <td><b style="color: purple;">Founded:</b></td>
+                <td>${stateInfo.founded}</td>
+            </tr>
+            <tr>
+                <td><b style="color: orange;">ZIP Range:</b></td>
+                <td>${stateInfo.zipRange}</td>
+            </tr>
+        `;
+    }
+
+</script>
+
+
                 </td>
               </tr>
             </table>
