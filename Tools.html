@@ -42,17 +42,7 @@
 </head>
 
 <body>
- <script>
-        // Function to check if the device is a mobile
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        // Show overlay and message if it's a mobile device
-        if (isMobile()) {
-            document.getElementById('overlay').style.display = 'block';
-        }
-    </script>
+ 
   
   <div class="overlay" id="overlay">
         <div class="message">
@@ -1660,6 +1650,16 @@ checkbox.addEventListener("change", function() {
       document.getElementById("w2Label").textContent = "W2?";
     }
   }
+        // Function to check if the device is a mobile
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Show overlay and message if it's a mobile device
+        if (isMobile()) {
+            document.getElementById('overlay').style.display = 'block';
+        }
+
   </script>
 
 </body>
