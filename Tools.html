@@ -259,25 +259,24 @@
                     <div id="utility" class="tab-pane">
                      <table>
               <tr>
-                <th class="column-300"><center><h2>State Map</h2></center></th>
-                <th class="column-70"><center><h2>Time Now</h2></center></th>
+                <th class="column-300"><center><h2>USA Sate Lookup</h2></center></th>
+                <th class="column-70"><center><h2>-</h2></center></th>
               </tr>
               <tr>
                 <td class="column-300">
-                  
-<h2>USA Sate Lookup</h2>
+              
 <label for="mobileNumber">State Code:</label>
 <input type="text" id="mobileNumber" class="form-control" placeholder="Enter 10-digit mobile number" onkeydown="if (event.key === 'Enter') lookupState()" />
 
 <button class="btn btn-primary" onclick="lookupState()">Find</button>
+                     </br>
+                       <table id="stateTable">
+    </table>
 </br>
 </br>
 <label id="stateLabel"></label>
 </br>
- <table id="stateTable">
-     
-    </table>
-
+ 
 <script>
     function lookupState() {
         const mobileNumberInput = document.getElementById('mobileNumber');
