@@ -20,7 +20,8 @@
       width: 100%; /* Adjust the width of these tables */
     }
 
-           .overlay {
+       
+        .overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -36,14 +37,15 @@
             font-size: 24px;
             color: #333;
         }
+
   </style>
 </head>
 
 <body>
-<script>
+ <script>
         // Function to check if the device is a mobile
         function isMobile() {
-            return window.innerWidth < 768; // Adjust the width as needed for your definition of mobile
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
         // Show overlay and message if it's a mobile device
