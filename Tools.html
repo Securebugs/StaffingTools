@@ -1,238 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<link rel="icon" type="image/png" sizes="32x32" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staffing Tools from NANDAN</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <title>USA Staffing Tools</title>
+<meta name="description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
 
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 
-  <style>
-    .time-table {
-      width: 100%; /* Adjust the width of the time table */
-
-    }
-
-    table.infotable2b,
-    table.infotable50 {
-      width: 100%; /* Adjust the width of these tables */
-    }
-
-       
-        .overlay {
-      display: none;
+<link href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Jersey+10+Charted&display=swap" rel="stylesheet">
+<style>
+    /* Custom CSS for side nav */
+    .side-nav {
       position: fixed;
       top: 0;
       left: 0;
-      width: auto;
-      height: 100vh;
-      background: #fff;
-      text-align: center;
-      padding: 50px;
-      z-index: 1001; /* Make sure the overlay is on top */
+      height: 200%;
+      width: 50px; /* Reduced width to accommodate only icons */
+      background-color: rgba(var(--bs-warning-rgb))!important;
+      color: #000;
+      padding-top: 55px;
+z-index: 1000;
+      overflow: hidden; /* Hide overflowing text */
+    transition: 0.15s ease; 
     }
-
-        .message {
-            font-size: 24px;
-            color: #000;
-        }
-
-  </style>
-</head>
-
-<body>
- 
-  <div class="overlay" id="overlay">
-        <div class="message">
-            <h2>Sorry!</h2>
-            <p>Please open this website on a laptop for the best experience.</p>
-        </div>
-    </div>
-  
-
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-  <div class="container">
-    <style>
-      .cursive-text {
-        font-family: cursive;
-      }
-
-      .profile-image {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .profile-image img {
+    .side-nav:hover {
+      width: 200px; /* Expand width on hover to show full tab names */
+    
+}
+    .nav-link {
+      color: #000 !important;
+      display: flex;
+      align-items: center;
+      
+    }
+    .nav-link i {
+      margin-right: 10px;
+padding-top: 10px;
+    }
+    .nav-link span {
+      display: none; /* Initially hide tab names */
+    }
+    .side-nav:hover .nav-link span {
+      display: inline; /* Show tab names on hover */
+    }
+     .tab-content {
+      margin-left: 20px; /* Adjust margin to make space for side nav */
+      padding-left: 35px;
+      padding-top: 70px;
+      
+    }
+    .nav-link.active {
+      background-color: #b2e9f7 !important; /* Primary color for active tab */
+    }
+@media (max-width: 767.98px) {
+      .tab-content {
+        margin-left: 0;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
       }
+.card img {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Set maximum width to 100% of card width */
+}
+.card{
+margin:10px;
+}
+  </style>
+ 
+         
+</head>
+<body>
+<!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top">
+    <div class="container-fluid">
+<style>
+.cursive-text {
+ font-family: "Jacquard 24", system-ui;
+  font-weight: 600;
+}
+  </style>
+      <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      .linkedin-icon {
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-      }
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<br>       
+ <ul class="navbar-nav ml-auto">
+          <li class="nav-item d-flex justify-content-end px-2">
+           
+<a href="https://securebugs.github.io/Nandan/profile.html" target="_blank">
+         <img src="https://media.licdn.com/dms/image/D4D03AQFyM6YR0uAmUA/profile-displayphoto-shrink_800_800/0/1666274067480?e=1714608000&amp;v=beta&amp;t=m2uCXxap1jypeCpYiuAJ1BTUZF2N6DBwUIyzyGm7lIo" alt="Nandan Thakur" class="rounded-circle ml-2" style="width: 40px; height: 40px;">
 
-      .linkedin-icon a {
-        margin-left: 5px;
-        text-decoration: none;
-        color: #000; /* Change the color as needed */
-      }
-
-      .linkedin-icon i {
-        font-size: 24px; /* Adjust the size as needed */
-        color: #000; /* LinkedIn blue color */
-      }
-    </style>
-
-    <a class="navbar-brand cursive-text" href="https://securebugs.github.io/StaffingTools/Tools">USA Staffing tools</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-          <li class="nav-item">
-          <a class="nav-link" href="#utility">Utilities</a>
-        </li>
-          <a class="nav-link" href="#about">Tools</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#services">Holidays</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Add the profile image with a link -->
-    <div class="profile-image">
-      <a href="https://securebugs.github.io/Nandan/profile.html" target="_blank">
-        <img src="https://media.licdn.com/dms/image/D4D03AQFyM6YR0uAmUA/profile-displayphoto-shrink_800_800/0/1666274067480?e=1714608000&v=beta&t=m2uCXxap1jypeCpYiuAJ1BTUZF2N6DBwUIyzyGm7lIo" alt="Nandan Thakur">
       </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Add the combined LinkedIn icon without text -->
-    <div class="linkedin-icon">
-      <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </div>
+  <div class="side-nav">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"><i class="fas fa-home"></i><span>Home</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="about-tab" data-toggle="tab" href="#about"><i class='fas fa-route'></i><span>State Info</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings"><i class='fas fa-donate'></i><span>Rate Conversion</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"><i class="fas fa-envelope"></i><span>Email Handling</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="notifications-tab" data-toggle="tab" href="#notifications"><i class='fas fa-calendar-alt'></i><span>Calender Info</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="stats-tab" data-toggle="tab" href="#stats"><i class="fas fa-globe"></i><span>Important Links</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="gallery-tab" data-toggle="tab" href="#gallery"><i class="fab fa-cc-visa"></i><span>Visa Details</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="articles-tab" data-toggle="tab" href="#articles"><i class="fas fa-book"></i><span>Staffing Info</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="shop-tab" data-toggle="tab" href="#shop"><i class="fas fa-book-reader"></i><span>Interview</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="videos-tab" data-toggle="tab" href="#videos"><i class="fas fa-comments"></i><span>Contact us</span></a>
+      </li>
+    </ul>
   </div>
-</nav>
 
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="card">
+                <div class="card-body">
+                  <center><h3 class="card-title"><i class='fas fa-map'></i> State Map</h3></center>
+                  <img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif" alt="USA Time Zone Map">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body">
+                 <center> <h3 class="card-title"><i class='fas fa-clock'></i> Time Now</h3></center>
 
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="tab-content">
-          <div id="home" class="tab-pane active">
-
-            <style>
-              table {
-                width: auto;
-                border-collapse: collapse;
-              }
-
-              th,
-              td {
-                border: 1px solid #ddd;
-                padding: 5px;
-                text-align: left;
-              }
-
-              th {
-                background-color: #f2f2f2;
-              }
-
-              /* Adjust column widths */
-              .column-70 {
-                width: 60%;
-              }
-
-              .column-30 {
-                width: 30%;
-                overflow: auto;
-              }
- .column-700 {
-                width: 30%;
-              }
-
- .column-400 {
-                width: 40%;
-              }
-              .column-300 {
-                width: 70%;
-                overflow: auto;
-              }
-
-            </style>
-
-            <table>
-              <tr>
-                <th class="column-70"><center><h2>State Map</h2></center></th>
-                <th class="column-300"><center><h2>Time Now</h2></center></th>
-              </tr>
-              <tr>
-                <td class="column-70">
-                  <img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif"
-                    alt="USA Time Zone Map">
-                </td>
-                <td class="column-300">
                   <div class="time-table">
-                    <table class="infotable2b">
-                      <tbody>
-                        <tr class="contentfont2">
-                          <td class="time-right-wide">Eastern Time</td>
-                          <td class="time-left-wide">Central Time</td>
-                        </tr>
-                        <tr>
-                          <td class="time-right-wide" id="eastern-time"></td>
-                          <td class="time-left-wide" id="central-time"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <td class="column-300">
+                  <div class="time-table">
+                   <table class="hol">
+  <tbody>
+    <tr>
+      <td>Eastern Time</td>
+      <td>Central Time</td>
+    </tr>
+    <tr>
+      <td id="eastern-time">Saturday, 4/6/2024, 3:33:06 PM GMT+5:30</td>
+      <td id="central-time">Saturday, 4/6/2024, 2:33:06 PM GMT+5:30</td>
+    </tr>
+  </tbody>
+</table>
 
-                    <table class="infotable2b">
-                      <tbody>
-                        <tr class="contentfont2">
-                          <td class="time-left-wide">Mountain Time</td>
-                          <td class="time-center-wide">Pacific Time</td>
-                        </tr>
-                        <tr>
-                          <td class="time-left-wide" id="mountain-time"></td>
-                          <td class="time-center-wide" id="pacific-time"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+<table class="hol">
+  <tbody>
+    <tr>
+      <td>Mountain Time</td>
+      <td>Pacific Time</td>
+    </tr>
+    <tr>
+      <td id="mountain-time">Saturday, 4/6/2024, 1:33:06 PM GMT+5:30</td>
+      <td id="pacific-time">Saturday, 4/6/2024, 12:33:06 PM GMT+5:30</td>
+    </tr>
+  </tbody>
+</table>
 
-                    <table class="infotable50">
-                      <tbody>
-                        <tr class="contentfont2">
-                          <td class="time-left-wide">Hawaii Time</td>
-                          <td class="time-left-wide">Alaska Time</td>
-                        </tr>
-                        <tr>
-                          <td class="time-left-wide" id="hawaii-time"></td>
-                          <td class="time-left-wide" id="alaska-time"></td>
-                        </tr>
-                      </tbody>
-                    </table>
+<table class="hol">
+  <tbody>
+    <tr>
+      <td>Hawaii Time</td>
+      <td>Alaska Time</td>
+    </tr>
+    <tr>
+      <td id="hawaii-time">Saturday, 4/6/2024, 9:33:06 AM GMT+5:30</td>
+      <td id="alaska-time">Saturday, 4/6/2024, 11:33:06 AM GMT+5:30</td>
+    </tr>
+  </tbody>
+</table>
 
                   </div>
 
@@ -279,28 +244,73 @@
 
             
                 </td>
-              </tr>
-            </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-                    <div id="utility" class="tab-pane">
-                     <table>
-              <tr>
-                <th class="column-300"><center><h2>USA Sate Lookup</h2></center></th>
-                <th class="column-70"><center><h2>-</h2></center></th>
-              </tr>
-              <tr>
-                <td class="column-300">
-              
-<label for="mobileNumber">State Code:</label>
-<input type="text" id="mobileNumber" class="form-control" placeholder="Enter 10-digit mobile number" onkeydown="if (event.key === 'Enter') lookupState()" />
+       
+</div>
 
+<script>
+  function updateTimes() {
+    // Get current UTC time
+    const now = new Date();
+
+    // Set time zones
+    const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
+    const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
+    const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+    const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
+    const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
+    const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+    // Update HTML with formatted times
+    document.getElementById("hawaii-time").textContent = formatTime(hawaiiTime);
+    document.getElementById("alaska-time").textContent = formatTime(alaskaTime);
+    document.getElementById("pacific-time").textContent = formatTime(pacificTime);
+    document.getElementById("mountain-time").textContent = formatTime(mountainTime);
+    document.getElementById("central-time").textContent = formatTime(centralTime);
+    document.getElementById("eastern-time").textContent = formatTime(easternTime);
+  }
+
+  function formatTime(date) {
+    const options = {
+      weekday: 'long',
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZoneName: 'short'
+    };
+    return date.toLocaleString('en-US', options);
+  }
+
+  // Update times initially and set interval to update every second
+  updateTimes();
+  setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
+</script>
+    </div>
+    <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+     <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body">
+                  <center><h3 class="card-title"><i class='fas fa-tty'></i> Number Lookup</h3></center>
+                  <label for="mobileNumber">Mobile Number:</label>
+<input type="text" id="mobileNumber" class="form-control" placeholder="Enter 10-digit mobile number" onkeydown="if (event.key === 'Enter') lookupState()">
+</br>
 <button class="btn btn-warning" onclick="lookupState()">Find</button>
                      </br>
                        <table id="stateTable">
+
     </table>
-</br>
+
 <label id="stateLabel"></label>
-</br>                     
+<br>                     
           
 
 <script>
@@ -663,7 +673,8 @@
    const stateInfo = stateCodes[firstThreeDigits] || { name: 'State Not Found', capital: '', shortName: '', founded: '', zipRange: '' };
 
     stateTable.innerHTML = `
-        <tr>
+    
+ <tr>
             <td colspan="2"><b style="color: red;">State:</b> ${stateInfo.name}</td>
         </tr>
         <tr>
@@ -680,8 +691,13 @@
 
 
        stateTable.innerHTML = `
-               <tr>
-                <td><b style="color: red;">State:</b></td>
+               </br>
+   <tr>
+        <td colspan="2"><b style="color: red;">This number belongs to -</b></td>
+    </tr>
+<tr>
+                <td>
+<b style="color: green;">State:</b></td>
                 <td>${stateInfo.name} (${stateInfo.shortName})</td>
             </tr>
             <tr>
@@ -700,347 +716,451 @@
     }
 
 </script>
-
-    <table>
-        <tr>
-            <td>
-                <table border="1">
-                    <tr>
-                        <th>State</th>
-                        <th>Capital</th>
-                    </tr>
-                    <tr>
-                        <td>Alabama</td>
-                        <td>Montgomery</td>
-                    </tr>
-                    <tr>
-                        <td>Alaska</td>
-                        <td>Juneau</td>
-                    </tr>
-                    <tr>
-                        <td>Arizona</td>
-                        <td>Phoenix</td>
-                    </tr>
-                    <tr>
-                        <td>Arkansas</td>
-                        <td>Little Rock</td>
-                    </tr>
-                    <tr>
-                        <td>California</td>
-                        <td>Sacramento</td>
-                    </tr>
-                    <tr>
-                        <td>Colorado</td>
-                        <td>Denver</td>
-                    </tr>
-                    <tr>
-                        <td>Connecticut</td>
-                        <td>Hartford</td>
-                    </tr>
-                    <tr>
-                        <td>Delaware</td>
-                        <td>Dover</td>
-                    </tr>
-                    <tr>
-                        <td>Florida</td>
-                        <td>Tallahassee</td>
-                    </tr>
-                    <tr>
-                        <td>Georgia</td>
-                        <td>Atlanta</td>
-                    </tr>
-                    <tr>
-                        <td>Hawaii</td>
-                        <td>Honolulu</td>
-                    </tr>
-                    <tr>
-                        <td>Idaho</td>
-                        <td>Boise</td>
-                    </tr>
-                    <tr>
-                        <td>Illinois</td>
-                        <td>Springfield</td>
-                    </tr>
-                    <tr>
-                        <td>Indiana</td>
-                        <td>Indianapolis</td>
-                    </tr>
-                    <tr>
-                        <td>Iowa</td>
-                        <td>Des Moines</td>
-                    </tr>
-                    <tr>
-                        <td>Kansas</td>
-                        <td>Topeka</td>
-                    </tr>
-                    <tr>
-                        <td>Kentucky</td>
-                        <td>Frankfort</td>
-                    </tr>
-                    <tr>
-                        <td>Louisiana</td>
-                        <td>Baton Rouge</td>
-                    </tr>
-                    <tr>
-                        <td>Maine</td>
-                        <td>Augusta</td>
-                    </tr>
-                    <tr>
-                        <td>Maryland</td>
-                        <td>Annapolis</td>
-                    </tr>
-                    <tr>
-                        <td>Massachusetts</td>
-                        <td>Boston</td>
-                    </tr>
-                    <tr>
-                        <td>Michigan</td>
-                        <td>Lansing</td>
-                    </tr>
-                    <tr>
-                        <td>Minnesota</td>
-                        <td>St. Paul</td>
-                    </tr>
- <tr>
-                        <td>Mississippi</td>
-                        <td>Jackson</td>
-                    </tr>
-
-                    <tr>
-                        <td>Missouri</td>
-                        <td>Jefferson City</td>
-                    </tr>
-                </table>
-            </td>
-
-            <td>
-                <table border="1">
-                    <tr>
-                        <th>State</th>
-                        <th>Capital</th>
-                    </tr>
-                   
-                    <tr>
-                        <td>Montana</td>
-                        <td>Helena</td>
-                    </tr>
-                    <tr>
-                        <td>Nebraska</td>
-                        <td>Lincoln</td>
-                    </tr>
-                    <tr>
-                        <td>Nevada</td>
-                        <td>Carson City</td>
-                    </tr>
-                    <tr>
-                        <td>New Hampshire</td>
-                        <td>Concord</td>
-                    </tr>
-                    <tr>
-                        <td>New Jersey</td>
-                        <td>Trenton</td>
-                    </tr>
-                    <tr>
-                        <td>New Mexico</td>
-                        <td>Santa Fe</td>
-                    </tr>
-                    <tr>
-                        <td>New York</td>
-                        <td>Albany</td>
-                    </tr>
-                    <tr>
-                        <td>North Carolina</td>
-                        <td>Raleigh</td>
-                    </tr>
-                    <tr>
-                        <td>North Dakota</td>
-                        <td>Bismarck</td>
-                    </tr>
-                    <tr>
-                        <td>Ohio</td>
-                        <td>Columbus</td>
-                    </tr>
-                    <tr>
-                        <td>Oklahoma</td>
-                        <td>Oklahoma City</td>
-                    </tr>
-                    <tr>
-                        <td>Oregon</td>
-                        <td>Salem</td>
-                    </tr>
-                    <tr>
-                        <td>Pennsylvania</td>
-                        <td>Harrisburg</td>
-                    </tr>
-                    <tr>
-                        <td>Rhode Island</td>
-                        <td>Providence</td>
-                    </tr>
-                    <tr>
-                        <td>South Carolina</td>
-                        <td>Columbia</td>
-                    </tr>
-                    <tr>
-                        <td>South Dakota</td>
-                        <td>Pierre</td>
-                    </tr>
-                    <tr>
-                        <td>Tennessee</td>
-                        <td>Nashville</td>
-                    </tr>
-                    <tr>
-                        <td>Texas</td>
-                        <td>Austin</td>
-                    </tr>
-                    <tr>
-                        <td>Utah</td>
-                        <td>Salt Lake City</td>
-                    </tr>
-                    <tr>
-                        <td>Vermont</td>
-                        <td>Montpelier</td>
-                    </tr>
-                    <tr>
-                        <td>Virginia</td>
-                        <td>Richmond</td>
-                    </tr>
-                    <tr>
-                        <td>Washington</td>
-                        <td>Olympia</td>
-                    </tr>
-                    <tr>
-                        <td>West Virginia</td>
-                        <td>Charleston</td>
-                    </tr>
-                    <tr>
-                        <td>Wisconsin</td>
-                        <td>Madison</td>
-                    </tr>
-                    <tr>
-                        <td>Wyoming</td>
-                        <td>Cheyenne</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="card">
+                <div class="card-body">
+                 <center> <h3 class="card-title"><i class='fas fa-map-signs'></i> USA States</h3></center>
+<style>
+    .scrollable {
+        height: 70vh;
+overflow-x: hidden;
+        overflow-y: auto;
+    }
+</style> 
+<div class="scrollable">
+    <table class="hol">
+        <thead>
+            <tr>
+                <th style="width: auto;">SI. N.</th>
+                <th style="width: auto;">State</th>
+                <th style="width: auto;">Capital</th>
+                <th style="width: auto;">Time Zone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- States, Capitals, and Time Zones -->
+            <tr>
+                <td>1</td>
+                <td>Alabama</td>
+                <td>Montgomery</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Alaska</td>
+                <td>Juneau</td>
+                <td>AKST</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Arizona</td>
+                <td>Phoenix</td>
+                <td>MST</td>
+            </tr>
+            <!-- Include time zone information for other states -->
+            <tr>
+                <td>4</td>
+                <td>Arkansas</td>
+                <td>Little Rock</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>California</td>
+                <td>Sacramento</td>
+                <td>PST</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Colorado</td>
+                <td>Denver</td>
+                <td>MST</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Connecticut</td>
+                <td>Hartford</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Delaware</td>
+                <td>Dover</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Florida</td>
+                <td>Tallahassee</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Georgia</td>
+                <td>Atlanta</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Hawaii</td>
+                <td>Honolulu</td>
+                <td>HST</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Idaho</td>
+                <td>Boise</td>
+                <td>MST</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Illinois</td>
+                <td>Springfield</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Indiana</td>
+                <td>Indianapolis</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Iowa</td>
+                <td>Des Moines</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Kansas</td>
+                <td>Topeka</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Kentucky</td>
+                <td>Frankfort</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Louisiana</td>
+                <td>Baton Rouge</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Maine</td>
+                <td>Augusta</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Maryland</td>
+                <td>Annapolis</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>Massachusetts</td>
+                <td>Boston</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>Michigan</td>
+                <td>Lansing</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>Minnesota</td>
+                <td>St. Paul</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>Mississippi</td>
+                <td>Jackson</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>Missouri</td>
+                <td>Jefferson City</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>Montana</td>
+                <td>Helena</td>
+                <td>MST</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>Nebraska</td>
+                <td>Lincoln</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>Nevada</td>
+                <td>Carson City</td>
+                <td>PST</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>New Hampshire</td>
+                <td>Concord</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>New Jersey</td>
+                <td>Trenton</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td>New Mexico</td>
+                <td>Santa Fe</td>
+                <td>MST</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td>New York</td>
+                <td>Albany</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>33</td>
+                <td>North Carolina</td>
+                <td>Raleigh</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>34</td>
+                <td>North Dakota</td>
+                <td>Bismarck</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td>Ohio</td>
+                <td>Columbus</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>36</td>
+                <td>Oklahoma</td>
+                <td>Oklahoma City</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>37</td>
+                <td>Oregon</td>
+                <td>Salem</td>
+                <td>PST</td>
+            </tr>
+            <tr>
+                <td>38</td>
+                <td>Pennsylvania</td>
+                <td>Harrisburg</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>39</td>
+                <td>Rhode Island</td>
+                <td>Providence</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td>South Carolina</td>
+                <td>Columbia</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>41</td>
+                <td>South Dakota</td>
+                <td>Pierre</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>42</td>
+                <td>Tennessee</td>
+                <td>Nashville</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>43</td>
+                <td>Texas</td>
+                <td>Austin</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>44</td>
+                <td>Utah</td>
+                <td>Salt Lake City</td>
+                <td>MST</td>
+            </tr>
+            <tr>
+                <td>45</td>
+                <td>Vermont</td>
+                <td>Montpelier</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>46</td>
+                <td>Virginia</td>
+                <td>Richmond</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>47</td>
+                <td>Washington</td>
+                <td>Olympia</td>
+                <td>PST</td>
+            </tr>
+            <tr>
+                <td>48</td>
+                <td>West Virginia</td>
+                <td>Charleston</td>
+                <td>EST</td>
+            </tr>
+            <tr>
+                <td>49</td>
+                <td>Wisconsin</td>
+                <td>Madison</td>
+                <td>CST</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td>Wyoming</td>
+                <td>Cheyenne</td>
+                <td>MST</td>
+            </tr>
+        </tbody>
     </table>
+</div>
 
-                </td>
-                 <td class="column-70">
-                </td>
-              </tr>
-                     </table>
-                
-                    </div>
+</div></div></div></div></div>
+    </div>
+    <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+       <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <center><h3 class="card-title"><i class='fas fa-money-check-alt'></i> Rate Converter<sup> (Approx.)</sup></h3></center>
+<!-- C2C to W2 Conversion -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <label for="c2cRate">C2C:</label>
+      <input type="number" class="form-control" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
+    </div>
+    <div class="col-md-4">
+      <label for="w2Rate">W2:</label>
+      <input type="number" class="form-control" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
+    </div>
+    <div class="col-md-4">
+      <label for="1099Rate">1099:</label>
+      <input type="number" class="form-control" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()">
+    </div>
+  </div>
+  <center>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </br>
+  <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
+  </br>
+  <div class="col-md-4">
+    ⥯
+  </div>
+  <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
+  </br>
+  <div class="col-md-4">
+    ⥯
+  </div>
+  <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
+</center>
+
+</br>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+  {
+  "symbol": "FX_IDC:USDINR",
+  "width": "100%",
+  "isTransparent": false,
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+</br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+<div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-body">
+                  <center><h3 class="card-title"><i class='fas fa-envelope-open'></i> Email Extractor</h3></center>
+
+ <br>
+<textarea id="inputText" rows="3" placeholder="Paste copied items here..." class="form-control"></textarea><br>
+<button class="btn btn-primary extract-button" onclick="extractEmails()">Extract Emails</button> 
 
 
-          
-          <div id="about" class="tab-pane">
-      <table>
-  <tr>
-    <th class="column-400"><h2>Email Extractor <button class="fa-button">
 
-        !
-    </button>
-    <div class="hover-message">
-<span class="badge rounded-pill bg-primary">You can search "Updatig vendor hotlist" on Linkedin</span> ->
-<span class="badge rounded-pill bg-success">Then open a post and Go to Comment, load all Comments</span> ->
-<span class="badge rounded-pill bg-dark">Copy everything including emails from comments at once</span> ->
-<span class="badge rounded-pill bg-danger">paste it below to get vendor emails.</span>
-</div></h2>
- <style>
- .fa-button {
-    padding: 3px;
- background-color: #ddccff;
-    }
-        .hover-message {
-            display: none;
-            margin: 8px;
-width:60%;
-            position: absolute;
-            background-color: #f2f2f2;
-            color: #000;
-            padding: 2px;
-font-size: 17px; 
-            border-radius: 5px;
-            z-index: 1;
-        }
+<br><br>
+<span class="badge bg-danger" id="noEmailMessage"></span> 
+<span class="badge bg-success" id="totalEmails"></span>
+<span class="badge bg-warning" id="totalOfficialEmails"></span>
+<span class="badge bg-info" id="totalUnofficialEmails"></span>
+<br><br>
 
-        .fa-button:hover + .hover-message {
-            display: inline;
-        }
-sup {
-      font-size: 0.4em; /* Adjust the font size as needed */
-    }
-    </style>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="officialEmails">Official Emails:  <button class="btn btn-secondary copy-button" onclick="copyToClipboard('officialEmails')"><i class="fas fa-copy"></i></button></label><br>
+        <textarea id="officialEmails" rows="5" readonly placeholder="Official Emails" class="form-control"></textarea><br>
+       
+      </div>
+      <div class="col-md-6">
+        <label for="unofficialEmails">Unofficial Emails: <button class="btn btn-secondary copy-button" onclick="copyToClipboard('unofficialEmails')"><i class="fas fa-copy"></i></button></label><br>
+        <textarea id="unofficialEmails" rows="5" readonly placeholder="Unofficial Emails" class="form-control"></textarea><br>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
-    
-
-
-
-</th>
-    <th class="column-30"> <center><h2>Rate Converter<sup> (Approx.)</sup></h2></center></th>
-<th class="column-30"><center><h2>Important Links</h2></center></th>
-     
-
- 
-  </tr>
-  <tr>
-    <td class="column-400">
-      <style>
-    
-        #inputText {
-            width: 100%;
-            height: 130px;
-            margin-bottom: 10px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        #emailList {
-            width: 100%;
-            height: 140px;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 10px;
-margin-bottom: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        #noEmailMessage {
-            color: red;
-        }
-
-        #totalEmails {
-            margin-top: 10px;
-        }
-    </style>
-
-    <textarea id="inputText" placeholder="Paste copied items here..."></textarea>
-   
-
-    <h4>Extracted Emails:</h4> <p id="noEmailMessage"></p>
-    <p id="totalEmails"></p>
-    <textarea id="emailList" readonly></textarea>
-    <center> <button onclick="extractEmails()">Extract Emails</button></center>
 
     <script>
         function extractEmails() {
             const inputText = document.getElementById('inputText').value;
-            const emailList = document.getElementById('emailList');
+            const officialEmails = document.getElementById('officialEmails');
+            const unofficialEmails = document.getElementById('unofficialEmails');
             const noEmailMessage = document.getElementById('noEmailMessage');
             const totalEmails = document.getElementById('totalEmails');
+            const totalOfficialEmails = document.getElementById('totalOfficialEmails');
+            const totalUnofficialEmails = document.getElementById('totalUnofficialEmails');
             
             // Regular expression to match email addresses
             const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
@@ -1048,17 +1168,42 @@ margin-bottom: 10px;
             // Extract emails from the input text using the regular expression
             const extractedEmails = inputText.match(emailRegex) || [];
 
+            // Count official and unofficial emails
+            let officialCount = 0;
+            let unofficialCount = 0;
+            let officialList = [];
+            let unofficialList = [];
+            extractedEmails.forEach(email => {
+                if (/@(gmail\.com|outlook\.com|outlook\.in)$/i.test(email)) {
+                    unofficialCount++;
+                    unofficialList.push(email);
+                } else {
+                    officialCount++;
+                    officialList.push(email);
+                }
+            });
+
             // Display the extracted emails or a message if no emails are found
             if (extractedEmails.length > 0) {
-                emailList.value = extractedEmails.join('\n');
+                officialEmails.value = officialList.join('\n');
+                unofficialEmails.value = unofficialList.join('\n');
                 noEmailMessage.textContent = '';
                 
                 // Display the total number of emails found
                 totalEmails.textContent = `Total email(s) found: ${extractedEmails.length}`;
+                
+                // Display the total number of official emails
+                totalOfficialEmails.textContent = `Total official email(s): ${officialCount}`;
+                
+                // Display the total number of unofficial emails
+                totalUnofficialEmails.textContent = `Total unofficial email(s): ${unofficialCount}`;
             } else {
-                emailList.value = '';
+                officialEmails.value = '';
+                unofficialEmails.value = '';
                 noEmailMessage.textContent = 'No email extracted/found.';
                 totalEmails.textContent = '';
+                totalOfficialEmails.textContent = '';
+                totalUnofficialEmails.textContent = '';
 
                 // Hide the message after 6 seconds
                 setTimeout(function() {
@@ -1066,164 +1211,227 @@ margin-bottom: 10px;
                 }, 6000);
             }
         }
+
+        function copyToClipboard(elementId) {
+            const textarea = document.getElementById(elementId);
+            textarea.select();
+            document.execCommand('copy');
+        }
     </script>
-    </td>
 
-
-
-    <td class="column-30">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
 <style>
-    body {
-      font-family: Arial, sans-serif;
+
+#emails {
+    width: 100%;
+    height: 250px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#download-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#download-btn:hover {
+    background-color: #3e8e41;
+}
+
+#message {
+    color: green;
+    font-weight: bold;
+}
+
+</style>
+   <center>  <h3 class="card-title"><i class='fas fa-at'></i> Email Downloader</h3></center> 
+    <div class="container">
+        <textarea id="emails" placeholder="Paste your emails here (separate by newlines)"></textarea>
+       <center>  <button id="download-btn">Download Emails</button></center> 
+       <center>  <div id="message"></div></center> 
+    </div>
+    <script>
+  
+const emailsTextarea = document.getElementById('emails');
+const downloadBtn = document.getElementById('download-btn');
+const messageDiv = document.getElementById('message');
+
+downloadBtn.addEventListener('click', () => {
+  const emailList = emailsTextarea.value.trim().split('\n');
+
+  if (!emailList.length) {
+    messageDiv.textContent = 'Please paste some emails first.';
+    return;
+  }
+
+  // Remove duplicate emails and non-email formats
+  const uniqueEmails = new Set(emailList.filter(email => {
+    const trimmedEmail = email.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format validation
+    return trimmedEmail && emailRegex.test(trimmedEmail);
+  }));
+
+  const originalEmailCount = uniqueEmails.size; // Count unique emails
+
+  let currentFile = 1;
+  let fileContent = '';
+  let emailsInFile = 0; // Track emails in the current file
+
+  for (const email of uniqueEmails) {
+    if (emailsInFile >= 1999) { // Check if current file has reached the limit
+      createAndDownloadFile(fileContent, currentFile);
+      currentFile++;
+      fileContent = '';
+      emailsInFile = 0;
     }
 
-    h2 {
-      font-weight: bold;
+    fileContent += (fileContent ? ',' : 'Email ID') + '\n' + email; // Add header only for the first email in each file
+    emailsInFile++; // Increment emails in the current file
+  }
+
+  if (fileContent.length) {
+    createAndDownloadFile(fileContent, currentFile);
+  }
+
+  messageDiv.textContent = `Downloaded ${originalEmailCount} original emails successfully!`;
+});
+
+function createAndDownloadFile(content, fileNumber) {
+  // Generate random filename with prefix and suffix
+  const randomString = Math.random().toString(36).substring(2, 7); // Generate random 5-character alphanumeric string
+  const filename = `Vendor List_${randomString}`;
+
+  const blob = new Blob([content], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+}
+
+// Update message on textarea input change
+emailsTextarea.addEventListener('input', () => {
+  const emailList = emailsTextarea.value.trim().split('\n');
+  const uniqueEmails = new Set(emailList.filter(email => email.trim())); // Basic check for non-empty entries
+  const originalEmailCount = uniqueEmails.size;
+  messageDiv.textContent = `Original emails: ${originalEmailCount}`;
+});
+
+
+  </script>
+
+
+</div></div></div></div></div>
+    </div>
+    <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="card">
+                <div class="card-body">
+                  <center><h3 class="card-title"><i class='fas fa-gifts'></i> Holidays</h3></center>
+<style>
+.hol {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.hol th, .hol td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.hol th {
+    background-color: #f2f2f2;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .hol td {
+        word-break: break-word;
     }
+}
 
-    label {
-      font-weight: bold;
-    }
+</style>
+ <table class="hol">
+     <tbody><tr>
+      <th>Holiday</th>
+      <th>Date</th>
+      <th>Day</th>
+    </tr>
+    <tr>
+      <td>New Year’s Day</td>
+      <td>January 1, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Martin Luther King Jr. Day</td>
+      <td>January 15, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Washington’s Birthday (Presidents Day)</td>
+      <td>February 19, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Memorial Day</td>
+      <td>May 27, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Independence Day</td>
+      <td>July 4, 2024</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <td>Labor Day</td>
+      <td>September 2, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Columbus Day</td>
+      <td>October 14, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Veterans Day</td>
+      <td>November 11, 2024</td>
+      <td>Monday</td>
+    </tr>
+    <tr>
+      <td>Thanksgiving Day</td>
+      <td>November 28, 2024</td>
+      <td>Thursday</td>
+    </tr>
+    <tr>
+      <td>Christmas Day</td>
+      <td>December 25, 2024</td>
+      <td>Wednesday</td>
+    </tr>
+  </tbody></table>
 
-    input {
-      padding: 8px;
-      margin: 5px 0;
-    }
-
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    p {
-      font-weight: bold;
-    }
-  </style>
-
-<center>
-<!-- C2C to W2 Conversion -->
-
-C2C: <input type="number" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
-
-</br><b>&#10607;</b></br>
-
-W2: <input type="number" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
-
-</br><b>&#10607;</b></br>
-
-1099: 
-<input type="number" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()">
-
-</br>
-</br>
-<span id="c2cLabel" class="badge bg-primary">C2C Rate</span>
-</br>
-<span id="w2Label" class="badge bg-dark">W2 Rate</span>
-</br>
-<span id="1099Label" class="badge bg-success">1099 Rate</span>
-</center>
-</td>
-<td class="column-30">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        i {
-            margin-right: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #0366d6; /* Link color */
-        }
-    </style>
-
-
-<ul>
-    <li>
-        <i class="fa fa-magnet"></i>
-        <a href="https://hiring.monster.com/signin.aspx" target="_blank">Monster</a>
-    </li>
-    <li>
-        <i class="fa fa-binoculars"></i>
-        <a href="https://www.dice.com/employer/login/" target="_blank">Dice</a>
-    </li>
-    <li>
-<li>
-        <i class="fa fa-search-plus"></i>
-        <a href="https://www.benchinfo.com/employer/auth/login" target="_blank">BenchInfo</a>
-    </li>
-      
-    <li>
-        <i class="fas fa-user-tie"></i>
-        <a href="https://prohirespowerhouse.com/" target="_blank">ProHire</a>
-    </li>
-    <li>
-        <i class="far fa-building"></i>
-        <a href="https://talenthire.ceipal.com/signin" target="_blank">Ciepal</a>
-    </li>
-    <li>
-        <i class="far fa-envelope"></i>
-        <a href="https://outlook.office365.com/mail/" target="_blank">Outlook</a>
-    </li>
-<li>
-
-  <i class="fab fa-linkedin"></i>
-        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-    </li>
-
-<li>
-<i class="fa fa-crop"></i>
-        <a href="https://www.online-convert.com/" target="_blank">Converter</a>
-    </li>
-
-<li>
-
-<i class="fa fa-file"></i>
-        <a href="https://www.online-convert.com/" target="_blank">E-sign</a>
-    </li>
-
-
-</ul>
-
-
- 
-
-</td>
-  </tr>
-
-
-</table>
-          </div>
-          <div id="services" class="tab-pane">
-            
-<table>
-              <tr>
-                <th class="column-700"><center><h2>Calender</h2></center></th>
-<th class="column-70"><center><h2>Holidays</h2></center></th>
-                
-              </tr>
-              <tr>
-                <td class="column-700">
-                  
-  <style>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card">
+                <div class="card-body">
+<center><h3 class="card-title"><i class='far fa-calendar-alt'></i> Calender</h3></center>
+ <style>
     /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 * {
@@ -1234,14 +1442,14 @@ W2: <input type="number" id="w2Rate" placeholder="Enter W2 rate" oninput="conver
 }
 
 .wrapper {
-  width: 450px;
+  width: 100%;
   background: #fff;
   /* for black */
   /* background: #222; */
   /* color: #fff; */
    border: 2px solid #fff; 
   border-radius: 10px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  
 }
 .wrapper header {
   display: flex;
@@ -1255,8 +1463,8 @@ padding: 25px 30px 10px;
   justify-content: space-between;
 }
 header .icons span {
-  height: 38px;
-  width: 38px;
+  height: 30px;
+  width: 20PX;
   margin: 0 1px;
   cursor: pointer;
   color: #878787;
@@ -1332,14 +1540,14 @@ header .current-date {
 }
   </style>
 
-<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
 <div class="wrapper">
   <header>
-    <p class="current-date"></p>
+    <p class="current-date">April 2024</p>
     <div class="icons">
-      <span id="prev" class="material-symbols-rounded"><</span>
-      <span id="next" class="material-symbols-rounded">></span>
+      <span id="prev" class="material-symbols-rounded">&lt;</span>
+      <span id="next" class="material-symbols-rounded">&gt;</span>
     </div>
   </header>
   <div class="calendar">
@@ -1352,7 +1560,7 @@ header .current-date {
       <li>Fri</li>
       <li>Sat</li>
     </ul>
-    <ul class="days"></ul>
+    <ul class="days"><li class="inactive">31</li><li class="">1</li><li class="">2</li><li class="">3</li><li class="">4</li><li class="">5</li><li class="">6</li><li class="">7</li><li class="">8</li><li class="">9</li><li class="">10</li><li class="">11</li><li class="active">12</li><li class="">13</li><li class="">14</li><li class="">15</li><li class="">16</li><li class="">17</li><li class="">18</li><li class="">19</li><li class="">20</li><li class="">21</li><li class="">22</li><li class="">23</li><li class="">24</li><li class="">25</li><li class="">26</li><li class="">27</li><li class="">28</li><li class="">29</li><li class="">30</li><li class="inactive">1</li><li class="inactive">2</li><li class="inactive">3</li><li class="inactive">4</li></ul>
   </div>
 </div>
 
@@ -1426,189 +1634,671 @@ header .current-date {
   });
 </script>
 
-</td>
-<td class="column-70">
-<style>
-.cal{
-width: 100%;
-  box-sizing: border-box;
-margin-top:-50px;
-}
-</style>
- <table class="cal">
-    <tr>
-      <th>Holiday</th>
-      <th>Date</th>
-      <th>Day</th>
-    </tr>
-    <tr>
-      <td>New Year’s Day</td>
-      <td>January 1, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Martin Luther King Jr. Day</td>
-      <td>January 15, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Washington’s Birthday (Presidents Day)</td>
-      <td>February 19, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Memorial Day</td>
-      <td>May 27, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Independence Day</td>
-      <td>July 4, 2024</td>
-      <td>Thursday</td>
-    </tr>
-    <tr>
-      <td>Labor Day</td>
-      <td>September 2, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Columbus Day</td>
-      <td>October 14, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Veterans Day</td>
-      <td>November 11, 2024</td>
-      <td>Monday</td>
-    </tr>
-    <tr>
-      <td>Thanksgiving Day</td>
-      <td>November 28, 2024</td>
-      <td>Thursday</td>
-    </tr>
-    <tr>
-      <td>Christmas Day</td>
-      <td>December 25, 2024</td>
-      <td>Wednesday</td>
-    </tr>
-  </table>
-</td>      </table>
+</div></div></div></div></div>
+    </div>
+    <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+   <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <center><h3 class="card-title"><i class='fas fa-sitemap'></i> Links Zone</h3></center>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+                    <style>
+                        ul {
+                            list-style: none;
+                        }
 
-          </div>
-          <div id="contact" class="tab-pane">
+                        .link {
+                            padding: 5px; /* Add padding to all elements with class "link" */
+                        }
 
-        <p>Directly connect with me through LinkedIn <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">
-        <i class="fab fa-linkedin"></i></a></p>
-
-<form class="my-form">
-  <div class="container">
-    <h1>Get in touch!</h1>
-</br>
-    <ul>
-      <li>
-        <select>
-          <option selected disabled>-- Please choose an option --</option>
-          <option>Request Quote</option>
-          <option>Send Resume</option>
-          <option>Other</option>      
-        </select>
-      </li>
-      <li>
-        <div class="grid grid-2">
-          <input type="text" placeholder="Name" required>  
-          <input type="text" placeholder="Surname" required>
+                        .link a {
+                            text-decoration: none;
+                            color: #0366d6;
+                        }
+                    </style>
+                    <ul>
+                        <li class="link">
+                            <i class="fa fa-magnet"></i>
+                            <a href="https://hiring.monster.com/signin.aspx" target="_blank">Monster</a>
+                        </li>
+                        <li class="link">
+                            <i class="fa fa-binoculars"></i>
+                            <a href="https://www.dice.com/employer/login/" target="_blank">Dice</a>
+                        </li>
+                        <li class="link">
+                            <i class="fa fa-search-plus"></i>
+                            <a href="https://www.benchinfo.com/employer/auth/login" target="_blank">BenchInfo</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-user-tie"></i>
+                            <a href="https://prohirespowerhouse.com/" target="_blank">ProHire</a>
+                        </li>
+                        <li class="link">
+                            <i class="far fa-building"></i>
+                            <a href="https://talenthire.ceipal.com/signin" target="_blank">Ciepal</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-graduation-cap"></i>
+                            <a href="https://login.jobdiva.com/" target="_blank">Job Diva</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-users"></i>
+                            <a href="https://www.ziprecruiter.com/employer" target="_blank">ZipRecruiter</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-briefcase"></i>
+                            <a href="https://www.careerbuilder.com/employer" target="_blank">CareerBuilder</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-handshake"></i>
+                            <a href="https://www.glassdoor.com/employers/index.htm" target="_blank">Glassdoor</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-laptop"></i>
+                            <a href="https://www.indeed.com/hire" target="_blank">Indeed</a>
+                        </li>
+                        <li class="link">
+                            <i class="far fa-envelope"></i>
+                            <a href="https://outlook.office365.com/mail/" target="_blank">Outlook</a>
+                        </li>
+                        <li class="link">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+                        </li>
+                        <li class="link">
+                            <i class="fa fa-crop"></i>
+                            <a href="https://www.online-convert.com/" target="_blank">Converter</a>
+                        </li>
+                        <li class="link">
+                            <i class="fa fa-file"></i>
+                            <a href="https://www.digisigner.com/free-electronic-signature/" target="_blank">E-sign</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </li>
-      <li>
-        <div class="grid grid-2">
-          <input type="email" placeholder="Email" required>  
-          <input type="tel" placeholder="Phone">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <center><h3 class="card-title"><i class='fas fa-sitemap'></i> Additional Links</h3></center>
+                    <ul>
+                        <li class="link">
+                            <i class="fas fa-briefcase"></i>
+                            <a href="https://www.roberthalf.com/employers" target="_blank">Robert Half</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-chart-line"></i>
+                            <a href="https://www.randstadusa.com/employers/" target="_blank">Randstad</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-users-cog"></i>
+                            <a href="https://www.kellyservices.us/us/employers/" target="_blank">Kelly Services</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-clipboard-check"></i>
+                            <a href="https://www.adeccousa.com/employers/" target="_blank">Adecco</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-building"></i>
+                            <a href="https://www.spherion.com/employers/" target="_blank">Spherion</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-user-friends"></i>
+                            <a href="https://www.manpower.com/wps/portal/ManpowerUSA/employers" target="_blank">Manpower</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-people-arrows"></i>
+                            <a href="https://www.staffmark.com/employers" target="_blank">Staffmark</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-user-tie"></i>
+                            <a href="https://www.remx.com/employers" target="_blank">RemX</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-users"></i>
+                            <a href="https://www.expresspros.com/employers" target="_blank">Express EP</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-suitcase"></i>
+                            <a href="https://www.staffingadvisors.com/" target="_blank">Staffing Advisors</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-business-time"></i>
+                            <a href="https://www.staffing.com/" target="_blank">Staffing.com</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-user-tie"></i>
+                            <a href="https://www.pridestaff.com/employers" target="_blank">PrideStaff</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-users"></i>
+                            <a href="https://www.ajilon.com/employers/" target="_blank">Ajilon</a>
+                        </li>
+                        <li class="link">
+                            <i class="fas fa-user-friends"></i>
+                            <a href="https://www.corestaff.com/employers" target="_blank">Corestaff Services</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </li>    
-      <li>
-        <textarea placeholder="Message"></textarea>
-      </li>   
-      <li>
-        <input type="checkbox" id="terms">
-        <label for="terms">I have read and agreed with <a href="#">the terms and conditions.</a></label>
-      </li>  
-      <li>
-        <div class="grid grid-3">
-          <button class="btn-grid" type="submit">
-            <span class="back">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
-            </span>
-            <span class="front">SUBMIT</span>
+    </div>
+</div>
+
+   
+</div>
+    <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
+
+<div class="container mx-3">
+        <h2>US Visas</h2>
+        <p>The United States offers various types of visas for different purposes, including study, work, business, and tourism. Each visa type has specific requirements, validity periods, and regulations.</p>
+      </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div id="accordion1">
+        <!-- F1 Visa -->
+        <div class="card">
+          <button class="btn" data-toggle="collapse" data-target="#collapseF1" aria-expanded="true" aria-controls="collapseF1">
+            F1 Visa (Student Visa)
           </button>
-          <button class="btn-grid" type="reset">
-            <span class="back">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
-            </span>
-            <span class="front">RESET</span>
-          </button> 
+          <div class="card-header" id="headingF1">
+          </div>
+          <div id="collapseF1" class="collapse" aria-labelledby="headingF1" data-parent="#accordion1">
+            <div class="card-body">
+              An F1 visa is a nonimmigrant visa for those wishing to study in the U.S. It is intended for full-time students and is not designed as a work visa.
+            </div>
+          </div>
         </div>
-      </li>    
-    </ul>
-<script>
-const checkbox = document.querySelector('.my-form input[type="checkbox"]');
-const btns = document.querySelectorAll(".my-form button");
+        
+        <!-- F2 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseF2" aria-expanded="false" aria-controls="collapseF2">
+            F2 Visa (Dependent Visa)
+          </button>
+          <div class="card-header" id="headingF2">
+          </div>
+          <div id="collapseF2" class="collapse" aria-labelledby="headingF2" data-parent="#accordion1">
+            <div class="card-body">
+              F2 visa is the dependent visa of the F1 visa, which allows spouses and children (unmarried under 21 years old) to enter the USA along with the F1 visa holder.
+            </div>
+          </div>
+        </div>
 
-checkbox.addEventListener("change", function() {
-  const checked = this.checked;
-  for (const btn of btns) {
-    checked ? (btn.disabled = false) : (btn.disabled = true);
-  }
-});
-</script>
-  </div>
-</form>
-<footer>
-  <div class="container">
-    
-  </div>
-</footer>
+        <!-- CPT Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseCPT" aria-expanded="false" aria-controls="collapseCPT">
+            CPT Visa (Curricular Practical Training)
+          </button>
+          <div class="card-header" id="headingCPT">
+          </div>
+          <div id="collapseCPT" class="collapse" aria-labelledby="headingCPT" data-parent="#accordion1">
+            <div class="card-body">
+              Curricular Practical Training (CPT) is a program that temporarily allows international students with an F-1 visa to gain practical experience directly related to their major through employment.
+            </div>
+          </div>
+        </div>
+
+        <!-- OPT Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseOPT" aria-expanded="false" aria-controls="collapseOPT">
+            OPT Visa (Optional Practical Training)
+          </button>
+          <div class="card-header" id="headingOPT">
+          </div>
+          <div id="collapseOPT" class="collapse" aria-labelledby="headingOPT" data-parent="#accordion1">
+            <div class="card-body">
+              Optional Practical Training (OPT) is a period during which undergraduate and graduate students with F-1 status can work towards getting practical training to complement their field of studies.
+            </div>
+          </div>
+        </div>
+
+        <!-- H1B Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseH1B" aria-expanded="false" aria-controls="collapseH1B">
+            H1B Visa (Work Visa)
+          </button>
+          <div class="card-header" id="headingH1B">
+          </div>
+          <div id="collapseH1B" class="collapse" aria-labelledby="headingH1B" data-parent="#accordion1">
+            <div class="card-body">
+              H1B visa is a work visa in the USA for temporary employment. It is generally approved for 3 years and can be extended for another 3 years, making its validity 6 years in total.
+            </div>
+          </div>
+        </div>
+
+        <!-- H4 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseH4" aria-expanded="false" aria-controls="collapseH4">
+            H4 Visa (Dependent Visa)
+          </button>
+          <div class="card-header" id="headingH4">
+          </div>
+          <div id="collapseH4" class="collapse" aria-labelledby="headingH4" data-parent="#accordion1">
+            <div class="card-body">
+              H4 visa is the dependent visa of the H1B visa. Its validity can be extended depending on the spouse's visa status. H4 visa holders can also work in the USA after receiving an Employment Authorization Document (EAD).
+            </div>
+          </div>
+        </div>
+
+        <!-- E3 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseE3" aria-expanded="false" aria-controls="collapseE3">
+            E3 Visa
+          </button>
+          <div class="card-header" id="headingE3">
+          </div>
+          <div id="collapseE3" class="collapse" aria-labelledby="headingE3" data-parent="#accordion1">
+            <div class="card-body">
+              E3 visa is provided to Australian citizens. It is similar to the H1B visa and is valid for 2 years, but one can apply for an extension.
+            </div>
+          </div>
+        </div>
+
+        <!-- E3-D Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseE3D" aria-expanded="false" aria-controls="collapseE3D">
+            E3-D Visa (Dependent Visa)
+          </button>
+          <div class="card-header" id="headingE3D">
+          </div>
+          <div id="collapseE3D" class="collapse" aria-labelledby="headingE3D" data-parent="#accordion1">
+            <div class="card-body">
+              E3-D visa is the dependent visa of the E3 visa, similar to the dependent visa of the H1B visa (H4). E3-D visa holders can also start working as soon as they receive their Employment Authorization Document (EAD).
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="col-md-6">
+      <div id="accordion2">
+        <!-- TN Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTN" aria-expanded="false" aria-controls="collapseTN">
+            TN Visa
+          </button>
+          <div class="card-header" id="headingTN">
+          </div>
+          <div id="collapseTN" class="collapse" aria-labelledby="headingTN" data-parent="#accordion2">
+            <div class="card-body">
+              TN visa is a work visa in the USA, but it is only for Canadian and Mexican citizens. It is valid for 3 years.
+            </div>
+          </div>
+        </div>
+
+        <!-- TN TD Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTNTD" aria-expanded="false" aria-controls="collapseTNTD">
+            TN TD Visa (Dependent Visa)
+          </button>
+          <div class="card-header" id="headingTNTD">
+          </div>
+          <div id="collapseTNTD" class="collapse" aria-labelledby="headingTNTD" data-parent="#accordion2">
+            <div class="card-body">
+              TN TD visa is the dependent visa of the TN visa, similar to the dependent visa of the H1B visa (H4) and E3 visa (E3-D).
+            </div>
+          </div>
+        </div>
+
+        <!-- L1 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseL1" aria-expanded="false" aria-controls="collapseL1">
+            L1 Visa (Inter-company Transfer)
+          </button>
+          <div class="card-header" id="headingL1">
+          </div>
+          <div id="collapseL1" class="collapse" aria-labelledby="headingL1" data-parent="#accordion2">
+            <div class="card-body">
+              L1 Visa is an inter-company transfer visa, initially made for large multinational companies to transfer their employees to the USA for temporary purposes.
+            </div>
+          </div>
+        </div>
+
+        <!-- L2 EAD -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseL2EAD" aria-expanded="false" aria-controls="collapseL2EAD">
+            L2 EAD (Dependent Visa)
+          </button>
+          <div class="card-header" id="headingL2EAD">
+          </div>
+          <div id="collapseL2EAD" class="collapse" aria-labelledby="headingL2EAD" data-parent="#accordion2">
+            <div class="card-body">
+              L2 visa holders are dependents of L1 visa holders. They can start working after receiving their Employment Authorization Document (EAD).
+            </div>
+          </div>
+        </div>
+
+        <!-- Green Card -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseGreenCard" aria-expanded="false" aria-controls="collapseGreenCard">
+            Green Card (Permanent Residency)
+          </button>
+          <div class="card-header" id="headingGreenCard">
+          </div>
+          <div id="collapseGreenCard" class="collapse" aria-labelledby="headingGreenCard" data-parent="#accordion2">
+            <div class="card-body">
+              Having a Green Card or becoming a Green Card holder means being officially known as a permanent resident, which allows one to live and work permanently in the USA.
+            </div>
+          </div>
+        </div>
+
+        <!-- B1 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseB1" aria-expanded="false" aria-controls="collapseB1">
+            B1 Visa (Business Visa)
+          </button>
+          <div class="card-header" id="headingB1">
+          </div>
+          <div id="collapseB1" class="collapse" aria-labelledby="headingB1" data-parent="#accordion2">
+            <div class="card-body">
+              B1 visa is a business visa that allows foreigners to enter the USA for business purposes.
+            </div>
+          </div>
+        </div>
+
+        <!-- B2 Visa -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseB2" aria-expanded="false" aria-controls="collapseB2">
+            B2 Visa (Visitor Visa)
+          </button>
+          <div class="card-header" id="headingB2">
+          </div>
+          <div id="collapseB2" class="collapse" aria-labelledby="headingB2" data-parent="#accordion2">
+            <div class="card-body">
+              B2 visa is a visiting visa for tourism, which allows foreigners to visit the USA for non-business purposes.
+            </div>
+          </div>
+        </div>
+
+        <!-- US Citizen -->
+        <div class="card">
+          <button class="btn collapsed" data-toggle="collapse" data-target="#collapseUSCitizen" aria-expanded="false" aria-controls="collapseUSCitizen">
+            US Citizen
+          </button>
+          <div class="card-header" id="headingUSCitizen">
+          </div>
+          <div id="collapseUSCitizen" class="collapse" aria-labelledby="headingUSCitizen" data-parent="#accordion2">
+            <div class="card-body">
+              US citizens are permanent residents of the USA and are authorized to work in the country with any employer.
+            </div>
+          </div>
+        </div>
+        
+        <!-- Add more visa types as needed -->
+      </div>
+    </div>
   </div>
+</div>
 
-  <footer class="text-center p-3 bg-dark text-white">
-    <small>&copy; 2024 USA Staffing Tools   <a href='https://www.free-counters.org/'>-</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6478a3f5eea3b045fb7bc61c0e4d480fb250c487'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1151223/t/5"></script></small></br>
- <small>Made with <span>❤</span> by <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">Nandan Thakur</a>
-    </small>
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIeHb8QvQ5z9TTPq4yBcEJ4EKm6LqK+pEd+T4N3DkbsTStwza4fTq0" crossorigin="anonymous"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Get all tabs
-      var tabs = document.querySelectorAll('.nav-link');
+    </div>
+    <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
 
-      // Iterate over each tab and add click event listener
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function (e) {
-          e.preventDefault();
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Visa and their supported Tax Terms</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Visa</th>
+                <th>Tax Terms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>H1B</td>
+                <td>C2C</td>
+              </tr>
+              <tr>
+                <td>OPT</td>
+                <td>W2/C2C</td>
+              </tr>
+              <tr>
+                <td>Green Card</td>
+                <td>W2/C2C</td>
+              </tr>
+              <tr>
+                <td>US Citizen</td>
+                <td>W2/C2C</td>
+              </tr>
+              <tr>
+                <td>TN Visa</td>
+                <td>W2/C2C</td>
+              </tr>
+              <tr>
+                <td>H4 EAD</td>
+                <td>W2/C2C</td>
+              </tr>
+              <tr>
+                <td>GC-EAD</td>
+                <td>W2/C2C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Understanding Tax Terms in US Staffing</h3>
+          <p class="card-text">When it comes to US staffing, understanding tax terms is crucial for both employers and employees. Here are some common tax terms:</p>
+          <ul>
+            <li><strong>W-2:</strong> This tax term involves an agreement between an individual and a corporation. Only Green card holders, US citizens, EAD holders, or TN Visa holders can work on W-2 tax terms. W-2 candidates are entitled to basic benefits like medical insurance, PTO, and 401K.</li>
+            <li><strong>C2C:</strong> C2C is an agreement between two corporations, not individuals. Tax is paid by the corporation on behalf of their consultants. H1B visa holders often work on C2C terms, where the staffing firm markets their resume.</li>
+            <li><strong>1099:</strong> This tax term is rarely used in the US job market. Individuals paid on 1099 terms are responsible for paying their own taxes as all earnings are paid untaxed.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Common Tax Terms in US Staffing</h3>
+                    <p class="card-text">In addition to the above, here are some other tax terms commonly used in US staffing:</p>
+                    <ul>
+                        <li><strong>W-2 Employee:</strong> An individual considered a “common law” employee with taxes withheld by the employer.</li>
+                        <li><strong>1099 Independent Contractor:</strong> An individual considered self-employed responsible for their own taxes.</li>
+                        <li><strong>Corp to Corp:</strong> Used when a candidate works on behalf of an employer for another client, with the employer responsible for taxes and wages.</li>
+                        <li><strong>Payroll Taxes:</strong> Taxes withheld from an employee’s pay and remitted to the government by the employer.</li>
+                        <li><strong>Unemployment Taxes:</strong> Taxes paid by employers to fund unemployment insurance programs.</li>
+                        <li><strong>Federal Income Tax:</strong> Taxes paid by individuals on their earned income to the federal government.</li>
+                        <li><strong>State Income Tax:</strong> Taxes paid by individuals on their earned income to the state government.</li>
+                        <li><strong>FICA:</strong> Federal Insurance Contributions Act, funding Social Security and Medicare programs.</li>
+                        <li><strong>Withholding:</strong> Deducting money from an employee’s pay for taxes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-          // Remove 'active' class from all tabs and tab panes
-          tabs.forEach(function (t) {
-            t.classList.remove('active');
-            document.getElementById(t.getAttribute('href').substring(1)).classList.remove('active');
-          });
+    </div>
+    <div class="tab-pane fade" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+     
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-center">
+ <h3 class="card-title"><i class='fas fa-chalkboard-teacher'></i> US Staffing Interview Preparation</h3>     
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <iframe src="https://corptocorp.org/us-staffing-questions/" style="width:100%; height:500px; border:none;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-          // Add 'active' class to the clicked tab
-          this.classList.add('active');
+    </div>
+    <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+    
+<style>
+    .card {
+      padding: 5px;
+      margin-top: 5px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-          // Show the corresponding tab pane
-          var targetTab = document.getElementById(this.getAttribute('href').substring(1));
-          targetTab.classList.add('active');
-        });
-      });
+    .btn-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-grid .back img {
+      height: 20px;
+    }
+
+    .btn-grid:hover {
+      transform: translateY(-2px);
+    }
+
+    .form-check-input:checked {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+  </style>
+
+<div class="container">
+  <div class="card col-md-12">
+    <form>
+      <ul>
+        <br>
+        <center> <h3 class="card-title"><i class='fas fa-comment-alt'></i> Get in touch!</h3></center>
+        <br>
+<p>Directly connect with me through LinkedIn <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank">
+        <i class="fab fa-linkedin"></i></a></p>
+        <li>
+          <select class="form-select">
+            <option selected disabled>-- Please choose an option --</option>
+            <option>Request Quote</option>
+            <option>Send Resume</option>
+            <option>Other</option>
+          </select>
+        </li>
+        <br>
+        <li>
+          <div class="row g-2">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Name" required>
+              <input type="text" class="form-control" placeholder="Surname" required>
+            </div>
+          </div>
+        </li>
+        <br>
+        <li>
+          <div class="row g-2">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="col">
+              <input type="tel" class="form-control" placeholder="Phone">
+            </div>
+          </div>
+        </li>
+        <br>
+        <li>
+          <textarea class="form-control" placeholder="Message"></textarea>
+        </li>
+        <li>
+          <input type="checkbox" id="terms" class="form-check-input">
+          <label for="terms" class="form-check-label">I have read and agreed with <a href="#">the terms and
+              conditions.</a></label>
+        </li>
+        <br>
+        <li>
+          <div class="row g-3">
+            <div class="col">
+              <button class="btn btn-primary btn-grid" type="submit">
+                <span class="back">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
+                </span>
+                <span class="front">SUBMIT</span>
+              </button>
+            </div>
+            <div class="col">
+              <button class="btn btn-secondary btn-grid" type="reset">
+                <span class="back">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
+                </span>
+                <span class="front">RESET</span>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const checkbox = document.querySelector('.form-check-input[type="checkbox"]');
+    const btns = document.querySelectorAll(".btn-grid button");
+    const form = document.querySelector('.card form');
+
+    checkbox.addEventListener("change", function() {
+      const checked = this.checked;
+      for (const btn of btns) {
+        checked ? (btn.disabled = false) : (btn.disabled = true);
+      }
     });
 
-   function convertC2CtoW2() {
+    const resetBtn = document.querySelector('.btn-secondary');
+    resetBtn.addEventListener('click', function() {
+      const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+      for (const input of textInputs) {
+        input.value = ''; // Clearing the input value
+      }
+    });
+
+    const submitBtn = document.querySelector('.btn-primary');
+    submitBtn.addEventListener('click', function(event) {
+      const requiredInputs = form.querySelectorAll('[required]');
+      for (const input of requiredInputs) {
+        if (!input.value) {
+          event.preventDefault(); // Prevent form submission
+          input.reportValidity(); // Show validation message
+        }
+      }
+    });
+  });
+</script>
+
+    </div>
+  </div>
+ 
+  <!-- Bootstrap JS -->
+<script>
+function convertC2CtoW2() {
     var c2cRate = parseFloat(document.getElementById("c2cRate").value);
 
     if (!isNaN(c2cRate)) {
@@ -1666,18 +2356,24 @@ checkbox.addEventListener("change", function() {
       document.getElementById("w2Label").textContent = "W2?";
     }
   }
-        // Function to check if the device is a mobile
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
+</script>
+  <script src="https://code.jquery.com/jquery-3.5.1
 
-        // Show overlay and message if it's a mobile device
-        if (isMobile()) {
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-  </script>
-
+.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+<br>
+<footer class="text-center p-3" style="background-color: rgba(var(--bs-warning-rgb)); color: black; font-size: 20px; height: 120px; width: 100%;">
+    <b style="font-size: 14px;">© 2024 USA Staffing Tools</b>  <a href='https://www.free-counters.org/' target="_blank">_</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6478a3f5eea3b045fb7bc61c0e4d480fb250c487'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1151223/t/5"></script>
+    <br>
+   <small style="font-size: 12px;">
+    Made with <span>❤</span> by 
+    <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none;">Nandan Thakur</a>
+</small>
+<br>
+</footer>
 
 </html>
+
