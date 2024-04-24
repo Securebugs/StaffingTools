@@ -2320,6 +2320,43 @@ header .current-date {
   });
 </script>
 
+      <br>
+      
+  <h1>Email Submission Form</h1>
+  <form id="emailForm">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+const form = document.getElementById('emailForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const url = 'https://script.google.com/macros/s/AKfycbwo2E57QIGo2ylqRyrHO8WBEGOZNiF5Do-i7gbfohxqS6wHvL8xq8Rk3iWWpY-AaufflA/exec'; // Updated URL with CORS Anywhere
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      alert('Email submitted successfully!');
+      form.reset();
+    } else {
+      console.error('Server Error:', response.statusText);
+      alert('Failed to submit email.');
+    }
+  } catch (error) {
+    console.error('Client Error:', error);
+    alert('An error occurred while submitting the form.');
+  }
+});
+
+  </script>
     </div>
   </div>
  
