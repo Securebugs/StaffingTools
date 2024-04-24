@@ -173,80 +173,9 @@ margin:10px;
               <div class="card">
                 <div class="card-body">
                   <center><h3 class="card-title"><i class='fas fa-map'></i> State Map</h3></center>
-                  <style>
-.zoom_outer {
-  padding: 0;
-  margin: 0;
-  outline: 0;
-  overflow: hidden;
-}
-#zoom {
-  width: 100%;
-  height: 100%;
-  transform-origin: 0px 0px;
-  transform: scale(1) translate(0px, 0px);
-  cursor: grab;
-
-}
-div#zoom > img {
-  width: 100%;
-  height: auto;
-}
-          </style>
-
-  
-    <div class="zoom_outer">
-      <div id="zoom">
+                 
         <img src="https://www.timetemperature.com/tzus/united-states-time-zone-map.gif" alt="USA Time Zone Map">
-      </div>
-    </div>
-
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <script>
-  var scale = 1,
-        panning = false,
-        pointX = 0,
-        pointY = 0,
-        start = { x: 0, y: 0 },
-        zoom = document.getElementById("zoom");
-
-      function setTransform() {
-        zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
-      }
-
-      zoom.onmousedown = function (e) {
-        e.preventDefault();
-        start = { x: e.clientX - pointX, y: e.clientY - pointY };
-        panning = true;
-      }
-
-      zoom.onmouseup = function (e) {
-        panning = false;
-      }
-
-      zoom.onmousemove = function (e) {
-        e.preventDefault();
-        if (!panning) {
-          return;
-        }
-        pointX = (e.clientX - start.x);
-        pointY = (e.clientY - start.y);
-        setTransform();
-      }
-
-      zoom.onwheel = function (e) {
-        e.preventDefault();
-        var xs = (e.clientX - pointX) / scale,
-          ys = (e.clientY - pointY) / scale,
-          delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-        (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-        pointX = e.clientX - xs * scale;
-        pointY = e.clientY - ys * scale;
-
-        setTransform();
-      }
-
-</script>
+     
                 </div>
               </div>
             </div>
@@ -2463,8 +2392,10 @@ function convertC2CtoW2() {
 </body>
 <br>
 <footer class="text-center p-3" style="background-color: rgba(var(--bs-warning-rgb)); color: black; font-size: 20px; height: 120px; width: 100%;">
-    <b style="font-size: 14px;">© 2024 USA Staffing Tools</b>  <a href='https://www.free-counters.org/' target="_blank">_</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6478a3f5eea3b045fb7bc61c0e4d480fb250c487'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1151223/t/5"></script>
+    <b style="font-size: 14px;">© 2024 USA Staffing Tools</b>  
+  <br>
+  <a href="https://www.hitwebcounter.com" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=12869225&style=0007&nbdigits=6&type=ip&initCount=509" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>                 
     <br>
    <small style="font-size: 12px;">
     Made with <span>❤</span> by 
