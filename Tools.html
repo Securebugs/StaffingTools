@@ -2406,17 +2406,19 @@ submitContactFormBtn.addEventListener('click', async function(event) {
       body: formData
     });
 
-    const responseData = await response.json();
-    if (responseData.success) {
-      alert('Email submitted successfully!');
-      contactForm.reset();
-    } else {
-      if (responseData.error.includes('Duplicate email')) {
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (response.status === 400 && errorData.error === 'Duplicate email found') {
         alert('This email address has already been submitted.');
       } else {
+        console.error('Server Error:', errorData.error);
         alert('Failed to submit email.');
       }
+      return;
     }
+
+    alert('Email submitted successfully!');
+    contactForm.reset();
   } catch (error) {
     console.error('Client Error:', error);
     alert('An error occurred while submitting the email.');
