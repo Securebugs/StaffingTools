@@ -275,6 +275,62 @@ margin:10px;
                 </div>
               </div>
             </div>
+
+
+  <div class="containert custom-containert">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div id="emailContainer">
+                <small>Send me your Email to receive daily requirements <b>(Only for BenchSales**)</b></small>
+                <form id="emailForm">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional, if you need to use Bootstrap JS features) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Your JavaScript code -->
+  <script>
+    const form = document.getElementById('emailForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec'; // Updated URL with CORS Anywhere
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert('Email submitted successfully!');
+          form.reset();
+        } else {
+          console.error('Server Error:', response.statusText);
+          alert('Failed to submit email.');
+        }
+      } catch (error) {
+        console.error('Client Error:', error);
+        alert('An error occurred while submitting the form.');
+      }
+    });
+  </script>
+
           </div>
        
 </div>
@@ -2213,18 +2269,40 @@ header .current-date {
       border-color: #007bff;
     }
   </style>
-
 <div class="container">
   <div class="card col-md-12">
-    <form>
+    <form id="contactForm">
       <ul>
         <br>
-        <center> <h3 class="card-title"><i class='fas fa-comment-alt'></i> Get in touch!</h3></center>
+        <center>
+          <h3 class="card-title"><i class='fas fa-comment-alt'></i> Get in touch!</h3>
+        </center>
+        <div class="container">
+          <div class="row justify-content-end">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <div id="emailContainer">
+                    <small>Send me your Email to receive daily requirements <b>(Only for BenchSales**)</b></small>
+                    <div class="form-group">
+<input type="email" class="cas sensetie form-control" id="email" name="email" required>
+         
+    <div class="invalid-feedback">
+      Please provide a valid email.
+    </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitContactForm">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <br>
-<center>
-<p>Directly connect with me through  <a href="https://www.linkedin.com/in/iamthakurofficial/" style="text-decoration:none;" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a></p>
-<h2>OR</h2>
-</center>
+        <center>
+          <p>Directly connect with me through <a href="https://www.linkedin.com/in/iamthakurofficial/" style="text-decoration:none;" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a></p>
+          <h2>OR</h2>
+        </center>
         <li>
           <select class="form-select">
             <option selected disabled>-- Please choose an option --</option>
@@ -2238,6 +2316,7 @@ header .current-date {
           <div class="row g-2">
             <div class="col">
               <input type="text" class="form-control" placeholder="Name" required>
+              <br>
               <input type="text" class="form-control" placeholder="Surname" required>
             </div>
           </div>
@@ -2266,7 +2345,7 @@ header .current-date {
         <li>
           <div class="row g-3">
             <div class="col">
-              <button class="btn btn-primary btn-grid" type="submit">
+              <button class="btn btn-primary btn-grid" type="submit" id="submitEmailForm">
                 <span class="back">
                   <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
                 </span>
@@ -2281,7 +2360,6 @@ header .current-date {
                 <span class="front">RESET</span>
               </button>
             </div>
-   
           </div>
         </li>
       </ul>
@@ -2290,56 +2368,37 @@ header .current-date {
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const checkbox = document.querySelector('.form-check-input[type="checkbox"]');
-    const btns = document.querySelectorAll(".btn-grid button");
-    const form = document.querySelector('.card form');
 
-    checkbox.addEventListener("change", function() {
-      const checked = this.checked;
-      for (const btn of btns) {
-        checked ? (btn.disabled = false) : (btn.disabled = true);
-      }
-    });
+  const resetBtn = document.querySelector('.btn-secondary');
+  const contactForm = document.getElementById('contactForm');
+  const emailForm = document.getElementById('emailForm');
 
-    const resetBtn = document.querySelector('.btn-secondary');
-    resetBtn.addEventListener('click', function() {
-      const textInputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
-      for (const input of textInputs) {
-        input.value = ''; // Clearing the input value
-      }
-    });
-
-    const submitBtn = document.querySelector('.btn-primary');
-    submitBtn.addEventListener('click', function(event) {
-      const requiredInputs = form.querySelectorAll('[required]');
-      for (const input of requiredInputs) {
-        if (!input.value) {
-          event.preventDefault(); // Prevent form submission
-          input.reportValidity(); // Show validation message
-        }
-      }
-    });
+  resetBtn.addEventListener('click', function() {
+    const textInputs = contactForm.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea');
+    for (const input of textInputs) {
+      input.value = ''; // Clearing the input value
+    }
   });
-</script>
 
-               <br>
-      <div class="container">
-  <div class="card col-md-12">
-  <h3>Submit your Hotlist Email</h3>
-  <form id="emailForm">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <button type="submit">Submit</button>
-  </form>
+const submitContactFormBtn = document.getElementById('submitContactForm');
+submitContactFormBtn.addEventListener('click', async function(event) {
+  event.preventDefault();
 
-  <script>
-const form = document.getElementById('emailForm');
+  const emailInput = contactForm.querySelector('input[type="email"]');
+  const emailValue = emailInput.value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const formData = new FormData(form);
-  const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec'; // Updated URL with CORS Anywhere
+  if (emailValue === '' || !emailRegex.test(emailValue)) {
+    emailInput.classList.remove('is-valid');
+    emailInput.classList.add('is-invalid');
+    return;
+  } else {
+    emailInput.classList.remove('is-invalid');
+    emailInput.classList.add('is-valid');
+  }
+
+  const formData = new FormData(contactForm);
+  const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec';
 
   try {
     const response = await fetch(url, {
@@ -2347,24 +2406,55 @@ form.addEventListener('submit', async (e) => {
       body: formData
     });
 
-    if (response.ok) {
+    const responseData = await response.json();
+    if (responseData.success) {
       alert('Email submitted successfully!');
-      form.reset();
+      contactForm.reset();
     } else {
-      console.error('Server Error:', response.statusText);
-      alert('Failed to submit email.');
+      if (responseData.error.includes('Duplicate email')) {
+        alert('This email address has already been submitted.');
+      } else {
+        alert('Failed to submit email.');
+      }
     }
   } catch (error) {
     console.error('Client Error:', error);
-    alert('An error occurred while submitting the form.');
+    alert('An error occurred while submitting the email.');
   }
 });
 
-  </script>
-    </div>
-  </div>
-    </div>
-  </div>
+
+  const submitEmailFormBtn = document.getElementById('submitEmailForm');
+  submitEmailFormBtn.addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(emailForm);
+    const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec';
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        alert('Form submitted successfully!');
+        emailForm.reset();
+      } else {
+        console.error('Server Error:', response.statusText);
+        alert('Failed to submit form.');
+      }
+    } catch (error) {
+      console.error('Client Error:', error);
+      alert('An error occurred while submitting the form.');
+    }
+  });
+
+</script>
+
+
+</div></div>
+
  
   <!-- Bootstrap JS -->
 <script>
