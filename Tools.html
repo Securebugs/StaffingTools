@@ -1141,37 +1141,44 @@ overflow-x: hidden;
 <!-- C2C to W2 Conversion -->
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-4">
-      <label for="c2cRate">C2C:</label>
-      <input type="number" class="form-control" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
-    </div>
-    <div class="col-md-4">
-      <label for="w2Rate">W2:</label>
-      <input type="number" class="form-control" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
-    </div>
-    <div class="col-md-4">
-      <label for="1099Rate">1099:</label>
-      <input type="number" class="form-control" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()">
-    </div>
-  </div>
-  <center>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  </br>
-  <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
-  </br>
-  <div class="col-md-4">
-    ⥯
-  </div>
-  <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
-  </br>
-  <div class="col-md-4">
-    ⥯
-  </div>
-  <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
-</center>
-
-</br>
+    <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <center><h3 class="card-title"><i class="fas fa-money-check-alt"></i> Rate Converter<sup> (Approx.)</sup></h3></center>
+            <!-- C2C to W2 Conversion -->
+            <div class="container mt-5">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="c2cRate">C2C:</label>
+                  <input type="number" class="form-control" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="w2Rate">W2:</label>
+                  <input type="number" class="form-control" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="1099Rate">1099:</label>
+                  <input type="number" class="form-control" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="annualSalary">Annual Salary:</label>
+                  <input type="number" class="form-control" id="annualSalary" placeholder="Enter Annual Salary" oninput="convertAnnualSalary()" min="0">
+                </div>
+              </div>
+              <center>
+                <br>
+                <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="salaryLabel" class="badge bg-info p-2">Salary</span>
+              </center>
+              <br>
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
@@ -2460,64 +2467,84 @@ submitContactFormBtn.addEventListener('click', async function(event) {
  
   <!-- Bootstrap JS -->
 <script>
-function convertC2CtoW2() {
-    var c2cRate = parseFloat(document.getElementById("c2cRate").value);
-
-    if (!isNaN(c2cRate)) {
-      var w2Rate = c2cRate - (c2cRate * 0.15);
-      document.getElementById("w2Rate").value = w2Rate.toFixed(2);
-      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
-      document.getElementById("c2cLabel").textContent = "C2C rate is " + c2cRate.toFixed(2);
-      document.getElementById("1099Rate").value = c2cRate.toFixed(2);
-      document.getElementById("1099Label").textContent = "1099 rate is " + c2cRate.toFixed(2);
-    } else {
-      document.getElementById("w2Rate").value = "";
-      document.getElementById("w2Label").textContent = "W2?";
-      document.getElementById("c2cLabel").textContent = "C2C?";
-      document.getElementById("1099Rate").value = "";
-      document.getElementById("1099Label").textContent = "1099?";
+  function convertC2CtoW2() {
+      var c2cValue = parseFloat(document.getElementById('c2cRate').value);
+      if (c2cValue < 0) {
+        document.getElementById('c2cRate').value = 0;
+        c2cValue = 0;
+      }
+      document.getElementById('w2Rate').value = Math.max(c2cValue - 10, 0);
+      document.getElementById('1099Rate').value = c2cValue;
+      document.getElementById('annualSalary').value = Math.round(c2cValue * 2080);
+      updateLabels();
+      checkAllZeros();
     }
-  }
 
-  function convertW2toC2C() {
-    var w2Rate = parseFloat(document.getElementById("w2Rate").value);
-
-    if (!isNaN(w2Rate)) {
-      var c2cRate = w2Rate + 10;
-      document.getElementById("c2cRate").value = c2cRate.toFixed(2);
-      document.getElementById("c2cLabel").textContent = "C2C rate is " + c2cRate.toFixed(2);
-      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
-      document.getElementById("1099Rate").value = c2cRate.toFixed(2);
-      document.getElementById("1099Label").textContent = "1099 rate is " + c2cRate.toFixed(2);
-    } else {
-      document.getElementById("c2cRate").value = "";
-      document.getElementById("c2cLabel").textContent = "C2C?";
-      document.getElementById("w2Label").textContent = "W2?";
-      document.getElementById("1099Rate").value = "";
-      document.getElementById("1099Label").textContent = "1099?";
+    function convertW2toC2C() {
+      var w2Value = parseFloat(document.getElementById('w2Rate').value);
+      if (w2Value < 0) {
+        document.getElementById('w2Rate').value = 0;
+        w2Value = 0;
+      }
+      document.getElementById('c2cRate').value = Math.max(w2Value + 10, 0);
+      document.getElementById('1099Rate').value = Math.max(w2Value + 10, 0);
+      document.getElementById('annualSalary').value = Math.round((w2Value + 10) * 2080);
+      updateLabels();
+      checkAllZeros();
     }
-  }
 
-  function convert1099() {
-    var rate1099 = parseFloat(document.getElementById("1099Rate").value);
-
-    if (!isNaN(rate1099)) {
-      document.getElementById("c2cRate").value = rate1099.toFixed(2);
-      document.getElementById("1099Label").textContent = "1099 rate is " + rate1099.toFixed(2);
-      
-      var w2Rate = rate1099 - (rate1099 * 0.15);
-      document.getElementById("w2Rate").value = w2Rate.toFixed(2);
-      document.getElementById("w2Label").textContent = "W2 rate is " + w2Rate.toFixed(2);
-      
-      document.getElementById("c2cLabel").textContent = "C2C rate is " + rate1099.toFixed(2);
-    } else {
-      document.getElementById("c2cRate").value = "";
-      document.getElementById("w2Rate").value = "";
-      document.getElementById("1099Label").textContent = "1099?";
-      document.getElementById("c2cLabel").textContent = "C2C?";
-      document.getElementById("w2Label").textContent = "W2?";
+    function convert1099() {
+      var _1099Value = parseFloat(document.getElementById('1099Rate').value);
+      if (_1099Value < 0) {
+        document.getElementById('1099Rate').value = 0;
+        _1099Value = 0;
+      }
+      document.getElementById('w2Rate').value = Math.max(_1099Value - 10, 0);
+      document.getElementById('c2cRate').value = _1099Value;
+      document.getElementById('annualSalary').value = Math.round(_1099Value * 2080);
+      updateLabels();
+      checkAllZeros();
     }
-  }
+
+    function convertAnnualSalary() {
+      var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value);
+      if (annualSalaryValue < 0) {
+        document.getElementById('annualSalary').value = 0;
+        annualSalaryValue = 0;
+      }
+      document.getElementById('c2cRate').value = Math.round(annualSalaryValue / 2080);
+      document.getElementById('w2Rate').value = Math.round(annualSalaryValue / 2080 - 10);
+      document.getElementById('1099Rate').value = Math.round(annualSalaryValue / 2080);
+      updateLabels();
+      checkAllZeros();
+    }
+
+    function updateLabels() {
+      var c2cValue = parseFloat(document.getElementById('c2cRate').value);
+      var w2Value = parseFloat(document.getElementById('w2Rate').value);
+      var _1099Value = parseFloat(document.getElementById('1099Rate').value);
+      var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value);
+
+      document.getElementById('c2cLabel').innerText = c2cValue > 0 ? "C2C Rate: " + c2cValue + "/hr" : "C2C Rate";
+      document.getElementById('w2Label').innerText = w2Value > 0 ? "W2 Rate: " + w2Value + "/hr" : "W2 Rate";
+      document.getElementById('1099Label').innerText = _1099Value > 0 ? "1099 Rate: " + _1099Value + "/hr" : "1099 Rate";
+      document.getElementById('salaryLabel').innerText = annualSalaryValue > 0 ? "Salary: " + annualSalaryValue + "/Yearly" : "Annual Salary";
+    }
+
+    function checkAllZeros() {
+      var c2c = parseFloat(document.getElementById('c2cRate').value);
+      var w2 = parseFloat(document.getElementById('w2Rate').value);
+      var _1099 = parseFloat(document.getElementById('1099Rate').value);
+      var salary = parseFloat(document.getElementById('annualSalary').value);
+
+      if (c2c === 0 && w2 === 0 && _1099 === 0 && salary === 0) {
+        document.getElementById('c2cRate').value = 0;
+        document.getElementById('w2Rate').value = 0;
+        document.getElementById('1099Rate').value = 0;
+        document.getElementById('annualSalary').value = 0;
+        updateLabels();
+      }
+    }
 </script>
   <script src="https://code.jquery.com/jquery-3.5.1
 
