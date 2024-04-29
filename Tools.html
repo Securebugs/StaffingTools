@@ -1140,37 +1140,37 @@ overflow-x: hidden;
                   <center><h3 class="card-title"><i class='fas fa-money-check-alt'></i> Rate Converter<sup> (Approx.)</sup></h3></center>
 <!-- C2C to W2 Conversion -->
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-4">
-      <label for="c2cRate">C2C:</label>
-      <input type="number" class="form-control" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()">
-    </div>
-    <div class="col-md-4">
-      <label for="w2Rate">W2:</label>
-      <input type="number" class="form-control" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()">
-    </div>
-    <div class="col-md-4">
-      <label for="1099Rate">1099:</label>
-      <input type="number" class="form-control" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()">
-    </div>
-  </div>
-  <center>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  </br>
-  <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
-  </br>
-  <div class="col-md-4">
-    ⥯
-  </div>
-  <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
-  </br>
-  <div class="col-md-4">
-    ⥯
-  </div>
-  <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
-</center>
-
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="c2cRate">C2C:</label>
+                  <input type="number" class="form-control" id="c2cRate" placeholder="Enter C2C rate" oninput="convertC2CtoW2()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="w2Rate">W2:</label>
+                  <input type="number" class="form-control" id="w2Rate" placeholder="Enter W2 rate" oninput="convertW2toC2C()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="1099Rate">1099:</label>
+                  <input type="number" class="form-control" id="1099Rate" placeholder="Enter 1099 rate" oninput="convert1099()" min="0">
+                </div>
+                <div class="col-md-3">
+                  <label for="annualSalary">Annual Salary:</label>
+                  <input type="number" class="form-control" id="annualSalary" placeholder="Enter Annual Salary" oninput="convertAnnualSalary()" min="0">
+                </div>
+              </div>
+              <center>
+                <br>
+                <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
+                <br>
+                <div class="col-md-4">⥯</div>
+                <span id="salaryLabel" class="badge bg-info p-2">Salary</span>
+              </center>
 </br>
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
