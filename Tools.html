@@ -2277,6 +2277,12 @@ header .current-date {
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+.emailContainer{
+      padding: 20px;
+      margin-top: 5px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
     .btn-grid {
       display: flex;
@@ -2303,21 +2309,17 @@ header .current-date {
       border-color: #007bff;
     }
   </style>
-      
+
 <div class="container">
-  <div class="card col-md-12">
-    <form id="contactForm">
-      <ul>
-        <br>
-        <center>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+ <form id="contactForm">
+ <center>
           <h3 class="card-title"><i class='fas fa-comment-alt'></i> Get in touch!</h3>
         </center>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div id="emailContainer">
+<div class="emailContainer">
                     <small>Send me your Email to receive daily requirements <b>(Only for BenchSales**)</b></small>
                     <div class="form-group">
 <input type="email" class="cas sensetie form-control" id="email" name="email" required>
@@ -2328,26 +2330,22 @@ header .current-date {
                     </div>
                     <button type="submit" class="btn btn-primary" id="submitContactForm">Submit</button>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-        <center>
+<br>
+<center>
           <p>Directly connect with me through <a href="https://www.linkedin.com/in/iamthakurofficial/" style="text-decoration:none;" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a></p>
           <h2>OR</h2>
         </center>
-        <li>
+
+
           <select class="form-select">
             <option selected disabled>-- Please choose an option --</option>
             <option>Request Quote</option>
             <option>Send Resume</option>
             <option>Other</option>
           </select>
-        </li>
+       
         <br>
-        <li>
+      
           <div class="row g-2">
             <div class="col">
               <input type="text" class="form-control" placeholder="Name" required>
@@ -2355,9 +2353,9 @@ header .current-date {
               <input type="text" class="form-control" placeholder="Surname" required>
             </div>
           </div>
-        </li>
+        
         <br>
-        <li>
+        
           <div class="row g-2">
             <div class="col">
               <input type="email" class="form-control" placeholder="Email" required>
@@ -2366,18 +2364,18 @@ header .current-date {
               <input type="tel" class="form-control" placeholder="Phone">
             </div>
           </div>
-        </li>
+        
         <br>
-        <li>
+       
           <textarea class="form-control" placeholder="Message"></textarea>
-        </li>
-        <li>
+       <br>
+<div class="col">
           <input type="checkbox" id="terms" class="form-check-input">
           <label for="terms" class="form-check-label">I have read and agreed with <a href="#">the terms and
               conditions.</a></label>
-        </li>
+      </div>
         <br>
-        <li>
+        
           <div class="row g-3">
             <div class="col">
               <button class="btn btn-primary btn-grid" type="submit" id="submitEmailForm">
@@ -2396,11 +2394,10 @@ header .current-date {
               </button>
             </div>
           </div>
-        </li>
-      </ul>
-    </form>
-  </div>
-</div>
+       </form>
+</div></div></div></div></div>
+
+      
 
 <script>
 
