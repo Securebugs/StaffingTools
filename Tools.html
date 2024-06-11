@@ -47,7 +47,7 @@
 .top-bg{
 background-color: #f1d580;
     background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
-    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 60%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
 }
     .side-nav {
       position: fixed;
@@ -57,7 +57,7 @@ background-color: #f1d580;
       width: 50px; /* Reduced width to accommodate only icons */
       background-color: #f1d580;
     background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
-    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
       color: #000;
       padding-top: 55px;
 z-index: 1000;
@@ -2267,7 +2267,206 @@ header .current-date {
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <iframe src="https://corptocorp.org/us-staffing-questions/" style="width:100%; height:500px; border:none;"></iframe>
+                               <style>
+    /* Added a new style for card-header links */
+    .card-header .btn-link {
+      text-decoration: none; /* Removes underline */
+      color: #007bff; /* Applies a blue color */
+    }
+
+    .card-header .btn-link:hover {
+      color: #0056b3; /* Changes color on hover */
+      text-decoration: none; /* Maintains underline removal */
+    }
+
+    .accordion .card-header {
+      cursor: pointer;
+    }
+  </style>
+ <div id="accordion">
+            <!-- Interview Process -->
+            <div class="card">
+                <div class="card-header" id="interviewProcessHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#interviewProcessCollapse" aria-expanded="true" aria-controls="interviewProcessCollapse">
+                            Interview Process
+                        </button>
+                    </h5>
+                </div>
+                <div id="interviewProcessCollapse" class="collapse show" aria-labelledby="interviewProcessHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        <!-- Interview process content here -->
+                        The interview process typically involves several stages, starting with an initial phone screen to assess the candidate's qualifications and interest. This is followed by one or more in-person or video interviews, where candidates are evaluated on their technical skills, experience, and cultural fit. Final stages often include reference checks and possibly a final interview or offer negotiation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- US Staffing Interview Questions -->
+            <div class="card">
+                <div class="card-header" id="usStaffingQuestionsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#usStaffingQuestionsCollapse" aria-expanded="false" aria-controls="usStaffingQuestionsCollapse">
+                            US Staffing Interview Questions
+                        </button>
+                    </h5>
+                </div>
+                <div id="usStaffingQuestionsCollapse" class="collapse" aria-labelledby="usStaffingQuestionsHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Can you tell us about your understanding of US staffing?</td>
+                                        <td>US staffing involves recruiting and placing candidates in various roles within US-based companies. It requires sourcing, screening, and matching candidates to job requirements.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>How do you source candidates for hard-to-fill positions?</td>
+                                        <td>I use a combination of job boards, social media, professional networks, and referrals. For hard-to-fill positions, I also leverage niche job boards and industry-specific forums.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>What are the key differences between US staffing and domestic staffing?</td>
+                                        <td>US staffing focuses on the US job market and may involve compliance with US labor laws and regulations. Domestic staffing deals with the local job market and its specific legal requirements.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>How do you ensure compliance with US labor laws during the staffing process?</td>
+                                        <td>I stay updated on US labor laws and regulations, and I ensure that all recruitment and hiring practices adhere to these laws. This includes proper documentation, non-discriminatory practices, and fair labor standards.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Can you describe a successful placement you made in the past?</td>
+                                        <td>One of my successful placements was for a senior software engineer at a tech company. The candidate had the required technical skills and cultural fit, and they have since been promoted to a lead position, significantly contributing to the company's projects.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Factors to Consider for Daily US Jobs -->
+            <div class="card">
+                <div class="card-header" id="keyFactorsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#keyFactorsCollapse" aria-expanded="false" aria-controls="keyFactorsCollapse">
+                            Key Factors to Consider for Daily US Jobs
+                        </button>
+                    </h5>
+                </div>
+                <div id="keyFactorsCollapse" class="collapse" aria-labelledby="keyFactorsHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        Key factors include understanding the job market trends, the demand for specific skills, the geographic locations of job openings, and compliance with US labor laws. Staying updated on these factors helps in effectively sourcing and placing candidates.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preparing for the Interview for Corp to Corp Jobs -->
+            <div class="card">
+                <div class="card-header" id="preparingInterviewHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#preparingInterviewCollapse" aria-expanded="false" aria-controls="preparingInterviewCollapse">
+                            Preparing for the Interview for Corp to Corp Jobs
+                        </button>
+                    </h5>
+                </div>
+                <div id="preparingInterviewCollapse" class="collapse" aria-labelledby="preparingInterviewHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        Preparing for Corp to Corp (C2C) interviews involves understanding the client's requirements, ensuring that your resume is updated and tailored to the job, practicing common interview questions, and being ready to discuss your technical skills and project experiences in detail. Additionally, understanding the contractual aspects of C2C jobs is crucial.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common USA Staffing Agency Interview Questions -->
+            <div class="card">
+                <div class="card-header" id="commonQuestionsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#commonQuestionsCollapse" aria-expanded="false" aria-controls="commonQuestionsCollapse">
+                            Common USA Staffing Agency Interview Questions
+                        </button>
+                    </h5>
+                </div>
+                <div id="commonQuestionsCollapse" class="collapse" aria-labelledby="commonQuestionsHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li>Tell me about your experience in staffing and recruiting.</li>
+                            <li>How do you handle difficult clients or candidates?</li>
+                            <li>What strategies do you use to stay organized and manage multiple job openings?</li>
+                            <li>How do you stay updated on industry trends and changes in labor laws?</li>
+                            <li>Can you provide an example of how you successfully filled a challenging position?</li>
+                        </ul>
+                        These questions are aimed at understanding your experience, problem-solving skills, organizational abilities, and industry knowledge.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Differences Between Domestic Staffing and US Staffing -->
+            <div class="card">
+                <div class="card-header" id="differencesHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#differencesCollapse" aria-expanded="false" aria-controls="differencesCollapse">
+                            Differences Between Domestic Staffing and US Staffing
+                        </button>
+                    </h5>
+                </div>
+                <div id="differencesCollapse" class="collapse" aria-labelledby="differencesHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        Domestic staffing focuses on recruiting within the local job market and adhering to local labor laws and regulations. US staffing, on the other hand, involves recruiting for the US job market, which requires understanding and complying with US labor laws, cultural nuances, and job market trends. US staffing may also involve dealing with time zone differences and remote hiring processes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- US Staffing Process -->
+            <div class="card">
+                <div class="card-header" id="usStaffingProcessHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#usStaffingProcessCollapse" aria-expanded="false" aria-controls="usStaffingProcessCollapse">
+                            US Staffing Process
+                        </button>
+                    </h5>
+                </div>
+                <div id="usStaffingProcessCollapse" class="collapse" aria-labelledby="usStaffingProcessHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        The US staffing process typically includes identifying job requirements, sourcing candidates through various channels, screening resumes, conducting interviews, performing background checks, and extending job offers. This process requires close communication with clients to understand their needs and ensure that the candidates presented are a good fit for the job and company culture.
+                    </div>
+                </div>
+            </div>
+
+            <!-- US IT Staffing Process -->
+            <div class="card">
+                <div class="card-header" id="usITStaffingProcessHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#usITStaffingProcessCollapse" aria-expanded="false" aria-controls="usITStaffingProcessCollapse">
+                            US IT Staffing Process
+                        </button>
+                    </h5>
+                </div>
+                <div id="usITStaffingProcessCollapse" class="collapse" aria-labelledby="usITStaffingProcessHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        The US IT staffing process involves several steps, including understanding the technical requirements of the job, sourcing candidates from various platforms (such as job boards, social media, and professional networks), screening candidates for technical skills, conducting technical interviews, and coordinating with clients for final selection and placement. This process often requires collaboration with technical experts to accurately assess candidate qualifications.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sourcing Skills – Different Ways & Methods -->
+            <div class="card">
+                <div class="card-header" id="sourcingSkillsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#sourcingSkillsCollapse" aria-expanded="false" aria-controls="sourcingSkillsCollapse">
+                            Sourcing Skills – Different Ways & Methods
+                        </button>
+                    </h5>
+                </div>
+                <div id="sourcingSkillsCollapse" class="collapse" aria-labelledby="sourcingSkillsHeading" data-parent="#accordion">
+                    <div class="card-body">
+                        Sourcing candidates can be done through various methods, including job boards, social media platforms like LinkedIn, professional networks, employee referrals, and industry-specific forums. Effective sourcing requires a mix of passive and active recruiting strategies, such as reaching out to potential candidates who may not be actively looking for a job but could be interested in new opportunities. Utilizing advanced search techniques and recruitment tools can also enhance sourcing efforts.
+                    </div>
+                </div>
+            </div>
+        </div>
                             </div>
                         </div>
                     </div>
