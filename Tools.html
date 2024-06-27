@@ -54,6 +54,7 @@ background-color: #f1d580;
       top: 0;
       left: 0;
       height: 200%;
+font-weight: 600;
       width: 50px; /* Reduced width to accommodate only icons */
       background-color: #f1d580;
     background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
@@ -69,7 +70,7 @@ z-index: 1000;
     
 }
     .nav-link {
-      color: #000 !important;
+       color: black !important;
       display: flex;
       align-items: center;
       
@@ -271,48 +272,52 @@ height: 40px;
 
                   </div>
 
-                  <script>
-                    function updateTimes() {
-                      // Get current UTC time
-                      const now = new Date();
+         <script>
+   function updateTimes() {
+  // Get current UTC time
+  const now = new Date();
 
-                      // Set time zones
-                      const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
-                      const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
-                      const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
-                      const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
-                      const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-                      const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+  // Set time zones
+  const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
+  const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
+  const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
+  const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
+  const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
+  const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
 
-                      // Update HTML with formatted times
-                      document.getElementById("hawaii-time").textContent = formatTime(hawaiiTime);
-                      document.getElementById("alaska-time").textContent = formatTime(alaskaTime);
-                      document.getElementById("pacific-time").textContent = formatTime(pacificTime);
-                      document.getElementById("mountain-time").textContent = formatTime(mountainTime);
-                      document.getElementById("central-time").textContent = formatTime(centralTime);
-                      document.getElementById("eastern-time").textContent = formatTime(easternTime);
-                    }
+  // Update HTML with formatted times
+  document.getElementById("hawaii-time").innerHTML += "<br>";
+  document.getElementById("alaska-time").innerHTML += "<br>";
+  document.getElementById("pacific-time").textContent = formatTime(pacificTime);
+  document.getElementById("mountain-time").textContent = formatTime(mountainTime);
+  document.getElementById("central-time").textContent = formatTime(centralTime);
+  document.getElementById("eastern-time").textContent = formatTime(easternTime);
+}
 
-                    function formatTime(date) {
-                      const options = {
-                        weekday: 'long',
-                        month: 'numeric',
-                        day: 'numeric',
-                        year: 'numeric',
-                        hour: 'numeric',
-                        minute: 'numeric',
-                        second: 'numeric',
-                        timeZoneName: 'short'
-                      };
-                      return date.toLocaleString('en-US', options);
-                    }
+function formatTime(date) {
+  const options = {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZoneName: 'short'
+  };
 
-                    // Update times initially and set interval to update every second
-                    updateTimes();
-                    setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
-                  </script>
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  const formattedDate = formatter.format(date);
 
-            
+  // Use template literal to create formatted time with line breaks
+  return `${formattedDate}\n`;
+}
+
+// Update times initially and set interval to update every second
+updateTimes();
+setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
+  </script>
+ 
                 </td>
                   </div>
                 </div>
@@ -1764,151 +1769,85 @@ header .current-date {
 </div></div></div></div></div>
     </div>
     <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
-   <div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <center><h3 class="card-title"><i class='fas fa-sitemap'></i> Links Zone</h3></center>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
                     <style>
-                        ul {
-                            list-style: none;
-                        }
+                      .link {
+        display: inline-block;
+        width: 145px;
+        text-align: center;
+        padding: 10px;
+        margin-bottom:5px;
+        border-radius: 10px;
+        
+background: linear-gradient(145deg, rgba(135, 206, 250, 0.2), rgba(135, 206, 250, 0.1));
 
-                        .link {
-                            padding: 5px; /* Add padding to all elements with class "link" */
-                        }
-
-                        .link a {
-                            text-decoration: none;
-                            color: #0366d6;
-                        }
+backdrop-filter: none;
+        
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+ .link svg {
+    width: 30px;
+    height: 30px;
+  }
+    .link:hover {
+backdrop-filter: blur(15px);
+        transform: translateY(-5px);
+    }
+    .link a {
+        text-decoration: none;
+        color: #0366d6;
+        display: block;
+    }
+    .link i {
+        font-size: 24px;
+        margin-bottom: 5px;
+        color: #0366d6;
+    }
                     </style>
-                    <ul>
-                        <li class="link">
-                            <i class="fa fa-magnet"></i>
-                            <a href="https://hiring.monster.com/signin.aspx" target="_blank">Monster</a>
-                        </li>
-                        <li class="link">
-                            <i class="fa fa-binoculars"></i>
-                            <a href="https://www.dice.com/employer/login/" target="_blank">Dice</a>
-                        </li>
-                        <li class="link">
-                            <i class="fa fa-search-plus"></i>
-                            <a href="https://www.benchinfo.com/employer/auth/login" target="_blank">BenchInfo</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-user-tie"></i>
-                            <a href="https://prohirespowerhouse.com/" target="_blank">ProHire</a>
-                        </li>
-                        <li class="link">
-                            <i class="far fa-building"></i>
-                            <a href="https://talenthire.ceipal.com/signin" target="_blank">Ciepal</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-graduation-cap"></i>
-                            <a href="https://login.jobdiva.com/" target="_blank">Job Diva</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-users"></i>
-                            <a href="https://www.ziprecruiter.com/employer" target="_blank">ZipRecruiter</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-briefcase"></i>
-                            <a href="https://www.careerbuilder.com/employer" target="_blank">CareerBuilder</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-handshake"></i>
-                            <a href="https://www.glassdoor.com/employers/index.htm" target="_blank">Glassdoor</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-laptop"></i>
-                            <a href="https://www.indeed.com/hire" target="_blank">Indeed</a>
-                        </li>
-                        <li class="link">
-                            <i class="far fa-envelope"></i>
-                            <a href="https://outlook.office365.com/mail/" target="_blank">Outlook</a>
-                        </li>
-                        <li class="link">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-                        </li>
-                        <li class="link">
-                            <i class="fa fa-crop"></i>
-                            <a href="https://www.online-convert.com/" target="_blank">Converter</a>
-                        </li>
-                        <li class="link">
-                            <i class="fa fa-file"></i>
-                            <a href="https://www.digisigner.com/free-electronic-signature/" target="_blank">E-sign</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <center><h3 class="card-title"><i class='fas fa-sitemap'></i> Additional Links</h3></center>
-                    <ul>
-                        <li class="link">
-                            <i class="fas fa-briefcase"></i>
-                            <a href="https://www.roberthalf.com/employers" target="_blank">Robert Half</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-chart-line"></i>
-                            <a href="https://www.randstadusa.com/employers/" target="_blank">Randstad</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-users-cog"></i>
-                            <a href="https://www.kellyservices.us/us/employers/" target="_blank">Kelly Services</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-clipboard-check"></i>
-                            <a href="https://www.adeccousa.com/employers/" target="_blank">Adecco</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-building"></i>
-                            <a href="https://www.spherion.com/employers/" target="_blank">Spherion</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-user-friends"></i>
-                            <a href="https://www.manpower.com/wps/portal/ManpowerUSA/employers" target="_blank">Manpower</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-people-arrows"></i>
-                            <a href="https://www.staffmark.com/employers" target="_blank">Staffmark</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-user-tie"></i>
-                            <a href="https://www.remx.com/employers" target="_blank">RemX</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-users"></i>
-                            <a href="https://www.expresspros.com/employers" target="_blank">Express EP</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-suitcase"></i>
-                            <a href="https://www.staffingadvisors.com/" target="_blank">Staffing Advisors</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-business-time"></i>
-                            <a href="https://www.staffing.com/" target="_blank">Staffing.com</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-user-tie"></i>
-                            <a href="https://www.pridestaff.com/employers" target="_blank">PrideStaff</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-users"></i>
-                            <a href="https://www.ajilon.com/employers/" target="_blank">Ajilon</a>
-                        </li>
-                        <li class="link">
-                            <i class="fas fa-user-friends"></i>
-                            <a href="https://www.corestaff.com/employers" target="_blank">Corestaff Services</a>
-                        </li>
-                    </ul>
+
+                    <div class="link"><a href="https://chatgpt.com/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+<path fill="#0366d6" d="M30.7,7.27L28.33,9.1c-1.605-2.067-4.068-3.209-6.697-3.092C17.313,6.2,14,9.953,14,14.277l0,9.143	l10.5,6.12l-1,1.72l-11.706-6.827C11.302,24.146,11,23.62,11,23.051l0-8.687C11,8.1,16.129,2.79,22.39,3.007	C25.669,3.12,28.68,4.663,30.7,7.27z"></path><path fill="#0366d6" d="M12.861,9.833l0.4,2.967c-2.592,0.357-4.813,1.919-6.026,4.254c-1.994,3.837-0.4,8.582,3.345,10.745	l7.918,4.571l10.55-6.033l0.99,1.726l-11.765,6.724c-0.494,0.282-1.101,0.281-1.594-0.003l-7.523-4.343	C3.73,27.308,1.696,20.211,5.014,14.898C6.752,12.114,9.594,10.279,12.861,9.833z"></path><path fill="#0366d6" d="M6.161,26.563l2.77,1.137c-0.987,2.423-0.745,5.128,0.671,7.346	c2.326,3.645,7.233,4.638,10.977,2.476l7.918-4.572l0.05-12.153l1.99,0.006l-0.059,13.551c-0.002,0.569-0.307,1.094-0.8,1.379	l-7.523,4.343c-5.425,3.132-12.588,1.345-15.531-4.185C5.083,32.994,4.914,29.616,6.161,26.563z"></path><path fill="#0366d6" d="M17.3,40.73l2.37-1.83c1.605,2.067,4.068,3.209,6.697,3.092C30.687,41.8,34,38.047,34,33.723l0-9.143	l-10.5-6.12l1-1.72l11.706,6.827C36.698,23.854,37,24.38,37,24.949l0,8.687c0,6.264-5.13,11.574-11.39,11.358	C22.331,44.88,19.32,43.337,17.3,40.73z"></path><path fill="#0366d6" d="M35.139,38.167l-0.4-2.967c2.592-0.357,4.813-1.919,6.026-4.254c1.994-3.837,0.4-8.582-3.345-10.745	l-7.918-4.571l-10.55,6.033l-0.99-1.726l11.765-6.724c0.494-0.282,1.101-0.281,1.594,0.003l7.523,4.343	c5.425,3.132,7.459,10.229,4.141,15.543C41.248,35.886,38.406,37.721,35.139,38.167z"></path><path fill="#0366d6" d="M41.839,21.437l-2.77-1.137c0.987-2.423,0.745-5.128-0.671-7.346	c-2.326-3.645-7.233-4.638-10.977-2.476l-7.918,4.572l-0.05,12.153l-1.99-0.006l0.059-13.551c0.002-0.569,0.307-1.094,0.8-1.379	l7.523-4.343c5.425-3.132,12.588-1.345,15.531,4.185C42.917,15.006,43.086,18.384,41.839,21.437z"></path>
+</svg><br> Chat GPT</a></div>
+                    <div class="link"><a href="https://seon.io/resources/how-to-find-social-media-accounts-by-email-address-only/" target="_blank"><i class="fas fa-bullhorn"></i><br> Social Finder</a></div>
+                    <div class="link"><a href="https://www.ipqualityscore.com/phone-number-validator" target="_blank"><i class="fas fa-tty"></i> <br>No. Validator</a></div>
+                    <div class="link"><a href="https://hiring.monster.com/signin.aspx" target="_blank"><i class="fa fa-magnet"></i><br> Monster</a></div>
+                    <div class="link"><a href="https://www.dice.com/employer/login/" target="_blank"><i class="fa fa-binoculars"></i> <br>Dice</a></div>
+                    <div class="link"><a href="https://www.benchinfo.com/employer/auth/login" target="_blank"><i class="fa fa-search-plus"></i> <br>BenchInfo</a></div>
+                    <div class="link"><a href="https://prohirespowerhouse.com/" target="_blank"><i class="fas fa-user-tie"></i><br> ProHire</a></div>
+                    <div class="link"><a href="https://talenthire.ceipal.com/signin" target="_blank"><i class="far fa-building"></i> <br>Ciepal</a></div>
+                    <div class="link"><a href="https://login.jobdiva.com/" target="_blank"><i class="fas fa-graduation-cap"></i><br> Job Diva</a></div>
+                    <div class="link"><a href="https://www.ziprecruiter.com/employer" target="_blank"><i class="fas fa-users"></i><br> ZipRecruiter</a></div>
+                    <div class="link"><a href="https://www.careerbuilder.com/employer" target="_blank"><i class="fas fa-briefcase"></i><br> CareerBuilder</a></div>
+                    
+<div class="link"><a href="https://www.glassdoor.com/employers/index.htm" target="_blank"><i class="fas fa-handshake"></i><br>Glassdoor</a></div>
+                    <div class="link"><a href="https://www.indeed.com/hire" target="_blank"><i class="fas fa-laptop"></i> <br>Indeed</a></div>
+                    <div class="link"><a href="https://outlook.office365.com/mail/" target="_blank"><i class="far fa-envelope"></i> <br>Outlook</a></div>
+                    <div class="link"><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i><br> LinkedIn</a></div>
+                    <div class="link"><a href="https://www.online-convert.com/" target="_blank"><i class="fa fa-crop"></i><br> Converter</a></div>
+                    <div class="link"><a href="https://www.digisigner.com/free-electronic-signature/" target="_blank"><i class="fa fa-file"></i> <br>E-sign</a></div>
+          
+                    <div class="link"><a href="https://www.roberthalf.com/employers" target="_blank"><i class="fas fa-briefcase"></i> <br>Robert Half</a></div>
+                    <div class="link"><a href="https://www.randstadusa.com/employers/" target="_blank"><i class="fas fa-chart-line"></i> <br>Randstad</a></div>
+                    <div class="link"><a href="https://www.kellyservices.us/us/employers/" target="_blank"><i class="fas fa-users-cog"></i><br> Kelly Services</a></div>
+                    <div class="link"><a href="https://www.adeccousa.com/employers/" target="_blank"><i class="fas fa-clipboard-check"></i> <br>Adecco</a></div>
+                    <div class="link"><a href="https://www.spherion.com/employers/" target="_blank"><i class="fas fa-building"></i> <br>Spherion</a></div>
+                    <div class="link"><a href="https://www.manpower.com/wps/portal/ManpowerUSA/employers" target="_blank"><i class="fas fa-user-friends"></i> <br>Manpower</a></div>
+                    <div class="link"><a href="https://www.staffmark.com/employers" target="_blank"><i class="fas fa-people-arrows"></i> <br>Staffmark</a></div>
+                    <div class="link"><a href="https://www.remx.com/employers" target="_blank"><i class="fas fa-user-tie"></i> <br>RemX</a></div>
+                    <div class="link"><a href="https://www.expresspros.com/employers" target="_blank"><i class="fas fa-users"></i><br> Express EP</a></div>
+                    <div class="link"><a href="https://www.staffingadvisors.com/" target="_blank"><i class="fas fa-suitcase"></i> <br>Staffing Adv.</a></div>
+                    <div class="link"><a href="https://www.staffing.com/" target="_blank"><i class="fas fa-business-time"></i> <br>Staffing.com</a></div>
+                    <div class="link"><a href="https://www.pridestaff.com/employers" target="_blank"><i class="fas fa-user-tie"></i> <br>PrideStaff</a></div>
+                    <div class="link"><a href="https://www.ajilon.com/employers/" target="_blank"><i class="fas fa-users"></i> <br>Ajilon</a></div>
+                    <div class="link"><a href="https://www.corestaff.com/employers" target="_blank"><i class="fas fa-user-friends"></i> <br>Corestaff Serv.</a></div>
                 </div>
             </div>
         </div>
@@ -1919,10 +1858,21 @@ header .current-date {
 </div>
     <div class="tab-pane fade" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
 
+<div class="col-md-12">
+<div class="card">
+<div class="card-body">
 <div class="container mx-3">
-        <h2>US Visas</h2>
-        <p>The United States offers various types of visas for different purposes, including study, work, business, and tourism. Each visa type has specific requirements, validity periods, and regulations.</p>
-      </div>
+<style>
+    .visa-icon {
+      width: 30px;
+      height: 30px;
+      fill: black;
+    }
+  </style>
+        <center><h3 class="card-title"><svg class="visa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 24"><path d="m9.36 19.68c-.24 0-.4.24-.4.64 0 .32.16.64.48.64.24 0 .4-.24.4-.64 0-.32-.16-.64-.48-.64z"/><path d="m2.96 19.68c0 .08-.08.24-.08.32l-.08.4h.4l-.08-.4c-.08-.08-.08-.16-.16-.32z"/><path d="m1.44 19.68h-.16v.56h.16c.24 0 .32-.08.32-.32s-.08-.24-.32-.24z"/><path d="m7.6 19.68h-.16v.56h.16c.24 0 .32-.08.32-.32s-.16-.24-.32-.24z"/><path d="m11.12 19.68h-.16v.48h.16c.24 0 .32-.08.32-.24s-.16-.24-.32-.24z"/><path d="m23.12 5.84-11.68-5.76c-.084-.053-.186-.085-.295-.085-.223 0-.415.132-.503.322l-.001.003v.08l-.24.4-1.36 2.8h4.88.016c.698 0 1.264.566 1.264 1.264v.017-.001 18.4c.08-.08.16-.16.16-.24l8-16.4c.049-.082.078-.182.078-.288 0-.223-.128-.417-.315-.51l-.003-.001z"/><path d="m9.2 14.64c-.496-.174-1.069-.288-1.665-.319l-.015-.001v2.32c.83-.378 1.447-1.1 1.675-1.979z"/><path d="m9.44 9.68c-.544.203-1.173.321-1.829.321-.032 0-.064 0-.095-.001h.005v1.28h2.16c-.008-.573-.095-1.123-.251-1.642l.011.042z"/><path d="m7.52 7.12v2.16c.022 0 .049.001.075.001.579 0 1.131-.118 1.632-.331l-.027.01c-.218-.865-.847-1.546-1.662-1.834z"/><path d="m10.24 14.16c.29.159.514.409.637.711l.003.009c.622-.71 1.03-1.62 1.119-2.622l.001-.018h-1.52c.006.094.009.205.009.316 0 .573-.091 1.125-.26 1.642l.011-.037z"/><path d="m3.92 15.52c.252.224.542.412.859.552l.021.008c-.221-.3-.41-.643-.55-1.01l-.01-.03c-.148.124-.259.287-.318.473z"/><path d="m10.32 7.92c-.3-.235-.639-.472-.991-.691l-.049-.029c.285.345.527.741.708 1.169l.012.031c.16 0 .32-.24.32-.48z"/><path d="m9.44 16.08c.309-.147.573-.335.8-.56-.028-.206-.149-.379-.317-.478l-.003-.002c-.082.399-.25.749-.484 1.045z"/><path d="m10.56 11.36h1.52c-.113-1.031-.486-1.958-1.051-2.736l.011.016c-.156.315-.405.564-.711.716l-.009.004c.08.64.16 1.28.24 2z"/><path d="m9.68 12.24h-2.16v1.2c.696.019 1.353.164 1.956.413l-.036-.013c.145-.477.232-1.027.24-1.596z"/><path d="m4.72 7.44c-.308.119-.573.281-.803.483l.003-.003c.013.193.103.362.239.479l.001.001c.128-.371.319-.691.562-.963z"/><path d="m3.92 9.28c-.253-.174-.466-.387-.635-.632l-.005-.008c-.624.765-1.032 1.728-1.119 2.782l-.001.018h1.44c.018-.776.133-1.517.335-2.222z"/><path d="m6.64 16.48v-2.16c-.601.068-1.143.18-1.667.337l.067-.017c.207.847.803 1.521 1.582 1.834z"/><path d="m14.24 5.12c0-.007 0-.016 0-.024 0-.321-.245-.585-.558-.615h-.003-13.04c-.016-.002-.035-.002-.054-.002-.325 0-.589.264-.589.589 0 .019.001.038.003.056v-.002 18.24.009c0 .349.283.631.631.631h.009 12.96c.343-.024.616-.297.64-.638v-.002zm-12.88 6.08c.255-2.808 2.472-5.025 5.257-5.278l.023-.002v-.08h.88v.08c2.973.236 5.297 2.706 5.297 5.72 0 3.168-2.568 5.737-5.737 5.737-.155 0-.308-.006-.46-.018l.02.001c-2.977-.263-5.293-2.744-5.293-5.767 0-.138.005-.276.014-.411zm.08 9.36h-.16v.64h-.4v-1.84h.56c.026-.003.056-.005.087-.005.18 0 .345.062.475.166l-.002-.001c.16.08.16.24.16.4-.003.155-.063.295-.16.4-.133.148-.326.24-.54.24-.007 0-.014 0-.021 0zm1.92.64-.16-.48h-.48l-.16.48h-.4l.56-1.84h.56l.56 1.84zm1.12 0c-.023.002-.051.003-.078.003-.145 0-.283-.031-.408-.086l.006.003.08-.32c.118.052.257.083.402.083.027 0 .055-.001.082-.003h-.004c.16 0 .24-.08.24-.16s-.08-.16-.32-.24c-.24-.16-.48-.32-.48-.56 0-.32.24-.56.72-.56.023-.002.051-.003.078-.003.145 0 .283.031.408.086l-.006-.003-.08.32c-.088-.054-.196-.087-.31-.087-.032 0-.063.002-.093.007h.003c-.16 0-.24.08-.24.16s.08.16.32.24c.27.05.473.28.48.559v.001c0 .32-.24.56-.8.56zm1.52 0c-.023.002-.051.003-.078.003-.145 0-.283-.031-.408-.086l.006.003v-.32c.118.052.257.083.402.083.027 0 .055-.001.082-.003h-.004c.16 0 .32-.08.32-.16s-.08-.16-.32-.24c-.271-.025-.481-.251-.481-.527 0-.012 0-.023.001-.035v.002c0-.32.24-.56.72-.56.023-.002.051-.003.078-.003.145 0 .283.031.408.086l-.006-.003-.08.32c-.088-.054-.196-.087-.31-.087-.032 0-.063.002-.093.007h.003c-.16 0-.24.08-.24.16s.08.16.32.24c.27.05.473.28.48.559v.001c-.062.326-.345.57-.685.57-.041 0-.08-.003-.119-.01l.004.001zm2.16-.8c-.098.113-.241.184-.402.184-.056 0-.111-.009-.162-.025l.004.001h-.16v.64h-.4v-1.84h.56c.026-.003.056-.005.087-.005.18 0 .345.062.475.166l-.002-.001c.16.08.16.24.16.4-.018.18-.075.343-.163.485zm2.08-.16c.005.035.008.076.008.117 0 .454-.358.823-.806.843h-.002-.16c-.484-.004-.876-.396-.88-.88v-.08c-.002-.021-.003-.045-.003-.069 0-.462.35-.842.799-.891h.004.08.004c.458 0 .834.35.876.797v.004zm1.2.96c-.08-.16-.08-.24-.16-.4-.08-.24-.16-.32-.32-.32h-.16v.72h-.4v-1.84h.56c.034-.006.073-.009.113-.009.172 0 .329.064.448.17l-.001-.001c.097.105.157.245.16.399v.001c-.005.213-.134.395-.317.479l-.003.001c.16.08.16.16.24.32.018.18.075.343.163.485l-.003-.005zm2-1.44h-.48v1.44h-.4v-1.44h-.56v-.32h1.36v.32z"/><path d="m3.92 14.16c-.137-.563-.25-1.245-.315-1.941l-.005-.059h-1.36c.114 1.004.487 1.905 1.05 2.654l-.01-.014c.174-.253.387-.466.632-.635z"/><path d="m6.64 12.24h-2.16c.001.571.089 1.122.251 1.639l-.011-.039c.561-.196 1.213-.338 1.889-.398l.031-.002z"/><path d="m6.64 6.96c-.88.16-1.44 1.12-1.68 1.84.491.196 1.06.337 1.653.398l.027.002z"/><path d="m6.64 11.36v-1.28c-.696-.019-1.353-.164-1.956-.413l.036.013c-.151.503-.239 1.081-.24 1.679v.001z"/></svg> USA's Visa</h3>
+
+</div></center>
+        
 
 <div class="container">
   <div class="row">
@@ -2161,7 +2111,9 @@ header .current-date {
     </div>
   </div>
 </div>
-
+</div>
+</div>
+</div>
 
     </div>
     <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
@@ -2832,7 +2784,7 @@ submitContactFormBtn.addEventListener('click', async function(event) {
 }
   </style>
    <small style="font-size: 12px;">
-    Made with <span><a href="https://iili.io/JgwFbAG.jpg" target="_blank" style="color: red; text-decoration: none;">❤</a></span> by 
+    Made with <span><a href="https://iili.io/JgwFbAG.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
     <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none;">Nandan Thakur <svg width="15" height="15" viewBox="0 0 24 24">
     <path fill="#000000" d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path>
   </svg></a>
