@@ -372,7 +372,12 @@ font-size:15px;
                 <td id="hst-date"></td>
                 <td id="hst-time"></td>
             </tr>
-
+ <tr class="table-warning">
+                <td>IST</td>
+                <td id="ist-day"></td>
+                <td id="ist-date"></td>
+                <td id="ist-time"></td>
+            </tr>
         </tbody>
     </table>
 
@@ -384,14 +389,16 @@ font-size:15px;
                 { name: 'mst', offset: -6 },
                 { name: 'pst', offset: -7 },
                 { name: 'akst', offset: -8 },
-                { name: 'hst', offset: -9 }
+                { name: 'hst', offset: -9 },
+                { name: 'ist', offset: 5.5 }
             ];
             
             const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
             timeZones.forEach(tz => {
-                const now = new Date(new Date().toLocaleString("en-US", {timeZone: "UTC"}));
-                now.setHours(now.getHours() + tz.offset);
+                const now = new Date(new Date().toLocaleString("en-US", { timeZone: "UTC" }));
+                now.setHours(now.getHours() + Math.floor(tz.offset));
+                now.setMinutes(now.getMinutes() + (tz.offset % 1) * 60);
                 const day = daysShort[now.getDay()];
                 const date = now.toLocaleString("en-US", { day: '2-digit', month: 'short', year: 'numeric' });
                 const time = now.toLocaleString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
