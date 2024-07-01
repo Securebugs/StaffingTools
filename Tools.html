@@ -214,7 +214,7 @@ height: 40px;
       animation-play-state: paused;
     }
   </style>
-      <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools</a>
+      <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
 
 <img src="https://i3.wp.com/ugokawaii.com/wp-content/uploads/2023/04/plane.gif" alt="INDUSA" style="width: 70px; height: 45px;" class="plane facing-right">
 <img src="https://i3.wp.com/ugokawaii.com/wp-content/uploads/2023/04/plane.gif" alt="INDUSA" style="width: 70px; height: 45px;" class="plane facing-left">
@@ -302,98 +302,109 @@ height: 40px;
                 <div class="card-body">
                  <center> <h3 class="card-title"><i class='fas fa-clock'></i> Time Now</h3></center>
 
-                  <div class="time-table">
-                    <td class="column-300">
-                  <div class="time-table">
-                   <table class="hol">
-  <tbody>
-    <tr>
-      <td>Eastern Time</td>
-      <td>Central Time</td>
-    </tr>
-    <tr>
-      <td id="eastern-time">Saturday, 4/6/2024, 3:33:06 PM GMT+5:30</td>
-      <td id="central-time">Saturday, 4/6/2024, 2:33:06 PM GMT+5:30</td>
-    </tr>
-  </tbody>
-</table>
+<style>
+      
+    table {
+            border-collapse: collapse;
+            width: 99%;
+text-align: center;
+         
+        }
+        td {
+            border: 1px solid black;
+            padding: 8px;
+font-size:12px;
 
-<table class="hol">
-  <tbody>
-    <tr>
-      <td>Mountain Time</td>
-      <td>Pacific Time</td>
-    </tr>
-    <tr>
-      <td id="mountain-time">Saturday, 4/6/2024, 1:33:06 PM GMT+5:30</td>
-      <td id="pacific-time">Saturday, 4/6/2024, 12:33:06 PM GMT+5:30</td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="hol">
-  <tbody>
-    <tr>
-      <td>Hawaii Time</td>
-      <td>Alaska Time</td>
-    </tr>
-    <tr>
-      <td id="hawaii-time">Saturday, 4/6/2024, 9:33:06 AM GMT+5:30</td>
-      <td id="alaska-time">Saturday, 4/6/2024, 11:33:06 AM GMT+5:30</td>
-    </tr>
-  </tbody>
-</table>
-
-                  </div>
-
-         <script>
-   function updateTimes() {
-  // Get current UTC time
-  const now = new Date();
-
-  // Set time zones
-  const hawaiiTime = new Date(now.toLocaleString("en-US", { timeZone: "Pacific/Honolulu" }));
-  const alaskaTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Anchorage" }));
-  const pacificTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
-  const mountainTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Denver" }));
-  const centralTime = new Date(now.toLocaleString("en-US", { timeZone: "America/Chicago" }));
-  const easternTime = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-
-  // Update HTML with formatted times
-  document.getElementById("hawaii-time").innerHTML += "<br>";
-  document.getElementById("alaska-time").innerHTML += "<br>";
-  document.getElementById("pacific-time").textContent = formatTime(pacificTime);
-  document.getElementById("mountain-time").textContent = formatTime(mountainTime);
-  document.getElementById("central-time").textContent = formatTime(centralTime);
-  document.getElementById("eastern-time").textContent = formatTime(easternTime);
-}
-
-function formatTime(date) {
-  const options = {
-    weekday: 'short',
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    timeZoneName: 'short'
-  };
-
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  const formattedDate = formatter.format(date);
-
-  // Use template literal to create formatted time with line breaks
-  return `${formattedDate}\n`;
-}
-
-// Update times initially and set interval to update every second
-updateTimes();
-setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
-  </script>
+            text-align: center;
+        }
+        th {
+            border: 1px solid black;
+            padding: 8px;
+font-size:15px;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+    </style>
  
-                </td>
-                  </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Time Zone</th>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-danger">
+                <td>EST</td>
+                <td id="est-day"></td>
+                <td id="est-date"></td>
+                <td id="est-time"></td>
+            </tr>
+            <tr class="table-warning">
+                <td>CST</td>
+                <td id="cst-day"></td>
+                <td id="cst-date"></td>
+                <td id="cst-time"></td>
+            </tr>
+            <tr class="table-success">
+                <td>MST</td>
+                <td id="mst-day"></td>
+                <td id="mst-date"></td>
+                <td id="mst-time"></td>
+            </tr>
+            <tr class="table-info">
+                <td>PST</td>
+                <td id="pst-day"></td>
+                <td id="pst-date"></td>
+                <td id="pst-time"></td>
+            </tr>
+            <tr class="table-primary">
+                <td>AKST</td>
+                <td id="akst-day"></td>
+                <td id="akst-date"></td>
+                <td id="akst-time"></td>
+            </tr>
+            <tr class="table-secondary">
+                <td>HST</td>
+                <td id="hst-day"></td>
+                <td id="hst-date"></td>
+                <td id="hst-time"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <script>
+        function updateTime() {
+            const timeZones = [
+                { name: 'est', offset: -5 },
+                { name: 'cst', offset: -6 },
+                { name: 'mst', offset: -7 },
+                { name: 'pst', offset: -8 },
+                { name: 'akst', offset: -9 },
+                { name: 'hst', offset: -10 }
+            ];
+            
+            const daysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            timeZones.forEach(tz => {
+                const now = new Date(new Date().toLocaleString("en-US", {timeZone: "UTC"}));
+                now.setHours(now.getHours() + tz.offset);
+                const day = daysShort[now.getDay()];
+                const date = now.toLocaleString("en-US", { day: '2-digit', month: 'short', year: 'numeric' });
+                const time = now.toLocaleString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+
+                document.getElementById(`${tz.name}-day`).textContent = day;
+                document.getElementById(`${tz.name}-date`).textContent = date;
+                document.getElementById(`${tz.name}-time`).textContent = time;
+            });
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
                 </div>
   <div class="containert custom-containert">
     <div class="container">
@@ -402,12 +413,12 @@ setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
           <div class="card">
             <div class="card-body">
               <div id="emailContainer">
-                <small>Send me your Email to receive daily requirements <b>(Only for BenchSales**)</b></small>
+                <b>Want to receive daily requirements?</b>
                 <form id="emailForm">
                   <div class="form-group">
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Type Email If you are BenchSales" required>
                   </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Send Email</button>
                 </form>
               </div>
             </div>
@@ -416,6 +427,7 @@ setInterval(updateTimes, 1000); // 1000 milliseconds = 1 second
       </div>
     </div>
   </div>
+<br>
               </div>
             </div>
 
