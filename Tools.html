@@ -232,16 +232,89 @@ height: 40px;
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<br>       
- <ul class="navbar-nav ml-auto">
-          <li class="nav-item d-flex justify-content-end px-2">
-           
-<a href="https://securebugs.github.io/Nandan/profile.html" target="_blank">
-         <img src="https://lh3.googleusercontent.com/a/ACg8ocLxbxk5CX8ulF9bRLh2H-Qp-wuYHkDvWwtuOC85DSbQZfZY7zU=s288-c-no" alt="Nandan Thakur" class="rounded-circle ml-2" style="width: 40px; height: 40px;">
+<br>      
 
-      </a>
-          </li>
-        </ul>
+ <style>
+ /* Hide the dropdown menu by default */
+.dropdown-menu {
+  display: none;
+  
+  height: 50px; /* Set the height of the dropdown */
+  overflow: hidden; /* Hide any overflow */
+  z-index: 1000;
+  left: -162px; /* Adjust as needed to position the dropdown */
+  top: -50%; /* Position it below the dropdown toggle */
+  background: transparent !important; /* Force background transparency */
+  border: none !important; /* Remove border */
+  border-radius: 0; /* Remove corner rounding */
+  align-items: center; /* Center icons vertically */
+  flex-direction: row; /* Align items horizontally */
+}
+
+/* Keep the dropdown menu visible when hovering over the dropdown or the menu */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: flex;
+}
+
+/* Style for each dropdown item */
+.dropdown-item {
+  display: inline-block; /* Keep icons in a single row */
+  color: blue; /* Change text color to blue */
+  font-size: 10px; /* Adjust icon size if needed */
+
+  padding: 6px !important; /* Add horizontal padding between icons */
+  text-decoration: none;
+}
+
+/* Style for the dropdown toggle */
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+/* Align the dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-icon {
+  transform: rotate(90deg); /* Rotate the icon to the left */
+}
+
+  </style>
+
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item d-flex justify-content-end px-2">
+      <div class="dropdown">
+        <i class="fas fa-caret-down dropdown-icon"></i> <!-- Dropdown arrow -->
+        <div class="dropdown-menu">
+<a href="https://securebugs.github.io/Nandan/profile.html" target="_blank" class="dropdown-item">
+            <i class="fas fa-globe fa-2x"></i> 
+          </a>
+          <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" class="dropdown-item">
+            <i class="fab fa-linkedin fa-2x"></i> 
+          </a>
+ <a href="https://github.com/Securebugs" target="_blank" class="dropdown-item">
+            <i class="fab fa-github fa-2x"></i> 
+          </a>
+         
+          <a href="https://www.salesforce.com/trailblazer/iamthakurofficial" target="_blank" class="dropdown-item">
+            <i class="fab fa-salesforce fa-2x"></i> 
+          </a>
+ <a href="https://www.credly.com/users/iamthakurofficial" target="_blank" class="dropdown-item">
+            <i class="fas fa-award fa-2x"></i> 
+          </a>
+          
+
+        </div>
+      </div>
+    </li>
+  </ul>
       </div>
     </div>
   </nav>
@@ -3057,9 +3130,7 @@ submitContactFormBtn.addEventListener('click', async function(event) {
     }
 </script>
 
- 
-
-<script>
+ <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Hide the alert on page load
         var alertDiv = document.querySelector('.alert');
@@ -3082,6 +3153,8 @@ submitContactFormBtn.addEventListener('click', async function(event) {
         alertDiv.classList.remove('show'); // Hide the alert when clicked
     });
 </script>
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.5.1
