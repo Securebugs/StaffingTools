@@ -35,6 +35,7 @@
 <meta name="twitter:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
 
   <!-- Bootstrap CSS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
@@ -134,6 +135,69 @@ height: 40px;
         .alert strong {
             font-size: 12px;
         }
+
+ .email-card {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .accordion-button {
+      background-color: #f8f9fa;
+      color: #333;
+      border-radius: 8px;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: #e9ecef;
+      color: #000;
+    }
+
+    .highlight-note {
+      background-color: #ffff99;
+      padding: auto;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .copy-btn {
+      margin-bottom: 10px;
+    }
+
+  .email-table {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    padding: 20px;
+    margin-top: 10px;
+  }
+.email-table table {
+  width: auto; /* Adjust table width automatically */
+  border-collapse: collapse;
+}
+
+.email-table table td {
+  border: 1px solid #ddd;
+  padding: 4px; /* Minimal padding */
+  font-size: 14px; /* Compact font size */
+}
+
+/* First column adjusts to longest text and aligns left */
+.email-table table td:first-child {
+  white-space: nowrap; /* Prevent text wrapping */
+  text-align: left; /* Align text to the left */
+}
+
+/* Second column fixed to 50% */
+.email-table table td:nth-child(2) {
+  width: 70%; /* Fixed width for the second column */
+  background-color: #fff; /* Keep blank column visually distinct */
+}
+
     </style>
 
   
@@ -217,8 +281,8 @@ height: 40px;
   </style>
       <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
 
-<img src="https://i3.wp.com/ugokawaii.com/wp-content/uploads/2023/04/plane.gif" alt="INDUSA" style="width: 70px; height: 45px;" class="plane facing-right">
-<img src="https://i3.wp.com/ugokawaii.com/wp-content/uploads/2023/04/plane.gif" alt="INDUSA" style="width: 70px; height: 45px;" class="plane facing-left">
+<img src="https://www.gifs.cc/christmas/santa-pulled-by-reindeer.gif" alt="INDUSA" style="width: 70px; height: 45px;" class="plane facing-right">
+<img src="https://i.pinimg.com/originals/af/85/10/af8510eeb4eea8692383a6beef988491.gif" alt="INDUSA" style="width: 70px; height: 50px;" class="plane facing-left">
 
   
  
@@ -1767,7 +1831,113 @@ emailsTextarea.addEventListener('input', () => {
   </script>
 
 
-</div></div></div></div></div>
+
+</div></div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+ <div class="container mt-5">
+    <h3 class="text-center">Email Samples</h3>
+
+    <!-- Accordion -->
+    <div class="accordion" id="emailAccordion">
+
+      <!-- Rate Confirmation to Direct Consultant -->
+      <div class="accordion-item email-card">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Rate Confirmation to Direct Consultant
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#emailAccordion">
+          <div class="accordion-body" id="emailContent1">
+            <button class="btn btn-primary copy-btn" onclick="copyEmailAsHTML('emailContent1')">
+              <i class="fas fa-copy"></i> Copy Email
+            </button>
+            <p>Hi <b>David</b>,</p>
+            <p>It was nice talking to you. As discussed, we are submitting your profile for the position of <b>“IT Project Manager”</b> for the location of <b>“Onsite Brooklyn, NY”</b> at the rate of <b>$80/hr. C2C</b>.</p>
+            <p class="highlight-note" style="background-color: #ffff99;">Note: We only work with Direct client or prime vendor. We don’t work with any Implementation.</p>
+            <p><b>JOB DESCRIPTION:</b> [Add job description here]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rate Confirmation to C2C Vendors -->
+      <div class="accordion-item email-card">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Rate Confirmation to C2C Vendors
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#emailAccordion">
+          <div class="accordion-body" id="emailContent2">
+            <button class="btn btn-primary copy-btn" onclick="copyEmailAsHTML('emailContent2')">
+              <i class="fas fa-copy"></i> Copy Email
+            </button>
+            <p>Hi <b>Rathod</b>,</p>
+            <p>It was nice talking to you. As discussed, we are submitting your consultant <b>“SOUJANYA”</b> profile for the position of <b>“Data Engineer”</b> for the location of <b>“Remote”</b> at the rate of <b>$58/hr. C2C</b>.</p>
+            <p class="highlight-note" style="background-color: #ffff99;">Note: We only work with Direct client or prime vendor. We don’t work with any Implementation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submission Format -->
+      <div class="accordion-item email-card">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Submission Format
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#emailAccordion">
+          <div class="accordion-body" id="emailContent3">
+            <button class="btn btn-primary copy-btn" onclick="copyEmailAsHTML('emailContent3')">
+              <i class="fas fa-copy"></i> Copy Email
+            </button>
+            <p>Hi,<br> Please find the submission below--</p><br>
+            <div class="email-table">
+              <table>
+                <tbody>
+                  <tr><td><strong>Name:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Contact No:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Email:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Visa:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Rate:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Current Location:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>DOB:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Relocation:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>SSN No. (last 4 digits):</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>LinkedIn:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Education:</strong></td><td>&nbsp;</td></tr>
+                  <tr><td><strong>Total Experience:</strong></td><td>&nbsp;</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+  <script>
+    function copyEmailAsHTML(contentId) {
+      const emailContent = document.getElementById(contentId);
+      const range = document.createRange();
+      range.selectNode(emailContent);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand('copy');
+      selection.removeAllRanges();
+      alert("Email content copied to clipboard in rich HTML format!");
+    }
+  </script>
+
+</div></div>
     </div>
     <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
       <div class="container">
