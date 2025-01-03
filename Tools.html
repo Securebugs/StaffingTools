@@ -219,134 +219,116 @@ height: 40px;
     }
   </style>
       <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
+<div class="container">
+    <h1 class="animated-text">Happy New Year!</h1>
+</div>
 
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy New Year 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-   
+<div class="snowflakes"></div>
 
-    /* Glitter Effect */
-    .glitter-container {
-      position: absolute;
-      width: 100%;
-      height: 80%;
-      overflow: hidden;
+<script>
+    window.onload = function () {
+        const text = document.querySelector('.animated-text');
+        const translations = [
+            "Happy New Year!", // English
+            "नया साल मुबारक हो!", // Hindi
+            "نیا سال مبارک ہو!", // Urdu
+            "Feliz Ano Novo!", // Portuguese
+            "Bonne Année!", // French
+            "Feliz Año Nuevo!", // Spanish
+            "Guten Rutsch ins Neue Jahr!", // German
+            "Felice Anno Nuovo!", // Italian
+            "Szczęśliwego Nowego Roku!", // Polish
+            "新年快乐!", // Chinese (Mandarin)
+            "سنة جديدة سعيدة!", // Arabic
+            "새해 복 많이 받으세요!" // Korean
+        ];
+
+        let currentTranslation = 0;
+
+        function changeText() {
+            text.innerHTML = translations[currentTranslation];
+            currentTranslation = (currentTranslation + 1) % translations.length;
+            setTimeout(changeText, 3000); // Change text every 3 seconds
+        }
+
+        changeText();
+
+        // Add snowflakes
+        createSnowflakes();
+    };
+
+    function createSnowflakes() {
+        const snowflakesContainer = document.querySelector('.snowflakes');
+        const numberOfSnowflakes = 50;
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.top = `${Math.random() * -50}vh`;
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+
+            // Assign random color (white, silver, or black)
+            const colors = ["white", "silver", "black"];
+            snowflake.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            snowflakesContainer.appendChild(snowflake);
+        }
     }
+</script>
 
-    .glitter {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
-      border-radius: 50%;
-      animation: sparkle 3s infinite ease-in-out, moveGlitter 5s infinite linear;
-    }
+<style>
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    /* Glitter Colors */
-    .glitter:nth-child(1) { background: radial-gradient(circle, #fff, transparent); animation-delay: 0s; }
-    .glitter:nth-child(2) { background: radial-gradient(circle, #000, transparent); animation-delay: 0.3s; }
-    .glitter:nth-child(3) { background: radial-gradient(circle, #C0C0C0, transparent); animation-delay: 0.6s; }
-    .glitter:nth-child(4) { background: radial-gradient(circle, #FF0000, transparent); animation-delay: 0.9s; }
-    .glitter:nth-child(5) { background: radial-gradient(circle, #FFA500, transparent); animation-delay: 1.2s; }
-    .glitter:nth-child(6) { background: radial-gradient(circle, #FFFF00, transparent); animation-delay: 1.5s; }
-    .glitter:nth-child(7) { background: radial-gradient(circle, #008000, transparent); animation-delay: 1.8s; }
-    .glitter:nth-child(8) { background: radial-gradient(circle, #0000FF, transparent); animation-delay: 2.1s; }
-    .glitter:nth-child(9) { background: radial-gradient(circle, #4B0082, transparent); animation-delay: 2.4s; }
-    .glitter:nth-child(10) { background: radial-gradient(circle, #EE82EE, transparent); animation-delay: 2.7s; }
+.container {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
 
-    @keyframes sparkle {
-      0%, 100% {
-        transform: scale(0.8);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.5);
-        opacity: 0.5;
-      }
-    }
+.animated-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    animation: fadeIn 3s ease-out forwards;
+    white-space: nowrap;
+}
 
-    @keyframes moveGlitter {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(calc(100vw - 50%), calc(100vh - 50%));
-      }
-    }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
 
-    /* Typing Effect */
-    #text-container {
-      position: relative;
-      text-align: center;
-    }
+/* Snowflakes */
+.snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
-    .wish {
-      text-align: center;
+.snowflake {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: fall linear infinite;
+}
 
-font-size: 2rem;
-      font-family: 'Great Vibes', cursive;
-      color: black;
-      margin: 0;
- white-space: nowrap;
-      animation: typing 5s steps(25, end), blink 0.8s step-end infinite alternate, fadeout 10s linear infinite;
-      background: linear-gradient(90deg, #FF8C00, #FFD700, #11D7CD);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Keyframes */
-    @keyframes typing {
-      0% {
-        width: 0;
-      }
-      50% {
-        width: 100%;
-      }
-      100% {
-        width: 100%;
-      }
-    }
-
-    @keyframes fadeout {
-      0%, 90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-
-    @keyframes blink {
-      50% {
-        border-color: #B5FFFC;
-      }
-    }
-  </style>
-
-  <div class="glitter-container">
-    <!-- Glitter Elements -->
-    <div class="glitter" style="top: 10%; left: 15%;"></div>
-    <div class="glitter" style="top: 20%; left: 50%;"></div>
-    <div class="glitter" style="top: 70%; left: 30%;"></div>
-    <div class="glitter" style="top: 40%; left: 70%;"></div>
-    <div class="glitter" style="top: 80%; left: 80%;"></div>
-    <div class="glitter" style="top: 30%; left: 60%;"></div>
-    <div class="glitter" style="top: 50%; left: 20%;"></div>
-    <div class="glitter" style="top: 75%; left: 10%;"></div>
-    <div class="glitter" style="top: 90%; left: 90%;"></div>
-    <div class="glitter" style="top: 15%; left: 75%;"></div>
-  </div>
-
-  <div id="text-container">
-    <h3 class="wish">Happy New Year 2025</h3>
-  </div>
-</body>
-</html>
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+</style>
 
 
 <!-- Alert Container -->
