@@ -1750,7 +1750,7 @@ font-size:15px;
                   <div class="form-group">
                     <input type="email" class="form-control" id="email" name="email" placeholder="Type Email If you are BenchSales" required>
                   </div>
-                  <button type="submit" class="btn btn-primary">Send Email</button>
+                  <button type="submit" class="btn btn-primary">Send Email <i class="fa-solid fa-envelope"></i></button>
                 </form>
               </div>
             </div>
@@ -1760,7 +1760,226 @@ font-size:15px;
     </div>
   </div>
 <br>
-              </div>
+<div class="col-md-12">
+    <div class="row g-2"> 
+        <div class="col-6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+
+.notepad-container {
+            display: none;
+            position: fixed;
+            top: 320px;
+            left:928px;
+            width: 400px;
+            height: 300px;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .notepad-container.maximized {
+            width: 100% !important;
+            height: 100% !important;
+            top: 57px !important;
+            left: 0 !important;
+        }
+
+        .notepad-container.minimized {
+            width: 40px !important;
+            height: 40px !important;
+            overflow: hidden;
+display:none !important;
+        }
+
+        .notepad-header {
+            background: #f0f0f0;
+            padding: 5px;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notepad-controls button {
+            background: none;
+            border: none;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+
+        .notepad-content {
+            padding: 10px;
+            height: calc(100% - 30px);
+            overflow: auto;
+        }
+
+        .content-editable {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+
+       .reopen-icon {
+    position: fixed;
+    right: 20px;
+    top: 80px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+.reopen-icon::before {
+    content: '';
+    position: absolute;
+    width: 50px;  /* Circle size */
+    height: 50px;
+    background: rgba(256, 233, 215, 0.9);  /* Overlay color */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);  /* Popover shadow */
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.reopen-icon:hover::before {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fa-sticky-note {
+    position: relative;
+    z-index: 1;
+    color: #333;  /* Icon color */
+    transition: color 0.3s ease;
+}
+
+.reopen-icon:hover .fa-sticky-note {
+    color: #000;  /* Darker color on hover */
+}
+    </style>
+<button class="btn btn-danger w-100" onclick="toggleNotepad()">Notepad  <i class="fa-solid fa-pen-to-square"></i></button>
+  <div class="notepad-container" id="notepad">
+        <div class="notepad-header">
+            <span>Notepad</span>
+            <div class="notepad-controls">
+                <button onclick="toggleMinimize()"><i class="fas fa-window-minimize"></i></button>
+                <button onclick="toggleMaximize()"><i class="far fa-window-maximize"></i></button>
+                <button onclick="closeNotepad()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="notepad-content">
+            <div class="content-editable" contenteditable="true">Start Typing Here...</div>
+        </div>
+    </div>
+
+    <div class="reopen-icon" id="reopenIcon" onclick="reopenNotepad()">
+        <i class="fa-solid fa-pen-to-square fa-2x"></i>
+<i class=""></i>
+    </div>
+
+        </div>
+
+    <script>
+          let isDragging = false;
+        let initialX;
+        let initialY;
+        let currentX = 50;  // Initial positions
+        let currentY = 50;  // Initial positions
+        const notepad = document.getElementById('notepad');
+
+        function toggleNotepad() {
+            notepad.style.display = notepad.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('reopenIcon').style.display = 'none';
+        }
+
+        function closeNotepad() {
+            notepad.style.display = 'none';
+        }
+
+        function toggleMaximize() {
+            notepad.classList.toggle('maximized');
+        }
+
+        function toggleMinimize() {
+            notepad.classList.toggle('minimized');
+            document.getElementById('reopenIcon').style.display = 
+                notepad.classList.contains('minimized') ? 'block' : 'none';
+        }
+
+        function reopenNotepad() {
+            notepad.classList.remove('minimized');
+            document.getElementById('reopenIcon').style.display = 'none';
+            notepad.style.display = 'block';
+        }
+
+      notepad.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', endDrag);
+
+        function startDrag(e) {
+            if (e.target.closest('.notepad-header') && !notepad.classList.contains('maximized')) {
+                isDragging = true;
+                
+                // Get initial mouse position
+                initialX = e.clientX;
+                initialY = e.clientY;
+                
+                // Get current notepad position
+                const rect = notepad.getBoundingClientRect();
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Add transition for smooth movement
+                notepad.style.transition = 'none';
+            }
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                // Calculate new position
+                const deltaX = e.clientX - initialX;
+                const deltaY = e.clientY - initialY;
+                
+                const newX = currentX + deltaX;
+                const newY = currentY + deltaY;
+
+                // Apply new position
+                notepad.style.left = `${newX}px`;
+                notepad.style.top = `${newY}px`;
+            }
+        }
+
+        function endDrag(e) {
+            if (isDragging) {
+                isDragging = false;
+                
+                // Save final position
+                const rect = notepad.getBoundingClientRect();
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Reset transition
+                notepad.style.transition = '';
+            }
+        }
+
+    </script>
+
+
+        <div class="col-6">
+            <button type="submit" class="btn btn-info w-100">Calculator <i class="fa-solid fa-calculator"></i></button>
+        </div>
+    </div>
+</div>
+
+<br>
+  </div>
             </div>
 
 
