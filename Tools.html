@@ -306,79 +306,71 @@ height: 40px;
     <!-- Main Content -->
     <div class="main-content">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Main Interface Styles */
+        .icon-container {
+            position: fixed;
+            right: 20px;
+            bottom: 60px;
+            z-index: 1000;
+        }
 
-    
-<style>
-  /* Remove body styling and position the icon container to the left bottom */
-.icon-container {
-    position: fixed;
-    right: 20px;
-    bottom: 60px;
-z-index:1000;
-}
+        .main-icon {
+            width: 60px;
+            height: 60px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
 
-@media (max-width: 767.98px) {
-.icon-container {
-    position: fixed;
-    right: 20px;
-    bottom: 40px;
-z-index:1000;
-}
-}
+        .main-icon i {
+            color: white;
+            font-size: 24px;
+        }
 
+        .main-icon:hover {
+            background: #0056b3;
+            transform: rotate(135deg);
+        }
 
-.main-icon {
-    width: 60px;
-    height: 60px;
-    background-color: #007bff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
+        .vertical-icons {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-.main-icon i {
-    color: white;
-    font-size: 24px;
-}
+        .icon-item {
+            width: 50px;
+            height: 50px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-.main-icon:hover {
-    background-color: #0056b3;
-    transform: rotate(45deg);
-}
+        .icon-item i {
+            color: white;
+            font-size: 18px;
+        }
 
-.vertical-icons {
-    position: absolute;
-    bottom: 70px; /* Position vertical icons above the main icon */
-    left: 0;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-}
+        .icon-item:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
 
-.icon-item {
-    width: 50px;
-    height: 50px;
-    background-color: #007bff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.icon-item i {
-    color: white;
-    font-size: 18px;
-}
-
-.icon-item:hover {
-    background-color: #0056b3;
-}
-
+       /* Popup Styles */
 .popup {
     display: none;
     position: fixed;
@@ -386,118 +378,435 @@ z-index:1000;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
-z-index:2;
+    z-index: 999;
 }
 
 .popup-content {
-    background-color: white;
-    padding: 20px;
+    background: white;
     border-radius: 10px;
-    text-align: center;
     position: relative;
+    width: 50%;
+    min-height: auto;
+    min-width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
+.popup-content h2 {
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    color: #333;
 }
-</style>
+
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1001;
+        }
+
+        /* Calculator Popup Styles */
+        #calculator-popup .popup-content {
+            width: 420px;
+            padding: 15px;
+        }
+
+      .calculator {
+            width: 100%;
+        }
+
+        .display {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        #history {
+            font-size: 14px;
+            color: #6c757d;
+            text-align: right;
+            min-height: 20px;
+            margin-bottom: 5px;
+            overflow-y: auto;
+            max-height: 60px;
+        }
+
+        #current {
+            width: 100%;
+            border: none;
+            font-size: 24px;
+            text-align: right;
+            background-color: transparent;
+            outline: none;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f8f9fa;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background-color: #e9ecef;
+        }
+
+        .operator {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .operator:hover {
+            background-color: #0056b3;
+        }
+
+        #equals {
+            background-color: #28a745;
+            color: white;
+            grid-column: span 2;
+        }
+
+        #backspace {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        /* Notes Popup Styles */
+        .content-editable {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            outline: none;
+            overflow: auto;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .content-editable:empty::before {
+            content: "Start typing here...";
+            color: #999;
+        }
+
+        /* Cart Popup Styles */
+        .popup-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+
+        .popup-body li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fa-check-circle { color: #2563eb; }
+        .fa-long-arrow-alt-right { color: #28a745; }
+
+        .terms-link {
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        #paymentForm {
+            margin-top: 15px;
+            height: 40px;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .icon-container {
+                bottom: 40px;
+                right: 15px;
+            }
+
+            .popup-content {
+                width: calc(100% - 40px) !important;
+                margin: 20px;
+            }
+
+            #calculator-popup .popup-content {
+                width: calc(100% - 40px);
+            }
+
+            button {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .content-editable {
+                height: 50vh;
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+
+    <!-- Icon Container -->
     <div class="icon-container">
         <div class="main-icon" id="mainIcon">
             <i class="fas fa-plus"></i>
         </div>
         <div class="vertical-icons" id="verticalIcons">
-            <div class="icon-item" data-pane="calculator"><i class="fas fa-calculator"></i></div>
-            <div class="icon-item" data-pane="notes"><i class="fas fa-sticky-note"></i></div>
-            <div class="icon-item" data-pane="email"><i class="fas fa-envelope"></i></div>
-            <div class="icon-item" data-pane="cart"><i class="fas fa-shopping-cart"></i></div>
-            <div class="icon-item" data-pane="services"><i class="fas fa-cogs"></i></div>
+            <div class="icon-item" data-popup="calculator-popup">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <div class="icon-item" data-popup="notes-popup">
+                <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="icon-item" data-popup="email-popup">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="icon-item" data-popup="cart-popup">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="icon-item" data-popup="services-popup">
+                <i class="fas fa-cogs"></i>
+            </div>
         </div>
     </div>
 
-    <div class="popup" id="popup">
+    <!-- Calculator Popup -->
+    <div class="popup" id="calculator-popup">
         <div class="popup-content">
-            <span class="close-btn" id="closeBtn">&times;</span>
-            <p id="popupText"></p>
+            <span class="close-btn">&times;</span>
+            <div class="calculator">
+                <div class="display">
+                    <div id="history"></div>
+                    <input type="text" id="current" readonly>
+                </div>
+                <div class="buttons">
+                    <button class="operator" data-value="C">C</button>
+                    <button id="backspace" data-value="backspace"><i class="fas fa-backspace"></i></button>
+                    <button data-value="00">00</button>
+                    <button class="operator" data-value="/">/</button>
+                    <button data-value="1">1</button>
+                    <button data-value="2">2</button>
+                    <button data-value="3">3</button>
+                    <button class="operator" data-value="*">*</button>
+                    <button data-value="4">4</button>
+                    <button data-value="5">5</button>
+                    <button data-value="6">6</button>
+                    <button class="operator" data-value="-">-</button>
+                    <button data-value="7">7</button>
+                    <button data-value="8">8</button>
+                    <button data-value="9">9</button>
+                    <button class="operator" data-value="+">+</button>
+                    <button data-value="0">0</button>
+                    <button data-value=".">.</button>
+                    <button id="equals" data-value="=">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Popup -->
+    <div class="popup" id="notes-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Notes</h2>
+            <div class="content-editable" contenteditable="true"></div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Popup -->
+    <div class="popup" id="cart-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>What you get?</h2>
+            <div class="popup-body">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i>15,000+ vendors list</li>
+                    <li><i class="fas fa-check-circle"></i>200+ Prime Vendor's List</li>
+                    <li><i class="fas fa-long-arrow-alt-right"></i>Instant access after payment</li>
+                </ul>
+                <center>
+                    <b>Read our</b> 
+                    <a class="terms-link" href="#" onclick="openModal()">
+                        Terms & Conditions <i class="fas fa-check-circle"></i>
+                    </a>
+                    <div id="paymentForm">
+                        <form id="rzpForm"></form>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other Popups -->
+    <div class="popup" id="email-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Email</h2>
+            <div class="popup-body">
+                <!-- Email content -->
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="services-popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Services</h2>
+            <div class="popup-body">
+                <!-- Services content -->
+            </div>
         </div>
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-    const mainIcon = document.getElementById('mainIcon');
-    const verticalIcons = document.getElementById('verticalIcons');
-    const popup = document.getElementById('popup');
-    const popupText = document.getElementById('popupText');
-    const closeBtn = document.getElementById('closeBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainIcon = document.getElementById('mainIcon');
+            const verticalIcons = document.getElementById('verticalIcons');
+            let hoverTimeout;
+            let currentPopup = null;
 
-    let isHoveringMainIcon = false;
-    let isHoveringVerticalIcons = false;
-    let hoverTimeout;
-
-    // Show vertical icons and change icon to cross on hover
-    mainIcon.addEventListener('mouseenter', function() {
-        isHoveringMainIcon = true;
-        verticalIcons.style.display = 'flex';
-        mainIcon.innerHTML = '<i class="fas fa-times"></i>';
-    });
-
-    // Hide vertical icons and change icon back to plus when mouse leaves main icon
-    mainIcon.addEventListener('mouseleave', function() {
-        isHoveringMainIcon = false;
-        startHoverTimeout();
-    });
-
-    // Keep vertical icons visible if hovering over them
-    verticalIcons.addEventListener('mouseenter', function() {
-        isHoveringVerticalIcons = true;
-        verticalIcons.style.display = 'flex';
-        mainIcon.innerHTML = '<i class="fas fa-times"></i>';
-    });
-
-    // Hide vertical icons when mouse leaves the vertical icons area
-    verticalIcons.addEventListener('mouseleave', function() {
-        isHoveringVerticalIcons = false;
-        startHoverTimeout();
-    });
-
-    // Function to delay hiding the vertical icons
-    function startHoverTimeout() {
-        clearTimeout(hoverTimeout); // Clear any existing timeout
-        hoverTimeout = setTimeout(function() {
-            if (!isHoveringMainIcon && !isHoveringVerticalIcons) {
-                verticalIcons.style.display = 'none';
-                mainIcon.innerHTML = '<i class="fas fa-plus"></i>';
+            // Icon Hover Handling
+            function showIcons() {
+                clearTimeout(hoverTimeout);
+                verticalIcons.style.display = 'flex';
+                mainIcon.innerHTML = '<i class="fas fa-times"></i>';
             }
-        }, 300); // 300ms delay before hiding
-    }
 
-    // Handle click on vertical icons
-    document.querySelectorAll('.icon-item').forEach(icon => {
-        icon.addEventListener('click', function() {
-            const pane = this.getAttribute('data-pane');
-            popupText.textContent = `You clicked on the ${pane} icon.`;
-            popup.style.display = 'flex';
+            function hideIcons() {
+                hoverTimeout = setTimeout(() => {
+                    verticalIcons.style.display = 'none';
+                    mainIcon.innerHTML = '<i class="fas fa-plus"></i>';
+                }, 300);
+            }
+
+            mainIcon.addEventListener('mouseenter', showIcons);
+            mainIcon.addEventListener('mouseleave', hideIcons);
+            verticalIcons.addEventListener('mouseenter', showIcons);
+            verticalIcons.addEventListener('mouseleave', hideIcons);
+
+            // Popup Handling
+            document.querySelectorAll('.icon-item').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    if(currentPopup) currentPopup.style.display = 'none';
+                    const popupId = this.dataset.popup;
+                    currentPopup = document.getElementById(popupId);
+                    currentPopup.style.display = 'flex';
+                    
+                    if(popupId === 'cart-popup' && !document.querySelector('#rzpScript')) {
+                        const script = document.createElement('script');
+                        script.id = 'rzpScript';
+                        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+                        script.dataset.payment_button_id = 'pl_PsXVCue2RE0NI5';
+                        script.async = true;
+                        document.getElementById('rzpForm').appendChild(script);
+                    }
+                });
+            });
+
+            // Close Handling
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btn.closest('.popup').style.display = 'none';
+                    currentPopup = null;
+                });
+            });
+
+            // Close on Outside Click
+            window.addEventListener('click', (e) => {
+                if(e.target.classList.contains('popup')) {
+                    e.target.style.display = 'none';
+                    currentPopup = null;
+                }
+            });
+
+            // Calculator Logic
+            const currentInput = document.getElementById('current');
+            const historyDisplay = document.getElementById('history');
+            let history = [];
+
+            document.querySelectorAll('.buttons button').forEach(button => {
+                button.addEventListener('click', () => handleButtonClick(button.dataset.value));
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (document.activeElement.tagName === 'INPUT' && document.activeElement.id !== 'current') return;
+                
+                const key = e.key;
+                if (/[0-9+\-*/.=]|Backspace|Enter/.test(key)) {
+                    e.preventDefault();
+                    if (key === 'Enter') handleButtonClick('=');
+                    else if (key === 'Backspace') handleButtonClick('backspace');
+                    else handleButtonClick(key);
+                }
+            });
+
+            function handleButtonClick(value) {
+                if (value === 'C') {
+                    currentInput.value = '';
+                    historyDisplay.textContent = '';
+                } else if (value === 'backspace') {
+                    currentInput.value = currentInput.value.slice(0, -1);
+                } else if (value === '=') {
+                    try {
+                        const result = eval(currentInput.value);
+                        history.push(`${currentInput.value} = ${result}`);
+                        historyDisplay.textContent = history.join('\n');
+                        currentInput.value = result;
+                    } catch (error) {
+                        currentInput.value = 'Error';
+                    }
+                } else {
+                    currentInput.value += value;
+                }
+            }
+
+            // Notes Placeholder Handling
+            const editable = document.querySelector('.content-editable');
+            editable.addEventListener('focus', function() {
+                if(this.textContent === 'Start typing here...') this.textContent = '';
+            });
+            editable.addEventListener('blur', function() {
+                if(!this.textContent.trim()) this.textContent = 'Start typing here...';
+            });
         });
-    });
 
-    // Close popup
-    closeBtn.addEventListener('click', function() {
-        popup.style.display = 'none';
-    });
-
-    popup.addEventListener('click', function(event) {
-        if (event.target === popup) {
-            popup.style.display = 'none';
+        function openModal() {
+            alert('Terms & Conditions content here');
         }
-    });
-});
-      
     </script>
 
         <!-- Home Tab -->
