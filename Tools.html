@@ -2232,45 +2232,62 @@ display: flex;
   margin: 5px;
   padding: 5px;
   width: 100%;
-  display: block; /* Default display */
+  overflow: hidden; /* Prevent any overflow */
+  box-sizing: border-box;
 }
 
 .ad-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   gap: 10px;
-  max-width: 1456px; /* 728*2 + gaps */
+  max-width: calc(728px * 2 + 20px); /* Account for gaps */
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .ad-column {
-  flex: 1;
-  max-width: 728px;
-  min-width: 300px;
-  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 90px; /* Fixed height for 728x90 ads */
+  box-sizing: border-box;
 }
 
 .ad-unit {
   width: 100%;
-  height: auto;
-  max-width: 728px;
-  display: inline-block;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Hide on mobile (below 768px) */
+.ad-unit img {
+  width: 100%;
+  height: auto;
+  max-width: 728px;
+  object-fit: contain;
+}
+
+/* Mobile hide (below 768px) */
 @media (max-width: 768px) {
   .ad-banner2 {
     display: none;
   }
 }
 
-/* Tablet responsiveness */
-@media (min-width: 769px) and (max-width: 1200px) {
+/* Desktop overflow prevention */
+@media (max-width: 1456px) {
   .ad-container {
     padding: 0 10px;
+    max-width: 100%;
   }
+}
+
+/* Tablet view adjustment */
+@media (min-width: 769px) and (max-width: 1366px) {
   .ad-column {
-    max-width: 600px;
+    max-width: calc(50% - 5px);
   }
 }
 </style>
