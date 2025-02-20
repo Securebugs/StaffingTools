@@ -186,6 +186,9 @@ padding:20px;
             .home-cards {
                 margin-left: 20px; /* Reduced margin between ad card and first card */
             }
+.ad-banner {
+display: none;
+}
         }
 
 
@@ -1951,6 +1954,7 @@ path:hover {
 </svg>
       </div>
     </div>
+
   </div>
 
   <script>
@@ -1978,7 +1982,20 @@ path:hover {
   </script>
 
 </div>
-
+<div class="card mar-card">
+    <div class="marquee-container">
+        <div class="trending-now">
+            Trending Now
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHBzaDlzcGcxdGRxNTN2dWRiZXg3aXpjbnVicHJjZ24za2V2dHJreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XE7N9DYWUwiUPTr3eY/giphy.webp" alt="Animated GIF" width="35" height="25">
+        </div>
+        <div class="marquee" id="trends-marquee">Loading trends...</div>
+        <div class="play-pause-container">
+            <div class="play-pause-btn" id="playPauseBtn">
+                <i class="fas fa-pause"></i>
+            </div>
+        </div>
+    </div>
+</div>
  <style>
 .mar-card {
       flex: 1;
@@ -2058,20 +2075,7 @@ display: flex;
             cursor: pointer;
         }
     </style>
-<div class="card mar-card">
-    <div class="marquee-container">
-        <div class="trending-now">
-            Trending Now
-            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHBzaDlzcGcxdGRxNTN2dWRiZXg3aXpjbnVicHJjZ24za2V2dHJreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XE7N9DYWUwiUPTr3eY/giphy.webp" alt="Animated GIF" width="35" height="25">
-        </div>
-        <div class="marquee" id="trends-marquee">Loading trends...</div>
-        <div class="play-pause-container">
-            <div class="play-pause-btn" id="playPauseBtn">
-                <i class="fas fa-pause"></i>
-            </div>
-        </div>
-    </div>
-</div>
+
     <script>
         function getRandomColor() {
             const colors = ['black', 'red'];
