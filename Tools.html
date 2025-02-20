@@ -819,18 +819,6 @@ height: 40px;
   }
 }
 
-
-/* Ad Banner 2 */
-.ad-banner2 {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-  margin: 5px;
-  padding: 5px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Optional: vertical centering */
-}
-
     /* Custom card styles */
     .custom-card {
       flex: 1;
@@ -2234,8 +2222,62 @@ display: flex;
     </div>
   </div>
 
+
+<!-- addds -->
+
+<style>
+/* Updated CSS */
+.ad-banner2 {
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  display: block; /* Default display */
+}
+
+.ad-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1456px; /* 728*2 + gaps */
+  margin: 0 auto;
+}
+
+.ad-column {
+  flex: 1;
+  max-width: 728px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.ad-unit {
+  width: 100%;
+  height: auto;
+  max-width: 728px;
+  display: inline-block;
+}
+
+/* Hide on mobile (below 768px) */
+@media (max-width: 768px) {
+  .ad-banner2 {
+    display: none;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .ad-container {
+    padding: 0 10px;
+  }
+  .ad-column {
+    max-width: 600px;
+  }
+}
+</style>
 <div class="ad-banner2">
-<script type="text/javascript">
+  <div class="ad-container">
+    <div class="ad-column">
+     <script type="text/javascript">
 	atOptions = {
 		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
 		'format' : 'iframe',
@@ -2245,7 +2287,23 @@ display: flex;
 	};
 </script>
 <script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
+
+    </div>
+    <div class="ad-column">
+      <script type="text/javascript">
+	atOptions = {
+		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
+    </div>
+  </div>
 </div>
+
 
   <script>
     // JSON data for USA states with additional fields
