@@ -159,6 +159,12 @@
             display: none; /* Hidden by default */
         }
 
+.card-container {
+  display: flex;
+  gap: 20px; /* Space between cards */
+  width: 100%;
+}
+
         /* Ad Banner */
         .ad-banner {
             width: 220px; /* Adjusted width */
@@ -902,7 +908,9 @@ path:hover {
 }
   </style>
 
-<div style="card-body d-flex flex-column flex-md-row">
+
+<div class="card-container">
+<div style="ad-banner">
 <script type="text/javascript">
 	atOptions = {
 		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
@@ -1968,7 +1976,7 @@ path:hover {
     setInterval(updateTime, 1000);
   </script>
 
-
+</div>
 
  <style>
 .mar-card {
