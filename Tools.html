@@ -166,32 +166,6 @@
   width: 100%;
 }
 
-/* Ad Banner */
-.ad-banner {
-  flex: 0 0 30%;
-  height: 600px;
-  background-color: #007bff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 25px;
-}
-
-@media (max-width: 768px) {
-  .ad-banner {
-    display: none !important;
-  }
-  /* Optional: Makes custom card full width */
-  .custom-card {
-    flex: 0 0 100% !important;
-  }
-}
-
         /* Adjust margin between ad card and first card */
         @media (min-width: 768px) {
             .home-cards {
@@ -833,6 +807,32 @@ height: 40px;
        <div id="home" class="tab-content active">
 
   <style>
+
+/* Ad Banner */
+.ad-banner {
+  flex: 0 0 30%;
+  height: 600px;
+  background-color: #007bff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  #ad-banner {
+    display: none !important;
+  }
+  /* Optional: Makes custom card full width */
+  .custom-card {
+    flex: 0 0 100% !important;
+  }
+}
     /* Custom card styles */
     .custom-card {
       flex: 1;
