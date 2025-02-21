@@ -59,14 +59,21 @@
       overflow: auto; /* Add scroll if content overflows */
     }
 
+.top-bg{
+background-color: #f1d580;
+    background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 60%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
+}
         /* Sidebar Styles */
         .sidebar {
             width: 55px; /* Initial width */
             height: 100vh;
             position: fixed;
-            top: 56px;
+            top: 45px;
             left: 0;
-            background-color: #f8f9fa; /* Light color */
+            background-color: #f1d580;
+    background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
             overflow-x: hidden;
             transition: width 0.3s, left 0.3s;
             border-right: 1px solid #ddd; /* Light border */
@@ -212,70 +219,47 @@ font-size:30px;
             }
         }
 
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            z-index: -1;
-        }
+    
     </style>
 </head>
 <body>
 
     <!-- Top Fixed Bar -->
 <style>
-    
- .alert-container {
-            position: fixed;
-            top: 1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 75%;
-height: 40px;
-            text-align: center;
-            font-size: 11px;
-            z-index: 9999;
-        }
-        .alert strong {
-            font-size: 12px;
-        }
-    </style>
-<div class="alert-container">
-            <div class="alert alert-dismissible fade" role="alert">
-                <strong>Warning!</strong> Hey! You are not authorized for this action.
-            </div>
+
+.footer-svg.g { fill: #0c0; }
+
+/* Your existing alert styles */
+.alert-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 40px;
+    text-align: center;
+    font-size: 11px;
+    z-index: 9999;
+}
+.alert strong { font-size: 12px; }
+.alert {
+    color: #000;
+    padding: 8px;
+    border-radius: 3px;
+    display: none;
+}
+.alert.show { display: block; }
+</style>
+
+<div class="dv">
+    <div class="alert-container">
+        <div class="alert" role="alert">
+            <strong>Warning!</strong> Hey! You are not authorized for this action.
         </div>
+    </div>
+</div>
 
-
- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Hide the alert on page load
-        var alertDiv = document.querySelector('.alert');
-        alertDiv.classList.remove('show');
-    });
-
-    document.addEventListener('contextmenu', function(event) {
-        event.preventDefault(); // Prevent right-click menu
-        var alertDiv = document.querySelector('.alert');
-        alertDiv.classList.add('show'); // Ensure the alert is visible
-
-        // Hide the alert after 3 seconds
-        setTimeout(function() {
-            alertDiv.classList.remove('show');
-        }, 3000);
-    });
-
-    document.querySelector('.alert').addEventListener('click', function(event) {
-        var alertDiv = document.querySelector('.alert');
-        alertDiv.classList.remove('show'); // Hide the alert when clicked
-    });
-</script>
-    <nav class="navbar navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-light top-bg bg-light fixed-top">
         <span class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></span>
 <a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
         
@@ -294,6 +278,7 @@ height: 40px;
             <li><a href="#" data-tab="interview"><i class="fas fa-user-tie"></i> <span class="menu-text">Interview</span></a></li>
             <li><a href="#" data-tab="staffingInfo"><i class="fas fa-dice"></i> <span class="menu-text">Entertainment</span></a></li>
             <li><a href="#" data-tab="contactUs"><i class="fas fa-phone-alt"></i> <span class="menu-text">Contact Us</span></a></li>
+
         </ul>
     </div>
 
@@ -825,8 +810,7 @@ height: 40px;
       min-width: 250px;
       max-width: 90%; /* Set max-width to 80% */
       height: 85vh; /* Set height to 80% of the viewport height */
-      min-height: 300px; /* Minimum height */
-      
+      min-height: 500px; /* Minimum height */
       margin: 0 auto 20px; /* Center the card horizontally */
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
       overflow: auto; /* Add scroll if content overflows */
@@ -1070,7 +1054,7 @@ display: flex;
      
      width="140%" 
      height="100%" 
-      viewBox="0 60 900 550" 
+      viewBox="0 40 800 550" 
      
      xml:space="preserve">
 
@@ -2083,6 +2067,13 @@ display: flex;
   <text x="50%" y="55%" font-weight="800" font-size="22" text-anchor="middle" fill="black">Eastern Time</text>
   <text id="time-EST" x="50%" y="80%" font-weight="800" font-size="25" text-anchor="middle" fill="red">Loading...</text>
 </svg>
+
+  <svg class="svg-box" viewBox="0 0 200 150" fill="#e8fee8">
+    <rect width="200" height="150" fill="#e8fee8" />
+    <text x="50%" y="30%" font-weight="800" font-size="40" text-anchor="middle" fill="black" stroke="white" stroke-width="1">IST</text>
+    <text x="50%" y="55%" font-weight="800" font-size="22" text-anchor="middle" fill="black">Indian Time</text>
+    <text id="time-IST" x="50%" y="80%" font-weight="800" font-size="25" text-anchor="middle" fill="red">Loading...</text>
+  </svg>
       </div>
     </div>
 
@@ -2101,9 +2092,10 @@ display: flex;
 <script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
 </div>
 
-  <script>
+ <script>
     function updateTime() {
       const timeZones = {
+        IST: 'Asia/Kolkata',      // Added Indian Standard Time
         EST: 'America/New_York',
         CST: 'America/Chicago',
         MST: 'America/Denver',
@@ -2123,8 +2115,8 @@ display: flex;
       });
     }
     setInterval(updateTime, 1000);
-  </script>
-
+    updateTime(); // Initial call to avoid initial delay
+</script>
 </div>
 
  
@@ -2856,7 +2848,7 @@ display: flex;
 <div class="cont">
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
+        <div class="card state-card">
           <div class="card-body">
             <center><h3 class="card-title"><i class="fas fa-money-check-alt"></i> Rate Converter<sup> (Approx.)</sup></h3></center>
             <!-- C2C to W2 Conversion -->
@@ -2880,22 +2872,100 @@ display: flex;
                 </div>
               </div>
              
-<div class="col-12 d-flex flex-column justify-content-center align-items-center" style="height: 100%;">
-
-  <span id="c2cLabel" class="badge bg-primary h5 p-2">C2C Rate</span>
-  
-  <div class="my-2">⥯</div>
-  
+<div class="col-12 d-flex flex-wrap flex-row justify-content-center align-items-center gap-3" style="height: 100%;">
+  <span id="c2cLabel" class="badge bg-primary  p-2">C2C Rate</span>
   <span id="w2Label" class="badge bg-warning p-2">W2 Rate</span>
-  
-  <div class="my-2">⥯</div>
-  
   <span id="1099Label" class="badge bg-success p-2">1099 Rate</span>
-  
-  <div class="my-2">⥯</div>
-  
   <span id="salaryLabel" class="badge bg-info p-2">Salary</span>
 </div>
+
+
+<script>
+function convertC2CtoW2() {
+    var c2cValue = parseFloat(document.getElementById('c2cRate').value) || 0;
+    if (c2cValue < 0) c2cValue = 0;
+    
+    document.getElementById('w2Rate').value = (c2cValue * 1.15).toFixed(2);
+    document.getElementById('1099Rate').value = c2cValue.toFixed(2);
+    document.getElementById('annualSalary').value = (c2cValue * 2080).toFixed(2);
+    updateLabels();
+    checkAllZeros();
+}
+
+function convertW2toC2C() {
+    var w2Input = document.getElementById('w2Rate').value;
+    
+    // Clear all fields if W2 is empty
+    if (w2Input.trim() === '') {
+        clearAllFields();
+        return;
+    }
+    
+    var w2Value = parseFloat(w2Input) || 0;
+    if (w2Value < 0) w2Value = 0;
+    
+    var c2cValue = w2Value + 10;
+    document.getElementById('c2cRate').value = c2cValue.toFixed(2);
+    document.getElementById('1099Rate').value = c2cValue.toFixed(2);
+    document.getElementById('annualSalary').value = (c2cValue * 2080).toFixed(2);
+    updateLabels();
+    checkAllZeros();
+}
+
+function convert1099() {
+    var _1099Value = parseFloat(document.getElementById('1099Rate').value) || 0;
+    if (_1099Value < 0) _1099Value = 0;
+    
+    document.getElementById('w2Rate').value = (_1099Value * 1.15).toFixed(2);
+    document.getElementById('c2cRate').value = _1099Value.toFixed(2);
+    document.getElementById('annualSalary').value = (_1099Value * 2080).toFixed(2);
+    updateLabels();
+    checkAllZeros();
+}
+
+function convertAnnualSalary() {
+    var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value) || 0;
+    if (annualSalaryValue < 0) annualSalaryValue = 0;
+    
+    var c2cValue = annualSalaryValue / 2080;
+    document.getElementById('c2cRate').value = c2cValue.toFixed(2);
+    document.getElementById('w2Rate').value = (c2cValue * 1.15).toFixed(2);
+    document.getElementById('1099Rate').value = c2cValue.toFixed(2);
+    updateLabels();
+    checkAllZeros();
+}
+
+function clearAllFields() {
+    document.getElementById('c2cRate').value = '';
+    document.getElementById('w2Rate').value = '';
+    document.getElementById('1099Rate').value = '';
+    document.getElementById('annualSalary').value = '';
+    updateLabels();
+}
+
+function updateLabels() {
+    var c2cValue = parseFloat(document.getElementById('c2cRate').value) || 0;
+    var w2Value = parseFloat(document.getElementById('w2Rate').value) || 0;
+    var _1099Value = parseFloat(document.getElementById('1099Rate').value) || 0;
+    var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value) || 0;
+
+    document.getElementById('c2cLabel').innerText = c2cValue ? "C2C Rate: $" + c2cValue.toFixed(2) + "/hr" : "C2C Rate";
+    document.getElementById('w2Label').innerText = w2Value ? "W2 Rate: $" + w2Value.toFixed(2) + "/hr" : "W2 Rate";
+    document.getElementById('1099Label').innerText = _1099Value ? "1099 Rate: $" + _1099Value.toFixed(2) + "/hr" : "1099 Rate";
+    document.getElementById('salaryLabel').innerText = annualSalaryValue ? "Salary: $" + annualSalaryValue.toFixed(2) + "/Yearly" : "Annual Salary";
+}
+
+function checkAllZeros() {
+    var c2c = parseFloat(document.getElementById('c2cRate').value) || 0;
+    var w2 = parseFloat(document.getElementById('w2Rate').value) || 0;
+    var _1099 = parseFloat(document.getElementById('1099Rate').value) || 0;
+    var salary = parseFloat(document.getElementById('annualSalary').value) || 0;
+
+    if (c2c === 0 && w2 === 0 && _1099 === 0 && salary === 0) {
+        clearAllFields();
+    }
+}
+</script>
 
               <br>
 <div class="tradingview-widget-container">
@@ -2903,86 +2973,7 @@ display: flex;
   <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
  
 </div>
-<script>
- function convertC2CtoW2() {
-      var c2cValue = parseFloat(document.getElementById('c2cRate').value);
-      if (c2cValue < 0) {
-        document.getElementById('c2cRate').value = 0;
-        c2cValue = 0;
-      }
-      document.getElementById('w2Rate').value = Math.max(c2cValue - 10, 0);
-      document.getElementById('1099Rate').value = c2cValue;
-      document.getElementById('annualSalary').value = Math.round(c2cValue * 2080);
-      updateLabels();
-      checkAllZeros();
-    }
 
-    function convertW2toC2C() {
-      var w2Value = parseFloat(document.getElementById('w2Rate').value);
-      if (w2Value < 0) {
-        document.getElementById('w2Rate').value = 0;
-        w2Value = 0;
-      }
-      document.getElementById('c2cRate').value = Math.max(w2Value + 10, 0);
-      document.getElementById('1099Rate').value = Math.max(w2Value + 10, 0);
-      document.getElementById('annualSalary').value = Math.round((w2Value + 10) * 2080);
-      updateLabels();
-      checkAllZeros();
-    }
-
-    function convert1099() {
-      var _1099Value = parseFloat(document.getElementById('1099Rate').value);
-      if (_1099Value < 0) {
-        document.getElementById('1099Rate').value = 0;
-        _1099Value = 0;
-      }
-      document.getElementById('w2Rate').value = Math.max(_1099Value - 10, 0);
-      document.getElementById('c2cRate').value = _1099Value;
-      document.getElementById('annualSalary').value = Math.round(_1099Value * 2080);
-      updateLabels();
-      checkAllZeros();
-    }
-
-    function convertAnnualSalary() {
-      var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value);
-      if (annualSalaryValue < 0) {
-        document.getElementById('annualSalary').value = 0;
-        annualSalaryValue = 0;
-      }
-      document.getElementById('c2cRate').value = Math.round(annualSalaryValue / 2080);
-      document.getElementById('w2Rate').value = Math.round(annualSalaryValue / 2080 - 10);
-      document.getElementById('1099Rate').value = Math.round(annualSalaryValue / 2080);
-      updateLabels();
-      checkAllZeros();
-    }
-
-    function updateLabels() {
-      var c2cValue = parseFloat(document.getElementById('c2cRate').value);
-      var w2Value = parseFloat(document.getElementById('w2Rate').value);
-      var _1099Value = parseFloat(document.getElementById('1099Rate').value);
-      var annualSalaryValue = parseFloat(document.getElementById('annualSalary').value);
-
-      document.getElementById('c2cLabel').innerText = c2cValue > 0 ? "C2C Rate: " + c2cValue + "/hr" : "C2C Rate";
-      document.getElementById('w2Label').innerText = w2Value > 0 ? "W2 Rate: " + w2Value + "/hr" : "W2 Rate";
-      document.getElementById('1099Label').innerText = _1099Value > 0 ? "1099 Rate: " + _1099Value + "/hr" : "1099 Rate";
-      document.getElementById('salaryLabel').innerText = annualSalaryValue > 0 ? "Salary: " + annualSalaryValue + "/Yearly" : "Annual Salary";
-    }
-
-    function checkAllZeros() {
-      var c2c = parseFloat(document.getElementById('c2cRate').value);
-      var w2 = parseFloat(document.getElementById('w2Rate').value);
-      var _1099 = parseFloat(document.getElementById('1099Rate').value);
-      var salary = parseFloat(document.getElementById('annualSalary').value);
-
-      if (c2c === 0 && w2 === 0 && _1099 === 0 && salary === 0) {
-        document.getElementById('c2cRate').value = 0;
-        document.getElementById('w2Rate').value = 0;
-        document.getElementById('1099Rate').value = 0;
-        document.getElementById('annualSalary').value = 0;
-        updateLabels();
-      }
-    }
-</script>
 
 
  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
@@ -4714,7 +4705,7 @@ margin-left:15px;
         position: relative;
         display: flex;
         flex-direction: column;
-        height: 95vh;
+        height: 85vh;
     }
 
     .container-t {
@@ -5511,144 +5502,15 @@ submitContactFormBtn.addEventListener('click', async function(event) {
 </div>
     </div>
 
-    <!-- Footer -->
 
-    <footer class="text-center top-bg p-3" style="color: black; font-size: 20px; height: 120px; width: 100%; background: #f8f9fa; position: relative; z-index: 10; border-top: 1px solid grey;">
-    <!-- addds -->
-
-<style>
-/* Updated CSS */
-.ad-banner2 {
-  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-  margin: 5px 0 5px 60px; /* Left margin 60px */
-  padding: 5px;
-  width: calc(100% - 60px); /* Compensate for left margin */
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.ad-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: center;
-  gap: 10px;
-  max-width: calc(728px * 2 + 20px); /* Account for gaps */
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.ad-column {
-  position: relative;
-  width: 100%;
-  height: 90px; /* Fixed height for 728x90 ads */
-  box-sizing: border-box;
-}
-
-.ad-unit {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.ad-unit img {
-  width: 100%;
-  height: auto;
-  max-width: 728px;
-  object-fit: contain;
-}
-
-/* Mobile hide (below 768px) */
-@media (max-width: 768px) {
-  .ad-banner2 {
-    display: none;
-  }
-}
-
-/* Desktop overflow prevention */
-@media (max-width: 1456px) {
-  .ad-container {
-    padding: 0 10px;
-    max-width: 100%;
-  }
-}
-
-/* Tablet view adjustment */
-@media (min-width: 769px) and (max-width: 1366px) {
-  .ad-column {
-    max-width: calc(50% - 5px);
-  }
-}
-</style>
-<div class="ad-banner2">
-  <div class="ad-container">
-    <div class="ad-column">
-     <script type="text/javascript">
-	atOptions = {
-		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
-
-    </div>
-    <div class="ad-column">
-      <script type="text/javascript">
-	atOptions = {
-		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
-    </div>
-  </div>
-</div>
-
-
-<a style="font-size: 15px; text-decoration: none; font-weight: bold;" href="#" onclick="openModal()">Documentation</a>
-
-    <b style="font-size: 14px;">© 2025 USA Staffing Tools 
-        <svg viewBox="0 0 22 22" aria-label="Verified account" role="img" class="footer-svg" data-testid="icon-verified">
-            <g>
-                <path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"></path>
-            </g>
-        </svg>
-    </b>
-    <br>
-    <style>
-        .footer-svg {
-            width: 15px;
-            height: 15px;
-            fill: #0077b3;
-            vertical-align: middle;
-        }
-    </style>
-    <small style="font-size: 12px;">
-        Made with <span><a href="https://iili.io/2QpqFcB.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
-        <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none;">Nandan Thakur 
-            <svg width="15" height="15" viewBox="0 0 24 24" class="footer-svg">
-                <path fill="#000000" d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path>
-            </svg>
-        </a>
-    </small>
-    <br>
-    <img src="https://www.easycounter.com/counter.php?usstaffing" border="0" alt="HTML Hit Counter">
-    <br>
+ <br>
     <style>
         .modal-documentation {
             display: none;
             position: fixed;
             top: 55px;
             left: 55px;
-            width: 96%;
+            width: 55%;
             height: 700px;
             padding: 20px;
             background: white;
@@ -5718,8 +5580,159 @@ submitContactFormBtn.addEventListener('click', async function(event) {
             document.getElementById("overlay").style.display = "none";
         }
     </script>
-</footer>
+    <!-- Footer -->
 
+<style>
+
+    /* Footer Styles */
+        .footer-f {
+            background-color: #f1d580 !important;
+    background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%) !important;
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 60%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%)!important;
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+           
+        }
+
+/* Updated CSS */
+.ad-banner2 {
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  margin: 5px 0 5px 60px; /* Left margin 60px */
+  padding: 5px;
+  width: calc(100% - 60px); /* Compensate for left margin */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ad-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 10px;
+background-color: #fff !important;
+  max-width: calc(728px * 2 + 20px); /* Account for gaps */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ad-column {
+  position: relative;
+  width: 100%;
+  height: 90px; /* Fixed height for 728x90 ads */
+  box-sizing: border-box;
+}
+
+.ad-unit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ad-unit img {
+  width: 100%;
+  height: auto;
+  max-width: 728px;
+  object-fit: contain;
+}
+
+/* Mobile hide (below 768px) */
+@media (max-width: 768px) {
+  .ad-banner2 {
+    display: none;
+  }
+}
+
+/* Desktop overflow prevention */
+@media (max-width: 1456px) {
+  .ad-container {
+    padding: 0 10px;
+    max-width: 100%;
+  }
+}
+
+/* Tablet view adjustment */
+@media (min-width: 769px) and (max-width: 1366px) {
+  .ad-column {
+    max-width: calc(50% - 5px);
+  }
+}
+</style>
+
+    <footer class="footer-f">
+    <!-- addds -->
+
+
+<div class="ad-banner2">
+  <div class="ad-container">
+    <div class="ad-column">
+     <script type="text/javascript">
+	atOptions = {
+		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
+
+    </div>
+    <div class="ad-column">
+      <script type="text/javascript">
+	atOptions = {
+		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
+    </div>
+  </div>
+</div>
+
+
+<a style="font-size: 15px; text-decoration: none; font-weight: bold;" href="#" onclick="openModal()">Documentation</a>
+
+    <b style="font-size: 14px;">© 2025 USA Staffing Tools 
+
+
+ <svg viewBox="0 0 22 22" aria-label="Verified account" role="img" id="t" class="footer-svg" data-testid="icon-verified">
+            <g>
+                <path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"></path>
+            </g>
+        </svg>
+
+    </b>
+    <br>
+    <style>
+        .footer-svg {
+            width: 15px;
+            height: 15px;
+            fill: #0077b3;
+            vertical-align: middle;
+        }
+    </style>
+    <small style="font-size: 12px;">
+        Made with <span><a href="https://iili.io/2QpqFcB.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
+        <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none;">Nandan Thakur 
+            <svg width="15" height="15" viewBox="0 0 24 24" class="footer-svg">
+                <path fill="#000000" d="M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3H19M18.5,18.5V13.2A3.26,3.26 0 0,0 15.24,9.94C14.39,9.94 13.4,10.46 12.92,11.24V10.13H10.13V18.5H12.92V13.57C12.92,12.8 13.54,12.17 14.31,12.17A1.4,1.4 0 0,1 15.71,13.57V18.5H18.5M6.88,8.56A1.68,1.68 0 0,0 8.56,6.88C8.56,5.95 7.81,5.19 6.88,5.19A1.69,1.69 0 0,0 5.19,6.88C5.19,7.81 5.95,8.56 6.88,8.56M8.27,18.5V10.13H5.5V18.5H8.27Z"></path>
+            </svg>
+        </a>
+    </small>
+    <br>
+    <img src="https://www.easycounter.com/counter.php?usstaffing" border="0" alt="HTML Hit Counter">
+   
+</footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -5760,5 +5773,23 @@ submitContactFormBtn.addEventListener('click', async function(event) {
             });
         });
     </script>
+
+<script>
+let r = true;
+const a=document.querySelector('.alert');
+
+document.getElementById('t').addEventListener('click',function(){
+    r=!r;
+    this.classList.toggle('g');
+});
+
+document.addEventListener('contextmenu',e=>{
+    if(r){
+        e.preventDefault();
+        a.classList.add('show');
+        setTimeout(()=>a.classList.remove('show'),2000);
+    }
+});
+</script>
 </body>
 </html>
