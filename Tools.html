@@ -42,6 +42,8 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+
     <style>
         /* General Styles */
         body {
@@ -52,6 +54,12 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
+.piedra-regular {
+  font-family: "Piedra", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
  .card {
      
@@ -99,6 +107,7 @@ background-color: #f1d580;
             color: #333; /* Dark text for light background */
             text-decoration: none;
             display: flex;
+            font-weight:800 !important;
             align-items: center;
             padding: 5px;
             border-radius: 5px;
@@ -261,7 +270,7 @@ font-size:30px;
 
     <nav class="navbar navbar-light top-bg bg-light fixed-top">
         <span class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></span>
-<a class="navbar-brand cursive-text mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
+<a class="navbar-brand piedra-regular mx-1" href="https://securebugs.github.io/StaffingTools/Tools">Staffing tools </a>
         
     </nav>
 
@@ -633,12 +642,12 @@ font-size:30px;
             <h2>What you get?</h2>
             <div class="popup-body">
                 <ul>
-                    <li><i class="fas fa-check-circle"></i>15,000+ vendors list</li>
-                    <li><i class="fas fa-check-circle"></i>200+ Prime Vendor's List</li>
-                    <li><i class="fas fa-long-arrow-alt-right"></i>Instant access after payment</li>
+                    <li><i class="fas fa-check-circle"></i>Active 15,000+ vendors list for Technical recruiters for all C2C roles</li>
+                    <li><i class="fas fa-check-circle"></i>Brand new 200+ Prime Vendor's Name and company name List to work on C2C & W2 roles for BDE</li>
+                    <li><i class="fas fa-long-arrow-alt-right"></i>Receive access within 20-30 minutes after payment</li>
                 </ul>
                 <center>
-                    <b>Read our</b> 
+                    <b>Before Doing Payment read our </b> 
                     <a class="terms-link" href="#" onclick="openModal()">
                         Terms & Conditions <i class="fas fa-check-circle"></i>
                     </a>
@@ -650,13 +659,72 @@ font-size:30px;
         </div>
     </div>
 
+<style>
+.notif{
+padding:2px;
+margin:3px;
+color:red;
+}
+#emailContainer .notif {
+    display: none;
+}
+
+#emailContainer:hover .notif {
+    display: block;
+}
+</style>
+
     <!-- Other Popups -->
     <div class="popup" id="email-popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
-            <h2>Email</h2>
+            <h2>Want Email?</h2>
             <div class="popup-body">
-                <!-- Email content -->
+               <div class="card">
+            <div class="card-body">
+              <div id="emailContainer">
+                <b>Please send your email to me to receive daily requirements!</b> 
+
+<strong class="notif">Only for Benchsales Recruiters**</strong>
+<br>
+         <form id="emailForm">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Type Email If you are BenchSales" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send Email <i class="fa-solid fa-envelope"></i></button>
+                </form>
+
+              </div>
+            </div>
+</div>
+        <script>
+    const form = document.getElementById('emailForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec'; // Updated URL with CORS Anywhere
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData
+        });
+
+        if (response.ok) {
+          alert('Email submitted successfully!');
+          form.reset();
+        } else {
+          console.error('Server Error:', response.statusText);
+          alert('Failed to submit email.');
+        }
+      } catch (error) {
+        console.error('Client Error:', error);
+        alert('An error occurred while submitting the form.');
+      }
+    });
+  </script>
+
             </div>
         </div>
     </div>
@@ -1054,7 +1122,7 @@ display: flex;
      
      width="140%" 
      height="100%" 
-      viewBox="0 40 800 550" 
+      viewBox="0 40 900 550" 
      
      xml:space="preserve">
 
@@ -5096,173 +5164,300 @@ padding-right: 90px;
 </div>
 
 <div id="staffingInfo" class="tab-content">
-
-
-<div class="entertainment-container">
-  <!-- Card 1 - Callbreak -->
-  <div class="entertainment-card">
-    <div class="entertainment-content">
-     <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Ace Card -->
-  <rect x="10" y="5" width="50" height="70" rx="5" ry="5" fill="white" stroke="red" stroke-width="2"/>
-  <text x="15" y="25" font-size="14" font-weight="bold" fill="red">A</text>
-  
-  <!-- King Card -->
-  <rect x="20" y="30" width="50" height="70" rx="5" ry="5" fill="white" stroke="blue" stroke-width="2"/>
-  <text x="25" y="55" font-size="14" font-weight="bold" fill="blue">K</text>
-  
-  <!-- Queen Card -->
-  <rect x="30" y="65" width="50" height="70" rx="5" ry="5" fill="white" stroke="black" stroke-width="2"/>
-  <text x="35" y="90" font-size="14" font-weight="bold" fill="black">Q</text>
-</svg>
-
-      <h2 class="entertainment-title">Play Card Game</h2>
+  <div class="entertainment-container">
+    <!-- Card 1 - Callbreak -->
+    <div class="entertainment-card">
+      <div class="entertainment-content">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ace Card -->
+          <rect x="10" y="5" width="50" height="70" rx="5" ry="5" fill="white" stroke="red" stroke-width="2"/>
+          <text x="15" y="25" font-size="14" font-weight="bold" fill="red">A</text>
+          <!-- King Card -->
+          <rect x="20" y="30" width="50" height="70" rx="5" ry="5" fill="white" stroke="blue" stroke-width="2"/>
+          <text x="25" y="55" font-size="14" font-weight="bold" fill="blue">K</text>
+          <!-- Queen Card -->
+          <rect x="30" y="65" width="50" height="70" rx="5" ry="5" fill="white" stroke="black" stroke-width="2"/>
+          <text x="35" y="90" font-size="14" font-weight="bold" fill="black">Q</text>
+        </svg>
+        <h2 class="entertainment-title">Play Card Game</h2>
+      </div>
+      <iframe class="entertainment-iframe" src="https://callbreak.com/web/"></iframe>
+      <button class="entertainment-close-btn">✕</button>
+      <button class="entertainment-fullscreen-btn"><i class="fas fa-expand"></i></button>
     </div>
-    <iframe class="entertainment-iframe" src="https://callbreak.com/web/"></iframe>
-    <button class="entertainment-close-btn">✕</button>
+
+    <!-- Card 2 - Cricket Scores -->
+    <div class="entertainment-card">
+      <div class="entertainment-content">
+        <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cricket Bat -->
+          <polygon points="45,10 55,10 60,70 40,70" fill="#D4A373" stroke="black" stroke-width="2"/>
+          <rect x="47" y="70" width="6" height="15" fill="#8B5A2B" stroke="black" stroke-width="2"/>
+          <!-- Cricket Ball -->
+          <circle cx="75" cy="75" r="8" fill="red" stroke="brown" stroke-width="2"/>
+          <path d="M70,70 Q80,80 90,70" stroke="white" stroke-width="1" fill="none"/>
+        </svg>
+        <h2 class="entertainment-title">Live Scores</h2>
+      </div>
+      <iframe class="entertainment-iframe" src="https://sports.ndtv.com/cricket/live-scores"></iframe>
+      <button class="entertainment-close-btn">✕</button>
+      <button class="entertainment-fullscreen-btn"><i class="fas fa-expand"></i></button>
+    </div>
   </div>
 
-  <!-- Card 2 - Cricket Scores -->
-  <div class="entertainment-card">
-    <div class="entertainment-content">
-      <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cricket Bat -->
-  <polygon points="45,10 55,10 60,70 40,70" fill="#D4A373" stroke="black" stroke-width="2"/>
-  <rect x="47" y="70" width="6" height="15" fill="#8B5A2B" stroke="black" stroke-width="2"/>
-  
-  <!-- Cricket Ball -->
-  <circle cx="75" cy="75" r="8" fill="red" stroke="brown" stroke-width="2"/>
-  <path d="M70,70 Q80,80 90,70" stroke="white" stroke-width="1" fill="none"/>
-</svg>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-      <h2 class="entertainment-title">Live Scores</h2>
-    </div>
-    <iframe class="entertainment-iframe" src="https://sports.ndtv.com/cricket/live-scores"></iframe>
-    <button class="entertainment-close-btn">✕</button>
-  </div>
-</div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<style>
-  .entertainment-container {
-    height: 90vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .entertainment-card {
-    position: relative;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin: 10px;
-    overflow: hidden;
-    min-height: 80vh;
-  }
-
-  .entertainment-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 20px;
-    transition: all 0.3s;
-  }
-
-  .entertainment-icon {
-    font-size: 2.8rem;
-    color: #2c3e50;
-    margin-bottom: 12px;
-  }
-
-  .entertainment-title {
-    color: #34495e;
-    font-size: 1.4rem;
-    text-align: center;
-  }
-
-  .entertainment-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-  }
-
-  .entertainment-close-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    display: none;
-    z-index: 100;
-    font-size: 14px;
-  }
-
-  .entertainment-card.active .entertainment-iframe {
-    display: block;
-  }
-
-  .entertainment-card.active .entertainment-close-btn {
-    display: block;
-  }
-
-  .entertainment-card.active .entertainment-content {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
+  <style>
     .entertainment-container {
-      grid-template-columns: 1fr 1fr;
-
+      height: 90vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding: 10px;
     }
+
     .entertainment-card {
-      height: 70vh;
+      position: relative;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin: 10px;
+      overflow: hidden;
+      min-height: 80vh;
     }
+
+    .entertainment-content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 20px;
+      transition: all 0.3s;
+    }
+
     .entertainment-icon {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
+      color: #2c3e50;
+      margin-bottom: 12px;
     }
+
     .entertainment-title {
-      font-size: 1.8rem;
+      color: #34495e;
+      font-size: 1.4rem;
+      text-align: center;
     }
-  }
-</style>
 
-<script>
-  document.querySelectorAll('.entertainment-card').forEach(card => {
-    const content = card.querySelector('.entertainment-content');
-    const iframe = card.querySelector('.entertainment-iframe');
-    const closeBtn = card.querySelector('.entertainment-close-btn');
+    .entertainment-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
 
-    // Open iframe
-    content.addEventListener('click', () => {
-      card.classList.add('active');
+    .entertainment-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 8px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .entertainment-fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 50px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      display: none;
+      z-index: 100;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .entertainment-card.active .entertainment-iframe,
+    .entertainment-card.active .entertainment-close-btn,
+    .entertainment-card.active .entertainment-fullscreen-btn {
+      display: flex;
+    }
+
+    .entertainment-card.active .entertainment-content {
+      display: none;
+    }
+
+    /* Fullscreen mode */
+    .entertainment-card.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    .entertainment-card.fullscreen .entertainment-iframe {
+      display: block;
+      height: 100%;
+    }
+
+    .entertainment-card.fullscreen .entertainment-close-btn,
+    .entertainment-card.fullscreen .entertainment-fullscreen-btn {
+      display: flex;
+      position: fixed; /* Make buttons fixed in fullscreen mode */
+      top: 65px; /* 65px margin from top */
+      z-index: 1001; /* Ensure buttons are above the iframe */
+    }
+
+    .entertainment-card.fullscreen .entertainment-close-btn {
+      right: 10px; /* Position close button at top-right */
+    }
+
+    .entertainment-card.fullscreen .entertainment-fullscreen-btn {
+      right: 50px; /* Position fullscreen button next to close button */
+    }
+
+    .entertainment-card.fullscreen .entertainment-content {
+      display: none;
+    }
+
+    /* Desktop-specific adjustments */
+    @media (min-width: 768px) {
+      .entertainment-container {
+        grid-template-columns: 1fr 1fr;
+        max-height: 85vh;
+      }
+      .entertainment-card {
+        min-height: 40vh;
+      }
+      .entertainment-icon {
+        font-size: 3.5rem;
+      }
+      .entertainment-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 767px) {
+      .entertainment-container {
+        height: 95vh !important;
+        padding: 0;
+        gap: 0;
+      }
+
+      .entertainment-card {
+        height: 45vh !important;
+        margin: 0;
+        min-height: unset;
+      }
+
+      .entertainment-content {
+        padding: 10px;
+      }
+
+      .entertainment-icon {
+        font-size: 2rem;
+      }
+
+      .entertainment-title {
+        font-size: 1.2rem;
+      }
+
+      .entertainment-iframe {
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Rotate on mobile when in fullscreen */
+      .entertainment-card.fullscreen .entertainment-iframe {
+        transform: rotate(90deg);
+        transform-origin: center center;
+        width: 100vh;
+        height: 100vw;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -50vw;
+        margin-left: -50vh;
+      }
+    }
+  </style>
+
+  <script>
+    document.querySelectorAll('.entertainment-card').forEach(card => {
+      const content = card.querySelector('.entertainment-content');
+      const iframe = card.querySelector('.entertainment-iframe');
+      const closeBtn = card.querySelector('.entertainment-close-btn');
+      const fullscreenBtn = card.querySelector('.entertainment-fullscreen-btn');
+
+      // Open iframe
+      content.addEventListener('click', () => {
+        card.classList.add('active');
+      });
+
+      // Close iframe without refresh
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.remove('active');
+        card.classList.remove('fullscreen');
+
+        // Show other cards
+        document.querySelectorAll('.entertainment-card').forEach(otherCard => {
+          otherCard.style.display = 'block';
+        });
+      });
+
+      // Fullscreen functionality
+      fullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        card.classList.add('fullscreen');
+
+        // Hide other cards
+        document.querySelectorAll('.entertainment-card').forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.style.display = 'none';
+          }
+        });
+      });
+
+      // Exit fullscreen
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          card.classList.remove('fullscreen');
+
+          // Show other cards
+          document.querySelectorAll('.entertainment-card').forEach(otherCard => {
+            otherCard.style.display = 'block';
+          });
+        }
+      });
     });
-
-    // Close iframe without refresh
-    closeBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      card.classList.remove('active');
-    });
-  });
-</script>
-
-
-
-
+  </script>
 </div>
  
 
