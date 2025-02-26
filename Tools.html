@@ -585,6 +585,7 @@ height:300px;
     padding: 10px;
     border-radius: 8px;
     max-width: 80%;
+    position: relative;
 }
 
 .AIUserMessage {
@@ -597,6 +598,18 @@ height:300px;
     background-color: #f1f1f1;
     color: #333;
     margin-right: auto;
+}
+
+.AICopyIcon {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.AICopyIcon:hover {
+    color: #0056b3;
 }
 
 .AIInputContainer {
@@ -621,24 +634,19 @@ height:300px;
     cursor: pointer;
 }
 
-.AISendButton:hover {
-    background-color: #0056b3;
+.AISendButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
-.AITable {
-    width: 100%;
-    border-collapse: collapse;
+.AILoading {
+    text-align: center;
     margin-top: 10px;
 }
 
-.AITable th, .AITable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.AITable th {
-    background-color: #f2f2f2;
+.fa-spinner {
+    font-size: 24px;
+    color: #007bff;
 }
     </style>
 
@@ -815,14 +823,24 @@ color:red;
         </div>
         <!-- Input Container -->
         <div class="AIInputContainer">
-            <input type="text" id="AIUserInput" class="AIInput" placeholder="Type your question here...">
-            <button id="AISendButton" class="AISendButton"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="AIUserInput" class="AIInput" placeholder="Type your question here..." disabled>
+            <button id="AISendButton" class="AISendButton" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <!-- Loading Icon -->
+        <div id="AILoading" class="AILoading" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
         </div>
            
  </div>
  </div>
  </div>
 <script>
+// Enable input and button initially
+document.getElementById('AIUserInput').disabled = false;
+document.getElementById('AISendButton').disabled = false;
+
 // Add event listeners
 document.getElementById('AISendButton').addEventListener('click', sendMessage);
 document.getElementById('AIUserInput').addEventListener('keypress', function (e) {
@@ -835,8 +853,17 @@ document.getElementById('AIUserInput').addEventListener('keypress', function (e)
 function sendMessage() {
     const userInput = document.getElementById('AIUserInput');
     const chatBox = document.getElementById('AIChatBox');
+    const sendButton = document.getElementById('AISendButton');
+    const loadingIcon = document.getElementById('AILoading');
 
     if (userInput.value.trim() === '') return;
+
+    // Disable input and button
+    userInput.disabled = true;
+    sendButton.disabled = true;
+
+    // Show loading icon
+    loadingIcon.style.display = 'block';
 
     // Display user's message
     const userMessage = document.createElement('div');
@@ -852,50 +879,69 @@ function sendMessage() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     // Send question to Gemini AI
-    fetchGeminiResponse(question).then(response => {
-        // Display AI's response
-        const botMessage = document.createElement('div');
-        botMessage.classList.add('AIMessage', 'AIBotMessage');
+    fetchGeminiResponse(question)
+        .then(response => {
+            // Display AI's response
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('AIMessage', 'AIBotMessage');
 
-        // Check if the response contains structured data (e.g., bullet points or tables)
-        if (response.includes('\n- ') || response.includes('\n* ')) {
-            // Convert bullet points to HTML list
-            const listItems = response.split('\n').filter(line => line.trim() !== '');
-            const list = document.createElement('ul');
-            listItems.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item.replace('- ', '').replace('* ', '');
-                list.appendChild(li);
-            });
-            botMessage.appendChild(list);
-        } else if (response.includes('|')) {
-            // Convert table-like response to HTML table
-            const rows = response.split('\n').filter(line => line.trim() !== '');
-            const table = document.createElement('table');
-            table.classList.add('AITable');
-            rows.forEach((row, index) => {
-                const tr = document.createElement('tr');
-                const cells = row.split('|').filter(cell => cell.trim() !== '');
-                cells.forEach(cell => {
-                    const td = index === 0 ? document.createElement('th') : document.createElement('td');
-                    td.textContent = cell.trim();
-                    tr.appendChild(td);
+            // Add copy icon
+            const copyIcon = document.createElement('i');
+            copyIcon.classList.add('fas', 'fa-copy', 'AICopyIcon');
+            copyIcon.title = 'Copy to Clipboard';
+            copyIcon.addEventListener('click', () => {
+                navigator.clipboard.writeText(response).then(() => {
+                    alert('Copied to clipboard!');
                 });
-                table.appendChild(tr);
             });
-            botMessage.appendChild(table);
-        } else {
-            // Plain text response
-            botMessage.textContent = response;
-        }
 
-        chatBox.appendChild(botMessage);
+            // Check if the response contains structured data (e.g., bullet points or tables)
+            if (response.includes('\n- ') || response.includes('\n* ')) {
+                // Convert bullet points to HTML list
+                const listItems = response.split('\n').filter(line => line.trim() !== '');
+                const list = document.createElement('ul');
+                listItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.replace('- ', '').replace('* ', '');
+                    list.appendChild(li);
+                });
+                botMessage.appendChild(list);
+            } else if (response.includes('|')) {
+                // Convert table-like response to HTML table
+                const rows = response.split('\n').filter(line => line.trim() !== '');
+                const table = document.createElement('table');
+                table.classList.add('AITable');
+                rows.forEach((row, index) => {
+                    const tr = document.createElement('tr');
+                    const cells = row.split('|').filter(cell => cell.trim() !== '');
+                    cells.forEach(cell => {
+                        const td = index === 0 ? document.createElement('th') : document.createElement('td');
+                        td.textContent = cell.trim();
+                        tr.appendChild(td);
+                    });
+                    table.appendChild(tr);
+                });
+                botMessage.appendChild(table);
+            } else {
+                // Plain text response
+                botMessage.textContent = response;
+            }
 
-        // Scroll to bottom
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }).catch(error => {
-        console.error('Error:', error);
-    });
+            botMessage.appendChild(copyIcon);
+            chatBox.appendChild(botMessage);
+
+            // Scroll to bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            // Hide loading icon and re-enable input and button
+            loadingIcon.style.display = 'none';
+            userInput.disabled = false;
+            sendButton.disabled = false;
+        });
 }
 
 // Function to fetch Gemini AI response
