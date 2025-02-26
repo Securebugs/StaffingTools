@@ -849,6 +849,54 @@ document.getElementById('AIUserInput').addEventListener('keypress', function (e)
     }
 });
 
+// Function to parse rich text and convert it to HTML
+function parseRichText(response) {
+    // Replace **bold** with <strong>bold</strong>
+    response = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    // Replace *italic* with <em>italic</em>
+    response = response.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Replace _underline_ with <u>underline</u>
+    response = response.replace(/_(.*?)_/g, '<u>$1</u>');
+
+    // Replace bullet points with <ul> and <li>
+    response = response.replace(/(\n\s*-\s+.*)+/g, (match) => {
+        const items = match.split('\n').filter(line => line.trim() !== '');
+        const listItems = items.map(item => `<li>${item.replace('- ', '').trim()}</li>`).join('');
+        return `<ul>${listItems}</ul>`;
+    });
+
+    // Replace numbered lists with <ol> and <li>
+    response = response.replace(/(\n\s*\d+\.\s+.*)+/g, (match) => {
+        const items = match.split('\n').filter(line => line.trim() !== '');
+        const listItems = items.map(item => `<li>${item.replace(/^\d+\.\s*/, '').trim()}</li>`).join('');
+        return `<ol>${listItems}</ol>`;
+    });
+
+    // Replace tables with <table>, <tr>, and <td>
+    response = response.replace(/(\|.*\|)+/g, (match) => {
+        const rows = match.split('\n').filter(line => line.trim() !== '');
+        const tableRows = rows.map(row => {
+            const cells = row.split('|').filter(cell => cell.trim() !== '');
+            const tableCells = cells.map(cell => `<td>${cell.trim()}</td>`).join('');
+            return `<tr>${tableCells}</tr>`;
+        }).join('');
+        return `<table>${tableRows}</table>`;
+    });
+
+    // Replace paragraphs with <p>
+    response = response.replace(/(\n\n)/g, '</p><p>');
+    response = `<p>${response}</p>`;
+
+    // Replace titles with <h3>
+    response = response.replace(/(\n#\s+.*)/g, (match) => {
+        return `<h3>${match.replace('#', '').trim()}</h3>`;
+    });
+
+    return response;
+}
+
 // Function to send a message
 function sendMessage() {
     const userInput = document.getElementById('AIUserInput');
@@ -881,9 +929,13 @@ function sendMessage() {
     // Send question to Gemini AI
     fetchGeminiResponse(question)
         .then(response => {
+            // Parse rich text and convert to HTML
+            const formattedResponse = parseRichText(response);
+
             // Display AI's response
             const botMessage = document.createElement('div');
             botMessage.classList.add('AIMessage', 'AIBotMessage');
+            botMessage.innerHTML = formattedResponse;
 
             // Add copy icon
             const copyIcon = document.createElement('i');
@@ -894,38 +946,6 @@ function sendMessage() {
                     alert('Copied to clipboard!');
                 });
             });
-
-            // Check if the response contains structured data (e.g., bullet points or tables)
-            if (response.includes('\n- ') || response.includes('\n* ')) {
-                // Convert bullet points to HTML list
-                const listItems = response.split('\n').filter(line => line.trim() !== '');
-                const list = document.createElement('ul');
-                listItems.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item.replace('- ', '').replace('* ', '');
-                    list.appendChild(li);
-                });
-                botMessage.appendChild(list);
-            } else if (response.includes('|')) {
-                // Convert table-like response to HTML table
-                const rows = response.split('\n').filter(line => line.trim() !== '');
-                const table = document.createElement('table');
-                table.classList.add('AITable');
-                rows.forEach((row, index) => {
-                    const tr = document.createElement('tr');
-                    const cells = row.split('|').filter(cell => cell.trim() !== '');
-                    cells.forEach(cell => {
-                        const td = index === 0 ? document.createElement('th') : document.createElement('td');
-                        td.textContent = cell.trim();
-                        tr.appendChild(td);
-                    });
-                    table.appendChild(tr);
-                });
-                botMessage.appendChild(table);
-            } else {
-                // Plain text response
-                botMessage.textContent = response;
-            }
 
             botMessage.appendChild(copyIcon);
             chatBox.appendChild(botMessage);
