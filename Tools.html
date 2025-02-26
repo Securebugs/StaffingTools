@@ -800,46 +800,7 @@ color:red;
                 }
             });
 
-            // Calculator Logic
-            const currentInput = document.getElementById('current');
-            const historyDisplay = document.getElementById('history');
-            let history = [];
-
-            document.querySelectorAll('.buttons button').forEach(button => {
-                button.addEventListener('click', () => handleButtonClick(button.dataset.value));
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (document.activeElement.tagName === 'INPUT' && document.activeElement.id !== 'current') return;
-                
-                const key = e.key;
-                if (/[0-9+\-*/.=]|Backspace|Enter/.test(key)) {
-                    e.preventDefault();
-                    if (key === 'Enter') handleButtonClick('=');
-                    else if (key === 'Backspace') handleButtonClick('backspace');
-                    else handleButtonClick(key);
-                }
-            });
-
-            function handleButtonClick(value) {
-                if (value === 'C') {
-                    currentInput.value = '';
-                    historyDisplay.textContent = '';
-                } else if (value === 'backspace') {
-                    currentInput.value = currentInput.value.slice(0, -1);
-                } else if (value === '=') {
-                    try {
-                        const result = eval(currentInput.value);
-                        history.push(`${currentInput.value} = ${result}`);
-                        historyDisplay.textContent = history.join('\n');
-                        currentInput.value = result;
-                    } catch (error) {
-                        currentInput.value = 'Error';
-                    }
-                } else {
-                    currentInput.value += value;
-                }
-            }
+          
 
             // Notes Placeholder Handling
             const editable = document.querySelector('.content-editable');
@@ -961,125 +922,138 @@ path:hover {
 
 
 <div class="card-container">
-<div class="ad-banner">
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
+
+
+<div class="ad-banner" id="ad-container"></div>
+
+<script>
+  window.onload = function() {
+    const adScript = document.createElement('script');
+    adScript.type = 'text/javascript';
+    adScript.src = '//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js';
+    adScript.async = true;
+    document.getElementById('ad-container').appendChild(adScript);
+  };
 </script>
-<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
-</div>
+
+
+
 <style>
 .marquee-container {
-            position: relative;
-            overflow: hidden;
- box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            background: #FFFFFF;
-            padding: 15px;
-            box-sizing: border-box;
-            
-            border-radius: 5px;
-            display: block;
-margin:5px;
-            align-items: center;
-        }
-        .trending-now {
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: flex;
-            align-items: center;
-            padding: 10px 10px;
-            background: white;
-            color: black;
-            font-weight: 800;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            z-index: 1;
-        }
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background: #FFFFFF;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.trending-now {
+    display: flex;
+    align-items: center;
+    background: white;
+    color: black;
+    font-weight: 800;
+    z-index: 2; /* Higher z-index to stay above the marquee */
+    position: absolute; /* Fix it to the right side */
+    right: 0; /* Position it at the right end */
+    padding: 10px; /* Add padding for spacing */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .trending-now img {
     width: 30px;
     height: 20px;
-display: flex;
-            align-items: center;
+    margin-left: 10px; /* Add some space between text and image */
 }
-        .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 50s linear infinite;
-            font-weight: 600;
-            margin-left: 150px;
-        }
-        .marquee:hover {
-            animation-play-state: paused;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .trend-item {
-            padding: 0 10px;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .separator {
-            color: teal;
-        }
-        .play-pause-container {
-            position: absolute;
-            right: 0;
-            top: 0;
-            background: white;
-            padding: 10px;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            display: flex;
-            align-items: center;
-            
-        }
-        .play-pause-btn {
-            cursor: pointer;
-        }
-    </style>
 
-    <script>
-        function getRandomColor() {
-            const colors = ['black', 'red'];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 100s linear infinite; /* Keep the original speed */
+    font-weight: 600;
+    padding-left: 100%; /* Start the text outside the container */
+    position: relative;
+}
 
-        async function fetchTrends() {
-            try {
-                const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://trends.google.com/trends/trendingsearches/daily/rss?geo=IN') + '&timestamp=' + new Date().getTime();
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data.contents, 'application/xml');
-                const items = xml.querySelectorAll('item');
-                let trendsContent = '';
+@keyframes marquee {
+    0% { transform: translateX(0); } /* Start instantly from the right */
+    100% { transform: translateX(-100%); } /* Move to the left */
+}
 
-                items.forEach((item, index) => {
-                    const title = item.querySelector('title').textContent;
-                    const link = item.querySelector('link').textContent;
+.marquee:hover {
+    animation-play-state: paused; /* Hover to pause */
+}
+
+.trend-item {
+    padding: 0 10px; /* Gap between news items */
+    display: inline-block;
+    text-decoration: none; /* Text decorations */
+}
+
+.separator {
+    color: teal; /* Separator color */
+background:none !important;
+}
+
+.play-pause-container {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Higher z-index to stay above the marquee */
+    position: absolute; /* Fix it to the left side */
+    left: 0; /* Position it at the left end */
+}
+
+.play-pause-btn {
+    cursor: pointer;
+}
+</style>
+
+<script>
+    function getRandomColor() {
+        const colors = ['black', 'red'];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    async function fetchTrends() {
+        try {
+            const apiUrl = 'https://newsdata.io/api/1/news?apikey=pub_7199360e81ef0ab96d309ac2f39844f37443a&language=en,hi';
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            let trendsContent = '';
+
+            if (data.results && data.results.length > 0) {
+                data.results.forEach((item, index) => {
+                    const title = item.title || 'No Title';
+                    const link = item.link || '#';
                     const color = getRandomColor();
                     trendsContent += `<a href="${link}" target="_blank" class="trend-item" style="color: ${color};">${title}</a>`;
-                    if (index < items.length - 1) {
+                    if (index < data.results.length - 1) {
                         trendsContent += `<span class="separator">|</span>`;
                     }
                 });
-
-                document.getElementById('trends-marquee').innerHTML = trendsContent;
-            } catch (error) {
-                console.error('Error fetching trends:', error);
-                document.getElementById('trends-marquee').innerHTML = 'Error loading trends.';
+            } else {
+                trendsContent = 'No news data available.';
             }
-        }
 
-        document.addEventListener('DOMContentLoaded', fetchTrends);
+            document.getElementById('trends-marquee').innerHTML = trendsContent;
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            document.getElementById('trends-marquee').innerHTML = 'Error loading news.';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchTrends();
 
         const marquee = document.querySelector('.marquee');
         const playPauseBtn = document.getElementById('playPauseBtn');
@@ -1095,23 +1069,25 @@ display: flex;
             }
             isPaused = !isPaused;
         });
-    </script>
+    });
+</script>
+
 
 
 <body onload="updateTime()">
   <div class="card custom-card">
 <div class="marquee-container">
-        <div class="trending-now">
-            Trending Now
-            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHBzaDlzcGcxdGRxNTN2dWRiZXg3aXpjbnVicHJjZ24za2V2dHJreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XE7N9DYWUwiUPTr3eY/giphy.webp" alt="Animated GIF" width="35" height="25">
-        </div>
-        <div class="marquee" id="trends-marquee">Loading trends...</div>
-        <div class="play-pause-container">
-            <div class="play-pause-btn" id="playPauseBtn">
-                <i class="fas fa-pause"></i>
-            </div>
+    <div class="play-pause-container">
+        <div class="play-pause-btn" id="playPauseBtn">
+            <i class="fas fa-pause"></i>
         </div>
     </div>
+    <div class="marquee" id="trends-marquee">Loading Breaking news...</div>
+    <div class="trending-now">
+        Trending Now
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHBzaDlzcGcxdGRxNTN2dWRiZXg3aXpjbnVicHJjZ24za2V2dHJreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/XE7N9DYWUwiUPTr3eY/giphy.webp" alt="Animated GIF" width="35" height="25">
+    </div>
+</div>
     <div class="card-body d-flex flex-column flex-md-row">
       <!-- Map Container -->
       <div class="map-container">
@@ -2147,18 +2123,18 @@ display: flex;
 
   </div>
 
-<div class="ad-banner">
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
+
+<div class="ad-banner" id="ad-container"></div>
+
+<script>
+  window.onload = function() {
+    const adScript = document.createElement('script');
+    adScript.type = 'text/javascript';
+    adScript.src = '//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js';
+    adScript.async = true;
+    document.getElementById('ad-container').appendChild(adScript);
+  };
 </script>
-<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
-</div>
 
  <script>
     function updateTime() {
@@ -5699,51 +5675,81 @@ submitContactFormBtn.addEventListener('click', async function(event) {
 
 
  <br>
-    <style>
-        .modal-documentation {
-            display: none;
-            position: fixed;
-            top: 55px;
-            left: 55px;
-            width: 55%;
-            height: 700px;
-            padding: 20px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            overflow-y: auto;
-            z-index: 1000; /* Ensure modal is above everything */
-        }
-        .modal-header {
-            font-size: 20px;
-            font-weight: bold;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ccc;
-        }
-        .close-btn {
-            float: right;
-            font-size: 24px;
+   <style>
+.modal-documentation {
+    display: none;
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for exact center */
+    width: 700px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    padding: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden; /* Prevent scrolling on the modal itself */
+    z-index: 1000; /* Ensure modal is above everything */
+}
+
+.modal-content {
+    margin-top: 10px;
+    text-align: left;
+    padding: 10px;
+    height: calc(100% - 60px); /* Adjust height to fit within the modal */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.modal-header {
+    position: relative; /* Ensure the close button is positioned relative to the header */
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.close-btnn {
+     position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 30px;
+            height: 30px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-        }
-        .modal-content {
-            margin-top: 20px;
-            text-align: left;
-            padding: 10px;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999; /* Ensure overlay is below modal but above everything else */
-        }
-    </style>
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1001;
+}
+
+.close-btnn:hover {
+    background: darkred; /* Darker red on hover for better UX */
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Ensure overlay is below modal but above everything else */
+}
+
+/* Class to disable body scrolling when modal is open */
+.body-no-scroll {
+    overflow: hidden;
+}
+</style>
 
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
     <div class="modal-documentation" id="docModal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="close-btnn" onclick="closeModal()">&times;</span>
         <div class="modal-header">Staffing Tools Documentation</div>
         <div class="modal-content">
             <h3>Privacy Policy</h3>
@@ -5985,6 +5991,55 @@ document.addEventListener('contextmenu',e=>{
         setTimeout(()=>a.classList.remove('show'),2000);
     }
 });
+</script>
+
+<script>
+  // Calculator Logic
+     const currentInput = document.getElementById('current');
+const historyDisplay = document.getElementById('history');
+let history = [];
+
+// Handle button clicks
+document.querySelectorAll('.buttons button').forEach(button => {
+    button.addEventListener('click', () => handleButtonClick(button.dataset.value));
+});
+
+// Handle keyboard input
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+
+    // Only handle keys if the calculator popup is visible
+    const calculatorPopup = document.getElementById('calculator-popup');
+    if (calculatorPopup.style.display === 'block') { // Adjust based on how you show/hide the popup
+        if (/[0-9+\-*/.=]|Backspace|Enter/.test(key)) {
+            e.preventDefault(); // Prevent default behavior for calculator input
+            if (key === 'Enter') handleButtonClick('=');
+            else if (key === 'Backspace') handleButtonClick('backspace');
+            else handleButtonClick(key);
+        }
+    }
+    // Allow all keys to work normally if the calculator is not visible
+});
+
+function handleButtonClick(value) {
+    if (value === 'C') {
+        currentInput.value = '';
+        historyDisplay.textContent = '';
+    } else if (value === 'backspace') {
+        currentInput.value = currentInput.value.slice(0, -1);
+    } else if (value === '=') {
+        try {
+            const result = eval(currentInput.value);
+            history.push(`${currentInput.value} = ${result}`);
+            historyDisplay.textContent = history.join('\n');
+            currentInput.value = result;
+        } catch (error) {
+            currentInput.value = 'Error';
+        }
+    } else {
+        currentInput.value += value;
+    }
+}
 </script>
 </body>
 </html>
