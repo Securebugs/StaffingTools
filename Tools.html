@@ -231,30 +231,35 @@ font-size:30px;
     
     </style>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    function loadAdScript(atOptions, containerId) {
+    function loadAdScript(containerId) {
         let adContainer = document.getElementById(containerId);
         if (!adContainer) return;
 
+        let atOptions = {
+            key: 'f0e810f608404bc6efc27fb59d8e8200',  // SAME UNIQUE KEY
+            format: 'iframe',
+            height: 600,
+            width: 160,
+            params: {}
+        };
+
         let script = document.createElement("script");
-        script.innerHTML = `
-            atOptions = ${JSON.stringify(atOptions)};
-        `;
+        script.innerHTML = `atOptions = ${JSON.stringify(atOptions)};`;
 
         let invokeScript = document.createElement("script");
-        invokeScript.src = `//www.highperformanceformat.com/${atOptions.key}/invoke.js`;
+        invokeScript.src = `//www.highperformanceformat.com/${atOptions.key}/invoke.js?cache=${Math.random()}`;
         invokeScript.defer = true;
 
         adContainer.appendChild(script);
         adContainer.appendChild(invokeScript);
     }
 
-    // Load ads in their respective containers
-    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-1');
-    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-2');
-    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-3');
+    // Load ads in multiple locations
+    for (let i = 1; i <= 6; i++) {
+        loadAdScript(`ad-container-${i}`);
+    }
 });
 </script>
 
@@ -1199,9 +1204,8 @@ path:hover {
 <div class="card-container">
 
   <!-- Ad1 -->
-<div id="ad-container-1"></div>  <!-- Ad 1 -->
-<div id="ad-container-2"></div>  <!-- Ad 2 -->
-<div id="ad-container-3"></div>  <!-- Ad 3 -->
+<div id="ad-container-1"></div>
+
 
 <style>
 .marquee-container {
@@ -2391,7 +2395,9 @@ background:none !important;
 
 
  <!-- Ad2 -->
-
+<div id="ad-container-2"></div>
+<div id="ad-container-3"></div>
+	
  <script>
     function updateTime() {
       const timeZones = {
