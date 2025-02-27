@@ -230,8 +230,6 @@ font-size:30px;
 
     
     </style>
-
-
 </head>
 <body>
 
@@ -671,7 +669,14 @@ height:300px;
                 <i class="fas fa-shopping-cart" title="Buy Now"></i>
             </div>
             <div class="icon-item" title="AI Chat" data-popup="services-popup">
-                <i class="fas fa-comment-dots" title="AI Chat"></i>
+
+		    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="50" height="50">
+  <!-- Chat bubble -->
+  <path d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z" fill="#4A90E2"/>
+  
+  <!-- Text: AIChat -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="120" fill="#FFFFFF">AIChat</text>
+</svg>
             </div>
         </div>
     </div>
@@ -1171,38 +1176,20 @@ path:hover {
 
 <div class="card-container">
 
-  <!-- Ad1 -->
-    <!-- Placeholder for Ads -->
-    <div class="ad-container" id="ad-slot-1"></div>
-    <div class="ad-container" id="ad-slot-2"></div>
-    <div class="ad-container" id="ad-slot-3"></div>
-    <div class="ad-container" id="ad-slot-4"></div>
-    <div class="ad-container" id="ad-slot-5"></div>
-    <div class="ad-container" id="ad-slot-6"></div>
 
-    <script>
-        window.onload = function() {
-            function loadAd(slotId, delay) {
-                setTimeout(() => {
-                    let adScript = document.createElement("script");
-                    adScript.type = "text/javascript";
-                    adScript.src = "//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js";
+<div class="ad-banner">
 
-                    let adDiv = document.getElementById(slotId);
-                    adDiv.appendChild(adScript);
-                }, delay);
-            }
-
-            // Load each ad with a small delay to prevent blocking
-            loadAd("ad-slot-1", 100);
-            loadAd("ad-slot-2", 500);
-            loadAd("ad-slot-3", 1000);
-            loadAd("ad-slot-4", 1500);
-            loadAd("ad-slot-5", 2000);
-            loadAd("ad-slot-6", 2500);
-        };
-    </script>
-
+<script type="text/javascript">
+    atOptions = {
+        'key': 'f0e810f608404bc6efc27fb59d8e8200',
+        'format': 'iframe',
+        'height': 600,
+        'width': 160,
+        'params': {}
+    };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js" defer></script>
+</div>
 
 
 <style>
@@ -2392,10 +2379,20 @@ background:none !important;
 
 
 
- <!-- Ad2 -->
-<div id="ad-container-2"></div>
-<div id="ad-container-3"></div>
-	
+<div class="ad-banner">
+
+<script type="text/javascript">
+    atOptions = {
+        'key': 'f0e810f608404bc6efc27fb59d8e8200',
+        'format': 'iframe',
+        'height': 600,
+        'width': 160,
+        'params': {}
+    };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js" defer></script>
+</div>
+
  <script>
     function updateTime() {
       const timeZones = {
@@ -2487,9 +2484,18 @@ background:none !important;
   </style>
 
 <div class="card-container">
-
- <!-- Ad3 -->
-
+<div class="ad-banner">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
+</div>
   <div class="card state-card">
     <div class="card-body state-card-body">
       <h1 class="text-center mb-4">USA's States Information</h1>
@@ -3128,9 +3134,18 @@ background:none !important;
         <div id="rateConversion" class="tab-content">
 
 <div class="card-container">
-
- <!-- Ad4 -->
-
+<div class="ad-banner">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
+</div>
 <div class="cont">
     <div class="row">
       <div class="col-md-12">
@@ -3507,9 +3522,18 @@ emailsTextarea.addEventListener('input', () => {
 </div>
 <div class="row">
 <div class="card-container">
-
- <!-- Ad5 -->
-
+<div class="ad-banner">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
+</div>
  <div class="card">
 <br>
     <h3 class="text-center">Email Samples</h3>
@@ -3661,9 +3685,18 @@ emailsTextarea.addEventListener('input', () => {
 
   <div class="container-fluid">
 <div class="card-container">
-
- <!-- Ad1 -->
-
+<div class="ad-banner">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
+</div>
     <div class="row">
       <!-- Left Column (70%) -->
       <div class="col-md-8">
@@ -6091,10 +6124,38 @@ background-color: #fff !important;
 </style>
 
     <footer class="footer-f">
-    <!-- banner ads -->
+    <!-- addds -->
 
 
+<div class="ad-banner2">
+  <div class="ad-container">
+    <div class="ad-column">
+     <script type="text/javascript">
+	atOptions = {
+		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
 
+    </div>
+    <div class="ad-column">
+      <script type="text/javascript">
+	atOptions = {
+		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
+		'format' : 'iframe',
+		'height' : 90,
+		'width' : 728,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js"></script>
+    </div>
+  </div>
+</div>
 
 
 <a style="font-size: 15px; text-decoration: none; font-weight: bold;" href="#" onclick="openModal()">Documentation</a>
