@@ -231,39 +231,6 @@ font-size:30px;
     
     </style>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    function loadAd(containerId) {
-        let adContainer = document.getElementById(containerId);
-        if (!adContainer) return; 
-
-        let scriptConfig = document.createElement("script");
-        scriptConfig.type = "text/javascript";
-        scriptConfig.innerHTML = `
-            atOptions = {
-                'key' : 'f0e810f608404bc6efc27fb59d8e8200',
-                'format' : 'iframe',
-                'height' : 600,
-                'width' : 160,
-                'params' : {}
-            };
-        `;
-
-        let scriptInvoke = document.createElement("script");
-        scriptInvoke.type = "text/javascript";
-        scriptInvoke.src = "//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js";
-        scriptInvoke.async = true;  // Ensures non-blocking loading
-
-        adContainer.appendChild(scriptConfig);
-        adContainer.appendChild(scriptInvoke);
-    }
-
-    // Load ads in multiple locations
-    ["ad-container-1", "ad-container-2", "ad-container-3", "ad-container-4", "ad-container-5", "ad-container-6"].forEach(loadAd);
-});
-</script>
-
-
 
 </head>
 <body>
@@ -1205,7 +1172,36 @@ path:hover {
 <div class="card-container">
 
   <!-- Ad1 -->
-<div id="ad-container-1"></div>
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="ad-slot">
+    <iframe src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"
+        width="160" height="600" scrolling="no" frameborder="0"></iframe>
+</div>
+
 
 
 <style>
