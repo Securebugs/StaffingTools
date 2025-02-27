@@ -1182,16 +1182,27 @@ path:hover {
 
     <script>
         window.onload = function() {
-            for (let i = 1; i <= 6; i++) {
-                let adScript = document.createElement("script");
-                adScript.type = "text/javascript";
-                adScript.src = "//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js";
-                
-                let adDiv = document.getElementById("ad-slot-" + i);
-                adDiv.appendChild(adScript);
+            function loadAd(slotId, delay) {
+                setTimeout(() => {
+                    let adScript = document.createElement("script");
+                    adScript.type = "text/javascript";
+                    adScript.src = "//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js";
+
+                    let adDiv = document.getElementById(slotId);
+                    adDiv.appendChild(adScript);
+                }, delay);
             }
+
+            // Load each ad with a small delay to prevent blocking
+            loadAd("ad-slot-1", 100);
+            loadAd("ad-slot-2", 500);
+            loadAd("ad-slot-3", 1000);
+            loadAd("ad-slot-4", 1500);
+            loadAd("ad-slot-5", 2000);
+            loadAd("ad-slot-6", 2500);
         };
     </script>
+
 
 
 <style>
