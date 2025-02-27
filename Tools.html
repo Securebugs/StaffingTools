@@ -567,87 +567,118 @@ font-size:30px;
             }
         }
 
+ /* Chat Assistant Styles */
+        .AIChatBox {
+            height: 300px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
 
-/* Chat Assistant Styles */
-.AIChatBox {
-height:300px;
-    Max-height: 300px; /* Adjust height as needed */
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-}
+        .AIMessage {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+            position: relative;
+        }
 
-.AIMessage {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 80%;
-    position: relative;
-}
+        .AIUserMessage {
+            background-color: #007bff;
+            color: white;
+            margin-left: auto;
+        }
 
-.AIUserMessage {
-    background-color: #007bff;
-    color: white;
-    margin-left: auto;
-}
+        .AIBotMessage {
+            background-color: #f1f1f1;
+            color: #333;
+            margin-right: auto;
+        }
 
-.AIBotMessage {
-    background-color: #f1f1f1;
-    color: #333;
-    margin-right: auto;
-}
+        .AICopyIcon {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+            color: #007bff;
+        }
 
-.AICopyIcon {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    cursor: pointer;
-    color: #007bff;
-}
+        .AICopyIcon:hover {
+            color: #0056b3;
+        }
 
-.AICopyIcon:hover {
-    color: #0056b3;
-}
+        .AIInputContainer {
+            display: flex;
+            gap: 10px;
+        }
 
-.AIInputContainer {
-    display: flex;
-    gap: 10px;
-}
+        .AIInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
 
-.AIInput {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    outline: none;
-}
+        .AISendButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
-.AISendButton {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-}
+        .AISendButton:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
 
-.AISendButton:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
+        .AILoading {
+            text-align: center;
+            margin-top: 10px;
+        }
 
-.AILoading {
-    text-align: center;
-    margin-top: 10px;
-}
+        .fa-spinner {
+            font-size: 24px;
+            color: #007bff;
+        }
 
-.fa-spinner {
-    font-size: 24px;
-    color: #007bff;
-}
+        /* Table Styling */
+        .AIBotMessage table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        .AIBotMessage th, .AIBotMessage td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .AIBotMessage th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Hidden Popup Styling */
+        .AICopyPopup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
 .no-hover-effect path:hover {
       fill: #0056b3 !important; /* Reset fill */
     }
@@ -884,17 +915,6 @@ function parseRichText(response) {
         return `<ol>${listItems}</ol>`;
     });
 
-    // Replace tables with <table>, <tr>, and <td>
-    response = response.replace(/(\|.*\|)+/g, (match) => {
-        const rows = match.split('\n').filter(line => line.trim() !== '');
-        const tableRows = rows.map(row => {
-            const cells = row.split('|').filter(cell => cell.trim() !== '');
-            const tableCells = cells.map(cell => `<td>${cell.trim()}</td>`).join('');
-            return `<tr>${tableCells}</tr>`;
-        }).join('');
-        return `<table>${tableRows}</table>`;
-    });
-
     // Replace paragraphs with <p>
     response = response.replace(/(\n\n)/g, '</p><p>');
     response = `<p>${response}</p>`;
@@ -903,6 +923,26 @@ function parseRichText(response) {
     response = response.replace(/(\n#\s+.*)/g, (match) => {
         return `<h3>${match.replace('#', '').trim()}</h3>`;
     });
+
+    // Check if the message contains a table
+    if (response.includes('|')) {
+        const tableRegex = /(\|.*\|(\n\|.*\|)+)/g; // Match the entire table block
+        const tableMatches = response.match(tableRegex);
+        if (tableMatches) {
+            // Process only the first occurrence of the table
+            const tableBlock = tableMatches[0];
+            const rows = tableBlock.split('\n').filter(row => row.trim() !== '');
+            const tableHTML = `<table class="table table-bordered table-striped">${rows
+                .map((row) => {
+                    const cells = row.split('|').filter((cell) => cell.trim() !== '');
+                    return `<tr>${cells.map((cell) => `<td>${cell.trim()}</td>`).join('')}</tr>`;
+                })
+                .join('')}</table>`;
+
+            // Replace the entire table block with the generated HTML
+            response = response.replace(tableRegex, tableHTML);
+        }
+    }
 
     return response;
 }
@@ -949,13 +989,18 @@ function sendMessage() {
 
             // Add copy icon
             const copyIcon = document.createElement('i');
-            copyIcon.classList.add('fas', 'fa-copy', 'AICopyIcon');
-            copyIcon.title = 'Copy to Clipboard';
-            copyIcon.addEventListener('click', () => {
-                navigator.clipboard.writeText(response).then(() => {
-                    alert('Copied to clipboard!');
-                });
-            });
+            copyIcon.className = 'fas fa-copy AICopyIcon';
+            copyIcon.onclick = () => {
+                // Copy the entire bot message to clipboard
+                const range = document.createRange();
+                range.selectNodeContents(botMessage);
+                const selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
+                selection.removeAllRanges();
+                alert('Copied to clipboard!');
+            };
 
             botMessage.appendChild(copyIcon);
             chatBox.appendChild(botMessage);
@@ -995,6 +1040,7 @@ async function fetchGeminiResponse(question) {
     return data.candidates[0].content.parts[0].text;
 }
 </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mainIcon = document.getElementById('mainIcon');
