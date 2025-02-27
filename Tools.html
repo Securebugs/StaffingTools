@@ -648,13 +648,13 @@ height:300px;
     font-size: 24px;
     color: #007bff;
 }
-
-	    .no-hover-effect path:hover {
-  stroke: none !important; /* Reset stroke */
-  stroke-width: 0 !important; /* Reset stroke width */
-  cursor: default; /* Reset cursor */
-  fill: inherit !important; /* Reset fill to its original value */
-}
+.no-hover-effect path:hover {
+      fill: #0056b3 !important; /* Reset fill */
+    }
+    .no-hover-effect:hover {
+      transform: scale(1.1); /* Scale up */
+      transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition */
+    }
     </style>
 
     <!-- Icon Container -->
@@ -683,6 +683,7 @@ height:300px;
   <!-- Text: AIChat -->
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="120" fill="#FFFFFF">AIChat</text>
 </svg>
+
             </div>
         </div>
     </div>
