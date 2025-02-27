@@ -233,35 +233,36 @@ font-size:30px;
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    function loadAdScript(containerId) {
+    function loadAd(containerId) {
         let adContainer = document.getElementById(containerId);
-        if (!adContainer) return;
+        if (!adContainer) return; 
 
-        let atOptions = {
-            key: 'f0e810f608404bc6efc27fb59d8e8200',  // SAME UNIQUE KEY
-            format: 'iframe',
-            height: 600,
-            width: 160,
-            params: {}
-        };
+        let scriptConfig = document.createElement("script");
+        scriptConfig.type = "text/javascript";
+        scriptConfig.innerHTML = `
+            atOptions = {
+                'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+                'format' : 'iframe',
+                'height' : 600,
+                'width' : 160,
+                'params' : {}
+            };
+        `;
 
-        let script = document.createElement("script");
-        script.innerHTML = `atOptions = ${JSON.stringify(atOptions)};`;
+        let scriptInvoke = document.createElement("script");
+        scriptInvoke.type = "text/javascript";
+        scriptInvoke.src = "//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js";
+        scriptInvoke.async = true;  // Ensures non-blocking loading
 
-        let invokeScript = document.createElement("script");
-        invokeScript.src = `//www.highperformanceformat.com/${atOptions.key}/invoke.js?cache=${Math.random()}`;
-        invokeScript.defer = true;
-
-        adContainer.appendChild(script);
-        adContainer.appendChild(invokeScript);
+        adContainer.appendChild(scriptConfig);
+        adContainer.appendChild(scriptInvoke);
     }
 
     // Load ads in multiple locations
-    for (let i = 1; i <= 6; i++) {
-        loadAdScript(`ad-container-${i}`);
-    }
+    ["ad-container-1", "ad-container-2", "ad-container-3", "ad-container-4", "ad-container-5", "ad-container-6"].forEach(loadAd);
 });
 </script>
+
 
 
 </head>
