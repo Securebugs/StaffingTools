@@ -230,6 +230,35 @@ font-size:30px;
 
     
     </style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function loadAdScript(atOptions, containerId) {
+        let adContainer = document.getElementById(containerId);
+        if (!adContainer) return;
+
+        let script = document.createElement("script");
+        script.innerHTML = `
+            atOptions = ${JSON.stringify(atOptions)};
+        `;
+
+        let invokeScript = document.createElement("script");
+        invokeScript.src = `//www.highperformanceformat.com/${atOptions.key}/invoke.js`;
+        invokeScript.defer = true;
+
+        adContainer.appendChild(script);
+        adContainer.appendChild(invokeScript);
+    }
+
+    // Load ads in their respective containers
+    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-1');
+    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-2');
+    loadAdScript({ key: 'f0e810f608404bc6efc27fb59d8e8200', format: 'iframe', height: 600, width: 160, params: {} }, 'ad-container-3');
+});
+</script>
+
+
 </head>
 <body>
 
@@ -1170,7 +1199,9 @@ path:hover {
 <div class="card-container">
 
   <!-- Ad1 -->
-
+<div id="ad-container-1"></div>  <!-- Ad 1 -->
+<div id="ad-container-2"></div>  <!-- Ad 2 -->
+<div id="ad-container-3"></div>  <!-- Ad 3 -->
 
 <style>
 .marquee-container {
@@ -3627,7 +3658,7 @@ emailsTextarea.addEventListener('input', () => {
   <div class="container-fluid">
 <div class="card-container">
 
- <!-- Ad6 -->
+ <!-- Ad1 -->
 
     <div class="row">
       <!-- Left Column (70%) -->
@@ -6056,38 +6087,10 @@ background-color: #fff !important;
 </style>
 
     <footer class="footer-f">
-    <!-- addds -->
+    <!-- banner ads -->
 
 
-<div class="ad-banner2">
-  <div class="ad-container">
-    <div class="ad-column">
-     <script type="text/javascript">
-	atOptions = {
-		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js" defer></script>
 
-    </div>
-    <div class="ad-column">
-      <script type="text/javascript">
-	atOptions = {
-		'key' : 'bab88ad09aa527926e2788915b4b8f1a',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/bab88ad09aa527926e2788915b4b8f1a/invoke.js" defer></script>
-    </div>
-  </div>
-</div>
 
 
 <a style="font-size: 15px; text-decoration: none; font-weight: bold;" href="#" onclick="openModal()">Documentation</a>
