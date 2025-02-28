@@ -1328,19 +1328,20 @@ background:none !important;
 
     async function fetchTrends() {
         try {
-            const apiUrl = 'https://newsdata.io/api/1/news?apikey=pub_7199360e81ef0ab96d309ac2f39844f37443a&language=en,hi';
+            // GNews API search endpoint
+            const apiUrl = 'https://gnews.io/api/v4/search?q=example&lang=hi&country=in,us&max=10&apikey=14c47e12f50dc0e35b8f018d3f4916f2';
             const response = await fetch(apiUrl);
             const data = await response.json();
 
             let trendsContent = '';
 
-            if (data.results && data.results.length > 0) {
-                data.results.forEach((item, index) => {
+            if (data.articles && data.articles.length > 0) {
+                data.articles.forEach((item, index) => {
                     const title = item.title || 'No Title';
-                    const link = item.link || '#';
+                    const link = item.url || '#';
                     const color = getRandomColor();
                     trendsContent += `<a href="${link}" target="_blank" class="trend-item" style="color: ${color};">${title}</a>`;
-                    if (index < data.results.length - 1) {
+                    if (index < data.articles.length - 1) {
                         trendsContent += `<span class="separator">|</span>`;
                     }
                 });
