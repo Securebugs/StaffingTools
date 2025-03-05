@@ -1357,7 +1357,12 @@ background:none !important;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        // Fetch trends immediately when the page loads
         fetchTrends();
+
+        // Set up the interval to fetch trends every 4 hours
+        const refreshInterval = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+        setInterval(fetchTrends, refreshInterval);
 
         const marquee = document.querySelector('.marquee');
         const playPauseBtn = document.getElementById('playPauseBtn');
