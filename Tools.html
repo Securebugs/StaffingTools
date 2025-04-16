@@ -3193,254 +3193,6 @@ background:none !important;
 </div>
         <div id="rateConversion" class="tab-content">
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-    .boolean-converter {
-        width: 96%;
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        font-family: 'Roboto', sans-serif;
-    }
-
-    .boolean-title {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 24px;
-        font-weight: 700;
-        color: #333;
-    }
-
-    .boolean-label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: #444;
-    }
-
-    .boolean-textarea {
-        width: 100%;
-        min-height: 200px;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-family: monospace;
-        font-size: 14px;
-        resize: vertical;
-        margin-bottom: 20px;
-    }
-
-    .boolean-textarea:focus {
-        outline: none;
-        border-color: #4285f4;
-        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
-    }
-
-    .boolean-button-group {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
-
-    .boolean-button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
-        flex-grow: 1;
-    }
-
-    .boolean-button-primary {
-        background-color: #4285f4;
-        color: white;
-    }
-
-    .boolean-button-primary:hover {
-        background-color: #3367d6;
-    }
-
-    .boolean-button-success {
-        background-color: #34a853;
-        color: white;
-    }
-
-    .boolean-button-success:hover {
-        background-color: #2d9248;
-    }
-
-    .boolean-button:disabled {
-        background-color: #cccccc;
-        cursor: not-allowed;
-    }
-
-    .boolean-loading {
-        display: none;
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    .boolean-spinner {
-        border: 4px solid rgba(0, 0, 0, 0.1);
-        border-radius: 50%;
-        border-top: 4px solid #4285f4;
-        width: 30px;
-        height: 30px;
-        animation: booleanSpin 1s linear infinite;
-        margin: 0 auto 10px;
-    }
-
-    @keyframes booleanSpin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    .boolean-output {
-        background-color: #f8f9fa;
-        font-family: monospace;
-        white-space: pre-wrap;
-        padding: 12px;
-        border-radius: 4px;
-        min-height: 100px;
-        border: 1px solid #eee;
-    }
-
-    @media (max-width: 600px) {
-        .boolean-converter {
-            padding: 20px;
-            margin: 15px;
-        }
-
-        .boolean-textarea {
-            min-height: 150px;
-        }
-
-        .boolean-button-group {
-            flex-direction: column;
-        }
-
-        .boolean-button {
-            width: 100%;
-        }
-    }
-</style>
-
-<div class="boolean-converter">
-    <h1 class="boolean-title"> <i class='fas fa-code'></i> JD to Boolean Converter</h1>
-
-    <div>
-        <label for="jobDescription" class="boolean-label">Paste Job Description:</label>
-        <textarea class="boolean-textarea" id="jobDescription" 
-                  placeholder="Paste the job description here..."></textarea>
-    </div>
-
-    <div class="boolean-button-group">
-        <button id="generateBtn" class="boolean-button boolean-button-primary">Generate Boolean Search</button>
-        <button id="copyBtn" class="boolean-button boolean-button-success" disabled>Copy to Clipboard</button>
-    </div>
-
-    <div class="boolean-loading" id="loadingIndicator">
-        <div class="boolean-spinner"></div>
-        <p>Analyzing job description...</p>
-    </div>
-
-    <div>
-        <label for="booleanOutput" class="boolean-label">Boolean Search String:</label>
-        <div class="boolean-output" id="booleanOutput" readonly></div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const jobDescriptionTextarea = document.getElementById('jobDescription');
-        const booleanOutput = document.getElementById('booleanOutput');
-        const generateBtn = document.getElementById('generateBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const loadingIndicator = document.getElementById('loadingIndicator');
-
-        // Function to fetch Gemini AI response
-        async function fetchGeminiResponse(question) {
-            const apiKey = 'AIzaSyBBNlnMeK1nX7m-WCum4PALM9bEpZXmKKQ';
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{ text: question }]
-                    }]
-                })
-            });
-
-            const data = await response.json();
-            return data;
-        }
-
-        generateBtn.addEventListener('click', async function() {
-            const jd = jobDescriptionTextarea.value.trim();
-
-            if (!jd) {
-                alert('Please paste a job description first.');
-                return;
-            }
-
-            // Show loading indicator
-            loadingIndicator.style.display = 'block';
-            booleanOutput.textContent = '';
-            generateBtn.disabled = true;
-
-            try {
-                const prompt = `Analyze the following job description and extract all technical skills, programming languages, frameworks, tools, and technologies mentioned. 
-                Then, create a comprehensive Boolean search string that can be used to find candidates with these skills. 
-                The Boolean string should use OR between similar terms and AND between different categories. 
-                Include common abbreviations and alternative names for technologies where applicable.
-                
-                Job Description:
-                ${jd}
-                
-                Return ONLY the Boolean search string, nothing else.`;
-
-                const response = await fetchGeminiResponse(prompt);
-
-                if (response.candidates && response.candidates[0].content.parts[0].text) {
-                    const booleanString = response.candidates[0].content.parts[0].text;
-                    booleanOutput.textContent = booleanString;
-                    copyBtn.disabled = false;
-                } else {
-                    booleanOutput.textContent = "Error: Could not generate Boolean search. Please try again.";
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                booleanOutput.textContent = "Error: Failed to process the job description. Please check your API key and try again.";
-            } finally {
-                loadingIndicator.style.display = 'none';
-                generateBtn.disabled = false;
-            }
-        });
-
-        copyBtn.addEventListener('click', function() {
-            const range = document.createRange();
-            range.selectNode(booleanOutput);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-
-            // Visual feedback
-            const originalText = copyBtn.textContent;
-            copyBtn.textContent = 'Copied!';
-            setTimeout(() => {
-                copyBtn.textContent = originalText;
-            }, 2000);
-        });
-    });
-</script>
 <div class="card-container">
 <div class="ad-banner">
 <script type="text/javascript">
@@ -3602,6 +3354,266 @@ function checkAllZeros() {
     </div>
   </div>
 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+    .boolean-converter {
+        width: 93%;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .boolean-title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .boolean-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .boolean-textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+        resize: vertical;
+        margin-bottom: 20px;
+    }
+
+    .boolean-textarea:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+    }
+
+    .boolean-button-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .boolean-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        flex-grow: 1;
+    }
+
+    .boolean-button-primary {
+        background-color: #4285f4;
+        color: white;
+    }
+
+    .boolean-button-primary:hover {
+        background-color: #3367d6;
+    }
+
+    .boolean-button-success {
+        background-color: #34a853;
+        color: white;
+    }
+
+    .boolean-button-success:hover {
+        background-color: #2d9248;
+    }
+
+    .boolean-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    .boolean-loading {
+        display: none;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .boolean-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #4285f4;
+        width: 30px;
+        height: 30px;
+        animation: booleanSpin 1s linear infinite;
+        margin: 0 auto 10px;
+    }
+
+    @keyframes booleanSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .boolean-output {
+        background-color: #f8f9fa;
+        font-family: monospace;
+        white-space: pre-wrap;
+        padding: 12px;
+        border-radius: 4px;
+        min-height: 100px;
+        border: 1px solid #eee;
+    }
+
+    @media (max-width: 600px) {
+        .boolean-converter {
+            padding: 20px;
+            margin: 15px;
+        }
+
+        .boolean-textarea {
+            min-height: 150px;
+        }
+
+        .boolean-button-group {
+            flex-direction: column;
+        }
+
+        .boolean-button {
+            width: 100%;
+        }
+    }
+</style>
+<div class="card-container">
+<div class="ad-banner">
+<script type="text/javascript">
+	atOptions = {
+		'key' : 'f0e810f608404bc6efc27fb59d8e8200',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f0e810f608404bc6efc27fb59d8e8200/invoke.js"></script>
+</div>
+<div class="boolean-converter">
+    <h1 class="boolean-title"> <i class='fas fa-code'></i> JD to Boolean Converter</h1>
+
+    <div>
+        <label for="jobDescription" class="boolean-label">Paste Job Description:</label>
+        <textarea class="boolean-textarea" id="jobDescription" 
+                  placeholder="Paste the job description here..."></textarea>
+    </div>
+
+    <div class="boolean-button-group">
+        <button id="generateBtn" class="boolean-button boolean-button-primary">Generate Boolean Search</button>
+        <button id="copyBtn" class="boolean-button boolean-button-success" disabled>Copy to Clipboard</button>
+    </div>
+
+    <div class="boolean-loading" id="loadingIndicator">
+        <div class="boolean-spinner"></div>
+        <p>Analyzing job description...</p>
+    </div>
+
+    <div>
+        <label for="booleanOutput" class="boolean-label">Boolean Search String:</label>
+        <div class="boolean-output" id="booleanOutput" readonly></div>
+    </div>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const jobDescriptionTextarea = document.getElementById('jobDescription');
+        const booleanOutput = document.getElementById('booleanOutput');
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+
+        // Function to fetch Gemini AI response
+        async function fetchGeminiResponse(question) {
+            const apiKey = 'AIzaSyBBNlnMeK1nX7m-WCum4PALM9bEpZXmKKQ';
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: question }]
+                    }]
+                })
+            });
+
+            const data = await response.json();
+            return data;
+        }
+
+        generateBtn.addEventListener('click', async function() {
+            const jd = jobDescriptionTextarea.value.trim();
+
+            if (!jd) {
+                alert('Please paste a job description first.');
+                return;
+            }
+
+            // Show loading indicator
+            loadingIndicator.style.display = 'block';
+            booleanOutput.textContent = '';
+            generateBtn.disabled = true;
+
+            try {
+                const prompt = `Analyze the following job description and extract all technical skills, programming languages, frameworks, tools, and technologies mentioned. 
+                Then, create a comprehensive Boolean search string that can be used to find candidates with these skills. 
+                The Boolean string should use OR between similar terms and AND between different categories. 
+                Include common abbreviations and alternative names for technologies where applicable.
+                
+                Job Description:
+                ${jd}
+                
+                Return ONLY the Boolean search string, nothing else.`;
+
+                const response = await fetchGeminiResponse(prompt);
+
+                if (response.candidates && response.candidates[0].content.parts[0].text) {
+                    const booleanString = response.candidates[0].content.parts[0].text;
+                    booleanOutput.textContent = booleanString;
+                    copyBtn.disabled = false;
+                } else {
+                    booleanOutput.textContent = "Error: Could not generate Boolean search. Please try again.";
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                booleanOutput.textContent = "Error: Failed to process the job description. Please check your API key and try again.";
+            } finally {
+                loadingIndicator.style.display = 'none';
+                generateBtn.disabled = false;
+            }
+        });
+
+        copyBtn.addEventListener('click', function() {
+            const range = document.createRange();
+            range.selectNode(booleanOutput);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+
+            // Visual feedback
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+            }, 2000);
+        });
+    });
+</script>
 </div>
         
 <div id="emailHandling" class="tab-content">
