@@ -5988,7 +5988,35 @@ padding-right: 90px;
         </svg>
         <h2 class="entertainment-title">Live Scores</h2>
       </div>
-      <iframe class="entertainment-iframe" src="https://user4585.ifrem.net/iframe/frame.php"></iframe>
+	    <iframe 
+            id="ad-free-iframe" class="entertainment-iframe"
+            src="https://user4585.ifrem.net/iframe/frame.php" 
+            sandbox="allow-same-origin allow-forms allow-scripts" 
+            referrerpolicy="no-referrer"
+        ></iframe>
+	    
+     <script>
+        const iframe = document.getElementById('ad-free-iframe');
+
+        // Attempt to block clicks (only works if same-origin)
+        iframe.addEventListener('load', function() {
+            try {
+                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                iframeDoc.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    return false;
+                }, true); // Capture phase
+            } catch (error) {
+                console.error("Cannot modify iframe due to cross-origin restrictions.");
+            }
+        });
+
+        // Global popup blocker (catches some cases)
+        window.open = function() { return null; }; // Override window.open
+    </script>
+	    
       <button class="entertainment-close-btn">✕</button>
       <button class="entertainment-fullscreen-btn"><i class="fas fa-expand"></i></button>
     </div>
