@@ -5912,7 +5912,7 @@ padding-right: 90px;
         </svg>
         <h2 class="entertainment-title">Play Card Game</h2>
       </div>
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <div class="loader-container" id="loader">
   <span class="material-icons">hourglass_top</span>
@@ -5923,10 +5923,10 @@ padding-right: 90px;
 </div>
 
 <div class="card-shuffle" id="cardShuffle" style="display:none;">
-  <div class="card"></div>
-  <div class="card"></div>
-  <div class="card"></div>
-  <p class="message">Cards are shuffling... please wait</p>
+  <div class="card">♥</div>
+  <div class="card">♣</div>
+  <div class="card">♦</div>
+  <p class="message shuffle-text">Cards are shuffling...<br> please wait for next update!</p>
 </div>
 
 <style>
@@ -5973,6 +5973,10 @@ padding-right: 90px;
     border: 2px solid #2196f3;
     border-radius: 10px;
     position: absolute;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     animation: shuffle 1s infinite;
   }
   .card-shuffle .card:nth-child(1) {
@@ -5984,12 +5988,21 @@ padding-right: 90px;
   .card-shuffle .card:nth-child(3) {
     animation-delay: 0.4s;
   }
+
+  .card-shuffle .card:nth-child(1) { color: red; }   /* ♥ */
+  .card-shuffle .card:nth-child(2) { color: black; } /* ♣ */
+  .card-shuffle .card:nth-child(3) { color: red; }   /* ♦ */
+
   @keyframes shuffle {
     0% { transform: translateX(0) rotate(0deg); }
     25% { transform: translateX(-40px) rotate(-10deg); }
     50% { transform: translateX(0) rotate(0deg); }
     75% { transform: translateX(40px) rotate(10deg); }
     100% { transform: translateX(0) rotate(0deg); }
+  }
+
+  .shuffle-text {
+    margin-top: 180px; /* ensures text stays below cards */
   }
 </style>
 
@@ -6027,14 +6040,7 @@ padding-right: 90px;
         </svg>
         <h2 class="entertainment-title">Live Scores</h2>
       </div>
-<iframe
-    id="ad-free-iframe"
-    class="entertainment-iframe"
-    src="https://user4585.ifrem.net/iframe/frame.php"
-    sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
-    allow="autoplay; fullscreen"
-    referrerpolicy="no-referrer"
-></iframe>
+<script src="https://cdorgapi.b-cdn.net/widgets/score.js"></script>
 
 <script>
     // [1] Block ALL popups (including ads opening in new tabs)
@@ -6897,5 +6903,6 @@ function handleButtonClick(value) {
 </script>
 </body>
 </html>
+
 
 
