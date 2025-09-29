@@ -277,20 +277,50 @@ font-size:30px;
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="#" data-tab="home"><i class="fas fa-home"></i> <span class="menu-text">Home</span></a></li>
-            <li><a href="#" data-tab="stateInfo"><i class="fas fa-map-marker-alt"></i> <span class="menu-text">State Info</span></a></li>
-            <li><a href="#" data-tab="rateConversion"><i class="fas fa-exchange-alt"></i> <span class="menu-text">Converters</span></a></li>
-            <li><a href="#" data-tab="emailHandling"><i class="fas fa-envelope"></i> <span class="menu-text">Email Handling</span></a></li>
-            <li><a href="#" data-tab="calenderInfo"><i class="fas fa-calendar-alt"></i> <span class="menu-text">Calendar Info</span></a></li>
-            <li><a href="#" data-tab="importantLinks"><i class="fas fa-link"></i> <span class="menu-text">Important Links</span></a></li>
-            <li><a href="#" data-tab="visaDetails"><i class="fas fa-passport"></i> <span class="menu-text">Visa Details</span></a></li>
-            <li><a href="#" data-tab="interview"><i class="fas fa-user-tie"></i> <span class="menu-text">Interview</span></a></li>
-            <li><a href="#" data-tab="staffingInfo"><i class="fas fa-dice"></i> <span class="menu-text">Entertainment</span></a></li>
-            <li><a href="#" data-tab="contactUs"><i class="fas fa-phone-alt"></i> <span class="menu-text">Contact Us</span></a></li>
-
-        </ul>
+    <li><a href="#stateInfo" data-tab="stateInfo"><i class="fas fa-map-marker-alt"></i> <span class="menu-text">State Info</span></a></li>
+    <li><a href="#rateConversion" data-tab="rateConversion"><i class="fas fa-exchange-alt"></i> <span class="menu-text">Converters</span></a></li>
+    <li><a href="#emailHandling" data-tab="emailHandling"><i class="fas fa-envelope"></i> <span class="menu-text">Email Handling</span></a></li>
+    <li><a href="#calenderInfo" data-tab="calenderInfo"><i class="fas fa-calendar-alt"></i> <span class="menu-text">Calendar Info</span></a></li>
+    <li><a href="#importantLinks" data-tab="importantLinks"><i class="fas fa-link"></i> <span class="menu-text">Important Links</span></a></li>
+    <li><a href="#visaDetails" data-tab="visaDetails"><i class="fas fa-passport"></i> <span class="menu-text">Visa Details</span></a></li>
+    <li><a href="#interview" data-tab="interview"><i class="fas fa-user-tie"></i> <span class="menu-text">Interview</span></a></li>
+    <li><a href="#staffingInfo" data-tab="staffingInfo"><i class="fas fa-dice"></i> <span class="menu-text">Entertainment</span></a></li>
+    <li><a href="#contactUs" data-tab="contactUs"><i class="fas fa-phone-alt"></i> <span class="menu-text">Contact Us</span></a></li>
+</ul>
     </div>
 
+	
+<script>
+const tabs = document.querySelectorAll('ul li a');
+const contents = document.querySelectorAll('.tab-content > div');
+
+function showTab(tabId) {
+    contents.forEach(c => c.style.display = 'none');
+    const active = document.getElementById(tabId);
+    if(active) active.style.display = 'block';
+}
+
+// Handle click on tabs
+tabs.forEach(tab => {
+    tab.addEventListener('click', function(e){
+        e.preventDefault();
+        const tabId = this.getAttribute('data-tab');
+        showTab(tabId);
+        // Update URL hash
+        window.location.hash = tabId;
+    });
+});
+
+// On page load, show tab from URL hash or default
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.substring(1);
+    if(hash && document.getElementById(hash)) {
+        showTab(hash);
+    } else {
+        showTab('stateInfo'); // default tab
+    }
+});
+</script>
     <!-- Main Content -->
     <div class="main-content">
 
@@ -6926,6 +6956,7 @@ function handleButtonClick(value) {
 </script>
 </body>
 </html>
+
 
 
 
