@@ -6924,32 +6924,45 @@ function handleButtonClick(value) {
     }
 }
 </script>
+<ul>
+    <li><a href="#stateInfo" data-tab="stateInfo">State Info</a></li>
+    <li><a href="#rateConversion" data-tab="rateConversion">Converters</a></li>
+    <li><a href="#emailHandling" data-tab="emailHandling">Email Handling</a></li>
+</ul>
 
-	<script>
-const tabs = document.querySelectorAll('ul li a');
-const contents = document.querySelectorAll('.tab-content > div');
+<div class="tab-content">
+    <div id="stateInfo">State Info Content</div>
+    <div id="rateConversion">Converters Content</div>
+    <div id="emailHandling">Email Handling Content</div>
+</div>
 
-function showTab(tabId) {
-    // Hide all tabs
-    contents.forEach(c => c.style.display = 'none');
-    // Show selected tab
-    const active = document.getElementById(tabId);
-    if(active) active.style.display = 'block';
-}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('ul li a');
+    const contents = document.querySelectorAll('.tab-content > div');
 
-// Tab click handler
-tabs.forEach(tab => {
-    tab.addEventListener('click', function(e){
-        e.preventDefault();
-        const tabId = this.getAttribute('data-tab');
-        showTab(tabId);
-        window.location.hash = tabId; // update URL
+    function showTab(tabId) {
+        contents.forEach(c => {
+            if(c.id === tabId) {
+                c.style.display = 'block';
+            } else {
+                c.style.display = 'none';
+            }
+        });
+    }
+
+    // Tab click handler
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e){
+            e.preventDefault();
+            const tabId = this.getAttribute('data-tab');
+            showTab(tabId);
+            window.location.hash = tabId; // update URL
+        });
     });
-});
 
-// On page load, show tab from hash or default
-window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash.substring(1);
+    // On page load, show tab from hash or default
+    let hash = window.location.hash.substring(1);
     if(hash && document.getElementById(hash)) {
         showTab(hash);
     } else {
@@ -6957,8 +6970,10 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+	
 </body>
 </html>
+
 
 
 
