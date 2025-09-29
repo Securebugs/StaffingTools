@@ -6633,6 +6633,29 @@ submitContactFormBtn.addEventListener('click', async function(event) {
 .body-no-scroll {
     overflow: hidden;
 }
+
+	   /* Responsive modal for mobile */
+@media (max-width: 768px) {
+    .modal-documentation {
+        width: 90%;        /* Almost full width */
+        height: 80%;       /* Almost full height */
+        padding: 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .modal-content {
+        height: calc(100% - 60px); /* Keep scrolling for content */
+    }
+    .modal-header {
+        font-size: 18px;
+    }
+    .close-btnn {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+}
 </style>
 
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
@@ -6903,6 +6926,7 @@ function handleButtonClick(value) {
 </script>
 </body>
 </html>
+
 
 
 
