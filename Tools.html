@@ -1045,83 +1045,128 @@ async function fetchGeminiResponse(question) {
 }
 </script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainIcon = document.getElementById('mainIcon');
-            const verticalIcons = document.getElementById('verticalIcons');
-            let hoverTimeout;
-            let currentPopup = null;
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainIcon = document.getElementById('mainIcon');
+        const verticalIcons = document.getElementById('verticalIcons');
+        let hoverTimeout;
+        let currentPopup = null;
 
-            // Icon Hover Handling
-            function showIcons() {
-                clearTimeout(hoverTimeout);
-                verticalIcons.style.display = 'flex';
-                mainIcon.innerHTML = '<i class="fas fa-times"></i>';
-            }
+        // Icon Hover Handling
+        function showIcons() {
+            clearTimeout(hoverTimeout);
+            verticalIcons.style.display = 'flex';
+            mainIcon.innerHTML = '<i class="fas fa-times"></i>';
+        }
 
-            function hideIcons() {
-                hoverTimeout = setTimeout(() => {
-                    verticalIcons.style.display = 'none';
-                    mainIcon.innerHTML = '<i class="fas fa-plus"></i>';
-                }, 300);
-            }
+        function hideIcons() {
+            hoverTimeout = setTimeout(() => {
+                verticalIcons.style.display = 'none';
+                mainIcon.innerHTML = '<i class="fas fa-plus"></i>';
+            }, 300);
+        }
 
-            mainIcon.addEventListener('mouseenter', showIcons);
-            mainIcon.addEventListener('mouseleave', hideIcons);
-            verticalIcons.addEventListener('mouseenter', showIcons);
-            verticalIcons.addEventListener('mouseleave', hideIcons);
+        mainIcon.addEventListener('mouseenter', showIcons);
+        mainIcon.addEventListener('mouseleave', hideIcons);
+        verticalIcons.addEventListener('mouseenter', showIcons);
+        verticalIcons.addEventListener('mouseleave', hideIcons);
 
-            // Popup Handling
-            document.querySelectorAll('.icon-item').forEach(icon => {
-                icon.addEventListener('click', function() {
-                    if(currentPopup) currentPopup.style.display = 'none';
-                    const popupId = this.dataset.popup;
-                    currentPopup = document.getElementById(popupId);
-                    currentPopup.style.display = 'flex';
-                    
-                    if(popupId === 'cart-popup' && !document.querySelector('#rzpScript')) {
-                        const script = document.createElement('script');
-                        script.id = 'rzpScript';
-                        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-                        script.dataset.payment_button_id = 'pl_PsXVCue2RE0NI5';
-                        script.async = true;
-                        document.getElementById('rzpForm').appendChild(script);
-                    }
-                });
-            });
-
-            // Close Handling
-            document.querySelectorAll('.close-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btn.closest('.popup').style.display = 'none';
-                    currentPopup = null;
-                });
-            });
-
-            // Close on Outside Click
-            window.addEventListener('click', (e) => {
-                if(e.target.classList.contains('popup')) {
-                    e.target.style.display = 'none';
-                    currentPopup = null;
+        // Function to open popup
+        function openPopup(popupId, updateHash = true) {
+            if(currentPopup) currentPopup.style.display = 'none';
+            currentPopup = document.getElementById(popupId);
+            currentPopup.style.display = 'flex';
+            
+            // Update URL hash without scrolling
+            if (updateHash) {
+                try {
+                    const newUrl = window.location.href.split('#')[0] + '#' + popupId;
+                    window.history.replaceState(null, null, newUrl);
+                } catch (e) {
+                    console.log("Hash update failed:", e);
                 }
+            }
+            
+            if(popupId === 'cart-popup' && !document.querySelector('#rzpScript')) {
+                const script = document.createElement('script');
+                script.id = 'rzpScript';
+                script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+                script.dataset.payment_button_id = 'pl_PsXVCue2RE0NI5';
+                script.async = true;
+                document.getElementById('rzpForm').appendChild(script);
+            }
+        }
+
+        // Function to close popup
+        function closePopup() {
+            if(currentPopup) {
+                currentPopup.style.display = 'none';
+                currentPopup = null;
+                
+                // Remove hash from URL without scrolling
+                try {
+                    const newUrl = window.location.href.split('#')[0];
+                    window.history.replaceState(null, null, newUrl);
+                } catch (e) {
+                    console.log("Hash removal failed:", e);
+                }
+            }
+        }
+
+        // Popup Handling with hash support
+        document.querySelectorAll('.icon-item').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const popupId = this.dataset.popup;
+                openPopup(popupId, true);
             });
+        });
 
-          
+        // Close Handling
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', closePopup);
+        });
 
-            // Notes Placeholder Handling
-            const editable = document.querySelector('.content-editable');
+        // Close on Outside Click
+        window.addEventListener('click', (e) => {
+            if(e.target.classList.contains('popup')) {
+                closePopup();
+            }
+        });
+
+        // Notes Placeholder Handling
+        const editable = document.querySelector('.content-editable');
+        if (editable) {
             editable.addEventListener('focus', function() {
                 if(this.textContent === 'Start typing here...') this.textContent = '';
             });
             editable.addEventListener('blur', function() {
                 if(!this.textContent.trim()) this.textContent = 'Start typing here...';
             });
-        });
-
-        function openModal() {
-            alert('Terms & Conditions content here');
         }
-    </script>
+
+        // Handle URL hash on page load for popups
+        function handlePopupHash() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const popupExists = document.getElementById(hash);
+                if (popupExists && popupExists.classList.contains('popup')) {
+                    // Open the popup but don't update hash again
+                    openPopup(hash, false);
+                }
+            }
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handlePopupHash);
+
+        // Initial popup setup based on URL hash
+        handlePopupHash();
+    });
+
+    function openModal() {
+        alert('Terms & Conditions content here');
+    }
+</script>
 
         <!-- Home Tab -->
        <div id="home" class="tab-content active">
@@ -6817,45 +6862,78 @@ background-color: #fff !important;
    
 </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const menuToggle = document.getElementById("menuToggle");
-            const sidebar = document.getElementById("sidebar");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
 
-            // Toggle sidebar in mobile mode
-            menuToggle.addEventListener("click", function () {
-                sidebar.classList.toggle("show");
+        // Toggle sidebar in mobile mode
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("show");
+        });
+
+        // Switch tabs and hide sidebar in mobile mode
+        const tabLinks = document.querySelectorAll(".sidebar a");
+        tabLinks.forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const parentLi = this.parentElement; // Get the parent <li> element
+
+                // Remove active class from all <li> elements
+                document.querySelectorAll(".sidebar ul li").forEach(li => {
+                    li.classList.remove("active");
+                });
+
+                // Add active class to the parent <li> of the clicked link
+                parentLi.classList.add("active");
+
+                const tabId = this.getAttribute("data-tab");
+                document.querySelectorAll(".tab-content").forEach(tab => {
+                    tab.classList.remove("active");
+                });
+                document.getElementById(tabId).classList.add("active");
+
+                // Update URL hash without scrolling - works for file protocol
+                try {
+                    // Method that works for both file and http protocols without scroll
+                    const newUrl = window.location.href.split('#')[0] + '#' + tabId;
+                    window.history.replaceState(null, null, newUrl);
+                } catch (e) {
+                    // Fallback for browsers that don't support replaceState with file protocol
+                    console.log("Hash update failed:", e);
+                }
+
+                // Hide sidebar in mobile mode after clicking a tab
+                if (window.innerWidth <= 767.98) {
+                    sidebar.classList.remove("show");
+                }
             });
+        });
 
-            // Switch tabs and hide sidebar in mobile mode
-            const tabLinks = document.querySelectorAll(".sidebar a");
-            tabLinks.forEach(link => {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const parentLi = this.parentElement; // Get the parent <li> element
-
-                    // Remove active class from all <li> elements
+        // Handle URL hash on page load - ONLY if hash exists
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const tabExists = document.getElementById(hash);
+            if (tabExists && tabExists.classList.contains('tab-content')) {
+                // Switch to the tab but don't update hash again
+                const activeLink = document.querySelector(`.sidebar a[data-tab="${hash}"]`);
+                if (activeLink) {
+                    const parentLi = activeLink.parentElement;
                     document.querySelectorAll(".sidebar ul li").forEach(li => {
                         li.classList.remove("active");
                     });
-
-                    // Add active class to the parent <li> of the clicked link
                     parentLi.classList.add("active");
-
-                    const tabId = this.getAttribute("data-tab");
+                    
                     document.querySelectorAll(".tab-content").forEach(tab => {
                         tab.classList.remove("active");
                     });
-                    document.getElementById(tabId).classList.add("active");
-
-                    // Hide sidebar in mobile mode after clicking a tab
-                    if (window.innerWidth <= 767.98) {
-                        sidebar.classList.remove("show");
-                    }
-                });
-            });
-        });
-    </script>
+                    document.getElementById(hash).classList.add("active");
+                }
+            }
+        }
+        // If no hash, stay on homepage - no automatic tab activation
+    });
+</script>
 
 <script>
 let r = true;
@@ -6925,8 +7003,3 @@ function handleButtonClick(value) {
 </script>
 </body>
 </html>
-
-
-
-
-
