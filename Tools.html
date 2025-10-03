@@ -1356,7 +1356,6 @@ background:none !important;
     cursor: pointer;
 }
 </style>
-
 <script>
     function getRandomColor() {
         const colors = ['black', 'red'];
@@ -1365,10 +1364,19 @@ background:none !important;
 
     async function fetchTrends() {
         try {
-            // GNews API search endpoint
-            const apiUrl = 'https://gnews.io/api/v4/search?q=example&lang=hi&country=in,us&max=10&apikey=14c47e12f50dc0e35b8f018d3f4916f2';
-            const response = await fetch(apiUrl);
+            // Use CORS proxy
+            const originalUrl = 'https://gnews.io/api/v4/search?q=india&lang=en&max=5&apikey=14c47e12f50dc0e35b8f018d3f4916f2';
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/' + originalUrl;
+            
+            console.log('Fetching from proxy:', proxyUrl);
+            const response = await fetch(proxyUrl);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             const data = await response.json();
+            console.log('API Data received:', data);
 
             let trendsContent = '';
 
@@ -1383,22 +1391,19 @@ background:none !important;
                     }
                 });
             } else {
-                trendsContent = 'No news data available.';
+                trendsContent = 'No news articles found.';
             }
 
             document.getElementById('trends-marquee').innerHTML = trendsContent;
         } catch (error) {
             console.error('Error fetching news:', error);
-            document.getElementById('trends-marquee').innerHTML = 'Error loading news.';
+            document.getElementById('trends-marquee').innerHTML = 'Error loading news. Please try again later.';
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Fetch trends immediately when the page loads
         fetchTrends();
-
-        // Set up the interval to fetch trends every 4 hours
-        const refreshInterval = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+        const refreshInterval = 4 * 60 * 60 * 1000;
         setInterval(fetchTrends, refreshInterval);
 
         const marquee = document.querySelector('.marquee');
@@ -1417,7 +1422,6 @@ background:none !important;
         });
     });
 </script>
-
 
 
 <body onload="updateTime()">
