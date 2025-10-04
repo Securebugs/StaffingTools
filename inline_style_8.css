@@ -1,0 +1,160 @@
+.boolean-converter {
+        width: 93%;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .boolean-title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .boolean-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .boolean-textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 14px;
+        resize: vertical;
+        margin-bottom: 20px;
+    }
+
+    .boolean-textarea:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+    }
+
+    .boolean-button-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .boolean-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        flex-grow: 1;
+    }
+
+    .boolean-button-primary {
+        background-color: #4285f4;
+        color: white;
+    }
+
+    .boolean-button-primary:hover {
+        background-color: #3367d6;
+    }
+
+    .boolean-button-success {
+        background-color: #34a853;
+        color: white;
+    }
+
+    .boolean-button-success:hover {
+        background-color: #2d9248;
+    }
+
+    .boolean-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
+    .boolean-loading {
+        display: none;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .boolean-spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #4285f4;
+        width: 30px;
+        height: 30px;
+        animation: booleanSpin 1s linear infinite;
+        margin: 0 auto 10px;
+    }
+
+    @keyframes booleanSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .boolean-output {
+        background-color: #f8f9fa;
+        font-family: monospace;
+        white-space: pre-wrap;
+        padding: 12px;
+        border-radius: 4px;
+        min-height: 100px;
+        border: 1px solid #eee;
+    }
+    
+    .boolean-jobtitle-output {
+        width: 100%;
+        min-height: 60px;
+        padding: 12px;
+        background-color: #f8f9fa;
+        font-family: monospace;
+        border: 1px solid #eee;
+        border-radius: 4px;
+    }
+
+    .boolean-copy-btn {
+        background: none;
+        border: none;
+        color: #6c757d;
+        padding: 0 0 0 8px;
+        cursor: pointer;
+    }
+
+    .boolean-copy-btn:hover {
+        color: #4285f4;
+    }
+
+    .boolean-label-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+        .boolean-converter {
+            padding: 20px;
+            margin: 15px auto;
+            width: calc(100% - 30px);
+        }
+
+        .boolean-textarea {
+            min-height: 150px;
+        }
+
+        .boolean-button-group {
+            flex-direction: column;
+        }
+
+        .boolean-button {
+            width: 100%;
+        }
+    }

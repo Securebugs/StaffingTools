@@ -1,0 +1,175 @@
+.card-book {
+        width: 100%;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 85vh;
+    }
+
+    .container-t {
+       padding-left: 90px;
+padding-right: 90px;
+ /* Add padding inside the card to avoid overflow */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif; /* Set font-family */
+        position: relative; /* For positioning desktop buttons */
+        overflow: hidden;
+    }
+
+    .book {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .page {
+        display: none;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    .page h2 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .page p {
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .page ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    .page ul li {
+        margin-bottom: 10px;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #ddd;
+        flex-shrink: 0;
+        position: sticky;
+        bottom: 0;
+        z-index: 10; /* Ensure navigation is always on top */
+    }
+
+    .nav-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-btn:hover {
+        background-color: #0056b3;
+    }
+
+    .nav-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    .pagination {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pagination button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .pagination button.active {
+        background-color: #0056b3;
+    }
+
+    .desktop-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 123, 255, 0.8);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .desktop-nav.prev {
+        left: 50px; /* Position 50px from the left */
+    }
+
+    .desktop-nav.next {
+        right: 50px; /* Position 50px from the right */
+    }
+
+    .desktop-nav:hover {
+        background-color: rgba(0, 86, 179, 0.8);
+    }
+
+    @media (max-width: 768px) {
+        .card-book {
+            height: 100vh;
+            width: 100%;
+            border-radius: 0;
+            margin: 0; /* Remove margin on mobile */
+        }
+
+        .container-t {
+            margin: 0; /* No margin on mobile */
+            padding: 20px; /* Adjust padding on mobile */
+        }
+
+        .book {
+            padding: 10px; /* Adjust padding for mobile */
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .pagination button {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+
+        .desktop-nav {
+            display: none; /* Hide desktop nav buttons on mobile */
+        }
+    }

@@ -1,0 +1,74 @@
+.loader-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .progress-bar {
+    width: 300px;
+    height: 25px;
+    border-radius: 20px;
+    background: #ddd;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2196f3, #4caf50);
+    transition: width 0.1s;
+  }
+  .message {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+  }
+  .material-icons {
+    font-size: 40px;
+    color: #2196f3;
+  }
+
+  /* Card shuffle animation */
+  .card-shuffle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .card-shuffle .card {
+    width: 100px;
+    height: 140px;
+    background: white;
+    border: 2px solid #2196f3;
+    border-radius: 10px;
+    position: absolute;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: shuffle 1s infinite;
+  }
+  .card-shuffle .card:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .card-shuffle .card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .card-shuffle .card:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  .card-shuffle .card:nth-child(1) { color: red; }   /* ♥ */
+  .card-shuffle .card:nth-child(2) { color: black; } /* ♣ */
+  .card-shuffle .card:nth-child(3) { color: red; }   /* ♦ */
+
+  @keyframes shuffle {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-40px) rotate(-10deg); }
+    50% { transform: translateX(0) rotate(0deg); }
+    75% { transform: translateX(40px) rotate(10deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+
+  .shuffle-text {
+    margin-top: 180px; /* ensures text stays below cards */
+  }

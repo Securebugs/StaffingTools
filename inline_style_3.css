@@ -1,0 +1,12 @@
+.notiff{
+padding:2px;
+margin:3px;
+color:red;
+}
+#emailContainer .notiff {
+    display: none;
+}
+
+#emailContainer:hover .notiff {
+    display: block;
+}

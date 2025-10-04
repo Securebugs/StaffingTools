@@ -1,0 +1,96 @@
+/* Ad Banner */
+.ad-banner { 
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .ad-banner {
+    display: none !important;
+  }
+}
+
+    /* Custom card styles */
+    .custom-card {
+      flex: 1;
+      min-width: 250px;
+      max-width: 90%; /* Set max-width to 80% */
+      height: 85vh; /* Set height to 80% of the viewport height */
+      min-height: 500px; /* Minimum height */
+      margin: 0 auto 20px; /* Center the card horizontally */
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+      overflow: auto; /* Add scroll if content overflows */
+    }
+
+    /* Map container styles */
+    .map-container {
+      width: 100%; /* Full width of the card */
+      height: 100%; /* Full height of the card */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* Prevent overflow */
+    }
+
+    /* Rectangle SVG styles */
+    .rectangle-svg {
+      width: 100%; /* Full width of the container */
+      height: 100%; /* Full height of the container */
+    }
+
+    /* Timezone container styles */
+    .timezone-container {
+      width: 20%; /* 20% width in desktop */
+      display: flex;
+      padding: 5px;
+      flex-direction: column; /* Stack vertically in desktop */
+      align-items: flex-start; /* Align items to the start */
+      gap: 10px; /* Spacing between SVGs */
+    }
+
+
+
+    /* SVG box styles */
+    .svg-box {
+      width: 100%; /* Full width of the container */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    /* Mobile view (less than 768px) */
+    @media (max-width: 767.98px) {
+      .custom-card {
+        max-width: 100%; /* Full width in mobile */
+        height: auto; /* Allow height to adjust */
+      }
+
+      .map-container {
+        width: 100%; /* Full width in mobile */
+        height: 30vh; /* Reduce height for mobile */
+      }
+
+      .timezone-container {
+        width: 100%; /* Full width in mobile */
+        flex-direction: row; /* Stack horizontally in mobile */
+        flex-wrap: wrap; /* Wrap SVGs if they overflow */
+        justify-content: center; /* Center SVGs horizontally */
+        align-items: center; /* Center SVGs vertically */
+        gap: 5px; /* Reduce spacing for mobile */
+      }
+
+      .svg-box {
+        flex: 1 1 45%; /* Allow SVGs to take up 45% of the container width */
+        max-width: 45%; /* Prevent SVGs from growing too large */
+      }
+    }
+
+path {
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+/* On hover, apply styles */
+path:hover {
+  stroke: #D3D3D3 !important;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  cursor: pointer;
+  fill: #FFAA00 !important;
+}

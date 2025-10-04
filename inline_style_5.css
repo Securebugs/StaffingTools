@@ -1,0 +1,76 @@
+.marquee-container {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background: #FFFFFF;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.trending-now {
+    display: flex;
+    align-items: center;
+    background: white;
+    color: black;
+    font-weight: 800;
+    z-index: 2; /* Higher z-index to stay above the marquee */
+    position: absolute; /* Fix it to the right side */
+    right: 0; /* Position it at the right end */
+    padding: 10px; /* Add padding for spacing */
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.trending-now img {
+    width: 30px;
+    height: 20px;
+    margin-left: 10px; /* Add some space between text and image */
+}
+
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 100s linear infinite; /* Keep the original speed */
+    font-weight: 600;
+    padding-left: 100%; /* Start the text outside the container */
+    position: relative;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); } /* Start instantly from the right */
+    100% { transform: translateX(-100%); } /* Move to the left */
+}
+
+.marquee:hover {
+    animation-play-state: paused; /* Hover to pause */
+}
+
+.trend-item {
+    padding: 0 10px; /* Gap between news items */
+    display: inline-block;
+    text-decoration: none; /* Text decorations */
+}
+
+.separator {
+    color: teal; /* Separator color */
+background:none !important;
+}
+
+.play-pause-container {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Higher z-index to stay above the marquee */
+    position: absolute; /* Fix it to the left side */
+    left: 0; /* Position it at the left end */
+}
+
+.play-pause-btn {
+    cursor: pointer;
+}

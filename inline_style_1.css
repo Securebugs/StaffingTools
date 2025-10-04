@@ -1,0 +1,22 @@
+.footer-svg.g { fill: #0c0; }
+
+/* Your existing alert styles */
+.alert-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 40px;
+    text-align: center;
+    font-size: 11px;
+    z-index: 9999;
+}
+.alert strong { font-size: 12px; }
+.alert {
+    color: #000;
+    padding: 8px;
+    border-radius: 3px;
+    display: none;
+}
+.alert.show { display: block; }

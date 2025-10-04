@@ -1,0 +1,182 @@
+/* General Styles */
+        body {
+            padding-top: 56px; /* Adjust for fixed navbar */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+.piedra-regular {
+  font-family: "Piedra", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+ .card {
+     
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+      overflow: auto; /* Add scroll if content overflows */
+    }
+
+.top-bg{
+background-color: #f1d580;
+    background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 60%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
+}
+        /* Sidebar Styles */
+        .sidebar {
+            width: 55px; /* Initial width */
+            height: 100vh;
+            position: fixed;
+            top: 45px;
+            left: 0;
+            background-color: #f1d580;
+    background: linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #eab4f8 0, #eab4f8 65%, #f1d580 0, #f3f798 90%);
+    background: -webkit-linear-gradient(45deg, #c7edfe 10%, #c7f5fe 40%, #fcc8f8 0, #fcc8f8 60%, #ffc299 0, #ffc299 65%, #f1d580 0, #f3f798 90%);
+            overflow-x: hidden;
+            transition: width 0.3s, left 0.3s;
+            border-right: 1px solid #ddd; /* Light border */
+            padding-top: 10px;
+            z-index: 1000;
+        }
+
+        .sidebar:hover {
+            width: 220px; /* Expanded width */
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 12px 5px;
+        }
+
+        .sidebar ul li a {
+            color: #333; /* Dark text for light background */
+            text-decoration: none;
+            display: flex;
+            font-weight:800 !important;
+            align-items: center;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a i {
+            font-size: 20px;
+            width: 35px;
+            text-align: center;
+        }
+
+        .sidebar ul li a .menu-text {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .sidebar:hover ul li a .menu-text,
+        .sidebar.show ul li a .menu-text {
+            display: inline;
+            white-space: nowrap;
+        }
+
+        /* Active Tab Styles */
+        .sidebar ul li.active {
+            background-color: #b2e9f7; /* Updated lighter sky blue */
+        }
+
+        .sidebar ul li.active a {
+            background-color: transparent; /* Remove background from the link */
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 55px; /* Initial margin */
+            padding: 20px;
+            transition: margin-left 0.3s;
+            flex: 1;
+        }
+
+        .sidebar:hover ~ .main-content {
+            margin-left: 220px; /* Expanded margin */
+        }
+
+        /* Tab Content Styles */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Home Tab Cards */
+        .home-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        /* Sidebar Toggle (Hamburger Menu) */
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        }
+
+/* Container for inline layout */
+.card-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+        /* Adjust margin between ad card and first card */
+        @media (min-width: 768px) {
+            .home-cards {
+                margin-left: 20px; /* Reduced margin between ad card and first card */
+            }
+
+        }
+
+
+@media (max-width: 767.98px) {
+.sidebar:hover ~ .main-content {
+            margin-left: 2px; /* Expanded margin */
+        }
+}
+
+        /* Responsive Design */
+        @media (max-width: 767.98px) {
+            .sidebar {
+                left: -220px; /* Hide sidebar by default in mobile */
+                width: 220px;
+            }
+
+            .sidebar.show {
+                left: 0; /* Show sidebar when toggled */
+            }
+
+            .main-content {
+                margin-left: 0; /* Remove margin in mobile */
+                overflow-x: hidden; /* Prevent horizontal scroll */
+            }
+
+            .menu-icon {
+                display: block; /* Show hamburger menu in mobile */
+padding-left:15px;
+font-size:30px;
+            }
+
+            .ad-banner {
+                display: none; /* Hide ad banner in mobile */
+            }
+
+            .card {
+                max-width: 100%; /* Cards take full width in mobile */
+            }
+        }
