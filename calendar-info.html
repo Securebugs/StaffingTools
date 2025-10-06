@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <meta name="google-site-verification" content="1izKCetzNj3e7mRvTXIoFhcSN0popYPWvwyzTtEBi24" />
+    <meta name="mylead-verification" content="36f3e822fb8e7a332ba9fd627eca510d">
+    
+    <!-- Primary Meta Tags -->
+    <title>Calendar- USA Staffing Tools</title>
+    <meta name="description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="USA Staffing Tools">
+    <meta itemprop="description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta itemprop="image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://securebugs.github.io/StaffingTools/Tools">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="USA Staffing Tools">
+    <meta property="og:description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta property="og:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USA Staffing Tools">
+    <meta name="twitter:description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta name="twitter:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --icon-color: #0288d1;
+            --holiday-color: #ff6b6b;
+            --weekoff-color: #4ecdc4;
+        }
+        [data-theme="dark"] {
+            --accent-color: #80d8ff;
+            --light-color: #1a1a1a;
+            --dark-color: #ffffff;
+            --success-color: #66bb6a;
+            --icon-color: #4fc3f7;
+            --holiday-color: #ff8a8a;
+            --weekoff-color: #6ce6dd;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            padding-top: 70px;
+            overflow: hidden;
+            color: var(--dark-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 0.8rem 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        [data-theme="dark"] .navbar {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        .sidebar-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .sidebar-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        [data-theme="dark"] .sidebar-toggle {
+            background: #4361ee;
+        }
+        .theme-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .theme-toggle i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        [data-theme="dark"] .theme-toggle {
+            background: #4361ee;
+        }
+        .sidebar {
+            background: var(--light-color);
+            height: calc(100vh - 70px);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .sidebar:hover, .sidebar.expanded {
+            width: 220px;
+        }
+        .sidebar-menu {
+            padding-top: 20px;
+            list-style: none;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 5px;
+            margin-left: -2rem;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            margin: 0 5px;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+        .sidebar-menu i {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .menu-text {
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        .sidebar:hover .menu-text, .sidebar.expanded .menu-text {
+            opacity: 1;
+        }
+        .main-content {
+            margin-left: 60px;
+            padding: 25px;
+            padding-bottom: 60px;
+            transition: margin-left 0.3s ease;
+            overflow: hidden;
+            height: calc(100vh - 70px);
+        }
+        .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+            margin-left: 220px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            background: var(--light-color);
+            height: calc(100vh - 140px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        [data-theme="dark"] .card {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 15px 20px;
+            font-weight: 600;
+            border: none;
+        }
+        [data-theme="dark"] .card-header {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .card-body {
+            padding: 15px;
+            background: transparent;
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .calendar-container {
+            background: var(--light-color);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 60%;
+        }
+        [data-theme="dark"] .calendar-container {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .holidays-container {
+            background: var(--light-color);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 40%;
+        }
+        [data-theme="dark"] .holidays-container {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .holidays-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: var(--light-color);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+        [data-theme="dark"] .holidays-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: #1a1a1a;
+        }
+        .holidays-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin: 0;
+            text-align: center;
+        }
+        [data-theme="dark"] .holidays-title {
+            color: #ffffff;
+        }
+        .holidays-content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .holiday-table-container {
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            position: relative;
+        }
+        .holiday-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .holiday-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 15;
+            background: var(--light-color) !important;
+        }
+        [data-theme="dark"] .holiday-table thead {
+            background: #1a1a1a !important;
+        }
+        .holiday-table th {
+            background: rgba(67, 97, 238, 0.15) !important;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark-color);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] .holiday-table th {
+            color: #ffffff !important;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(67, 97, 238, 0.25) !important;
+        }
+        .holiday-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        [data-theme="dark"] .holiday-table td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .holiday-table tr.holiday {
+            background: rgba(255, 107, 107, 0.1);
+        }
+        .holiday-table tr.weekoff {
+            background: rgba(78, 205, 196, 0.1);
+        }
+        .holiday-table tr:last-child td {
+            border-bottom: none;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        .calendar-nav button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .calendar-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        [data-theme="dark"] .calendar-title {
+            color: #ffffff;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            flex-grow: 1;
+        }
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 0;
+            color: var(--dark-color);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        [data-theme="dark"] .calendar-day-header {
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .calendar-day {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            padding: 10px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        [data-theme="dark"] .calendar-day {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .calendar-day:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+        .calendar-day.other-month {
+            color: #aaa;
+        }
+        [data-theme="dark"] .calendar-day.other-month {
+            color: #666;
+        }
+        .calendar-day.today {
+            background: rgba(67, 97, 238, 0.2);
+            border: 1px solid var(--primary-color);
+        }
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .holiday-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--holiday-color);
+            margin-top: auto;
+            align-self: center;
+        }
+        .weekoff-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--weekoff-color);
+            margin-top: auto;
+            align-self: center;
+        }
+        .holiday-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            pointer-events: none;
+        }
+        .holiday-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark-color) transparent transparent transparent;
+        }
+        .calendar-day:hover .holiday-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 60px;
+            width: calc(100% - 60px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+            z-index: 900;
+            transition: left 0.3s ease;
+        }
+        [data-theme="dark"] footer {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+            left: 220px;
+            width: calc(100% - 220px);
+        }
+
+        /* Desktop specific styles */
+        @media (min-width: 769px) {
+            .mobile-month-year {
+                display: none !important;
+            }
+            .mobile-calendar-nav {
+                display: none !important;
+            }
+            
+            /* Desktop calendar perfect fit - smaller tiles */
+            .calendar-grid {
+                grid-template-columns: repeat(7, minmax(0, 1fr));
+                gap: 4px;
+                height: 100%;
+            }
+            
+            .calendar-day {
+                min-height: 70px !important;
+                padding: 6px 4px !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            .day-number {
+                font-weight: 600;
+                margin-bottom: 3px;
+                font-size: 0.85rem;
+            }
+            
+            .calendar-day-header {
+                padding: 8px 0;
+                font-size: 0.9rem;
+            }
+            
+            .holiday-indicator,
+            .weekoff-indicator {
+                width: 6px;
+                height: 6px;
+            }
+            
+            /* Remove unnecessary scrolling in desktop */
+            .card {
+                overflow: hidden;
+            }
+            
+            .card-body {
+                overflow: hidden;
+            }
+            
+            .calendar-container {
+                overflow: hidden;
+            }
+            
+            .holidays-container {
+                overflow: hidden;
+            }
+            
+            /* Perfect fit for calendar in desktop */
+            .calendar-container {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+            
+            .calendar-grid {
+                flex: 1;
+                min-height: 0;
+            }
+            
+            .calendar-header {
+                margin-bottom: 10px;
+                padding: 0 5px;
+            }
+            
+            .calendar-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px; /* Increased padding for mobile */
+            }
+            .navbar {
+                min-height: 50px;
+                padding: 0.5rem 1rem;
+            }
+            .sidebar {
+                top: 60px; /* Adjusted for increased body padding */
+                width: 0;
+                height: calc(100vh - 60px);
+                overflow: hidden;
+                scrollbar-width: none;
+                z-index: 999;
+                clip-path: inset(0 0 0 0);
+            }
+            .sidebar::-webkit-scrollbar {
+                display: none;
+            }
+            .sidebar.expanded {
+                width: 220px;
+                z-index: 999;
+                top: 60px; /* Adjusted for increased body padding */
+            }
+            .sidebar-toggle {
+                display: flex;
+            }
+            .navbar .container-fluid {
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 50px;
+            }
+            .navbar-brand {
+                flex: 1;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .theme-toggle {
+                margin-left: 5px;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+                padding-bottom: 70px;
+                height: auto;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                margin-top: 10px; /* Added margin between nav and content */
+            }
+            .card {
+                height: auto !important;
+                margin-bottom: 50px;
+                overflow-y: auto;
+            }
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto !important;
+                overflow-x: hidden;
+                max-height: calc(100vh - 190px) !important; /* Adjusted for the added margin */
+                -webkit-overflow-scrolling: touch;
+                gap: 20px;
+                height: auto;
+                padding: 10px !important;
+            }
+            .calendar-container, .holidays-container {
+                flex: 0 0 100%;
+                min-height: 400px;
+            }
+            .calendar-day {
+                min-height: 60px;
+                padding: 5px;
+            }
+            .holiday-table {
+                font-size: 0.75rem;
+            }
+            .holiday-tooltip {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                max-width: 100px;
+            }
+            
+            /* Mobile specific calendar header */
+            .calendar-header {
+                display: none !important;
+            }
+            
+            .mobile-month-year {
+                display: block !important;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--dark-color);
+                margin-bottom: 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            [data-theme="dark"] .mobile-month-year {
+                color: #ffffff;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .mobile-calendar-nav {
+                display: flex !important;
+                justify-content: center;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .mobile-calendar-nav button {
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 15px;
+                cursor: pointer;
+                font-size: 0.9rem;
+            }
+            
+            /* Fix scrolling issues on mobile */
+            .holiday-table-container {
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                height: 100% !important;
+            }
+            
+            .calendar-grid {
+                overflow: visible !important;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 0;
+            }
+            .sidebar:hover, .sidebar.expanded {
+                width: 220px;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+                margin-left: 0;
+            }
+            footer {
+                left: 0;
+                width: 100%;
+            }
+            .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand" href="https://securebugs.github.io/StaffingTools/Tools">Staffing Tools</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="bi bi-moon-stars-fill"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/Tools">
+                    <i class="bi bi-house-door"></i>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/state-info.html">
+                    <i class="bi bi-geo-alt"></i>
+                    <span class="menu-text">State Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/converters.html">
+                    <i class="bi bi-arrow-left-right"></i>
+                    <span class="menu-text">Converters</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/email-handling.html">
+                    <i class="bi bi-envelope"></i>
+                    <span class="menu-text">Email Handling</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/calendar-info.html" class="active">
+                    <i class="bi bi-calendar-event"></i>
+                    <span class="menu-text">Calendar Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/important-links.html">
+                    <i class="bi bi-link-45deg"></i>
+                    <span class="menu-text">Important Links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/visa-details.html">
+                    <i class="bi bi-file-text"></i>
+                    <span class="menu-text">Visa Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/interview.html">
+                    <i class="bi bi-person-check"></i>
+                    <span class="menu-text">Interview</span>
+                </a>
+            </li>
+            <li>
+                 <a href="https://securebugs.github.io/StaffingTools/utilities.html" class="active">
+                    <i class="bi bi-tools"></i>
+                    <span class="menu-text">Utilities</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/contact.html">
+                    <i class="bi bi-telephone"></i>
+                    <span class="menu-text">Contact Us</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-calendar-event me-2"></i>Calendar Info Dashboard
+            </div>
+            <div class="card-body">
+                <div class="calendar-container">
+                    <!-- Mobile Only Header -->
+                    <div class="mobile-month-year" id="mobileMonthYear">October 2023</div>
+                    <div class="mobile-calendar-nav">
+                        <button id="mobilePrevMonth"><i class="bi bi-chevron-left"></i></button>
+                        <button id="mobileTodayBtn">Today</button>
+                        <button id="mobileNextMonth"><i class="bi bi-chevron-right"></i></button>
+                    </div>
+
+                    <!-- Desktop Header (hidden on mobile) -->
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button id="prevMonth"><i class="bi bi-chevron-left"></i></button>
+                            <button id="todayBtn">Today</button>
+                            <button id="nextMonth"><i class="bi bi-chevron-right"></i></button>
+                        </div>
+                        <h3 class="calendar-title" id="currentMonthYear">October 2023</h3>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        <!-- Calendar days will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="holidays-container">
+                    <div class="holidays-header">
+                        <h3 class="holidays-title">Holidays & Weekly Offs</h3>
+                    </div>
+                    <div class="holidays-content">
+                        <div class="holiday-table-container">
+                            <table class="holiday-table">
+                                <thead>
+                                  <tr>
+                                    <th>Holiday</th>
+                                    <th>Date</th>
+                                    <th>Day</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr class="holiday">
+                                    <td>New Year's Day</td>
+                                    <td>January 1</td>
+                                    <td>Wednesday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Holi</td>
+                                    <td>March 14</td>
+                                    <td>Friday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>March 15</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>March 16</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>May 24</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>May 25</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Memorial Day</td>
+                                    <td>May 26</td>
+                                    <td>Monday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Indian Independence Day</td>
+                                    <td>August 15</td>
+                                    <td>Friday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>August 16</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>August 17</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Independence Day (US)</td>
+                                    <td>July 4</td>
+                                    <td>Friday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>July 5</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>July 6</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>August 30</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>August 31</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Labor Day</td>
+                                    <td>September 1</td>
+                                    <td>Monday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>October 18</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>October 19</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>LWP/PL</td>
+                                    <td>October 20</td>
+                                    <td>Monday</td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Diwali</td>
+                                    <td>October 21</td>
+                                    <td>Tuesday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Thanksgiving Day</td>
+                                    <td>November 27</td>
+                                    <td>Thursday</td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Day After Thanksgiving</td>
+                                    <td>November 28</td>
+                                    <td>Friday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>November 29</td>
+                                    <td>Saturday</td>
+                                  </tr>
+                                  <tr class="weekoff">
+                                    <td>Weekly Off</td>
+                                    <td>November 30</td>
+                                    <td>Sunday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>Christmas Day</td>
+                                    <td>December 25</td>
+                                    <td>Thursday</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="3"></td>
+                                  </tr>
+                                  <tr class="holiday">
+                                    <td>New Year's Eve</td>
+                                    <td>December 31</td>
+                                    <td>Wednesday</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <small style="font-size: 12px;">
+        Made with <span><a href="https://iili.io/2QpqFcB.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
+       <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none; color: white;">Nandan Thakur </a>
+    </small> | <small style="font-size: 12px;"> <span><a href="https://securebugs.github.io/StaffingTools/utilities.html#documentation-popup" style="color: White; text-decoration: none;">Privacy Policy (T&C) </a></span> 
+          </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+            }
+        });
+
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('expanded');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebar.classList.contains('expanded') &&
+                !sidebar.contains(event.target) &&
+                !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+
+        // Calendar functionality
+        let currentDate = new Date(); // Always start with current date
+        const currentMonthYear = document.getElementById('currentMonthYear');
+        const mobileMonthYear = document.getElementById('mobileMonthYear');
+        const calendarGrid = document.querySelector('.calendar-grid');
+        
+        // Desktop navigation
+        const prevMonthBtn = document.getElementById('prevMonth');
+        const nextMonthBtn = document.getElementById('nextMonth');
+        const todayBtn = document.getElementById('todayBtn');
+        
+        // Mobile navigation
+        const mobilePrevMonthBtn = document.getElementById('mobilePrevMonth');
+        const mobileNextMonthBtn = document.getElementById('mobileNextMonth');
+        const mobileTodayBtn = document.getElementById('mobileTodayBtn');
+
+        // Define holidays and weekly offs for 2025
+        const holidays = {
+            '2025-01-01': { type: 'holiday', name: "New Year's Day" },
+            '2025-03-14': { type: 'holiday', name: "Holi" },
+            '2025-03-15': { type: 'weekoff', name: "Weekly Off" },
+            '2025-03-16': { type: 'weekoff', name: "Weekly Off" },
+            '2025-05-24': { type: 'weekoff', name: "Weekly Off" },
+            '2025-05-25': { type: 'weekoff', name: "Weekly Off" },
+            '2025-05-26': { type: 'holiday', name: "Memorial Day" },
+            '2025-07-04': { type: 'holiday', name: "Independence Day (US)" },
+            '2025-07-05': { type: 'weekoff', name: "Weekly Off" },
+            '2025-07-06': { type: 'weekoff', name: "Weekly Off" },
+            '2025-08-15': { type: 'holiday', name: "Indian Independence Day" },
+            '2025-08-16': { type: 'weekoff', name: "Weekly Off" },
+            '2025-08-17': { type: 'weekoff', name: "Weekly Off" },
+            '2025-08-30': { type: 'weekoff', name: "Weekly Off" },
+            '2025-08-31': { type: 'weekoff', name: "Weekly Off" },
+            '2025-09-01': { type: 'holiday', name: "Labor Day" },
+            '2025-10-18': { type: 'weekoff', name: "Weekly Off" },
+            '2025-10-19': { type: 'weekoff', name: "Weekly Off" },
+            '2025-10-20': { type: 'holiday', name: "LWP/PL" },
+            '2025-10-21': { type: 'holiday', name: "Diwali" },
+            '2025-11-27': { type: 'holiday', name: "Thanksgiving Day" },
+            '2025-11-28': { type: 'holiday', name: "Day After Thanksgiving" },
+            '2025-11-29': { type: 'weekoff', name: "Weekly Off" },
+            '2025-11-30': { type: 'weekoff', name: "Weekly Off" },
+            '2025-12-25': { type: 'holiday', name: "Christmas Day" },
+            '2025-12-31': { type: 'holiday', name: "New Year's Eve" }
+        };
+
+        function renderCalendar() {
+            // Clear existing calendar days
+            while (calendarGrid.children.length > 7) {
+                calendarGrid.removeChild(calendarGrid.lastChild);
+            }
+
+            // Update month and year display
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            const displayText = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            currentMonthYear.textContent = displayText;
+            mobileMonthYear.textContent = displayText;
+
+            // Get first day of month and number of days in month
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('calendar-day', 'other-month');
+                calendarGrid.appendChild(emptyDay);
+            }
+
+            // Add days of the month
+            const today = new Date();
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day');
+                
+                // Check if this day is today
+                if (i === today.getDate() && 
+                    currentDate.getMonth() === today.getMonth() && 
+                    currentDate.getFullYear() === today.getFullYear()) {
+                    day.classList.add('today');
+                }
+
+                const dayNumber = document.createElement('div');
+                dayNumber.classList.add('day-number');
+                dayNumber.textContent = i;
+                day.appendChild(dayNumber);
+
+                // Calculate the day of the week (0 = Sunday, 6 = Saturday)
+                const currentDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), i).getDay();
+                
+                // Check if this day is a holiday or weekly off
+                const dateKey = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                
+                let tooltipText = '';
+                let indicatorType = '';
+                
+                // Check for holidays first (they take priority)
+                if (holidays[dateKey]) {
+                    tooltipText = holidays[dateKey].name;
+                    indicatorType = holidays[dateKey].type === 'holiday' ? 'holiday' : 'weekoff';
+                }
+                // Check if this is a weekend (Saturday or Sunday)
+                else if (currentDay === 0 || currentDay === 6) {
+                    tooltipText = currentDay === 0 ? 'Sunday' : 'Saturday';
+                    indicatorType = 'weekoff';
+                }
+
+                // Add indicator dot if needed
+                if (indicatorType) {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add(indicatorType === 'holiday' ? 'holiday-indicator' : 'weekoff-indicator');
+                    day.appendChild(indicator);
+                    
+                    // Add tooltip
+                    const tooltip = document.createElement('div');
+                    tooltip.classList.add('holiday-tooltip');
+                    tooltip.textContent = tooltipText;
+                    day.appendChild(tooltip);
+                    
+                    // Auto-hide tooltip after 5 seconds
+                    let hideTimeout;
+                    day.addEventListener('mouseenter', () => {
+                        clearTimeout(hideTimeout);
+                    });
+                    day.addEventListener('mouseleave', () => {
+                        hideTimeout = setTimeout(() => {
+                            tooltip.style.opacity = '0';
+                            tooltip.style.visibility = 'hidden';
+                        }, 5000);
+                    });
+                }
+
+                calendarGrid.appendChild(day);
+            }
+
+            // Add empty cells for days after the last day of the month
+            const totalCells = 42; // 6 rows * 7 days
+            const remainingCells = totalCells - (startingDay + daysInMonth);
+            for (let i = 0; i < remainingCells; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('calendar-day', 'other-month');
+                calendarGrid.appendChild(emptyDay);
+            }
+        }
+
+        // Event listeners for desktop calendar navigation
+        prevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        todayBtn.addEventListener('click', () => {
+            currentDate = new Date();
+            renderCalendar();
+        });
+
+        // Event listeners for mobile calendar navigation
+        mobilePrevMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        mobileNextMonthBtn.addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        mobileTodayBtn.addEventListener('click', () => {
+            currentDate = new Date();
+            renderCalendar();
+        });
+
+        // Initialize calendar with current date
+        renderCalendar();
+    </script>
+</body>
+</html>

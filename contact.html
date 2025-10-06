@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <meta name="google-site-verification" content="1izKCetzNj3e7mRvTXIoFhcSN0popYPWvwyzTtEBi24" />
+    <meta name="mylead-verification" content="36f3e822fb8e7a332ba9fd627eca510d">
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact Us - USA Staffing Tools</title>
+    <meta name="description" content="Get in touch with USA Staffing Tools team. Contact us for support, inquiries, and assistance with our comprehensive staffing solutions.">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Contact Us - USA Staffing Tools">
+    <meta itemprop="description" content="Get in touch with USA Staffing Tools team. Contact us for support, inquiries, and assistance with our comprehensive staffing solutions.">
+    <meta itemprop="image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://securebugs.github.io/StaffingTools/contact.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Us - USA Staffing Tools">
+    <meta property="og:description" content="Get in touch with USA Staffing Tools team. Contact us for support, inquiries, and assistance with our comprehensive staffing solutions.">
+    <meta property="og:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us - USA Staffing Tools">
+    <meta name="twitter:description" content="Get in touch with USA Staffing Tools team. Contact us for support, inquiries, and assistance with our comprehensive staffing solutions.">
+    <meta name="twitter:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --icon-color: #0288d1;
+        }
+        [data-theme="dark"] {
+            --accent-color: #80d8ff;
+            --light-color: #1a1a1a;
+            --dark-color: #ffffff;
+            --success-color: #66bb6a;
+            --icon-color: #4fc3f7;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            padding-top: 70px;
+            color: var(--dark-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 0.8rem 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        [data-theme="dark"] .navbar {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        .sidebar-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .sidebar-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        [data-theme="dark"] .sidebar-toggle {
+            background: #4361ee;
+        }
+        .theme-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .theme-toggle i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        [data-theme="dark"] .theme-toggle {
+            background: #4361ee;
+        }
+        .sidebar {
+            background: var(--light-color);
+            height: calc(100vh - 70px);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .sidebar:hover, .sidebar.expanded {
+            width: 220px;
+        }
+        .sidebar-menu {
+            padding-top: 20px;
+            list-style: none;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 5px;
+            margin-left: -2rem;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            margin: 0 5px;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+        .sidebar-menu i {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .menu-text {
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        .sidebar:hover .menu-text, .sidebar.expanded .menu-text {
+            opacity: 1;
+        }
+        .main-content {
+            margin-left: 60px;
+            padding: 25px;
+            padding-bottom: 60px;
+            transition: margin-left 0.3s ease;
+            height: calc(100vh - 70px);
+            overflow: hidden;
+        }
+        .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+            margin-left: 220px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            background: var(--light-color);
+            height: calc(100vh - 140px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        [data-theme="dark"] .card {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 15px 20px;
+            font-weight: 600;
+            border: none;
+            flex-shrink: 0;
+        }
+        [data-theme="dark"] .card-header {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .card-body {
+            padding: 30px;
+            background: transparent;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Contact Page Specific Styles */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        .contact-info-card {
+            background: var(--light-color);
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] .contact-info-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .contact-detail {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--light-color);
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 12px 15px;
+            background: var(--light-color);
+            color: var(--dark-color);
+            transition: all 0.3s;
+        }
+
+        [data-theme="dark"] .form-control {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #2a2a2a;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 8px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-color);
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .response-time {
+            background: linear-gradient(135deg, var(--success-color), #2ecc71);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* Blur effect for sensitive info */
+        .sensitive-info {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .sensitive-info.revealed {
+            filter: none;
+        }
+
+        .click-hint {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        /* Email Container Styles */
+        .emailContainer {
+            background: rgba(67, 97, 238, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(67, 97, 238, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .emailContainer small {
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .emailContainer .form-control {
+            margin-bottom: 15px;
+        }
+
+        /* Why Choose Us Section */
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 60px;
+            width: calc(100% - 60px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+            z-index: 900;
+            transition: left 0.3s ease;
+        }
+        [data-theme="dark"] footer {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+            left: 220px;
+            width: calc(100% - 220px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+                overflow: hidden;
+                height: 100vh;
+            }
+            .navbar {
+                min-height: 50px;
+                padding: 0.5rem 1rem;
+            }
+            .sidebar {
+                top: 60px;
+                width: 0;
+                height: calc(100vh - 60px);
+                overflow: hidden;
+                scrollbar-width: none;
+                z-index: 999;
+            }
+            .sidebar::-webkit-scrollbar {
+                display: none;
+            }
+            .sidebar.expanded {
+                width: 220px;
+                z-index: 999;
+                top: 60px;
+            }
+            .sidebar-toggle {
+                display: flex;
+            }
+            .navbar .container-fluid {
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 50px;
+            }
+            .navbar-brand {
+                flex: 1;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .theme-toggle {
+                margin-left: 5px;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+                padding-bottom: 70px;
+                height: calc(100vh - 60px);
+                overflow: hidden;
+            }
+            .card {
+                height: calc(100vh - 130px);
+                margin-bottom: 20px;
+            }
+            .card-body {
+                padding: 20px;
+                overflow-y: auto;
+            }
+            .contact-info-card, .contact-form {
+                padding: 20px;
+            }
+            footer {
+                left: 0;
+                width: 100%;
+                z-index: 901;
+                position: fixed;
+            }
+            .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 0;
+            }
+            .sidebar:hover, .sidebar.expanded {
+                width: 220px;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+                margin-left: 0;
+            }
+            footer {
+                left: 0;
+                width: 100%;
+            }
+            .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand" href="https://securebugs.github.io/StaffingTools/Tools">Staffing Tools</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="bi bi-moon-stars-fill"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/Tools">
+                    <i class="bi bi-house-door"></i>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/state-info.html">
+                    <i class="bi bi-geo-alt"></i>
+                    <span class="menu-text">State Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/converters.html">
+                    <i class="bi bi-arrow-left-right"></i>
+                    <span class="menu-text">Converters</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/email-handling.html">
+                    <i class="bi bi-envelope"></i>
+                    <span class="menu-text">Email Handling</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/calendar-info.html">
+                    <i class="bi bi-calendar-event"></i>
+                    <span class="menu-text">Calendar Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/important-links.html">
+                    <i class="bi bi-link-45deg"></i>
+                    <span class="menu-text">Important Links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/visa-details.html">
+                    <i class="bi bi-file-text"></i>
+                    <span class="menu-text">Visa Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/interview.html">
+                    <i class="bi bi-person-check"></i>
+                    <span class="menu-text">Interview</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/utilities.html">
+                    <i class="bi bi-tools"></i>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/contact.html" class="active">
+                    <i class="bi bi-telephone"></i>
+                    <span class="menu-text">Contact Us</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Overlay for mobile to close sidebar when clicking outside -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <div class="main-content">
+        <div class="contact-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-telephone me-2"></i>Contact Dashboard
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <!-- Contact Information -->
+                        <div class="col-lg-4">
+                            <div class="contact-info-card">
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <h3 class="contact-title">Get In Touch</h3>
+                                <div class="contact-detail">
+                                    <i class="bi bi-envelope me-2"></i>
+                                    <strong>Email:</strong> 
+                                    <span class="sensitive-info" id="emailInfo">iam.thakur18@gmail.com</span>
+                                    <div class="click-hint">Click 3 times to reveal</div>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="bi bi-phone me-2"></i>
+                                    <strong>Phone:</strong> 
+                                    <span class="sensitive-info" id="phoneInfo">+91 7562894460</span>
+                                    <div class="click-hint">Click 3 times to reveal</div>
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="bi bi-clock me-2"></i>
+                                    <strong>Response Time:</strong> Within 24 hours
+                                </div>
+                                <div class="contact-detail">
+                                    <i class="bi bi-headset me-2"></i>
+                                    <strong>Support:</strong> Technical issues & general inquiries
+                                </div>
+                                
+                                <div class="response-time">
+                                    <i class="bi bi-lightning-charge me-2"></i>
+                                    Quick Response Guaranteed
+                                </div>
+
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/iamthakurofficial/" class="social-link" target="_blank" title="LinkedIn">
+                                        <i class="bi bi-linkedin"></i>
+                                    </a>
+                                    <a href="https://github.com/Securebugs" class="social-link" target="_blank" title="GitHub">
+                                        <i class="bi bi-github"></i>
+                                    </a>
+                                    <a href="https://play.google.com/store/apps/dev?id=8122039922081963026" class="social-link" target="_blank" title="Google Play">
+                                        <i class="fab fa-google-play"></i>
+                                    </a>
+                                    <a href="https://secure-bugs.blogspot.com/" class="social-link" target="_blank" title="Website">
+                                        <i class="bi bi-globe"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form and Email Form -->
+                        <div class="col-lg-8">
+                            <!-- Email Form for BenchSales -->
+                            <div class="contact-form mb-4">
+                                <form id="emailForm">
+                                    <center>
+                                      <h3 class="card-title"><i class='fas fa-comment-alt'></i> Get in touch!</h3>
+                                    </center>
+                                    <div class="emailContainer">
+                                      <small>Send me your Email to receive daily requirements <b>(Only for BenchSales**)</b></small>
+                                      <div class="form-group">
+                                        <input type="email" class="cas sensetie form-control" id="email" name="email" placeholder="Enter your email" required>
+                                        <div class="invalid-feedback">
+                                          Please provide a valid email.
+                                        </div>
+                                      </div>
+                                      <button type="submit" class="btn btn-primary" id="submitEmailForm">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Main Contact Form -->
+                            <div class="contact-form">
+                                <h3 class="contact-title mb-4">Send us a Message</h3>
+                                <form id="contactForm">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name" class="form-label">Full Name *</label>
+                                                <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your full name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email" class="form-label">Email Address *</label>
+                                                <input type="email" class="form-control" id="contactEmail" name="email" required placeholder="Enter your email address">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="subject" class="form-label">Subject *</label>
+                                                <input type="text" class="form-control" id="subject" name="subject" required placeholder="Enter the subject of your message">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="message" class="form-label">Message *</label>
+                                                <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Enter your detailed message here..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="category" class="form-label">Category</label>
+                                                <select class="form-control" id="category" name="category">
+                                                    <option value="">Select a category</option>
+                                                    <option value="technical">Technical Support</option>
+                                                    <option value="feature">Feature Request</option>
+                                                    <option value="bug">Bug Report</option>
+                                                    <option value="general">General Inquiry</option>
+                                                    <option value="partnership">Partnership</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="bi bi-send me-2"></i>Send Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Why Choose Us Section -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="contact-info-card">
+                                        <h3 class="contact-title text-center mb-4">Why Choose Our Staffing Tools?</h3>
+                                        <div class="row text-center">
+                                            <div class="col-md-3 mb-3">
+                                                <i class="bi bi-shield-check text-primary feature-icon"></i>
+                                                <h5 class="mt-2">Secure & Reliable</h5>
+                                                <p class="text-muted">Your data privacy is our top priority</p>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <i class="bi bi-lightning-charge text-primary feature-icon"></i>
+                                                <h5 class="mt-2">Fast & Efficient</h5>
+                                                <p class="text-muted">Streamlined tools for quick results</p>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <i class="bi bi-headset text-primary feature-icon"></i>
+                                                <h5 class="mt-2">24/7 Support</h5>
+                                                <p class="text-muted">Always here to help you succeed</p>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <i class="bi bi-arrow-up-right-square text-primary feature-icon"></i>
+                                                <h5 class="mt-2">Regular Updates</h5>
+                                                <p class="text-muted">Continuous improvements and new features</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <small style="font-size: 12px;">
+            Made with <span><a href="https://iili.io/2QpqFcB.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
+            <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none; color: white;">Nandan Thakur </a>
+        </small> | 
+        <small style="font-size: 12px;"> 
+            <span><a href="https://securebugs.github.io/StaffingTools/utilities.html#documentation-popup" style="color: White; text-decoration: none;">Privacy Policy (T&C) </a></span> 
+        </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+            }
+        });
+
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('expanded');
+        });
+
+        // Close sidebar when clicking on overlay or outside
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('expanded');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            
+            if (window.innerWidth <= 768) {
+                if (sidebar.classList.contains('expanded') &&
+                    !sidebar.contains(event.target) &&
+                    !sidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove('expanded');
+                }
+            }
+        });
+
+        // Blur effect for sensitive information
+        const sensitiveElements = document.querySelectorAll('.sensitive-info');
+        
+        sensitiveElements.forEach(element => {
+            let clickCount = 0;
+            
+            element.addEventListener('click', function() {
+                clickCount++;
+                
+                if (clickCount >= 3) {
+                    this.classList.add('revealed');
+                    // Reset after 30 seconds
+                    setTimeout(() => {
+                        this.classList.remove('revealed');
+                        clickCount = 0;
+                    }, 30000);
+                }
+            });
+        });
+
+        // Email Form submission
+        const emailForm = document.getElementById('emailForm');
+        const submitEmailFormBtn = document.getElementById('submitEmailForm');
+
+        submitEmailFormBtn.addEventListener('click', async function(event) {
+            event.preventDefault();
+
+            const emailInput = emailForm.querySelector('input[type="email"]');
+            const emailValue = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (emailValue === '' || !emailRegex.test(emailValue)) {
+                emailInput.classList.remove('is-valid');
+                emailInput.classList.add('is-invalid');
+                return;
+            } else {
+                emailInput.classList.remove('is-invalid');
+                emailInput.classList.add('is-valid');
+            }
+
+            const formData = new FormData(emailForm);
+            const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    if (response.status === 400 && errorData.error === 'Duplicate email found') {
+                        alert('This email address has already been submitted.');
+                    } else {
+                        console.error('Server Error:', errorData.error);
+                        alert('Failed to submit email.');
+                    }
+                    return;
+                }
+
+                alert('Email submitted successfully!');
+                emailForm.reset();
+            } catch (error) {
+                console.error('Client Error:', error);
+                alert('An error occurred while submitting the email.');
+            }
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.innerHTML;
+                
+                // Show loading state
+                submitButton.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
+                submitButton.disabled = true;
+                
+                try {
+                    const response = await fetch('https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        alert('Message sent successfully! We will get back to you within 24 hours.');
+                        contactForm.reset();
+                    } else {
+                        throw new Error('Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to send message. Please try again or contact us directly at iam.thakur18@gmail.com');
+                } finally {
+                    // Reset button state
+                    submitButton.innerHTML = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        }
+
+        // Prevent body scroll on all devices
+        document.body.style.overflow = 'hidden';
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            document.body.style.overflow = 'hidden';
+        });
+    </script>
+</body>
+</html>

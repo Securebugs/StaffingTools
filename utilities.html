@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
+    <meta name="google-site-verification" content="1izKCetzNj3e7mRvTXIoFhcSN0popYPWvwyzTtEBi24" />
+    <meta name="mylead-verification" content="36f3e822fb8e7a332ba9fd627eca510d">
+    
+    <!-- Primary Meta Tags -->
+    <title>Utilities- USA Staffing Tools</title>
+    <meta name="description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="USA Staffing Tools">
+    <meta itemprop="description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta itemprop="image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://securebugs.github.io/StaffingTools/Tools">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="USA Staffing Tools">
+    <meta property="og:description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta property="og:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="USA Staffing Tools">
+    <meta name="twitter:description" content="Explore your one-stop destination for comprehensive USA Staffing solutions. Unlock maps, time zones, currency exchange rates, tax terms, visa information, interview preparation questions, email extraction tools, and beyond. Stay connected, keep browsing, and embrace the ease of access!">
+    <meta name="twitter:image" content="https://5.imimg.com/data5/SELLER/Default/2021/10/LJ/WB/EG/135105375/us-staffing-project-500x500.jpg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --icon-color: #0288d1;
+            --holiday-color: #ff6b6b;
+            --weekoff-color: #4ecdc4;
+        }
+        [data-theme="dark"] {
+            --accent-color: #80d8ff;
+            --light-color: #1a1a1a;
+            --dark-color: #ffffff;
+            --success-color: #66bb6a;
+            --icon-color: #4fc3f7;
+            --holiday-color: #ff8a8a;
+            --weekoff-color: #6ce6dd;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            padding-top: 70px;
+            overflow: hidden;
+            color: var(--dark-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 0.8rem 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        [data-theme="dark"] .navbar {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        .sidebar-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .sidebar-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        [data-theme="dark"] .sidebar-toggle {
+            background: #4361ee;
+        }
+        .theme-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .theme-toggle i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        [data-theme="dark"] .theme-toggle {
+            background: #4361ee;
+        }
+        .sidebar {
+            background: var(--light-color);
+            height: calc(100vh - 70px);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .sidebar:hover, .sidebar.expanded {
+            width: 220px;
+        }
+        .sidebar-menu {
+            padding-top: 20px;
+            list-style: none;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            margin-bottom: 5px;
+            margin-left: -2rem;
+        }
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            margin: 0 5px;
+        }
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+        .sidebar-menu i {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .menu-text {
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        .sidebar:hover .menu-text, .sidebar.expanded .menu-text {
+            opacity: 1;
+        }
+        .main-content {
+            margin-left: 60px;
+            padding: 25px;
+            padding-bottom: 60px;
+            transition: margin-left 0.3s ease;
+            overflow: hidden;
+            height: calc(100vh - 70px);
+        }
+        .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+            margin-left: 220px;
+        }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            background: var(--light-color);
+            height: calc(100vh - 140px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        [data-theme="dark"] .card {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 15px 20px;
+            font-weight: 600;
+            border: none;
+        }
+        [data-theme="dark"] .card-header {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .card-body {
+            padding: 20px;
+            background: transparent;
+            overflow: hidden;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Entertainment Cards Styling */
+        .entertainment-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .entertainment-card {
+            background: var(--light-color);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 25px 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            height: 140px;
+        }
+        
+        [data-theme="dark"] .entertainment-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .entertainment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        [data-theme="dark"] .entertainment-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .entertainment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .entertainment-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+        
+        [data-theme="dark"] .entertainment-title {
+            color: #ffffff;
+        }
+        
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup.active {
+            display: flex;
+        }
+        
+        .popup-content {
+            background: var(--light-color);
+            border-radius: 12px;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        [data-theme="dark"] .popup-content {
+            background: #1a1a1a;
+        }
+        
+        .popup-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .popup-header h2 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup-body {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        /* AI Chat Specific Styles */
+        .ai-chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .AIChatBox {
+            flex: 1;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            overflow-y: auto;
+            background: var(--light-color);
+            min-height: 300px;
+        }
+        
+        [data-theme="dark"] .AIChatBox {
+            background: #2a2a2a;
+            border-color: #444;
+        }
+        
+        .AIMessage {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .AIUserMessage {
+            background: var(--primary-color);
+            color: white;
+            margin-left: 20%;
+        }
+        
+        .AIBotMessage {
+            background: #e9ecef;
+            color: var(--dark-color);
+            margin-right: 20%;
+        }
+        
+        [data-theme="dark"] .AIBotMessage {
+            background: #3a3a3a;
+            color: #ffffff;
+        }
+        
+        .AICopyIcon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            color: #6c757d;
+        }
+        
+        .AIInputContainer {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .AIInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        [data-theme="dark"] .AIInput {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #ffffff;
+        }
+        
+        .AISendButton {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+        }
+        
+        .AILoading {
+            text-align: center;
+            padding: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Documentation Styles */
+        .documentation-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .documentation-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light-color);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        [data-theme="dark"] .documentation-section {
+            background: #2a2a2a;
+        }
+        
+        .documentation-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .documentation-section p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .documentation-section ul {
+            padding-left: 20px;
+        }
+        
+        .documentation-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
+            color: white;
+        }
+        
+        .contact-info h3 {
+            color: white !important;
+        }
+        
+        /* Calculator Styles */
+        .calculator {
+            max-width: 300px;
+            margin: 0 auto;
+            background: var(--light-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+        
+        #history {
+            font-size: 0.8rem;
+            color: #6c757d;
+            min-height: 18px;
+        }
+        
+        #current {
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: right;
+            outline: none;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .buttons button {
+            padding: 15px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .buttons button:hover {
+            background: var(--secondary-color);
+        }
+        
+        .buttons .operator {
+            background: #ff6b6b;
+        }
+        
+        .buttons .operator:hover {
+            background: #ff5252;
+        }
+        
+        #equals {
+            background: #4ecdc4;
+        }
+        
+        #equals:hover {
+            background: #45b7af;
+        }
+        
+        /* Notes Styles */
+        .content-editable {
+            min-height: 400px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+            background: var(--light-color);
+            color: var(--dark-color);
+            outline: none;
+        }
+        
+        [data-theme="dark"] .content-editable {
+            background: #2a2a2a;
+            border-color: #444;
+        }
+        
+        /* Shopping Cart Styles */
+        .popup-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .popup-body li {
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+        }
+        
+        .popup-body li i {
+            margin-right: 10px;
+            color: var(--success-color);
+        }
+        
+        .terms-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 15px 0;
+            display: inline-block;
+        }
+        
+        .terms-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Email Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            background: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        [data-theme="dark"] .form-control {
+            background: #2a2a2a;
+            border-color: #444;
+            color: #ffffff;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        .notiff {
+            padding: 2px;
+            margin: 3px;
+            color: red;
+            font-size: 0.8rem;
+        }
+        
+        #emailContainer .notiff {
+            display: none;
+        }
+        
+        #emailContainer:hover .notiff {
+            display: block;
+        }
+        
+        /* Table Styles for AI Chat */
+        .table {
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+        
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0,0,0,.05);
+        }
+        
+        [data-theme="dark"] .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255,255,255,.05);
+        }
+        
+        /* Mobile Mode */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+            .navbar {
+                min-height: 50px;
+                padding: 0.5rem 1rem;
+            }
+            .sidebar {
+                top: 60px;
+                width: 0;
+                height: calc(100vh - 60px);
+                overflow: hidden;
+                scrollbar-width: none;
+                z-index: 999;
+                clip-path: inset(0 0 0 0);
+            }
+            .sidebar::-webkit-scrollbar {
+                display: none;
+            }
+            .sidebar.expanded {
+                width: 220px;
+                z-index: 999;
+                top: 60px;
+            }
+            .sidebar-toggle {
+                display: flex;
+            }
+            .navbar .container-fluid {
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 50px;
+            }
+            .navbar-brand {
+                flex: 1;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .theme-toggle {
+                margin-left: 5px;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+                padding-bottom: 70px;
+                height: auto;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                margin-top: 10px;
+            }
+            .card {
+                height: auto !important;
+                margin-bottom: 50px;
+                overflow-y: auto;
+            }
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto !important;
+                overflow-x: hidden;
+                max-height: calc(100vh - 190px) !important;
+                -webkit-overflow-scrolling: touch;
+                gap: 20px;
+                height: auto;
+                padding-top: 40px !important;
+            }
+            
+            /* Mobile adjustments for entertainment grid */
+            .entertainment-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .entertainment-card {
+                padding: 20px 10px;
+                height: 120px;
+            }
+            
+            .entertainment-icon {
+                font-size: 2rem;
+                height: 50px;
+            }
+            
+            .entertainment-title {
+                font-size: 0.8rem;
+            }
+            
+            /* Mobile popup adjustments */
+            .popup-content {
+                width: 95%;
+                height: 95%;
+            }
+            
+            .popup-body {
+                padding: 15px;
+            }
+            
+            .calculator {
+                max-width: 100%;
+            }
+            
+            .buttons button {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            /* AI Chat mobile optimization */
+            .ai-chat-container {
+                height: 100%;
+            }
+            
+            .AIChatBox {
+                flex: 1;
+                min-height: 200px;
+            }
+            
+            .AIUserMessage {
+                margin-left: 10%;
+            }
+            
+            .AIBotMessage {
+                margin-right: 10%;
+            }
+            
+            /* Mobile overlay for closing sidebar */
+            .sidebar-overlay {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                display: none;
+            }
+            
+            .sidebar.expanded ~ .sidebar-overlay {
+                display: block;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 0;
+            }
+            .sidebar:hover, .sidebar.expanded {
+                width: 220px;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+                margin-left: 0;
+            }
+            footer {
+                left: 0;
+                width: 100%;
+            }
+            .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+            
+            /* Tablet adjustments */
+            .entertainment-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .entertainment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .entertainment-card {
+                height: 120px;
+                padding: 15px 8px;
+            }
+            
+            .entertainment-icon {
+                font-size: 2rem;
+                height: 50px;
+            }
+            
+            .entertainment-title {
+                font-size: 0.8rem;
+            }
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 60px;
+            width: calc(100% - 60px);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+            z-index: 900;
+            transition: left 0.3s ease;
+        }
+        [data-theme="dark"] footer {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+        }
+        .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+            left: 220px;
+            width: calc(100% - 220px);
+        }
+        
+        /* Mobile specific footer positioning */
+        @media (max-width: 768px) {
+            footer {
+                left: 0;
+                width: 100%;
+                z-index: 901;
+            }
+            
+            .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand" href="https://securebugs.github.io/StaffingTools/Tools">Staffing Tools</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="bi bi-moon-stars-fill"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/Tools">
+                    <i class="bi bi-house-door"></i>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/state-info.html">
+                    <i class="bi bi-geo-alt"></i>
+                    <span class="menu-text">State Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/converters.html">
+                    <i class="bi bi-arrow-left-right"></i>
+                    <span class="menu-text">Converters</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/email-handling.html">
+                    <i class="bi bi-envelope"></i>
+                    <span class="menu-text">Email Handling</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/calendar-info.html">
+                    <i class="bi bi-calendar-event"></i>
+                    <span class="menu-text">Calendar Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/important-links.html">
+                    <i class="bi bi-link-45deg"></i>
+                    <span class="menu-text">Important Links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/visa-details.html">
+                    <i class="bi bi-file-text"></i>
+                    <span class="menu-text">Visa Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/interview.html">
+                    <i class="bi bi-person-check"></i>
+                    <span class="menu-text">Interview</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/utilities.html" class="active">
+                    <i class="bi bi-tools"></i>
+                    <span class="menu-text">Utilities</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/contact.html">
+                    <i class="bi bi-telephone"></i>
+                    <span class="menu-text">Contact Us</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Overlay for mobile to close sidebar when clicking outside -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Calculator Popup -->
+    <div class="popup" id="calculator-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Calculator</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="calculator">
+                    <div class="display">
+                        <div id="history"></div>
+                        <input type="text" id="current" readonly>
+                    </div>
+                    <div class="buttons">
+                        <button class="operator" data-value="C">C</button>
+                        <button id="backspace" data-value="backspace"><i class="fas fa-backspace"></i></button>
+                        <button data-value="00">00</button>
+                        <button class="operator" data-value="/">/</button>
+                        <button data-value="1">1</button>
+                        <button data-value="2">2</button>
+                        <button data-value="3">3</button>
+                        <button class="operator" data-value="*">*</button>
+                        <button data-value="4">4</button>
+                        <button data-value="5">5</button>
+                        <button data-value="6">6</button>
+                        <button class="operator" data-value="-">-</button>
+                        <button data-value="7">7</button>
+                        <button data-value="8">8</button>
+                        <button data-value="9">9</button>
+                        <button class="operator" data-value="+">+</button>
+                        <button data-value="0">0</button>
+                        <button data-value=".">.</button>
+                        <button id="equals" data-value="=">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Popup -->
+    <div class="popup" id="notes-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Notes</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="content-editable" contenteditable="true">Start typing here...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Popup -->
+    <div class="popup" id="cart-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>What you get?</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i>Active 15,000+ vendors list for Technical recruiters for all C2C roles</li>
+                    <li><i class="fas fa-check-circle"></i>Brand new 200+ Prime Vendor's Name and company name List to work on C2C & W2 roles for BDE</li>
+                    <li><i class="fas fa-long-arrow-alt-right"></i>Receive access within 20-30 minutes after payment</li>
+                </ul>
+                <center>
+                    <b>Before Doing Payment read our </b> 
+                    <a class="terms-link" href="#" onclick="openModal()">
+                        Terms & Conditions <i class="fas fa-check-circle"></i>
+                    </a>
+                    <div id="paymentForm">
+                        <form id="rzpForm"></form>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Popup -->
+    <div class="popup" id="email-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Want Email?</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+               <div class="card">
+                    <div class="card-body">
+                        <div id="emailContainer">
+                            <b>Please send your email to me to receive daily requirements!</b> 
+                            <strong class="notiff">Only for Benchsales Recruiters**</strong>
+                            <br>
+                            <form id="emailForm">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Type Email If you are BenchSales" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Email <i class="fa-solid fa-envelope"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Popup -->
+    <div class="popup" id="services-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>AI Chat Assistant</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="ai-chat-container">
+                    <!-- Chat Box -->
+                    <div class="AIChatBox" id="AIChatBox">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <!-- Input Container -->
+                    <div class="AIInputContainer">
+                        <input type="text" id="AIUserInput" class="AIInput" placeholder="Type your question here..." disabled>
+                        <button id="AISendButton" class="AISendButton" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <!-- Loading Icon -->
+                    <div id="AILoading" class="AILoading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Popup -->
+    <div class="popup" id="documentation-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Documentation & Terms</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="documentation-content">
+                    <div class="documentation-section">
+                        <h3>Privacy Policy</h3>
+                        <p>Once you download, do not share this file with anyone. It is for personal use only. Before sharing, contact us, or we may take legal action.</p>
+                        <p><strong>Data Privacy:</strong> We don't save any personal data of you. Your privacy is important to us.</p>
+<br>
+ <p> <img src="https://www.easycounter.com/counter.php?usstaffing" border="0" alt="HTML Hit Counter"> </p>
+
+                    </div>
+
+                    <div class="documentation-section">
+                        <h3>Terms and Conditions</h3>
+                        <p>Website tools are free to use, but downloaded material is for personal use only. Sharing is not allowed. By using this website, you are automatically agreeing to our terms and conditions, and you cannot violate them.</p>
+                        <ul>
+                            <li>All tools and features are provided for personal use only</li>
+                            <li>Commercial use requires explicit permission</li>
+                            <li>You agree not to misuse any tools or services</li>
+                            <li>Mental health disclaimer: Use tools responsibly and take breaks</li>
+                        </ul>
+                        <p><strong>Note:</strong> All policies and terms can be changed without prior notice, and all rights are reserved by the website manager.</p>
+                    </div>
+
+                    <div class="documentation-section">
+                        <h3>Cancellation and Refund Policy</h3>
+                        <p>No refund provided after purchase. Please review before making a payment.</p>
+                        <ul>
+                            <li>All sales are final</li>
+                            <li>No cancellations after payment processing</li>
+                            <li>Ensure you understand what you're purchasing</li>
+                        </ul>
+                    </div>
+
+                    <div class="documentation-section">
+                        <h3>Shipping and Delivery</h3>
+                        <p>Instant file delivery via Excel file. No return or refund after purchase.</p>
+                        <ul>
+                            <li>Digital delivery within minutes</li>
+                            <li>Check your email/spam folder for download links</li>
+                            <li>No physical products shipped</li>
+                        </ul>
+                    </div>
+
+                    <div class="documentation-section contact-info">
+                        <h3>Contact Us</h3>
+                        <p>For any inquiries, questions, or support needs:</p>
+                        <ul>
+                            <li><strong>Email:</strong> iam.thakur18@gmail.com</li>
+                            <li><strong>Phone:</strong> 7562894460</li>
+                            <li><strong>Response Time:</strong> Within 24 hours</li>
+                            <li><strong>Support:</strong> Technical issues and general inquiries</li>
+                        </ul>
+                        <p>We're here to help with any questions about our tools, services, or policies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Placeholder Popups for other cards -->
+    <div class="popup" id="card-game-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Card Game</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <svg width="100" height="100" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="5" width="50" height="70" rx="5" ry="5" fill="white" stroke="red" stroke-width="2"></rect>
+<text x="15" y="25" font-size="14" font-weight="bold" fill="red">
+  A
+</text>
+<rect x="20" y="30" width="50" height="70" rx="5" ry="5" fill="white" stroke="blue" stroke-width="2"></rect>
+<text x="25" y="55" font-size="14" font-weight="bold" fill="blue">
+  K
+</text>
+<rect x="30" y="65" width="50" height="70" rx="5" ry="5" fill="white" stroke="black" stroke-width="2"></rect>
+<text x="35" y="90" font-size="14" font-weight="bold" fill="black">
+  Q
+</text></svg>
+<h2 class="entertainment-title">Play Card Game</h2>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="loader-container" id="loader">
+  <span class="material-icons">hourglass_top</span>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+  <div class="message" id="progressText">
+    We are updating our system... 0%
+  </div>
+</div>
+  <p class="message shuffle-text">Cards are shuffling...<br>
+  please wait for next update!</p>
+</div>
+<script>
+  let progress = 0;
+  let interval = setInterval(() => {
+    progress++;
+    document.getElementById("progress").style.width = progress + "%";
+    document.getElementById("progressText").textContent =
+      "We are updating our system... " + progress + "%";
+    
+    if (progress >= 100) {
+      clearInterval(interval);
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("cardShuffle").style.display = "flex";
+    }
+  }, 50); // ~5 seconds
+</script>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="cricket-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Cricket</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+               <div class="row h-100">
+    <!-- Live Scores Card -->
+    <div class="col-md-6 h-100">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="fas fa-trophy me-2"></i>Live Scores
+                </div>
+                <small class="text-light opacity-75">Powered by CDorgAPI</small>
+            </div>
+            <div class="card-body p-0" style="min-height: 350px;">
+                <iframe srcdoc='
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <base target="_blank">
+                </head>
+                <body style="margin:0; padding:0;">
+                    <script src="https://cdorgapi.b-cdn.net/widgets/score.js"></script>
+                </body>
+                </html>
+                ' style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Match List Card -->
+    <div class="col-md-6 h-100">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="fas fa-list me-2"></i>Match List
+                </div>
+                <small class="text-light opacity-75">Powered by CDorgAPI</small>
+            </div>
+            <div class="card-body p-0" style="min-height: 350px;">
+                <iframe srcdoc='
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <base target="_blank">
+                </head>
+                <body style="margin:0; padding:0;">
+                    <script src="https://cdorgapi.b-cdn.net/widgets/matchlist.js"></script>
+                </body>
+                </html>
+                ' style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Credit Footer -->
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="alert alert-info text-center py-2">
+            <small>
+                <i class="fas fa-external-link-alt me-1"></i>
+                Cricket widgets provided by 
+                <a href="https://cdorgapi.com" target="_blank" class="fw-bold text-decoration-none">CDorgAPI</a> 
+                - Free cricket data API for developers
+            </small>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="more-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>More</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. #more</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-tools me-2"></i>Utilities Dashboard
+            </div>
+            <div class="card-body">
+                <div class="entertainment-grid">
+                    <!-- AI Chat Card -->
+                    <div class="entertainment-card" onclick="openPopup('services-popup')">
+                        <div class="entertainment-icon" style="color: #FF6B6B;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="entertainment-title">AI Chat</div>
+                    </div>
+
+                    <!-- Calculator Card -->
+                    <div class="entertainment-card" onclick="openPopup('calculator-popup')">
+                        <div class="entertainment-icon" style="color: #4ECDC4;">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="entertainment-title">Calculator</div>
+                    </div>
+
+                    <!-- Notes Card -->
+                    <div class="entertainment-card" onclick="openPopup('notes-popup')">
+                        <div class="entertainment-icon" style="color: #45B7D1;">
+                            <i class="fas fa-sticky-note"></i>
+                        </div>
+                        <div class="entertainment-title">Notes</div>
+                    </div>
+
+                    <!-- Datalist Download Card -->
+                    <div class="entertainment-card" onclick="openPopup('cart-popup')">
+                        <div class="entertainment-icon" style="color: #FFA500;">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="entertainment-title">Datalist Download</div>
+                    </div>
+
+                    <!-- Email Us Card -->
+                    <div class="entertainment-card" onclick="openPopup('email-popup')">
+                        <div class="entertainment-icon" style="color: #9966CC;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="entertainment-title">Email Us</div>
+                    </div>
+
+                    <!-- Card Game Card -->
+                    <div class="entertainment-card" onclick="openPopup('card-game-popup')">
+                        <div class="entertainment-icon" style="color: #FFD700;">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="entertainment-title">Card Game</div>
+                    </div>
+
+                    <!-- Cricket Card -->
+                    <div class="entertainment-card" onclick="openPopup('cricket-popup')">
+                        <div class="entertainment-icon" style="color: #32CD32;">
+                            <i class="fas fa-baseball-ball"></i>
+                        </div>
+                        <div class="entertainment-title">Cricket</div>
+                    </div>
+
+                    <!-- Documentation Card -->
+                    <div class="entertainment-card" onclick="openPopup('documentation-popup')">
+                        <div class="entertainment-icon" style="color: #FF69B4;">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="entertainment-title">Documentation</div>
+                    </div>
+
+                    <!-- More Card -->
+                    <div class="entertainment-card" onclick="openPopup('more-popup')">
+                        <div class="entertainment-icon" style="color: #9B59B6;">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="entertainment-title">More</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <small style="font-size: 12px;">
+        Made with <span><a href="https://iili.io/2QpqFcB.jpg" target="_blank" style="color: red; text-decoration: none;">  ❤</a></span> by 
+       <a href="https://www.linkedin.com/in/iamthakurofficial/" target="_blank" style="text-decoration: none; color: white;">Nandan Thakur </a>
+    </small> | <small style="font-size: 12px;"> <span><a href="https://securebugs.github.io/StaffingTools/utilities.html#documentation-popup" style="color: White; text-decoration: none;">Privacy Policy (T&C) </a></span> 
+          </small> 
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+            }
+        });
+
+        // Sidebar toggle functionality
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        sidebarToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('expanded');
+        });
+
+        // Close sidebar when clicking on overlay or outside
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('expanded');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            
+            if (window.innerWidth <= 768) {
+                if (sidebar.classList.contains('expanded') &&
+                    !sidebar.contains(event.target) &&
+                    !sidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove('expanded');
+                }
+            }
+        });
+
+        // Popup functionality
+        let currentPopup = null;
+
+        function openPopup(popupId) {
+            // Close current popup if any
+            if (currentPopup) {
+                currentPopup.style.display = 'none';
+            }
+            
+            // Open new popup
+            currentPopup = document.getElementById(popupId);
+            currentPopup.style.display = 'flex';
+            
+            // Update URL hash
+            try {
+                const newUrl = window.location.href.split('#')[0] + '#' + popupId;
+                window.history.replaceState(null, null, newUrl);
+            } catch (e) {
+                console.log("Hash update failed:", e);
+            }
+            
+            // Load Razorpay script for cart popup
+            if (popupId === 'cart-popup' && !document.querySelector('#rzpScript')) {
+                const script = document.createElement('script');
+                script.id = 'rzpScript';
+                script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+                script.dataset.payment_button_id = 'pl_PsXVCue2RE0NI5';
+                script.async = true;
+                document.getElementById('rzpForm').appendChild(script);
+            }
+            
+            // Initialize AI Chat if needed
+            if (popupId === 'services-popup') {
+                initializeAIChat();
+            }
+        }
+
+        function closePopup() {
+            if (currentPopup) {
+                currentPopup.style.display = 'none';
+                currentPopup = null;
+                
+                // Remove hash from URL
+                try {
+                    const newUrl = window.location.href.split('#')[0];
+                    window.history.replaceState(null, null, newUrl);
+                } catch (e) {
+                    console.log("Hash removal failed:", e);
+                }
+            }
+        }
+
+        // Close popup when clicking close button
+        document.querySelectorAll('.close-btn').forEach(btn => {
+            btn.addEventListener('click', closePopup);
+        });
+
+        // Close popup when clicking outside
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentPopup) {
+                closePopup();
+            }
+        });
+
+        // Handle URL hash on page load
+        function handlePopupHash() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const popupExists = document.getElementById(hash);
+                if (popupExists && popupExists.classList.contains('popup')) {
+                    openPopup(hash);
+                }
+            }
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handlePopupHash);
+
+        // Initial popup setup based on URL hash
+        handlePopupHash();
+
+        // Calculator functionality
+        let currentInput = '';
+        let previousInput = '';
+        let operator = null;
+
+        const currentDisplay = document.getElementById('current');
+        const historyDisplay = document.getElementById('history');
+
+        document.querySelectorAll('.buttons button').forEach(button => {
+            button.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                
+                if (value === 'C') {
+                    // Clear everything
+                    currentInput = '';
+                    previousInput = '';
+                    operator = null;
+                    currentDisplay.value = '';
+                    historyDisplay.textContent = '';
+                } else if (value === 'backspace') {
+                    // Backspace
+                    currentInput = currentInput.slice(0, -1);
+                    currentDisplay.value = currentInput;
+                } else if (value === '=') {
+                    // Calculate result
+                    if (currentInput && previousInput && operator) {
+                        const result = calculate(parseFloat(previousInput), parseFloat(currentInput), operator);
+                        historyDisplay.textContent = `${previousInput} ${operator} ${currentInput} =`;
+                        currentInput = result.toString();
+                        currentDisplay.value = currentInput;
+                        previousInput = '';
+                        operator = null;
+                    }
+                } else if (['+', '-', '*', '/'].includes(value)) {
+                    // Operator
+                    if (currentInput) {
+                        if (previousInput && operator) {
+                            const result = calculate(parseFloat(previousInput), parseFloat(currentInput), operator);
+                            previousInput = result.toString();
+                        } else {
+                            previousInput = currentInput;
+                        }
+                        operator = value;
+                        historyDisplay.textContent = `${previousInput} ${operator}`;
+                        currentInput = '';
+                        currentDisplay.value = '';
+                    }
+                } else {
+                    // Number or decimal
+                    currentInput += value;
+                    currentDisplay.value = currentInput;
+                }
+            });
+        });
+
+        function calculate(a, b, operator) {
+            switch (operator) {
+                case '+': return a + b;
+                case '-': return a - b;
+                case '*': return a * b;
+                case '/': return a / b;
+                default: return b;
+            }
+        }
+
+        // Notes functionality
+        const editable = document.querySelector('.content-editable');
+        if (editable) {
+            editable.addEventListener('focus', function() {
+                if (this.textContent === 'Start typing here...') {
+                    this.textContent = '';
+                }
+            });
+            
+            editable.addEventListener('blur', function() {
+                if (!this.textContent.trim()) {
+                    this.textContent = 'Start typing here...';
+                }
+            });
+        }
+
+        // Email form functionality
+        const emailForm = document.getElementById('emailForm');
+        if (emailForm) {
+            emailForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(emailForm);
+                const url = 'https://script.google.com/macros/s/AKfycbzd19Lr4aju-TLwqwLiCel6o0aLpUnOsbm2CqQTktBtavYktq6lF0l27iD7Hnqd912JOw/exec';
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        alert('Email submitted successfully!');
+                        emailForm.reset();
+                    } else {
+                        console.error('Server Error:', response.statusText);
+                        alert('Failed to submit email.');
+                    }
+                } catch (error) {
+                    console.error('Client Error:', error);
+                    alert('An error occurred while submitting the form.');
+                }
+            });
+        }
+
+        // AI Chat functionality
+        function initializeAIChat() {
+            const userInput = document.getElementById('AIUserInput');
+            const sendButton = document.getElementById('AISendButton');
+            const chatBox = document.getElementById('AIChatBox');
+            const loadingIcon = document.getElementById('AILoading');
+
+            // Enable input and button
+            userInput.disabled = false;
+            sendButton.disabled = false;
+
+            // Clear existing event listeners
+            const newSendButton = sendButton.cloneNode(true);
+            sendButton.parentNode.replaceChild(newSendButton, sendButton);
+            
+            const newUserInput = userInput.cloneNode(true);
+            userInput.parentNode.replaceChild(newUserInput, userInput);
+
+            // Add event listeners
+            document.getElementById('AISendButton').addEventListener('click', sendMessage);
+            document.getElementById('AIUserInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const userInput = document.getElementById('AIUserInput');
+                const chatBox = document.getElementById('AIChatBox');
+                const sendButton = document.getElementById('AISendButton');
+                const loadingIcon = document.getElementById('AILoading');
+
+                if (userInput.value.trim() === '') return;
+
+                // Disable input and button
+                userInput.disabled = true;
+                sendButton.disabled = true;
+
+                // Show loading icon
+                loadingIcon.style.display = 'block';
+
+                // Display user's message
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('AIMessage', 'AIUserMessage');
+                userMessage.textContent = userInput.value;
+                chatBox.appendChild(userMessage);
+
+                // Clear input
+                const question = userInput.value;
+                userInput.value = '';
+
+                // Scroll to bottom
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                // Send question to Gemini AI
+                fetchGeminiResponse(question)
+                    .then(response => {
+                        // Parse rich text and convert to HTML
+                        const formattedResponse = parseRichText(response);
+
+                        // Display AI's response
+                        const botMessage = document.createElement('div');
+                        botMessage.classList.add('AIMessage', 'AIBotMessage');
+                        botMessage.innerHTML = formattedResponse;
+
+                        // Add copy icon
+                        const copyIcon = document.createElement('i');
+                        copyIcon.className = 'fas fa-copy AICopyIcon';
+                        copyIcon.onclick = () => {
+                            // Copy the entire bot message to clipboard
+                            const range = document.createRange();
+                            range.selectNodeContents(botMessage);
+                            const selection = window.getSelection();
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+                            document.execCommand('copy');
+                            selection.removeAllRanges();
+                            alert('Copied to clipboard!');
+                        };
+
+                        botMessage.appendChild(copyIcon);
+                        chatBox.appendChild(botMessage);
+
+                        // Scroll to bottom
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    })
+                    .finally(() => {
+                        // Hide loading icon and re-enable input and button
+                        loadingIcon.style.display = 'none';
+                        userInput.disabled = false;
+                        sendButton.disabled = false;
+                    });
+            }
+
+            function parseRichText(response) {
+                // Replace **bold** with <strong>bold</strong>
+                response = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+                // Replace *italic* with <em>italic</em>
+                response = response.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+                // Replace _underline_ with <u>underline</u>
+                response = response.replace(/_(.*?)_/g, '<u>$1</u>');
+
+                // Replace bullet points with <ul> and <li>
+                response = response.replace(/(\n\s*-\s+.*)+/g, (match) => {
+                    const items = match.split('\n').filter(line => line.trim() !== '');
+                    const listItems = items.map(item => `<li>${item.replace('- ', '').trim()}</li>`).join('');
+                    return `<ul>${listItems}</ul>`;
+                });
+
+                // Replace numbered lists with <ol> and <li>
+                response = response.replace(/(\n\s*\d+\.\s+.*)+/g, (match) => {
+                    const items = match.split('\n').filter(line => line.trim() !== '');
+                    const listItems = items.map(item => `<li>${item.replace(/^\d+\.\s*/, '').trim()}</li>`).join('');
+                    return `<ol>${listItems}</ol>`;
+                });
+
+                // Replace paragraphs with <p>
+                response = response.replace(/(\n\n)/g, '</p><p>');
+                response = `<p>${response}</p>`;
+
+                // Replace titles with <h3>
+                response = response.replace(/(\n#\s+.*)/g, (match) => {
+                    return `<h3>${match.replace('#', '').trim()}</h3>`;
+                });
+
+                // Check if the message contains a table
+                if (response.includes('|')) {
+                    const tableRegex = /(\|.*\|(\n\|.*\|)+)/g;
+                    const tableMatches = response.match(tableRegex);
+                    if (tableMatches) {
+                        const tableBlock = tableMatches[0];
+                        const rows = tableBlock.split('\n').filter(row => row.trim() !== '');
+                        const tableHTML = `<table class="table table-bordered table-striped">${rows
+                            .map((row) => {
+                                const cells = row.split('|').filter((cell) => cell.trim() !== '');
+                                return `<tr>${cells.map((cell) => `<td>${cell.trim()}</td>`).join('')}</tr>`;
+                            })
+                            .join('')}</table>`;
+                        response = response.replace(tableRegex, tableHTML);
+                    }
+                }
+
+                return response;
+            }
+
+            async function fetchGeminiResponse(question) {
+                const apiKey = 'AIzaSyBBNlnMeK1nX7m-WCum4PALM9bEpZXmKKQ';
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: question }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            }
+        }
+
+        function openModal() {
+            alert('Terms & Conditions content here');
+        }
+    </script>
+</body>
+</html>
