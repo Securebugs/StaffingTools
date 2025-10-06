@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Info - Staffing Tools</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome for fas icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --icon-color: #0288d1;
+        }
+
+        [data-theme="dark"] {
+            --accent-color: #80d8ff;
+            --light-color: #1a1a1a;
+            --dark-color: #ffffff;
+            --success-color: #66bb6a;
+            --icon-color: #4fc3f7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-color);
+            padding-top: 70px;
+            overflow: hidden; /* Prevent page-level scrolling */
+            color: var(--dark-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Fixed Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 0.8rem 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        [data-theme="dark"] .navbar {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3); /* Same as light mode */
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        /* Sidebar Toggle Button (Mobile) */
+        .sidebar-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sidebar-toggle i {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        [data-theme="dark"] .sidebar-toggle {
+            background: #4361ee; /* Same as light mode */
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .theme-toggle i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: #4361ee; /* Same as light mode */
+        }
+
+        .sidebar {
+            background: var(--light-color);
+            height: calc(100vh - 70px);
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 60px;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sidebar:hover, .sidebar.expanded {
+            width: 220px;
+        }
+
+        .sidebar-menu {
+            padding-top: 20px;
+            list-style: none;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+            margin-left: -2rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            margin: 0 5px;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .sidebar-menu i {
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .menu-text {
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        .sidebar:hover .menu-text, .sidebar.expanded .menu-text {
+            opacity: 1;
+        }
+
+        .main-content {
+            margin-left: 60px;
+            padding: 25px;
+            padding-bottom: 60px; /* Increased for footer gap */
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+            margin-left: 220px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px; /* Increased for gap above footer */
+            background: var(--light-color);
+            max-height: calc(100vh - 140px); /* Adjusted for increased padding-bottom */
+            overflow: hidden; /* No scrolling at card level */
+        }
+
+        [data-theme="dark"] .card {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 15px 20px;
+            font-weight: 600;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        [data-theme="dark"] .card-header {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3); /* Same as light mode */
+        }
+
+        .card-header div {
+            display: flex;
+            gap: 5px; /* Inline buttons with spacing */
+        }
+
+        .font-size-btn {
+            background: var(--secondary-color);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .font-size-btn:hover {
+            background: var(--primary-color);
+        }
+
+        [data-theme="dark"] .font-size-btn {
+            background: #4361ee; /* Same as light mode primary */
+        }
+
+        [data-theme="dark"] .font-size-btn:hover {
+            background: #3a0ca3; /* Same as light mode secondary */
+        }
+
+        .card-body {
+            padding: 25px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card-container {
+            width: 100%;
+        }
+
+        .card-main {
+            background: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            overflow: hidden; /* Disable card scrolling */
+            max-height: calc(100vh - 190px); /* Navbar (70px) + card-header (~50px) + card-body padding (50px) + margin-bottom (25px) */
+        }
+
+        [data-theme="dark"] .card-main {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .state-card-body {
+            padding: 20px;
+            background: var(--light-color);
+            margin-bottom: 5px; /* Add margin to prevent overflow appearance */
+        }
+
+        [data-theme="dark"] .state-card-body {
+            background: var(--light-color);
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .search-container input {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+
+        .search-container button {
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .search-container button {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3); /* Same as light mode */
+        }
+
+        #infoMessage {
+            max-width: 100%; /* Full width in desktop */
+            margin: 10px auto 20px;
+            font-size: 0.9rem;
+        }
+
+        .table-responsive {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: visible; /* Prevent Bootstrap scrollbars */
+        }
+
+        .table-container {
+            width: 100%;
+            overflow: auto;
+            max-height: calc(100vh - 295px); /* Adjusted for footer gap */
+        }
+
+        .state-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            table-layout: fixed; /* Ensure equal column widths on desktop */
+        }
+
+        .state-table thead {
+            position: sticky;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            width: 100%;
+        }
+
+        [data-theme="dark"] .state-table thead {
+            background: #4361ee; /* Same as light mode */
+        }
+
+        .state-table tbody {
+            width: 100%;
+        }
+
+        .state-table th,
+        .state-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            white-space: nowrap;
+            width: 16.67%; /* Equal width for 6 columns (100% / 6) */
+            min-width: 100px; /* Ensure minimum width for columns */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .state-table tr:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .state-table tr:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .table-striped.state-table tbody tr td {
+            color: #ffffff !important; /* White text for all rows in dark mode */
+        }
+
+        [data-theme="dark"] .table-striped.state-table tbody tr:hover td {
+            color: #ffffff !important; /* White text on hover in dark mode */
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 60px; /* Align with main-content */
+            width: calc(100% - 60px); /* Adjust for sidebar */
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+            z-index: 900; /* Below navbar and sidebar */
+            transition: left 0.3s ease;
+        }
+
+        [data-theme="dark"] footer {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3); /* Same as light mode */
+        }
+
+        .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+            left: 220px;
+            width: calc(100% - 220px);
+        }
+
+        /* Timezone container styles (not used, kept for consistency) */
+        .timezone-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .svg-box {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            flex: 1 1 0;
+            height: 80px;
+            background: #ffffff;
+        }
+
+        [data-theme="dark"] .svg-box {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .svg-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .svg-box text {
+            font-family: 'Inter', sans-serif;
+            fill: var(--dark-color);
+        }
+
+        .svg-box text:nth-child(2) {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .svg-box text:nth-child(3) {
+            font-size: 10px;
+            font-weight: 500;
+            fill: #6c757d;
+        }
+
+        [data-theme="dark"] .svg-box text:nth-child(3) {
+            fill: #ffffff;
+        }
+
+        .svg-box text:nth-child(4) {
+            font-size: 12px;
+            font-weight: 600;
+            fill: var(--primary-color);
+        }
+
+        .material-icon {
+            font-family: 'Material Icons';
+            font-size: 18px;
+            color: var(--icon-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 0;
+            }
+
+            .sidebar:hover, .sidebar.expanded {
+                width: 220px;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar:hover ~ .main-content, .sidebar.expanded ~ .main-content {
+                margin-left: 0;
+            }
+
+            footer {
+                left: 0;
+                width: 100%;
+            }
+
+            .sidebar:hover ~ footer, .sidebar.expanded ~ footer {
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 50px;
+            }
+
+            .navbar {
+                min-height: 50px;
+                padding: 0.5rem 1rem;
+            }
+
+            .sidebar {
+                top: 50px;
+                width: 0;
+                height: calc(100vh - 50px); /* Adjusted to avoid navbar overlap */
+                overflow: hidden;
+                scrollbar-width: none; /* Firefox */
+                z-index: 999; /* Below navbar */
+                clip-path: inset(0 0 0 0); /* Prevent overflow above navbar */
+            }
+
+            .sidebar::-webkit-scrollbar {
+                display: none; /* Chrome, Safari */
+            }
+
+            .sidebar.expanded {
+                width: 220px;
+                z-index: 999; /* Below navbar */
+                top: 50px; /* Ensure below navbar */
+            }
+
+            .sidebar-toggle {
+                display: flex;
+            }
+
+            .navbar .container-fluid {
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                min-height: 50px;
+            }
+
+            .navbar-brand {
+                flex: 1;
+                font-size: 1.2rem;
+                margin: 0 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .theme-toggle {
+                margin-left: 5px;
+            }
+
+            .main-content {
+                padding-bottom: 70px; /* Adjusted for footer gap */
+            }
+
+            .card {
+                max-height: calc(100vh - 120px); /* Adjusted for increased padding-bottom */
+                margin-bottom: 50px; /* Increased for gap above footer */
+            }
+
+            .card-body {
+                flex-direction: column;
+            }
+
+            .card-main {
+                max-height: calc(100vh - 170px); /* Navbar (50px) + card-header (~50px) + card-body padding (50px) + margin-bottom (25px) */
+            }
+
+            .search-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-container input {
+                max-width: 100%;
+            }
+
+            #infoMessage {
+                max-width: 100%; /* Full width in mobile */
+            }
+
+            .table-container {
+                max-height: calc(100vh - 345px); /* Adjusted for footer gap */
+            }
+
+            .state-table {
+                table-layout: auto; /* Allow columns to adjust naturally on mobile */
+            }
+
+            .state-table th,
+            .state-table td {
+                min-width: 0; /* Remove minimum width to prevent overlap */
+                white-space: normal; /* Allow text wrapping on mobile */
+                padding: 5px; /* Reduce padding for mobile */
+            }
+
+            footer {
+                font-size: 0.75rem; /* Slightly smaller for mobile */
+                padding: 8px; /* Reduced padding for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navbar -->
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+            <a class="navbar-brand" href="https://securebugs.github.io/StaffingTools/Tools">Staffing Tools</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="bi bi-moon-stars-fill"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/Tools">
+                    <i class="bi bi-house-door"></i>
+                    <span class="menu-text">Tools</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/state-info.html" class="active">
+                    <i class="bi bi-geo-alt"></i>
+                    <span class="menu-text">State Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/converters.html">
+                    <i class="bi bi-arrow-left-right"></i>
+                    <span class="menu-text">Converters</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/email-handling.html">
+                    <i class="bi bi-envelope"></i>
+                    <span class="menu-text">Email Handling</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/calendar-info.html">
+                    <i class="bi bi-calendar-event"></i>
+                    <span class="menu-text">Calendar Info</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/important-links.html">
+                    <i class="bi bi-link-45deg"></i>
+                    <span class="menu-text">Important Links</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/visa-details.html">
+                    <i class="bi bi-file-text"></i>
+                    <span class="menu-text">Visa Details</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/interview.html">
+                    <i class="bi bi-person-check"></i>
+                    <span class="menu-text">Interview</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/entertainment.html">
+                    <i class="bi bi-controller"></i>
+                    <span class="menu-text">Entertainment</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://securebugs.github.io/StaffingTools/contact.html">
+                    <i class="bi bi-telephone"></i>
+                    <span class="menu-text">Contact Us</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="card">
+            <div class="card-header">
+                <span><i class="bi bi-geo-alt me-2"></i>State Info Dashboard</span>
+                <div>
+                    <button class="font-size-btn" id="increaseFont"><i class="bi bi-plus"></i></button>
+                    <button class="font-size-btn" id="decreaseFont"><i class="bi bi-dash"></i></button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-container">
+                    <div class="card-main state-card-body">
+                        <div class="search-container text-center">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search by state, capital, time zone, or phone...">
+                            <button id="searchButton" class="btn btn-primary">Search</button>
+                        </div>
+                        <div id="infoMessage" class="alert alert-warning fade show" role="alert" style="display: none;">
+                            <i id="messageIcon" class="fas"></i>
+                            <span id="messageText"></span>
+                        </div>
+                        <div class="table-responsive">
+                            <div class="table-container">
+                                <table class="state-table table table-striped table-hover" id="statesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>State</th>
+                                            <th>Short Name</th>
+                                            <th>Capital</th>
+                                            <th>Time Zone</th>
+                                            <th>Founded</th>
+                                            <th>Zip Range</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Rows will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Staffing Tools
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="bi bi-sun-fill"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+            }
+        });
+
+        // Sidebar Toggle
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('#sidebar');
+            const sidebarToggle = document.querySelector('#sidebarToggle');
+            
+            if (sidebar.classList.contains('expanded') &&
+                !sidebar.contains(event.target) &&
+                !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('expanded');
+            }
+        });
+
+        // Font Size Control for Table
+        const table = document.querySelector('.state-table');
+        let fontSize = 12; // Initial minimum font size in px
+        table.style.fontSize = `${fontSize}px`;
+
+        document.getElementById('increaseFont').addEventListener('click', () => {
+            if (fontSize < 24) { // Max font size
+                fontSize += 2;
+                table.style.fontSize = `${fontSize}px`;
+            }
+        });
+
+        document.getElementById('decreaseFont').addEventListener('click', () => {
+            if (fontSize > 12) { // Min font size
+                fontSize -= 2;
+                table.style.fontSize = `${fontSize}px`;
+            }
+        });
+    </script>
+
+
+  <script>
+    // JSON data for USA states with additional fields
+    const statesData = [
+
+  {
+    name: "Alabama",
+    shortName: "AL",
+    capital: "Montgomery",
+    timezone: "CST",
+    founded: "December 14, 1819",
+    zipRange: "35004 to 36925",
+    phonePrefixes: ["205", "251", "256", "334", "659", "938"]
+  },
+  {
+    name: "Alaska",
+    shortName: "AK",
+    capital: "Juneau",
+    timezone: "AKST",
+    founded: "January 3, 1959",
+    zipRange: "99501 to 99950",
+    phonePrefixes: ["907"]
+  },
+  {
+    name: "Arizona",
+    shortName: "AZ",
+    capital: "Phoenix",
+    timezone: "MST",
+    founded: "February 14, 1912",
+    zipRange: "85001 to 86556",
+    phonePrefixes: ["480", "520", "602", "623", "928"]
+  },
+  {
+    name: "Arkansas",
+    shortName: "AR",
+    capital: "Little Rock",
+    timezone: "CST",
+    founded: "June 15, 1836",
+    zipRange: "71601 to 72959",
+    phonePrefixes: ["479", "501", "870"]
+  },
+  {
+    name: "California",
+    shortName: "CA",
+    capital: "Sacramento",
+    timezone: "PST",
+    founded: "September 9, 1850",
+    zipRange: "90001 to 96162",
+    phonePrefixes: ["209", "213", "279", "310", "323", "341", "408", "415", "424", "442", "510", "530", "559", "562", "619", "626", "628", "650", "657", "661", "669", "707", "714", "747", "760", "805", "818", "820", "831", "858", "909", "916", "925", "949", "951"]
+  },
+  {
+    name: "Colorado",
+    shortName: "CO",
+    capital: "Denver",
+    timezone: "MST",
+    founded: "August 1, 1876",
+    zipRange: "80001 to 81658",
+    phonePrefixes: ["303", "719", "720", "970"]
+  },
+  {
+    name: "Connecticut",
+    shortName: "CT",
+    capital: "Hartford",
+    timezone: "EST",
+    founded: "January 9, 1788",
+    zipRange: "06001 to 06928",
+    phonePrefixes: ["203", "475", "860", "959"]
+  },
+  {
+    name: "Delaware",
+    shortName: "DE",
+    capital: "Dover",
+    timezone: "EST",
+    founded: "December 7, 1787",
+    zipRange: "19901 to 19905",
+    phonePrefixes: ["302"]
+  },
+  {
+    name: "Florida",
+    shortName: "FL",
+    capital: "Tallahassee",
+    timezone: "EST",
+    founded: "March 3, 1845",
+    zipRange: "32004 to 34997",
+    phonePrefixes: ["239", "305", "321", "352", "386", "407", "561", "689", "727", "754", "772", "786", "813", "850", "863", "904", "941", "954"]
+  },
+  {
+    name: "Georgia",
+    shortName: "GA",
+    capital: "Atlanta",
+    timezone: "EST",
+    founded: "January 2, 1788",
+    zipRange: "30001 to 31999",
+    phonePrefixes: ["229", "404", "470", "478", "678", "706", "762", "770", "912"]
+  },
+  {
+    name: "Hawaii",
+    shortName: "HI",
+    capital: "Honolulu",
+    timezone: "HST",
+    founded: "August 21, 1959",
+    zipRange: "96701 to 96898",
+    phonePrefixes: ["808"]
+  },
+  {
+    name: "Idaho",
+    shortName: "ID",
+    capital: "Boise",
+    timezone: "MST",
+    founded: "July 3, 1890",
+    zipRange: "83701 to 83799",
+    phonePrefixes: ["208", "986"]
+  },
+  {
+    name: "Illinois",
+    shortName: "IL",
+    capital: "Springfield",
+    timezone: "CST",
+    founded: "December 3, 1818",
+    zipRange: "60001 to 62999",
+    phonePrefixes: ["217", "224", "309", "312", "331", "618", "630", "708", "773", "779", "815", "847", "872"]
+  },
+  {
+    name: "Indiana",
+    shortName: "IN",
+    capital: "Indianapolis",
+    timezone: "EST",
+    founded: "December 11, 1816",
+    zipRange: "46001 to 47997",
+    phonePrefixes: ["219", "260", "317", "463", "574", "765", "812", "930"]
+  },
+  {
+    name: "Iowa",
+    shortName: "IA",
+    capital: "Des Moines",
+    timezone: "CST",
+    founded: "December 28, 1846",
+    zipRange: "50001 to 52809",
+    phonePrefixes: ["319", "515", "563", "641", "712"]
+  },
+  {
+    name: "Kansas",
+    shortName: "KS",
+    capital: "Topeka",
+    timezone: "CST",
+    founded: "January 29, 1861",
+    zipRange: "66002 to 67954",
+    phonePrefixes: ["316", "620", "785", "913"]
+  },
+  {
+    name: "Kentucky",
+    shortName: "KY",
+    capital: "Frankfort",
+    timezone: "EST",
+    founded: "June 1, 1792",
+    zipRange: "40003 to 42788",
+    phonePrefixes: ["270", "364", "502", "606", "859"]
+  },
+  {
+    name: "Louisiana",
+    shortName: "LA",
+    capital: "Baton Rouge",
+    timezone: "CST",
+    founded: "April 30, 1812",
+    zipRange: "70112 to 71232",
+    phonePrefixes: ["225", "318", "337", "504", "985"]
+  },
+  {
+    name: "Maine",
+    shortName: "ME",
+    capital: "Augusta",
+    timezone: "EST",
+    founded: "March 15, 1820",
+    zipRange: "04101 to 04992",
+    phonePrefixes: ["207"]
+  },
+  {
+    name: "Maryland",
+    shortName: "MD",
+    capital: "Annapolis",
+    timezone: "EST",
+    founded: "April 28, 1788",
+    zipRange: "20331 to 21930",
+    phonePrefixes: ["227", "240", "301", "410", "443", "667"]
+  },
+  {
+    name: "Massachusetts",
+    shortName: "MA",
+    capital: "Boston",
+    timezone: "EST",
+    founded: "February 6, 1788",
+    zipRange: "02101 to 02298",
+    phonePrefixes: ["339", "351", "413", "508", "617", "774", "781", "857", "978"]
+  },
+  {
+    name: "Michigan",
+    shortName: "MI",
+    capital: "Lansing",
+    timezone: "EST",
+    founded: "January 26, 1837",
+    zipRange: "48201 to 49971",
+    phonePrefixes: ["231", "248", "269", "313", "517", "586", "616", "734", "810", "906", "947", "989"]
+  },
+  {
+    name: "Minnesota",
+    shortName: "MN",
+    capital: "Saint Paul",
+    timezone: "CST",
+    founded: "May 11, 1858",
+    zipRange: "55101 to 56763",
+    phonePrefixes: ["218", "320", "507", "612", "651", "763", "952"]
+  },
+  {
+    name: "Mississippi",
+    shortName: "MS",
+    capital: "Jackson",
+    timezone: "CST",
+    founded: "December 10, 1817",
+    zipRange: "38601 to 39776",
+    phonePrefixes: ["228", "601", "662", "769"]
+  },
+  {
+    name: "Missouri",
+    shortName: "MO",
+    capital: "Jefferson City",
+    timezone: "CST",
+    founded: "August 10, 1821",
+    zipRange: "63101 to 65899",
+    phonePrefixes: ["314", "417", "573", "636", "660", "816"]
+  },
+  {
+    name: "Montana",
+    shortName: "MT",
+    capital: "Helena",
+    timezone: "MST",
+    founded: "November 8, 1889",
+    zipRange: "59001 to 59937",
+    phonePrefixes: ["406"]
+  },
+  {
+    name: "Nebraska",
+    shortName: "NE",
+    capital: "Lincoln",
+    timezone: "CST",
+    founded: "March 1, 1867",
+    zipRange: "68001 to 68118",
+    phonePrefixes: ["308", "402", "531"]
+  },
+  {
+    name: "Nevada",
+    shortName: "NV",
+    capital: "Carson City",
+    timezone: "PST",
+    founded: "October 31, 1864",
+    zipRange: "88901 to 89883",
+    phonePrefixes: ["702", "725", "775"]
+  },
+  {
+    name: "New Hampshire",
+    shortName: "NH",
+    capital: "Concord",
+    timezone: "EST",
+    founded: "June 21, 1788",
+    zipRange: "03217 to 03884",
+    phonePrefixes: ["603"]
+  },
+  {
+    name: "New Jersey",
+    shortName: "NJ",
+    capital: "Trenton",
+    timezone: "EST",
+    founded: "December 18, 1787",
+    zipRange: "07001 to 08989",
+    phonePrefixes: ["201", "551", "609", "640", "732", "848", "856", "862", "908", "973"]
+  },
+  {
+    name: "New Mexico",
+    shortName: "NM",
+    capital: "Santa Fe",
+    timezone: "MST",
+    founded: "January 6, 1912",
+    zipRange: "87001 to 88441",
+    phonePrefixes: ["505", "575"]
+  },
+  {
+    name: "New York",
+    shortName: "NY",
+    capital: "Albany",
+    timezone: "EST",
+    founded: "July 26, 1788",
+    zipRange: "10001 to 10292",
+    phonePrefixes: ["212", "315", "332", "347", "516", "518", "585", "607", "631", "646", "680", "716", "718", "838", "845", "914", "917", "929", "934"]
+  },
+  {
+    name: "North Carolina",
+    shortName: "NC",
+    capital: "Raleigh",
+    timezone: "EST",
+    founded: "November 21, 1789",
+    zipRange: "27501 to 28816",
+    phonePrefixes: ["252", "336", "704", "743", "828", "910", "919", "980", "984"]
+  },
+  {
+    name: "North Dakota",
+    shortName: "ND",
+    capital: "Bismarck",
+    timezone: "CST",
+    founded: "November 2, 1889",
+    zipRange: "58102 to 58109",
+    phonePrefixes: ["701"]
+  },
+  {
+    name: "Ohio",
+    shortName: "OH",
+    capital: "Columbus",
+    timezone: "EST",
+    founded: "March 1, 1803",
+    zipRange: "44101 to 44179",
+    phonePrefixes: ["216", "220", "234", "283", "326", "330", "380", "419", "440", "513", "567", "614", "740", "937"]
+  },
+  {
+    name: "Oklahoma",
+    shortName: "OK",
+    capital: "Oklahoma City",
+    timezone: "CST",
+    founded: "November 16, 1907",
+    zipRange: "73101 to 73196",
+    phonePrefixes: ["405", "539", "572", "580", "918"]
+  },
+  {
+    name: "Oregon",
+    shortName: "OR",
+    capital: "Salem",
+    timezone: "PST",
+    founded: "February 14, 1859",
+    zipRange: "97201 to 97920",
+    phonePrefixes: ["458", "503", "541", "971"]
+  },
+  {
+    name: "Pennsylvania",
+    shortName: "PA",
+    capital: "Harrisburg",
+    timezone: "EST",
+    founded: "December 12, 1787",
+    zipRange: "19001 to 19640",
+    phonePrefixes: ["215", "223", "267", "272", "412", "445", "484", "570", "610", "717", "724", "814", "878"]
+  },
+  {
+    name: "Rhode Island",
+    shortName: "RI",
+    capital: "Providence",
+    timezone: "EST",
+    founded: "May 29, 1790",
+    zipRange: "02801 to 02940",
+    phonePrefixes: ["401"]
+  },
+  {
+    name: "South Carolina",
+    shortName: "SC",
+    capital: "Columbia",
+    timezone: "EST",
+    founded: "May 23, 1788",
+    zipRange: "29001 to 29948",
+    phonePrefixes: ["803", "839", "843", "854", "864"]
+  },
+  {
+    name: "South Dakota",
+    shortName: "SD",
+    capital: "Pierre",
+    timezone: "CST",
+    founded: "November 2, 1889",
+    zipRange: "57001 to 57110",
+    phonePrefixes: ["605"]
+  },
+  {
+    name: "Tennessee",
+    shortName: "TN",
+    capital: "Nashville",
+    timezone: "CST",
+    founded: "June 1, 1796",
+    zipRange: "37201 to 37250",
+    phonePrefixes: ["423", "615", "629", "731", "865", "901", "931"]
+  },
+  {
+    name: "Texas",
+    shortName: "TX",
+    capital: "Austin",
+    timezone: "CST",
+    founded: "December 29, 1845",
+    zipRange: "73301 to 73344",
+    phonePrefixes: ["210", "214", "254", "281", "325", "346", "361", "409", "430", "432", "469", "512", "682", "713", "726", "737", "806", "817", "830", "832", "903", "915", "936", "940", "956", "972", "979"]
+  },
+  {
+    name: "Utah",
+    shortName: "UT",
+    capital: "Salt Lake City",
+    timezone: "MST",
+    founded: "January 4, 1896",
+    zipRange: "84101 to 84199",
+    phonePrefixes: ["385", "435", "801"]
+  },
+  {
+    name: "Vermont",
+    shortName: "VT",
+    capital: "Montpelier",
+    timezone: "EST",
+    founded: "March 4, 1791",
+    zipRange: "05601 to 05907",
+    phonePrefixes: ["802"]
+  },
+  {
+    name: "Virginia",
+    shortName: "VA",
+    capital: "Richmond",
+    timezone: "EST",
+    founded: "June 25, 1788",
+    zipRange: "23218 to 23298",
+    phonePrefixes: ["276", "434", "540", "571", "703", "757", "804"]
+  },
+  {
+    name: "Washington",
+    shortName: "WA",
+    capital: "Olympia",
+    timezone: "PST",
+    founded: "November 11, 1889",
+    zipRange: "98101 to 98199",
+    phonePrefixes: ["206", "253", "360", "425", "509", "564"]
+  },
+  {
+    name: "West Virginia",
+    shortName: "WV",
+    capital: "Charleston",
+    timezone: "EST",
+    founded: "June 20, 1863",
+    zipRange: "25301 to 25396",
+    phonePrefixes: ["304", "681"]
+  },
+  {
+    name: "Wisconsin",
+    shortName: "WI",
+    capital: "Madison",
+    timezone: "CST",
+    founded: "May 29, 1848",
+    zipRange: "53201 to 53228",
+    phonePrefixes: ["262", "414", "534", "608", "715", "920"]
+  },
+  {
+    name: "Wyoming",
+    shortName: "WY",
+    capital: "Cheyenne",
+    timezone: "MST",
+    founded: "July 10, 1890",
+    zipRange: "82001 to 82010",
+    phonePrefixes: ["307"]
+  },
+  // Territories
+  {
+    name: "American Samoa",
+    shortName: "AS",
+    capital: "Pago Pago",
+    timezone: "SST",
+    founded: "April 17, 1900",
+    zipRange: "96799 to 96799",
+    phonePrefixes: ["684"]
+  },
+  {
+    name: "Guam",
+    shortName: "GU",
+    capital: "Hagatna",
+    timezone: "ChST",
+    founded: "August 7, 1898th",
+    zipRange: "96910 to 96932",
+    phonePrefixes: ["671"]
+  },
+  {
+    name: "Marianas Island",
+    shortName: "MP",
+    capital: "Saipan",
+    timezone: "ChST",
+    founded: "January 9, 1978",
+    zipRange: "96950 to 96950",
+    phonePrefixes: ["670"]
+  },
+  {
+    name: "Puerto Rico",
+    shortName: "PR",
+    capital: "San Juan",
+    timezone: "AST",
+    founded: "July 25, 1898",
+    zipRange: "00901 to 00988",
+    phonePrefixes: ["787", "939"]
+  },
+  {
+    name: "US Virgin Islands",
+    shortName: "VI",
+    capital: "Charlotte Amalie",
+    timezone: "AST",
+    founded: "March 31, 1917",
+    zipRange: "00801 to 00804",
+    phonePrefixes: ["340"]
+  },
+
+    ];
+
+    // Function to populate the table with data
+    function populateTable(data) {
+      const tableBody = document.querySelector("#statesTable tbody");
+      tableBody.innerHTML = ""; // Clear existing rows
+
+      data.forEach(state => {
+        const row = document.createElement("tr");
+
+        const stateCell = document.createElement("td");
+        stateCell.textContent = state.name;
+        row.appendChild(stateCell);
+
+        const shortNameCell = document.createElement("td");
+        shortNameCell.textContent = state.shortName;
+        row.appendChild(shortNameCell);
+
+        const capitalCell = document.createElement("td");
+        capitalCell.textContent = state.capital;
+        row.appendChild(capitalCell);
+
+        const timezoneCell = document.createElement("td");
+        timezoneCell.textContent = state.timezone;
+        row.appendChild(timezoneCell);
+
+        const foundedCell = document.createElement("td");
+        foundedCell.textContent = state.founded;
+        row.appendChild(foundedCell);
+
+        const zipRangeCell = document.createElement("td");
+        zipRangeCell.textContent = state.zipRange;
+        row.appendChild(zipRangeCell);
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Function to handle search
+    function searchState() {
+      const searchQuery = document.getElementById("searchInput").value.trim();
+      const infoMessage = document.getElementById("infoMessage");
+      const messageText = document.getElementById("messageText");
+      const messageIcon = document.getElementById("messageIcon");
+      let filteredData;
+
+      if (searchQuery === "") {
+        // If search input is empty, show all states
+        filteredData = statesData;
+        infoMessage.style.display = "none"; // Hide info message
+      } else {
+        // Filter data based on search query
+        filteredData = statesData.filter(state => 
+          state.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          state.capital.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          state.timezone.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          state.phonePrefixes.some(prefix => prefix === searchQuery) // Exact 3-digit match
+        );
+
+        // Display info message if a phone prefix matches
+        const matchedState = statesData.find(state => 
+          state.phonePrefixes.some(prefix => prefix === searchQuery)
+        );
+        if (matchedState) {
+          messageIcon.className = "fas fa-phone"; // Phone icon
+          messageText.innerHTML = `If you received a call from <strong>${searchQuery}</strong>, it is from <strong>${matchedState.name}</strong>.`;
+          infoMessage.style.display = "block"; // Show info message
+        } else if (/^\d{3}$/.test(searchQuery)) {
+          // If the search query is a 3-digit number but doesn't match any prefix
+          messageIcon.className = "fas fa-triangle-exclamation"; // Caution icon
+          messageText.innerHTML = `This number <strong>${searchQuery}</strong> is not from any State.`;
+          infoMessage.style.display = "block"; // Show info message
+        } else {
+          infoMessage.style.display = "none"; // Hide info message if no match
+        }
+      }
+
+      populateTable(filteredData);
+    }
+
+    // Event listener for the search button
+    document.getElementById("searchButton").addEventListener("click", searchState);
+
+    // Event listener for the Enter key in the search input
+    document.getElementById("searchInput").addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        searchState();
+      }
+    });
+
+    // Event listener for real-time search as the user types
+    document.getElementById("searchInput").addEventListener("input", searchState);
+
+    // Populate the table with all states on page load
+    populateTable(statesData);
+  </script>
+
+</body>
+</html>
