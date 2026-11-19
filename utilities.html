@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2024-04-12/6b13c0e2c4b7ab54ce7583367c42166e.ico.png">
-    <meta name="google-site-verification" content="1izKCetzNj3e7mRvTXIoFhcSN0popYPWvwyzTtEBi24" />
+
+<meta name="google-site-verification" content="1izKCetzNj3e7mRvTXIoFhcSN0popYPWvwyzTtEBi24" />
     <meta name="mylead-verification" content="36f3e822fb8e7a332ba9fd627eca510d">
     
     <!-- Primary Meta Tags -->
@@ -971,6 +970,71 @@
     }
 }
 
+
+/* Employee Directory tab */
+.card-header.dashboard-header {
+    display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+.dashboard-tabs { display:flex; align-items:center; gap:8px; }
+.dashboard-tab {
+    border:1px solid rgba(255,255,255,.45); color:#fff; background:transparent;
+    border-radius:8px; padding:7px 13px; font:600 13px 'Inter',sans-serif;
+    cursor:pointer; transition:all .2s ease; white-space:nowrap;
+}
+.dashboard-tab:hover, .dashboard-tab.active { background:#fff; color:#3a0ca3; }
+.dashboard-panel { display:none; width:100%; height:100%; min-height:0; }
+.dashboard-panel.active { display:flex; align-items:center; justify-content:center; }
+#employeeDirectoryPanel { padding:0; overflow:hidden; }
+.directory-shell {
+    width:100%; height:100%; min-height:0; display:flex; flex-direction:column;
+    background:var(--light-color); color:var(--dark-color); overflow:hidden;
+    padding:4px 8px; font-family:'Inter',sans-serif;
+}
+.directory-intro { flex:0 0 auto; margin-bottom:12px; }
+.directory-eyebrow { margin:0 0 5px; color:var(--primary-color); font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; }
+.directory-title { margin:0; font-size:22px; font-weight:700; color:var(--dark-color); }
+.directory-subtitle { margin:5px 0 12px; color:#7a8495; font-size:13px; line-height:1.4; }
+.directory-search-wrap { position:relative; flex:0 0 auto; }
+.directory-search-icon { position:absolute; left:13px; top:50%; transform:translateY(-50%); color:#7c8799; font-size:20px; pointer-events:none; }
+#employeeSearchInput {
+    width:100%; border:1px solid #dce3ee; border-radius:10px; padding:12px 42px;
+    outline:none; font-size:14px; color:#172033; background:#fbfcfe;
+}
+#employeeSearchInput:focus { border-color:var(--primary-color); box-shadow:0 0 0 3px rgba(67,97,238,.12); }
+#employeeClearBtn {
+    position:absolute; right:8px; top:50%; transform:translateY(-50%); border:0;
+    background:transparent; color:#697386; font-size:21px; cursor:pointer; display:none;
+}
+.directory-result-meta { flex:0 0 auto; display:flex; justify-content:space-between; align-items:center; gap:10px; margin:13px 2px 8px; color:#697386; font-size:12px; }
+.directory-count { border-radius:999px; background:#eef2ff; color:#364fc7; font-weight:700; padding:5px 9px; white-space:nowrap; }
+#employeeResults {
+    display:grid; align-content:start; gap:7px; flex:1 1 auto; min-height:0;
+    overflow-y:auto; overscroll-behavior:contain; padding:1px 4px 4px 1px;
+    scrollbar-width:thin; scrollbar-color:#c7d2e5 transparent;
+}
+#employeeResults::-webkit-scrollbar { width:6px; }
+#employeeResults::-webkit-scrollbar-thumb { background:#c7d2e5; border-radius:10px; }
+.employee-result-card { display:flex; align-items:center; gap:12px; padding:10px 12px; border:1px solid #e8edf5; border-radius:11px; background:var(--light-color); }
+.employee-avatar { width:39px; height:39px; flex:0 0 39px; display:grid; place-items:center; border-radius:11px; background:#eef2ff; color:#364fc7; font-size:13px; font-weight:700; }
+.employee-details { min-width:0; flex:1; }
+.employee-name { font-size:14px; font-weight:700; overflow-wrap:anywhere; color:var(--dark-color); }
+.employee-label { margin-top:3px; font-size:11px; color:#7a8495; }
+.employee-extension { flex:0 0 auto; border:1px solid #dce5ff; background:#f5f7ff; color:#2f4fc7; border-radius:8px; padding:7px 10px; font-size:14px; font-weight:700; font-variant-numeric:tabular-nums; }
+.employee-empty { text-align:center; border:1px dashed #dce3ee; border-radius:12px; padding:24px 12px; color:#697386; font-size:13px; line-height:1.6; }
+[data-theme="dark"] .directory-shell { background:#1a1a1a; }
+[data-theme="dark"] .employee-result-card { background:#202020; border-color:#3a3a3a; }
+[data-theme="dark"] .employee-name, [data-theme="dark"] .directory-title { color:#fff; }
+[data-theme="dark"] #employeeSearchInput { background:#2a2a2a; color:#fff; border-color:#444; }
+[data-theme="dark"] .employee-empty { border-color:#555; color:#bbb; }
+@media (max-width:768px) {
+    .dashboard-card-body { padding:15px !important; }
+    .card-header.dashboard-header { align-items:flex-start; }
+    .dashboard-tabs { width:100%; }
+    .dashboard-tab { flex:1; }
+    #employeeDirectoryPanel { min-height:calc(100vh - 260px); }
+    .directory-title { font-size:19px; }
+}
+
     </style>
 </head>
 <body>
@@ -1397,10 +1461,15 @@
     
     <div class="main-content">
         <div class="card">
-            <div class="card-header">
-                <i class="bi bi-tools me-2"></i>Utilities Dashboard
+            <div class="card-header dashboard-header">
+                <div><i class="bi bi-tools me-2"></i><span id="dashboardHeading">Utilities Dashboard</span></div>
+                <div class="dashboard-tabs" role="tablist" aria-label="Dashboard sections">
+                    <button type="button" class="dashboard-tab active" id="utilitiesTab" role="tab" aria-selected="true" aria-controls="utilitiesPanel">Utilities</button>
+                    <button type="button" class="dashboard-tab" id="employeeDirectoryTab" role="tab" aria-selected="false" aria-controls="employeeDirectoryPanel">Emp. Directory</button>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body dashboard-card-body">
+                <section class="dashboard-panel active" id="utilitiesPanel" role="tabpanel" aria-labelledby="utilitiesTab">
                 <div class="entertainment-grid">
                     <!-- AI Chat Card -->
                     <div class="entertainment-card" onclick="openPopup('services-popup')">
@@ -1474,6 +1543,26 @@
                         <div class="entertainment-title">More</div>
                     </div>
                 </div>
+                </section>
+                <section class="dashboard-panel" id="employeeDirectoryPanel" role="tabpanel" aria-labelledby="employeeDirectoryTab">
+                    <div class="directory-shell">
+                        <div class="directory-intro">
+                            <p class="directory-eyebrow">Quick lookup</p>
+                            <h2 class="directory-title">Employee Extension Directory</h2>
+                            <p class="directory-subtitle">Search an employee by name or extension number to find who it belongs to.</p>
+                            <div class="directory-search-wrap">
+                                <span class="directory-search-icon" aria-hidden="true">⌕</span>
+                                <input id="employeeSearchInput" type="search" placeholder="Search name or extension..." autocomplete="off" aria-label="Search by employee name or extension">
+                                <button id="employeeClearBtn" type="button" aria-label="Clear search" title="Clear search">×</button>
+                            </div>
+                            <div class="directory-result-meta">
+                                <span id="employeeResultLabel">All employees</span>
+                                <span class="directory-count" id="employeeResultCount">66 employees</span>
+                            </div>
+                        </div>
+                        <section id="employeeResults" aria-live="polite"></section>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -1901,6 +1990,159 @@
         function openModal() {
             alert('Terms & Conditions content here');
         }
+
+        // Dashboard tab navigation
+        (function () {
+            const utilitiesTab = document.getElementById('utilitiesTab');
+            const directoryTab = document.getElementById('employeeDirectoryTab');
+            const utilitiesPanel = document.getElementById('utilitiesPanel');
+            const directoryPanel = document.getElementById('employeeDirectoryPanel');
+            const heading = document.getElementById('dashboardHeading');
+
+            function activateDashboardTab(tabName, updateHash = true) {
+                const showDirectory = tabName === 'directory';
+                utilitiesTab.classList.toggle('active', !showDirectory);
+                directoryTab.classList.toggle('active', showDirectory);
+                utilitiesTab.setAttribute('aria-selected', String(!showDirectory));
+                directoryTab.setAttribute('aria-selected', String(showDirectory));
+                utilitiesPanel.classList.toggle('active', !showDirectory);
+                directoryPanel.classList.toggle('active', showDirectory);
+                heading.textContent = showDirectory ? 'Emp. Directory' : 'Utilities Dashboard';
+
+                // Keep the selected tab shareable through the URL hash.
+                if (updateHash) {
+                    const nextUrl = window.location.pathname + window.location.search + (showDirectory ? '#empdirec' : '');
+                    window.history.replaceState(null, '', nextUrl);
+                }
+                if (showDirectory) document.getElementById('employeeSearchInput').focus({ preventScroll: true });
+            }
+
+            utilitiesTab.addEventListener('click', () => activateDashboardTab('utilities'));
+            directoryTab.addEventListener('click', () => activateDashboardTab('directory'));
+
+            // Open the Employee Directory automatically when the page is shared with #empdirec.
+            function activateTabFromHash() {
+                activateDashboardTab(window.location.hash.toLowerCase() === '#empdirec' ? 'directory' : 'utilities', false);
+            }
+            activateTabFromHash();
+            window.addEventListener('hashchange', activateTabFromHash);
+        })();
+
+        // Employee Extension Directory
+        (function () {
+            const employees = [
+                ["Samad Siddaqui", "048"], ["Nishchal Mittal", "049"],
+                ["Abhinav Goyal", "080"], ["Tarun Rathi", "085"],
+                ["Aditya Raghav Chauhan", "102"], ["Shiv Yadav", "109"],
+                ["Shreya Dixit", "113"], ["Prabhat Mishra", "114"],
+                ["Srajan Dubey", "124"], ["Chandan Singh", "127"],
+                ["Sahil Jangra", "128"], ["Sunil Kumar Patel", "135"],
+                ["Sourav", "138"], ["Abhishek Bhardwaj", "147"],
+                ["Abhishek Kumar", "150"], ["Pradeep Kumar Pathak", "153"],
+                ["Manu Sharma", "157"], ["Deepak Panday", "158"],
+                ["Aakash Singh", "162"], ["Abhi", "167"],
+                ["Abhishek Yadav", "170"], ["Ashwini Singh", "175"],
+                ["Nakul", "180"], ["Hemratan Agnihotri", "184"],
+                ["Shivam Tomar", "193"], ["Riya Dcruze", "239"],
+                ["Aditya Vishwakarma", "256"], ["Robin", "290"],
+                ["Manish Tyagi", "309"], ["Manish Kumar Yadav", "329"],
+                ["Ritul Sachan", "364"], ["Suyash Sharma", "368"],
+                ["Karan Kapoor", "422"], ["Sachin Sharma", "425"],
+                ["Harish Sharma", "439"], ["Ajit Kumar Singh", "445"],
+                ["Stock", "451"], ["Arbaz Alam", "491"],
+                ["Pravesh Kumar", "497"], ["Manish Sharma", "500"],
+                ["Ayush", "504"], ["Karan", "550"],
+                ["Heena Singh", "572"], ["Vinay Kumar Sah", "574"],
+                ["Arushi Yadav", "610"], ["Uvesh", "637"],
+                ["Ankit Kumar Singh", "644"], ["Mayank Kapoor", "786"],
+                ["Khushi Yadav", "862"], ["Mahindra Pratap Singh", "869"],
+                ["Ajay Kumar", "879"], ["Nadeem Khan", "883"],
+                ["Vinay Shisodia", "885"], ["Ayush Singh", "897"],
+                ["Nandan Thakur", "900"], ["Urvashi", "909"],
+                ["Bhavesh Kumar Jha", "919"], ["Sajan Sharma", "939"],
+                ["Abhay Kumar", "961"], ["Shambhawi Tripathi", "966"],
+                ["Yash Jha", "967"], ["Saumya Dubey", "988"],
+                ["Shubham Yadav", "989"], ["Rashid Saifi", "991"],
+                ["Krishan Kumar Vishwakarma", "992"], ["Sourav", "999"]
+            ];
+
+            employees.sort((a, b) => {
+                if (a[0].toLowerCase() === "nandan thakur") return -1;
+                if (b[0].toLowerCase() === "nandan thakur") return 1;
+                return a[0].localeCompare(b[0], undefined, { sensitivity: "base" });
+            });
+
+            const input = document.getElementById("employeeSearchInput");
+            const results = document.getElementById("employeeResults");
+            const resultLabel = document.getElementById("employeeResultLabel");
+            const resultCount = document.getElementById("employeeResultCount");
+            const clearBtn = document.getElementById("employeeClearBtn");
+
+            function normalize(value) {
+                return value.toLowerCase().normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+            }
+            function initials(name) {
+                return name.trim().split(/\s+/).slice(0, 2)
+                    .map(part => part[0]).join("").toUpperCase();
+            }
+            function nameMatches(name, query) {
+                if (!query) return true;
+                const nameParts = name.split(/\s+/).map(normalize);
+                const queryParts = query.trim().split(/\s+/).map(normalize).filter(Boolean);
+                if (!queryParts.length) return true;
+                let lastIndex = -1;
+                const orderedMatch = queryParts.every(part => {
+                    const foundAt = nameParts.findIndex((word, index) => index > lastIndex && word.startsWith(part));
+                    if (foundAt === -1) return false;
+                    lastIndex = foundAt;
+                    return true;
+                });
+                return orderedMatch || queryParts.every(part => nameParts.some(word => word.startsWith(part)));
+            }
+            function escapeHtml(value) {
+                return value.replace(/[&<>"']/g, char => ({
+                    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+                }[char]));
+            }
+            function renderResults() {
+                const rawQuery = input.value.trim();
+                const normalizedQuery = normalize(rawQuery);
+                const queryParts = rawQuery.toLowerCase().split(/\s+/).filter(Boolean);
+                const filtered = employees.filter(([name, extension]) => {
+                    const nameMatch = nameMatches(name, rawQuery);
+                    const extensionMatch = queryParts.length === 1 && extension.includes(normalizedQuery);
+                    return nameMatch || extensionMatch;
+                });
+
+                clearBtn.style.display = normalizedQuery ? "block" : "none";
+                resultLabel.textContent = rawQuery ? `Search results for "${rawQuery}"` : "All employees";
+                resultCount.textContent = `${filtered.length} ${filtered.length === 1 ? "employee" : "employees"}`;
+
+                if (!filtered.length) {
+                    results.innerHTML = '<div class="employee-empty"><strong>No employee found</strong><br>Try another name or extension number.</div>';
+                    return;
+                }
+                results.innerHTML = filtered.map(([name, extension]) => `
+                    <article class="employee-result-card">
+                        <div class="employee-avatar" aria-hidden="true">${initials(name)}</div>
+                        <div class="employee-details">
+                            <div class="employee-name">${escapeHtml(name)}</div>
+                            <div class="employee-label">Employee extension</div>
+                        </div>
+                        <div class="employee-extension">${extension}</div>
+                    </article>
+                `).join("");
+            }
+            input.addEventListener("input", renderResults);
+            clearBtn.addEventListener("click", () => {
+                input.value = "";
+                renderResults();
+                input.focus();
+            });
+            renderResults();
+        })();
+
     </script>
 </body>
 </html>
