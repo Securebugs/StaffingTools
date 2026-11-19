@@ -783,10 +783,11 @@
                             <input type="text" id="searchInput" class="form-control" placeholder="Search by state, capital, time zone, or phone...">
                             <button id="searchButton" class="btn btn-primary">Search</button>
                         </div>
-                        <div id="infoMessage" class="alert alert-warning fade show" role="alert" style="display: none;">
-                            <i id="messageIcon" class="fas"></i>
-                            <span id="messageText"></span>
-                        </div>
+
+<div id="infoMessage" class="alert alert-info d-flex align-items-start gap-2 fade show" role="alert">
+    <i id="messageIcon" class="fa fa-info-circle mt-1"></i>
+    <span id="messageText"><strong>Did you know?</strong> In the above search box, you can also enter a phone number to check which US state it belongs to or identify the state of someone calling you.</span>
+</div>
                         <div class="table-responsive">
                             <div class="table-container">
                                 <table class="state-table table table-striped table-hover" id="statesTable">
@@ -1423,35 +1424,74 @@
       const messageIcon = document.getElementById("messageIcon");
       let filteredData;
 
+      // Restore the original Did you know message when the search is cleared
       if (searchQuery === "") {
-        // If search input is empty, show all states
-        filteredData = statesData;
-        infoMessage.style.display = "none"; // Hide info message
+        infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
+        messageIcon.className = "fa fa-info-circle mt-1";
+        messageText.innerHTML = "<strong>Did you know?</strong> In the above search box, you can also enter a phone number to check which US state it belongs to or identify the state of someone calling you.";
+        infoMessage.style.display = "flex";
+        populateTable(statesData);
+        return;
+      }
+
+      // A single message box is reused for both the helper text and search results
+      infoMessage.style.display = "flex";
+
+      // Phone-number input may contain +, spaces, brackets, dots or hyphens
+      const isPhoneInput = /^[+\d\s().-]+$/.test(searchQuery);
+
+      if (isPhoneInput) {
+        // Keep digits only
+        let phoneNumber = searchQuery.replace(/\D/g, "");
+
+        // Remove international access prefix (00), then the US country code (1).
+        // This also handles short inputs such as +1 601 and 1601.
+        if (phoneNumber.startsWith("00")) {
+          phoneNumber = phoneNumber.substring(2);
+        }
+        if (phoneNumber.startsWith("1") && phoneNumber.length >= 4) {
+          phoneNumber = phoneNumber.substring(1);
+        }
+
+        // Ignore leading zero(s), including a local trunk prefix
+        phoneNumber = phoneNumber.replace(/^0+/, "");
+
+        if (phoneNumber.length < 3) {
+          infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
+          messageIcon.className = "fa fa-info-circle mt-1";
+          messageText.textContent = "Enter at least 3 phone digits to identify the state area code.";
+          filteredData = [];
+        } else {
+          // Match the first 3 digits after removing country/access/trunk prefixes
+          const areaCode = phoneNumber.substring(0, 3);
+          const matchedState = statesData.find(state =>
+            state.phonePrefixes.includes(areaCode)
+          );
+
+          filteredData = matchedState ? [matchedState] : [];
+
+          if (matchedState) {
+            infoMessage.className = "alert alert-warning d-flex align-items-start gap-2 fade show";
+            messageIcon.className = "fas fa-phone mt-1";
+            messageText.innerHTML = `The phone number has area code <strong>${areaCode}</strong>, which is associated with <strong>${matchedState.name}</strong>.`;
+          } else {
+            infoMessage.className = "alert alert-warning d-flex align-items-start gap-2 fade show";
+            messageIcon.className = "fas fa-triangle-exclamation mt-1";
+            messageText.innerHTML = `No state was found for the phone area code <strong>${areaCode}</strong>.`;
+          }
+        }
       } else {
-        // Filter data based on search query
-        filteredData = statesData.filter(state => 
+        // Keep existing state, capital, time-zone and abbreviation search
+        filteredData = statesData.filter(state =>
           state.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           state.capital.toLowerCase().includes(searchQuery.toLowerCase()) ||
           state.timezone.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          state.phonePrefixes.some(prefix => prefix === searchQuery) // Exact 3-digit match
+          state.shortName.toLowerCase() === searchQuery.toLowerCase()
         );
 
-        // Display info message if a phone prefix matches
-        const matchedState = statesData.find(state => 
-          state.phonePrefixes.some(prefix => prefix === searchQuery)
-        );
-        if (matchedState) {
-          messageIcon.className = "fas fa-phone"; // Phone icon
-          messageText.innerHTML = `If you received a call from <strong>${searchQuery}</strong>, it is from <strong>${matchedState.name}</strong>.`;
-          infoMessage.style.display = "block"; // Show info message
-        } else if (/^\d{3}$/.test(searchQuery)) {
-          // If the search query is a 3-digit number but doesn't match any prefix
-          messageIcon.className = "fas fa-triangle-exclamation"; // Caution icon
-          messageText.innerHTML = `This number <strong>${searchQuery}</strong> is not from any State.`;
-          infoMessage.style.display = "block"; // Show info message
-        } else {
-          infoMessage.style.display = "none"; // Hide info message if no match
-        }
+        infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
+        messageIcon.className = "fas fa-search mt-1";
+        messageText.textContent = `Showing state information matching: ${searchQuery}`;
       }
 
       populateTable(filteredData);
