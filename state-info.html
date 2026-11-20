@@ -1065,6 +1065,68 @@
     font-size: 0.8rem !important;
 }
 
+
+/* Hide the complete state table region whenever a text/city search is active */
+.state-card-body.city-search-active .table-responsive,
+.state-card-body.city-search-active .table-container {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.state-card-body.city-search-active #citySearchResults {
+    display: flex !important;
+}
+
+
+/* City search country selector */
+.city-country-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: -4px auto 12px;
+}
+.city-country-filter[hidden] { display: none !important; }
+.city-country-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(100, 116, 139, .35);
+    border-radius: 20px;
+    background: var(--light-color);
+    color: var(--dark-color);
+    font-size: 0.78rem;
+    line-height: 1.2;
+    cursor: pointer;
+    user-select: none;
+}
+.city-country-option input {
+    margin: 0;
+    accent-color: var(--primary-color);
+}
+.city-country-option:has(input:checked) {
+    border-color: var(--primary-color);
+    background: rgba(67, 97, 238, .10);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+/* Add another 20px of scroll clearance after the final city accordion */
+.state-card-body.city-search-active #citySearchResults {
+    padding-bottom: 80px !important;
+    scroll-padding-bottom: 80px !important;
+}
+.state-card-body.city-search-active #citySearchResults > .city-result-item:last-child {
+    margin-bottom: 18px !important;
+}
+
 </style>
 </head>
 <body>
@@ -1175,6 +1237,22 @@
                             <button id="searchButton" class="btn btn-primary" type="button">
                                 <i class="fa-solid fa-magnifying-glass me-1"></i> Search
                             </button>
+                        </div>
+
+                        <div id="cityCountryFilter" class="city-country-filter" role="radiogroup"
+                             aria-label="Choose city search region" hidden>
+                            <label class="city-country-option">
+                                <input type="radio" name="cityCountry" value="US">
+                                <span>United States</span>
+                            </label>
+                            <label class="city-country-option">
+                                <input type="radio" name="cityCountry" value="IN">
+                                <span>India</span>
+                            </label>
+                            <label class="city-country-option">
+                                <input type="radio" name="cityCountry" value="BOTH" checked>
+                                <span>Both</span>
+                            </label>
                         </div>
 
                         <div id="infoMessage" class="alert alert-info d-flex align-items-start gap-2 fade show" role="status" aria-live="polite">
@@ -1824,7 +1902,18 @@
     const clearSearchButton = document.getElementById("clearSearchButton");
     const citySearchResults = document.getElementById("citySearchResults");
     const stateCardBody = document.querySelector(".state-card-body");
+    const cityCountryFilter = document.getElementById("cityCountryFilter");
     let citySearchRequest = 0;
+
+    function getSelectedCityCountries() {
+      const selected = document.querySelector('input[name="cityCountry"]:checked');
+      const value = selected ? selected.value : "BOTH";
+      return value === "BOTH" ? ["US", "IN"] : [value];
+    }
+
+    function updateCityCountryFilter(isVisible) {
+      cityCountryFilter.hidden = !isVisible;
+    }
     const updateClearButtonVisibility = () => {
       clearSearchButton.style.display = unifiedSearchInput.value.trim() ? "inline-flex" : "none";
     };
@@ -1887,7 +1976,7 @@
         citySearchResults.innerHTML = `
           <div class="city-empty-state">
             <i class="fa-solid fa-city" aria-hidden="true"></i>
-            <span>No city matches found for <strong>${escapeSearchHTML(query)}</strong>.</span>
+            <span>No city matches found in <strong>${getSelectedCityCountries().map(code => code === "US" ? "United States" : "India").join(" and ")}</strong> for <strong>${escapeSearchHTML(query)}</strong>.</span>
           </div>`;
         return;
       }
@@ -1896,7 +1985,7 @@
         let details = "";
         details += cityDetailCard("City", place.name, "fa-city", "blue");
         details += cityDetailCard("State", place.admin1, "fa-map-location-dot", "green");
-        details += cityDetailCard("Country", place.country, "fa-flag-usa", "purple");
+        details += cityDetailCard("Country", place.country, "fa-flag", "purple");
 
         if (place.population != null) {
           details += cityDetailCard("Population", Number(place.population).toLocaleString("en-US"),
@@ -1974,24 +2063,42 @@
       if (!query || /^[+\d\s().-]+$/.test(query)) return;
 
       try {
-        const endpoint = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=8&countryCode=US&language=en&format=json`;
-        const response = await fetch(endpoint);
-        if (!response.ok) throw new Error("City lookup service returned an error");
+        // Search only the country/countries selected in the radio filter.
+        const countryCodes = getSelectedCityCountries();
+        const responses = await Promise.all(countryCodes.map(countryCode => {
+          const endpoint = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=10&countryCode=${countryCode}&language=en&format=json`;
+          return fetch(endpoint);
+        }));
 
-        const data = await response.json();
+        if (responses.some(response => !response.ok)) {
+          throw new Error("City lookup service returned an error");
+        }
+
+        const datasets = await Promise.all(responses.map(response => response.json()));
         if (requestId !== citySearchRequest) return;
 
-        const places = (data.results || []).filter(place =>
-          (place.country_code || "").toUpperCase() === "US" ||
-          place.country === "United States"
+        const places = datasets.flatMap(data => data.results || []).filter(place => {
+          const countryCode = (place.country_code || "").toUpperCase();
+          return countryCode === "US" || countryCode === "IN";
+        });
+
+        // Remove any duplicates returned by the provider while preserving its ranking.
+        const uniquePlaces = places.filter((place, index, all) =>
+          all.findIndex(candidate =>
+            candidate.id === place.id ||
+            (candidate.name === place.name &&
+             candidate.latitude === place.latitude &&
+             candidate.longitude === place.longitude)
+          ) === index
         );
-        renderCityResults(places, query);
+
+        renderCityResults(uniquePlaces, query);
       } catch (error) {
         if (requestId !== citySearchRequest) return;
         citySearchResults.innerHTML = `
           <div class="city-empty-state city-error-state">
             <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-            <span>City lookup is temporarily unavailable. State and phone search are still working.</span>
+            <span>City lookup is temporarily unavailable. US and India city search, state and phone search are still supported when the service is available.</span>
           </div>`;
         console.error("City lookup error:", error);
       }
@@ -2006,6 +2113,7 @@
 
       citySearchResults.innerHTML = "";
       stateCardBody.classList.remove("city-search-active");
+      updateCityCountryFilter(false);
       citySearchRequest++; // Prevent an older city response replacing newer results.
 
       if (searchQuery === "") {
@@ -2049,7 +2157,7 @@
 
           if (matchedState) {
             setSearchMessage("warning", "fa-solid fa-phone-volume",
-              `The area code of this Mobile number <strong>${areaCode}</strong> is associated with <strong>${matchedState.name} (${matchedState.shortName})</strong>. `);
+              `The area code's Mobile number <strong>${areaCode}</strong> is associated with <strong>${matchedState.name} (${matchedState.shortName})</strong>.`);
           } else {
             setSearchMessage("warning", "fa-solid fa-triangle-exclamation",
               `No state match was found for area code <strong>${areaCode}</strong>.`);
@@ -2069,20 +2177,28 @@
       );
 
       setSearchMessage("info", "fa-solid fa-magnifying-glass",
-        `Searching states and US cities for <strong>${escapeSearchHTML(searchQuery)}</strong>.`);
+        `Searching states and cities in the US and India for <strong>${escapeSearchHTML(searchQuery)}</strong>.`);
       populateTable(filteredData);
 
-      // When the query is not a state/capital/ZIP match, switch the card to
-      // the city-results view and hide the entire state table-responsive block.
-      if (filteredData.length === 0) {
-        stateCardBody.classList.add("city-search-active");
-      } else {
-        stateCardBody.classList.remove("city-search-active");
-      }
+      // Text searches also run the city lookup. Keep the state table/container
+      // hidden for the full city-search experience, even when the text happens
+      // to match a state name (for example, New York).
+      stateCardBody.classList.add("city-search-active");
+      updateCityCountryFilter(true);
       searchCities(searchQuery);
     }
 
     let unifiedSearchDebounce;
+    cityCountryFilter.querySelectorAll('input[name="cityCountry"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        const currentQuery = unifiedSearchInput.value.trim();
+        if (currentQuery && !/^[+\\d\\s().-]+$/.test(currentQuery) && !/^\\d{5}$/.test(currentQuery)) {
+          stateCardBody.classList.add("city-search-active");
+          searchCities(currentQuery);
+        }
+      });
+    });
+
     unifiedSearchButton.addEventListener("click", searchState);
     unifiedSearchInput.addEventListener("keydown", event => {
       if (event.key === "Enter") {
