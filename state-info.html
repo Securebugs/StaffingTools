@@ -39,7 +39,7 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Font Awesome for fas icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         :root {
             --primary-color: #4361ee;
@@ -497,6 +497,206 @@
             color: var(--icon-color);
         }
 
+
+        /* Card header tabs */
+        .header-tabs{display:flex;align-items:center;gap:6px;margin-left:auto;margin-right:12px}
+        .header-tab{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+        .header-tab:hover,.header-tab.active{color:var(--primary-color);background:#fff;border-color:#fff}
+        .header-tab i{margin-right:5px}
+        .tab-panel{display:none;width:100%}
+        .tab-panel.active{display:block}
+        .city-search-panel{width:100%;color:var(--dark-color);max-height:calc(100vh - 190px);overflow-y:auto}
+        .city-search-intro{color:var(--dark-color);opacity:.75;font-size:13px;margin-bottom:16px}
+        .city-search-controls{display:flex;gap:10px;margin-bottom:15px}
+        .city-search-controls input{max-width:420px;border-radius:8px}
+        .city-search-controls button{border-radius:8px;border:0;padding:8px 20px;color:#fff;font-weight:500;background:linear-gradient(135deg,var(--primary-color),var(--secondary-color))}
+        .city-search-message{font-size:13px;margin-bottom:12px;color:var(--dark-color);opacity:.8}
+        .city-results{display:flex;flex-direction:column;gap:10px}
+        .city-result-item{border:1px solid rgba(128,128,128,.25);border-radius:10px;overflow:hidden;background:var(--light-color)}
+        .city-result-heading{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border:0;text-align:left;color:var(--dark-color);background:transparent;cursor:pointer}
+        .city-result-heading:hover{background:rgba(67,97,238,.08)}
+        .city-result-title{display:flex;align-items:center;gap:11px;min-width:0}
+        .city-result-icon{display:flex;align-items:center;justify-content:center;width:39px;height:39px;flex:0 0 39px;border-radius:10px;color:#10b981;background:rgba(16,185,129,.13)}
+        .city-result-name{font-weight:700}
+        .city-result-subtitle{font-size:12px;opacity:.7;margin-top:3px}
+        .city-result-arrow{transition:transform .2s}
+        .city-result-heading[aria-expanded="true"] .city-result-arrow{transform:rotate(180deg)}
+        .city-result-details{display:none;padding:13px;border-top:1px solid rgba(128,128,128,.2);grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+        .city-result-details.show{display:grid}
+        .city-info-card{display:flex;align-items:center;gap:10px;min-width:0;padding:12px;border:1px solid rgba(128,128,128,.17);border-radius:9px;background:rgba(128,128,128,.045)}
+        .city-info-icon{width:37px;height:37px;flex:0 0 37px;display:flex;align-items:center;justify-content:center;border-radius:9px;font-size:16px}
+        .city-info-label{font-size:10px;text-transform:uppercase;letter-spacing:.45px;opacity:.7;margin-bottom:4px}
+        .city-info-value{font-size:13px;font-weight:650;overflow-wrap:anywhere;color:var(--dark-color)}
+        .city-info-note{font-size:10px;opacity:.65;margin-top:3px;overflow-wrap:anywhere}
+        .city-blue .city-info-icon{color:#2563eb;background:#dbeafe}
+        .city-green .city-info-icon{color:#059669;background:#d1fae5}
+        .city-purple .city-info-icon{color:#9333ea;background:#f3e8ff}
+        .city-orange .city-info-icon{color:#ea580c;background:#ffedd5}
+        .city-pink .city-info-icon{color:#db2777;background:#fce7f3}
+        .city-cyan .city-info-icon{color:#0891b2;background:#cffafe}
+        .city-red .city-info-icon{color:#dc2626;background:#fee2e2}
+        .city-teal .city-info-icon{color:#0d9488;background:#ccfbf1}
+        [data-theme="dark"] .city-result-item{border-color:rgba(255,255,255,.2)}
+        [data-theme="dark"] .city-result-heading:hover{background:rgba(128,160,255,.12)}
+        @media(max-width:768px){
+            .card-header{flex-wrap:wrap;gap:8px}
+            .header-tabs{order:3;width:100%;margin:5px 0 0}
+            .header-tab{flex:1;padding:7px 5px}
+            .header-tab i{margin-right:3px}
+            .city-search-controls{flex-direction:column}
+            .city-search-controls input{max-width:100%}
+            .city-search-controls button{padding:10px}
+        }
+        @media(max-width:480px){.city-result-details{grid-template-columns:1fr}}
+
+
+        .unified-search-controls{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+        .unified-input-wrap{position:relative;display:flex;align-items:center;flex:1;min-width:0}
+        .unified-input-wrap .form-control{padding:12px 42px 12px 43px;border-radius:10px;min-height:46px}
+        .unified-search-icon{position:absolute;left:15px;z-index:2;color:var(--primary-color)}
+        .unified-clear-btn{position:absolute;right:9px;z-index:2;border:0;background:transparent;color:#8992a3;padding:6px 9px;border-radius:6px}
+        .unified-clear-btn:hover{background:rgba(128,128,128,.12);color:var(--dark-color)}
+        .unified-search-controls>.btn{min-height:46px;padding:9px 22px;border-radius:9px;white-space:nowrap}
+        .unified-city-results { margin: 0 0 16px; max-height: calc(100vh - 295px); overflow-y: auto; overflow-x: hidden; padding-right: 5px; }
+        .city-empty-state{display:flex;align-items:center;gap:10px;padding:13px 15px;margin-bottom:12px;border:1px dashed rgba(128,128,128,.35);border-radius:9px;color:var(--dark-color);font-size:13px}
+        .city-empty-state>i{font-size:17px;color:var(--primary-color)}
+        .city-error-state>i{color:#dc2626}
+        .city-result-item{border:1px solid rgba(128,128,128,.25);border-radius:10px;overflow:hidden;margin-bottom:9px;background:var(--light-color)}
+        .city-result-heading{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px;border:0;text-align:left;color:var(--dark-color);background:transparent;cursor:pointer}
+        .city-result-heading:hover{background:rgba(67,97,238,.07)}
+        .city-result-title{display:flex;align-items:center;gap:11px;min-width:0}
+        .city-result-icon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;flex:0 0 38px;border-radius:10px;color:#10b981;background:rgba(16,185,129,.13)}
+        .city-result-heading-text{display:flex;flex-direction:column;min-width:0}
+        .city-result-name{font-weight:700}
+        .city-result-subtitle{font-size:12px;opacity:.7;margin-top:3px}
+        .city-result-action{font-size:12px;white-space:nowrap;opacity:.75}
+        .city-result-arrow{margin-left:5px;transition:transform .2s}
+        .city-result-heading[aria-expanded="true"] .city-result-arrow{transform:rotate(180deg)}
+        .city-result-details{display:none;padding:13px;border-top:1px solid rgba(128,128,128,.2);grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+        .city-result-details.show{display:grid}
+        .city-info-card{display:flex;align-items:center;gap:10px;min-width:0;padding:11px;border:1px solid rgba(128,128,128,.17);border-radius:9px;background:rgba(128,128,128,.045)}
+        .city-info-icon{width:36px;height:36px;flex:0 0 36px;display:flex;align-items:center;justify-content:center;border-radius:9px;font-size:15px}
+        .city-info-copy{min-width:0}
+        .city-info-label{font-size:10px;text-transform:uppercase;letter-spacing:.45px;opacity:.7;margin-bottom:4px}
+        .city-info-value{font-size:13px;font-weight:650;overflow-wrap:anywhere;color:var(--dark-color)}
+        .city-info-note{font-size:10px;opacity:.65;margin-top:3px;overflow-wrap:anywhere}
+        .city-blue .city-info-icon{color:#2563eb;background:#dbeafe}
+        .city-green .city-info-icon{color:#059669;background:#d1fae5}
+        .city-purple .city-info-icon{color:#9333ea;background:#f3e8ff}
+        .city-orange .city-info-icon{color:#ea580c;background:#ffedd5}
+        .city-pink .city-info-icon{color:#db2777;background:#fce7f3}
+        .city-cyan .city-info-icon{color:#0891b2;background:#cffafe}
+        .city-red .city-info-icon{color:#dc2626;background:#fee2e2}
+        .city-teal .city-info-icon{color:#0d9488;background:#ccfbf1}
+        [data-theme="dark"] .city-result-item{border-color:rgba(255,255,255,.2)}
+        [data-theme="dark"] .city-result-heading:hover{background:rgba(128,160,255,.12)}
+        @media(max-width:768px){
+          .unified-search-controls{flex-direction:column;align-items:stretch}
+          .unified-input-wrap{width:100%}
+          .unified-search-controls>.btn{width:100%}
+        }
+        @media(max-width:480px){.city-result-details{grid-template-columns:1fr}.city-result-action{font-size:0}.city-result-action i{font-size:13px}}
+
+        /* Unified search refinements: compact, centered controls and scrollable city results */
+        .search-container.unified-search-controls {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 10px;
+            margin: 0 auto 14px;
+        }
+        .unified-input-wrap {
+            flex: 0 1 300px;
+            width: 300px;
+            max-width: min(300px, 100%);
+        }
+        .unified-input-wrap .form-control {
+            width: 100%;
+            min-height: 42px;
+            padding: 8px 38px 8px 38px;
+            border-radius: 8px;
+        }
+        .search-container.unified-search-controls .unified-clear-btn {
+            position: absolute;
+            top: 50%;
+            right: 7px;
+            transform: translateY(-50%);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: transparent;
+            color: #8992a3;
+            line-height: 1;
+            box-shadow: none;
+        }
+        .search-container.unified-search-controls .unified-clear-btn:hover {
+            background: rgba(128,128,128,.14);
+            color: var(--dark-color);
+        }
+        .search-container.unified-search-controls .unified-clear-btn i { font-size: 14px; }
+        .search-container.unified-search-controls > #searchButton {
+            min-height: 42px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .unified-city-results {
+            max-height: min(38vh, 330px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            overscroll-behavior: contain;
+            scrollbar-width: thin;
+            padding: 0 5px 2px 0;
+        }
+        .unified-city-results:empty { display: none; }
+        .unified-city-results::-webkit-scrollbar { width: 7px; }
+        .unified-city-results::-webkit-scrollbar-thumb { background: rgba(128,128,128,.45); border-radius: 8px; }
+        @media (max-width: 768px) {
+            .search-container.unified-search-controls {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            .unified-input-wrap { flex: 0 1 300px; width: 300px; }
+            .search-container.unified-search-controls > #searchButton { width: auto; }
+            .unified-city-results { max-height: calc(100vh - 295px); }
+        }
+        @media (max-width: 480px) {
+            .search-container.unified-search-controls { gap: 7px; }
+            .unified-input-wrap { flex-basis: min(250px, calc(100vw - 125px)); width: min(250px, calc(100vw - 125px)); }
+            .unified-input-wrap .form-control { font-size: 13px; }
+            .search-container.unified-search-controls > #searchButton { padding: 8px 10px; font-size: 13px; }
+            .unified-city-results { max-height: calc(100vh - 345px); }
+        }
+
+
+        /* City results occupy the same full in-card scroll area as the state table */
+        .state-card-body.city-search-active .table-responsive { display: none; }
+        .state-card-body.city-search-active .unified-city-results {
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100vh - 295px);
+            min-height: 180px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            overscroll-behavior: contain;
+        }
+        .city-result-item { width: 100%; flex: 0 0 auto; }
+        .city-result-details { width: 100%; }
+        @media (max-width: 992px) {
+            .state-card-body.city-search-active .unified-city-results {
+                max-height: calc(100vh - 345px);
+            }
+        }
+
         /* Mobile Responsive */
         @media (max-width: 992px) {
             .sidebar {
@@ -695,7 +895,177 @@
     }
 }
 
-    </style>
+    
+/* Highlight the expanded city accordion so it stands apart from collapsed results */
+.city-result-item {
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+.city-result-item:has(.city-result-details.show) {
+    border: 1.5px solid #60a5fa;
+    background: #eff6ff;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, .12);
+}
+.city-result-item:has(.city-result-details.show) > .city-result-heading {
+    background: #dbeafe;
+    border-color: transparent;
+}
+.city-result-item:has(.city-result-details.show) .city-result-action {
+    color: #1d4ed8;
+}
+[data-theme="dark"] .city-result-item:has(.city-result-details.show),
+.dark-mode .city-result-item:has(.city-result-details.show) {
+    border-color: #60a5fa;
+    background: rgba(30, 64, 175, .18);
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, .12);
+}
+[data-theme="dark"] .city-result-item:has(.city-result-details.show) > .city-result-heading,
+.dark-mode .city-result-item:has(.city-result-details.show) > .city-result-heading {
+    background: rgba(59, 130, 246, .22);
+}
+
+
+/* Hide the state table column headings while city search results are active */
+.state-card-body.city-search-active .table-responsive thead {
+    display: none !important;
+}
+
+
+/* City-only searches show the city results in the card, not the state table */
+.state-card-body.city-search-active > .table-responsive {
+    display: none !important;
+}
+.state-card-body.city-search-active > #citySearchResults {
+    display: flex !important;
+}
+\n
+/* Keep the final city accordion fully reachable with breathing room at the bottom */
+.state-card-body.city-search-active #citySearchResults {
+    box-sizing: border-box;
+    min-height: 0;
+    padding-bottom: 24px;
+    scroll-padding-bottom: 24px;
+    overscroll-behavior-y: contain;
+    align-items: stretch;
+}
+.state-card-body.city-search-active #citySearchResults > .city-result-item {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+}
+.state-card-body.city-search-active #citySearchResults > .city-result-item:last-child {
+    margin-bottom: 12px;
+}
+/* Subtle separators between consecutive accordion cards */
+.state-card-body.city-search-active #citySearchResults > .city-result-item + .city-result-item {
+    border-top: 1px solid rgba(100, 116, 139, .32);
+    padding-top: 8px;
+}
+[data-theme="dark"] .state-card-body.city-search-active #citySearchResults > .city-result-item + .city-result-item,
+.dark-mode .state-card-body.city-search-active #citySearchResults > .city-result-item + .city-result-item {
+    border-top-color: rgba(203, 213, 225, .28);
+}
+
+
+/* Extra bottom breathing room so the final city accordion can scroll fully into view */
+.state-card-body.city-search-active #citySearchResults {
+    padding-bottom: 45px !important;
+    scroll-padding-bottom: 45px;
+}
+.state-card-body.city-search-active #citySearchResults > .city-result-item:last-child {
+    margin-bottom: 18px !important;
+}
+
+
+/* Prevent the main card from clipping its body at the viewport bottom */
+.card-main {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+}
+.card-main .state-card-body {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+    padding-bottom: 24px;
+}
+.card-main .state-card-body.city-search-active #citySearchResults {
+    max-height: min(calc(100vh - 330px), 620px);
+    min-height: 180px;
+}
+@media (max-width: 992px) {
+    .card-main .state-card-body.city-search-active #citySearchResults {
+        max-height: min(calc(100vh - 300px), 560px);
+    }
+}
+
+
+/* Extra bottom clearance: keep the last city accordion well above the card edge */
+.card-main .state-card-body {
+    padding-bottom: 60px !important;
+    margin-bottom: 0 !important;
+}
+.card-main .state-card-body.city-search-active #citySearchResults {
+    padding-bottom: 60px !important;
+    scroll-padding-bottom: 60px !important;
+    margin-bottom: 0 !important;
+    min-height: 220px;
+    max-height: min(calc(100vh - 270px), 620px) !important;
+}
+.card-main {
+    padding-bottom: 60px !important;
+}
+@media (max-width: 992px) {
+    .card-main .state-card-body.city-search-active #citySearchResults {
+        max-height: min(calc(100vh - 250px), 560px) !important;
+    }
+}
+
+
+/* Compact info message: keep the icon and message text inline */
+#infoMessage {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center !important;
+    gap: 6px;
+    max-width: 100%;
+    margin: -7px auto 8px;
+    font-size: 0.5rem;
+    line-height: 1.25;
+    height: auto;
+    min-height: 8px;
+    box-sizing: border-box;
+}
+#infoMessage #messageIcon {
+    flex: 0 0 auto;
+    margin-top: 0 !important;
+    line-height: 1;
+}
+#infoMessage #messageText {
+    display: inline;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    line-height: inherit;
+}
+
+
+/* Slightly lift the card content while retaining the existing layout */
+.card-main {
+    padding-top: 15px !important;
+}
+.card-main .state-card-body {
+    padding-top: 15px !important;
+}
+/* Restore comfortable readability for the inline information message */
+#infoMessage {
+    font-size: 0.8rem !important;
+}
+
+</style>
 </head>
 <body>
     <!-- Fixed Navbar -->
@@ -782,24 +1152,38 @@
     <div class="main-content">
         <div class="card">
             <div class="card-header">
-                <span><i class="bi bi-geo-alt me-2"></i>State Info Dashboard</span>
-                <div>
-                    <button class="font-size-btn" id="increaseFont"><i class="bi bi-plus"></i></button>
-                    <button class="font-size-btn" id="decreaseFont"><i class="bi bi-dash"></i></button>
+                <span><i class="fa-solid fa-location-dot me-2"></i>State & City Info</span>
+                <div id="tableFontControls">
+                    <button class="font-size-btn" id="increaseFont" type="button" aria-label="Increase table font"><i class="fa-solid fa-plus"></i></button>
+                    <button class="font-size-btn" id="decreaseFont" type="button" aria-label="Decrease table font"><i class="fa-solid fa-minus"></i></button>
                 </div>
             </div>
             <div class="card-body">
                 <div class="card-container">
+                    <div class="unified-search-panel">
                     <div class="card-main state-card-body">
-                        <div class="search-container text-center">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search by state, capital, time zone, or phone...">
-                            <button id="searchButton" class="btn btn-primary">Search</button>
+                        <div class="search-container text-center unified-search-controls">
+                            <div class="unified-input-wrap">
+                                <i class="fa-solid fa-magnifying-glass unified-search-icon" aria-hidden="true"></i>
+                                <input type="text" id="searchInput" class="form-control"
+                                       placeholder="Search state, city, capital, ZIP, time zone or phone number..."
+                                       autocomplete="off" aria-label="Search US states, cities or phone area codes">
+                                <button type="button" id="clearSearchButton" class="unified-clear-btn" aria-label="Clear search" title="Clear search">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <button id="searchButton" class="btn btn-primary" type="button">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i> Search
+                            </button>
                         </div>
 
-<div id="infoMessage" class="alert alert-info d-flex align-items-start gap-2 fade show" role="alert">
-    <i id="messageIcon" class="fa fa-info-circle mt-1"></i>
-    <span id="messageText"><strong>Did you know?</strong> In the above search box, you can also enter a phone number to check which US state it belongs to or identify the state of someone calling you.</span>
-</div>
+                        <div id="infoMessage" class="alert alert-info d-flex align-items-start gap-2 fade show" role="status" aria-live="polite">
+                            <i id="messageIcon" class="fa-solid fa-circle-info mt-1" aria-hidden="true"></i>
+                            <span id="messageText"><strong>Search anything in one place.</strong> Enter a US state, city, capital, ZIP code, time zone or phone number / area code to find matching information.</span>
+                        </div>
+
+                        <div id="citySearchResults" class="city-results unified-city-results" aria-live="polite"></div>
+
                         <div class="table-responsive">
                             <div class="table-container">
                                 <table class="state-table table table-striped table-hover" id="statesTable">
@@ -820,10 +1204,14 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+</div>
 
     <!-- Footer -->
     <footer>
@@ -887,6 +1275,7 @@
             }
         });
     </script>
+
 
 
   <script>
@@ -1428,99 +1817,290 @@
       });
     }
 
-    // Function to handle search
+
+    // Unified search: state details, city details and US phone area-code lookup.
+    const unifiedSearchInput = document.getElementById("searchInput");
+    const unifiedSearchButton = document.getElementById("searchButton");
+    const clearSearchButton = document.getElementById("clearSearchButton");
+    const citySearchResults = document.getElementById("citySearchResults");
+    const stateCardBody = document.querySelector(".state-card-body");
+    let citySearchRequest = 0;
+    const updateClearButtonVisibility = () => {
+      clearSearchButton.style.display = unifiedSearchInput.value.trim() ? "inline-flex" : "none";
+    };
+    updateClearButtonVisibility();
+    unifiedSearchInput.addEventListener("input", updateClearButtonVisibility);
+
+    function setSearchMessage(type, iconClass, htmlMessage) {
+      const infoMessage = document.getElementById("infoMessage");
+      const messageIcon = document.getElementById("messageIcon");
+      const messageText = document.getElementById("messageText");
+
+      infoMessage.className = `alert alert-${type} d-flex align-items-start gap-2 fade show`;
+      messageIcon.className = `${iconClass} mt-1`;
+      messageText.innerHTML = htmlMessage;
+      infoMessage.style.display = "flex";
+    }
+
+    function escapeSearchHTML(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[character]);
+    }
+
+    function cityDetailCard(label, value, icon, tone, note = "") {
+      if (value === undefined || value === null || value === "") return "";
+      return `
+        <div class="city-info-card city-${tone}">
+          <div class="city-info-icon"><i class="fa-solid ${icon}" aria-hidden="true"></i></div>
+          <div class="city-info-copy">
+            <div class="city-info-label">${label}</div>
+            <div class="city-info-value">${escapeSearchHTML(value)}</div>
+            ${note ? `<div class="city-info-note">${escapeSearchHTML(note)}</div>` : ""}
+          </div>
+        </div>`;
+    }
+
+    function getCurrentTimezoneLabel(timezone) {
+      try {
+        const parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: timezone,
+          timeZoneName: "short"
+        }).formatToParts(new Date());
+        const abbreviation = parts.find(part => part.type === "timeZoneName")?.value || "";
+        const regions = {
+          "America/New_York":"Eastern", "America/Detroit":"Eastern",
+          "America/Chicago":"Central", "America/Denver":"Mountain",
+          "America/Los_Angeles":"Pacific", "America/Anchorage":"Alaska",
+          "America/Phoenix":"Arizona", "Pacific/Honolulu":"Hawaii"
+        };
+        return `${abbreviation} (${regions[timezone] || "Local"})`;
+      } catch (error) {
+        return timezone;
+      }
+    }
+
+    function renderCityResults(places, query) {
+      citySearchResults.innerHTML = "";
+
+      if (!places.length) {
+        citySearchResults.innerHTML = `
+          <div class="city-empty-state">
+            <i class="fa-solid fa-city" aria-hidden="true"></i>
+            <span>No city matches found for <strong>${escapeSearchHTML(query)}</strong>.</span>
+          </div>`;
+        return;
+      }
+
+      places.forEach((place, index) => {
+        let details = "";
+        details += cityDetailCard("City", place.name, "fa-city", "blue");
+        details += cityDetailCard("State", place.admin1, "fa-map-location-dot", "green");
+        details += cityDetailCard("Country", place.country, "fa-flag-usa", "purple");
+
+        if (place.population != null) {
+          details += cityDetailCard("Population", Number(place.population).toLocaleString("en-US"),
+            "fa-users", "orange", "Population data from geocoding provider");
+        }
+        if (place.elevation != null) {
+          details += cityDetailCard("Elevation", `${place.elevation} meters`, "fa-mountain", "pink");
+        }
+        if (place.timezone) {
+          details += cityDetailCard("Time Zone", getCurrentTimezoneLabel(place.timezone),
+            "fa-clock", "red", place.timezone);
+        }
+        if (place.latitude != null && place.longitude != null) {
+          details += cityDetailCard("Coordinates",
+            `${Number(place.latitude).toFixed(4)}, ${Number(place.longitude).toFixed(4)}`,
+            "fa-earth-americas", "cyan", "Latitude, Longitude");
+        }
+        if (place.postcodes?.length) {
+          details += cityDetailCard("Postal Codes", place.postcodes.slice(0, 6).join(", "),
+            "fa-envelopes-bulk", "teal");
+        }
+
+        const item = document.createElement("section");
+        item.className = "city-result-item";
+
+        const heading = document.createElement("button");
+        heading.type = "button";
+        heading.className = "city-result-heading";
+        heading.setAttribute("aria-expanded", "false");
+        heading.innerHTML = `
+          <span class="city-result-title">
+            <span class="city-result-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+            <span class="city-result-heading-text">
+              <span class="city-result-name">${escapeSearchHTML(place.name)}</span>
+              <span class="city-result-subtitle">${escapeSearchHTML([place.admin1, place.country].filter(Boolean).join(", "))}</span>
+            </span>
+          </span>
+          <span class="city-result-action">View details <i class="fa-solid fa-chevron-down city-result-arrow" aria-hidden="true"></i></span>`;
+
+        const panel = document.createElement("div");
+        panel.className = "city-result-details";
+        panel.innerHTML = details;
+
+        heading.addEventListener("click", () => {
+          const isOpen = !panel.classList.contains("show");
+
+          // Close every other city accordion before opening this one.
+          citySearchResults.querySelectorAll(".city-result-details.show").forEach(openPanel => {
+            if (openPanel !== panel) {
+              openPanel.classList.remove("show");
+              const otherHeading = openPanel.previousElementSibling;
+              if (otherHeading) {
+                otherHeading.setAttribute("aria-expanded", "false");
+                const actionText = otherHeading.querySelector(".city-result-action");
+                if (actionText) actionText.firstChild.textContent = "View details ";
+              }
+            }
+          });
+
+          panel.classList.toggle("show", isOpen);
+          heading.setAttribute("aria-expanded", String(isOpen));
+          heading.querySelector(".city-result-action").firstChild.textContent =
+            isOpen ? "Hide details " : "View details ";
+        });
+
+        item.append(heading, panel);
+        citySearchResults.appendChild(item);
+      });
+    }
+
+    async function searchCities(query) {
+      const requestId = ++citySearchRequest;
+      citySearchResults.innerHTML = "";
+
+      if (!query || /^[+\d\s().-]+$/.test(query)) return;
+
+      try {
+        const endpoint = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=8&countryCode=US&language=en&format=json`;
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error("City lookup service returned an error");
+
+        const data = await response.json();
+        if (requestId !== citySearchRequest) return;
+
+        const places = (data.results || []).filter(place =>
+          (place.country_code || "").toUpperCase() === "US" ||
+          place.country === "United States"
+        );
+        renderCityResults(places, query);
+      } catch (error) {
+        if (requestId !== citySearchRequest) return;
+        citySearchResults.innerHTML = `
+          <div class="city-empty-state city-error-state">
+            <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            <span>City lookup is temporarily unavailable. State and phone search are still working.</span>
+          </div>`;
+        console.error("City lookup error:", error);
+      }
+    }
+
     function searchState() {
-      const searchQuery = document.getElementById("searchInput").value.trim();
+      const searchQuery = unifiedSearchInput.value.trim();
       const infoMessage = document.getElementById("infoMessage");
       const messageText = document.getElementById("messageText");
       const messageIcon = document.getElementById("messageIcon");
-      let filteredData;
+      let filteredData = [];
 
-      // Restore the original Did you know message when the search is cleared
+      citySearchResults.innerHTML = "";
+      stateCardBody.classList.remove("city-search-active");
+      citySearchRequest++; // Prevent an older city response replacing newer results.
+
       if (searchQuery === "") {
-        infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
-        messageIcon.className = "fa fa-info-circle mt-1";
-        messageText.innerHTML = "<strong>Did you know?</strong> In the above search box, you can also enter a phone number to check which US state it belongs to or identify the state of someone calling you.";
-        infoMessage.style.display = "flex";
+        setSearchMessage("info", "fa-solid fa-circle-info",
+          "<strong>Search anything in one place.</strong> Enter a US state, city, capital, ZIP code, time zone or phone number / area code.");
         populateTable(statesData);
         return;
       }
 
-      // A single message box is reused for both the helper text and search results
-      infoMessage.style.display = "flex";
+      const isFiveDigitZip = /^\d{5}$/.test(searchQuery);
+      if (isFiveDigitZip) {
+        const zipCode = Number(searchQuery);
+        filteredData = statesData.filter(state => {
+          const range = state.zipRange.match(/(\d{5})\s+to\s+(\d{5})/);
+          return range && zipCode >= Number(range[1]) && zipCode <= Number(range[2]);
+        });
+        setSearchMessage(filteredData.length ? "success" : "warning",
+          filteredData.length ? "fa-solid fa-map-pin" : "fa-solid fa-triangle-exclamation",
+          filteredData.length
+            ? `ZIP code <strong>${searchQuery}</strong> falls within the listed ZIP range for the state below.`
+            : `No state ZIP range match was found for <strong>${searchQuery}</strong>.`);
+        populateTable(filteredData);
+        return;
+      }
 
-      // Phone-number input may contain +, spaces, brackets, dots or hyphens
       const isPhoneInput = /^[+\d\s().-]+$/.test(searchQuery);
 
       if (isPhoneInput) {
-        // Keep digits only
         let phoneNumber = searchQuery.replace(/\D/g, "");
-
-        // Remove international access prefix (00), then the US country code (1).
-        // This also handles short inputs such as +1 601 and 1601.
-        if (phoneNumber.startsWith("00")) {
-          phoneNumber = phoneNumber.substring(2);
-        }
-        if (phoneNumber.startsWith("1") && phoneNumber.length >= 4) {
-          phoneNumber = phoneNumber.substring(1);
-        }
-
-        // Ignore leading zero(s), including a local trunk prefix
+        if (phoneNumber.startsWith("00")) phoneNumber = phoneNumber.substring(2);
+        if (phoneNumber.startsWith("1") && phoneNumber.length >= 4) phoneNumber = phoneNumber.substring(1);
         phoneNumber = phoneNumber.replace(/^0+/, "");
 
         if (phoneNumber.length < 3) {
-          infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
-          messageIcon.className = "fa fa-info-circle mt-1";
-          messageText.textContent = "Enter at least 3 phone digits to identify the state area code.";
-          filteredData = [];
+          setSearchMessage("info", "fa-solid fa-phone",
+            "Enter at least 3 digits to identify a US phone area code.");
         } else {
-          // Match the first 3 digits after removing country/access/trunk prefixes
           const areaCode = phoneNumber.substring(0, 3);
-          const matchedState = statesData.find(state =>
-            state.phonePrefixes.includes(areaCode)
-          );
-
+          const matchedState = statesData.find(state => state.phonePrefixes.includes(areaCode));
           filteredData = matchedState ? [matchedState] : [];
 
           if (matchedState) {
-            infoMessage.className = "alert alert-warning d-flex align-items-start gap-2 fade show";
-            messageIcon.className = "fas fa-phone mt-1";
-            messageText.innerHTML = `The phone number has area code <strong>${areaCode}</strong>, which is associated with <strong>${matchedState.name}</strong>.`;
+            setSearchMessage("warning", "fa-solid fa-phone-volume",
+              `The area code of this Mobile number <strong>${areaCode}</strong> is associated with <strong>${matchedState.name} (${matchedState.shortName})</strong>. `);
           } else {
-            infoMessage.className = "alert alert-warning d-flex align-items-start gap-2 fade show";
-            messageIcon.className = "fas fa-triangle-exclamation mt-1";
-            messageText.innerHTML = `No state was found for the phone area code <strong>${areaCode}</strong>.`;
+            setSearchMessage("warning", "fa-solid fa-triangle-exclamation",
+              `No state match was found for area code <strong>${areaCode}</strong>.`);
           }
         }
-      } else {
-        // Keep existing state, capital, time-zone and abbreviation search
-        filteredData = statesData.filter(state =>
-          state.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          state.capital.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          state.timezone.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          state.shortName.toLowerCase() === searchQuery.toLowerCase()
-        );
-
-        infoMessage.className = "alert alert-info d-flex align-items-start gap-2 fade show";
-        messageIcon.className = "fas fa-search mt-1";
-        messageText.textContent = `Showing state information matching: ${searchQuery}`;
+        populateTable(filteredData);
+        return;
       }
 
+      const normalizedQuery = searchQuery.toLowerCase();
+      filteredData = statesData.filter(state =>
+        state.name.toLowerCase().includes(normalizedQuery) ||
+        state.capital.toLowerCase().includes(normalizedQuery) ||
+        state.timezone.toLowerCase().includes(normalizedQuery) ||
+        state.shortName.toLowerCase() === normalizedQuery ||
+        state.zipRange.toLowerCase().includes(normalizedQuery)
+      );
+
+      setSearchMessage("info", "fa-solid fa-magnifying-glass",
+        `Searching states and US cities for <strong>${escapeSearchHTML(searchQuery)}</strong>.`);
       populateTable(filteredData);
+
+      // When the query is not a state/capital/ZIP match, switch the card to
+      // the city-results view and hide the entire state table-responsive block.
+      if (filteredData.length === 0) {
+        stateCardBody.classList.add("city-search-active");
+      } else {
+        stateCardBody.classList.remove("city-search-active");
+      }
+      searchCities(searchQuery);
     }
 
-    // Event listener for the search button
-    document.getElementById("searchButton").addEventListener("click", searchState);
-
-    // Event listener for the Enter key in the search input
-    document.getElementById("searchInput").addEventListener("keyup", function(event) {
+    let unifiedSearchDebounce;
+    unifiedSearchButton.addEventListener("click", searchState);
+    unifiedSearchInput.addEventListener("keydown", event => {
       if (event.key === "Enter") {
+        clearTimeout(unifiedSearchDebounce);
         searchState();
       }
     });
-
-    // Event listener for real-time search as the user types
-    document.getElementById("searchInput").addEventListener("input", searchState);
+    unifiedSearchInput.addEventListener("input", () => {
+      clearTimeout(unifiedSearchDebounce);
+      unifiedSearchDebounce = setTimeout(searchState, 300);
+    });
+    clearSearchButton.addEventListener("click", () => {
+      clearTimeout(unifiedSearchDebounce);
+      unifiedSearchInput.value = "";
+      updateClearButtonVisibility();
+      searchState();
+      unifiedSearchInput.focus();
+    });
 
     // Populate the table with all states on page load
     populateTable(statesData);
