@@ -251,7 +251,7 @@
         }
         
         .visa-card:hover {
-            transform: translateY(-2px);
+            transform: none;
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
             border-color: var(--primary-color);
         }
@@ -281,19 +281,27 @@
         
         .visa-tooltip {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            right: auto;
+            bottom: auto;
+            transform: translate(-50%, -50%);
+            width: min(560px, calc(100vw - 24px));
+            max-width: none;
+            height: auto;
+            max-height: calc(100vh - 24px);
+            max-height: calc(100dvh - 24px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
             background: var(--light-color);
             border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            padding: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            z-index: 100;
-            margin-top: 5px;
-            max-height: 300px;
-            overflow-y: auto;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+            z-index: 2001;
+            margin: 0;
+            box-sizing: border-box;
         }
         
         [data-theme="dark"] .visa-tooltip {
@@ -553,19 +561,6 @@
             .visa-card h4 {
                 font-size: 0.7rem;
             }
-            
-            .visa-tooltip {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 90%;
-                max-height: 70vh;
-                overflow-y: auto;
-                z-index: 1000;
-                border: 2px solid var(--primary-color);
-            }
-            
             /* Tax container for mobile */
             .tax-container {
                 flex-direction: column;
@@ -1311,41 +1306,85 @@
 
         // Visa tooltip functionality
         let activeCard = null;
-        let timeoutId = null;
 
         function toggleTooltip(card) {
-            // Close the previously active card's tooltip
-            if (activeCard && activeCard !== card) {
+            // Clicking the active card closes it; clicking another switches to that card.
+            if (activeCard === card) {
+                card.classList.remove('active');
+                activeCard = null;
+                tooltipOverlay.classList.remove('active');
+                return;
+            }
+
+            if (activeCard) {
                 activeCard.classList.remove('active');
             }
 
-            // Toggle the clicked card's tooltip
-            card.classList.toggle('active');
+            card.classList.add('active');
+            activeCard = card;
+            tooltipOverlay.classList.toggle('active', window.innerWidth <= 768);
 
-            // Update the active card
-            activeCard = card.classList.contains('active') ? card : null;
+            const tooltip = card.querySelector('.visa-tooltip');
+            if (!tooltip) return;
 
-            // Show/hide tooltip overlay on mobile
-            if (window.innerWidth <= 768) {
-                if (activeCard) {
-                    tooltipOverlay.classList.add('active');
-                } else {
-                    tooltipOverlay.classList.remove('active');
+            // Reset to a measurable state before calculating its final position.
+            tooltip.style.left = '50%';
+            tooltip.style.top = '50%';
+            tooltip.style.transform = 'translate(-50%, -50%)';
+            tooltip.style.maxHeight = 'calc(100vh - 24px)';
+            tooltip.style.overflowY = 'auto';
+
+            requestAnimationFrame(() => {
+                if (activeCard !== card) return;
+
+                const cardRect = card.getBoundingClientRect();
+                const tipRect = tooltip.getBoundingClientRect();
+                const margin = 12;
+                const viewportWidth = document.documentElement.clientWidth;
+                const viewportHeight = window.innerHeight;
+                const isSmallScreen = window.innerWidth <= 768;
+
+                // On phones/tablets, center the panel so it never spills off either side.
+                if (isSmallScreen) {
+                    tooltip.style.left = '50%';
+                    tooltip.style.top = '50%';
+                    tooltip.style.transform = 'translate(-50%, -50%)';
+                    tooltip.style.width = 'calc(100vw - 24px)';
+                    tooltip.style.maxHeight = 'calc(100vh - 24px)';
+                    tooltip.style.maxHeight = 'calc(100dvh - 24px)';
+                    return;
                 }
-            }
 
-            // Reset the auto-hide timeout
-            if (activeCard) {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    if (activeCard) {
-                        activeCard.classList.remove('active');
-                        activeCard = null;
-                        tooltipOverlay.classList.remove('active');
-                    }
-                }, 30000); // 30 seconds
-            }
+                // On larger screens, align the tooltip near the clicked card.
+                tooltip.style.width = 'min(560px, calc(100vw - 24px))';
+                tooltip.style.transform = 'none';
+
+                const width = tooltip.getBoundingClientRect().width;
+                const height = tooltip.getBoundingClientRect().height;
+                const left = Math.max(margin, Math.min(
+                    cardRect.left + cardRect.width / 2 - width / 2,
+                    viewportWidth - width - margin
+                ));
+
+                let top;
+                if (cardRect.bottom + height + margin <= viewportHeight) {
+                    top = cardRect.bottom + margin;
+                } else if (cardRect.top - height - margin >= margin) {
+                    top = cardRect.top - height - margin;
+                } else {
+                    top = Math.max(margin, (viewportHeight - height) / 2);
+                }
+
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+                tooltip.style.maxHeight = 'calc(100vh - 24px)';
+            });
         }
+
+        // Prevent clicks inside tooltip content from bubbling to the card's toggle handler.
+        document.querySelectorAll('.visa-tooltip').forEach(tooltip => {
+            tooltip.addEventListener('click', event => event.stopPropagation());
+        })
 
         // Close tooltips when clicking outside
         document.addEventListener('click', (event) => {
@@ -1367,24 +1406,6 @@
             }
         });
 
-        // Ensure tooltips stay within card boundaries
-        document.querySelectorAll('.visa-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const tooltip = this.querySelector('.visa-tooltip');
-                const cardRect = this.getBoundingClientRect();
-                const cardBodyRect = document.querySelector('.card-body').getBoundingClientRect();
-                
-                // Check if tooltip would extend beyond card body
-                const tooltipBottom = cardRect.bottom + tooltip.offsetHeight;
-                const cardBodyBottom = cardBodyRect.bottom;
-                
-                if (tooltipBottom > cardBodyBottom) {
-                    tooltip.style.maxHeight = (cardBodyBottom - cardRect.bottom - 10) + 'px';
-                } else {
-                    tooltip.style.maxHeight = '300px';
-                }
-            });
-        });
     </script>
 </body>
 </html>
