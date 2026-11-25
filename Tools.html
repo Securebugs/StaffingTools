@@ -628,6 +628,115 @@ path:hover {
 }
 
     </style>
+<style>
+
+        /* Mobile map visibility and page scrolling fix */
+        @media (max-width: 768px) {
+            html, body {
+                height: auto !important;
+                min-height: 100% !important;
+                overflow-x: hidden !important;
+                overflow-y: auto !important;
+            }
+
+            body {
+                min-height: 100vh !important;
+            }
+
+            .main-content {
+                height: auto !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+                padding: 15px 12px 30px !important;
+            }
+
+            .card,
+            .card-body,
+            .card-container,
+            .card-main,
+            .card-mobile {
+                height: auto !important;
+                min-height: 0 !important;
+                overflow: visible !important;
+            }
+
+            .card-body {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            .card-mobile {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            #us-mapp {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .timezone-container {
+                margin-top: 12px;
+            }
+        }
+
+    </style>
+
+<style>
+/* Theme-matched custom scrollbar */
+:root {
+    scrollbar-color: #4361ee transparent;
+    scrollbar-width: thin;
+}
+[data-theme="dark"] {
+    scrollbar-color: #829cff transparent;
+}
+html, body, * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color, #4361ee) transparent;
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color, #4361ee), var(--secondary-color, #3a0ca3));
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color, #4cc9f0);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Keep the dashboard comfortably below the fixed top navigation */
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px !important;
+    }
+    .main-content {
+        padding-top: 28px !important;
+        margin-top: 0 !important;
+        scroll-margin-top: 60px;
+    }
+    .main-content > .card:first-child {
+        margin-top: 0 !important;
+    }
+}
+</style>
+
 </head>
 <body>
     <!-- Fixed Navbar -->
@@ -1751,16 +1860,66 @@ const feeds = [
   'https://feeds.nbcnews.com/nbcnews/public/news'
 ];
 
+// Keep the latest successful RSS result in this browser for 24 hours.
+const NEWS_CACHE_KEY = 'usaStaffingTools_latestNews_v1';
+const NEWS_CACHE_TTL = 24 * 60 * 60 * 1000;
+
+function readCachedNews() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(NEWS_CACHE_KEY) || 'null');
+    if (cached && Array.isArray(cached.news) && cached.news.length) return cached;
+  } catch (error) {
+    console.warn('Could not read cached news:', error);
+  }
+  return null;
+}
+
+function saveCachedNews(news) {
+  if (!Array.isArray(news) || !news.length) return;
+  try {
+    localStorage.setItem(NEWS_CACHE_KEY, JSON.stringify({
+      savedAt: Date.now(),
+      news: news
+    }));
+  } catch (error) {
+    // The news feed still works if browser storage is unavailable or full.
+    console.warn('Could not cache latest news:', error);
+  }
+}
+
 fetchInitialNews();
 
 async function fetchInitialNews() {
-  try {
-    const news = await fetchNewsFromFeeds();
-    currentNewsBatch = news;
-    displayNews(news);
+  const cached = readCachedNews();
+  const cacheIsFresh = cached && cached.savedAt &&
+    (Date.now() - cached.savedAt < NEWS_CACHE_TTL);
+
+  // Render saved news immediately so returning visitors never see the loader.
+  if (cached) {
+    currentNewsBatch = cached.news;
+    displayNews(currentNewsBatch);
     startAutoScroll();
-  } catch {
-    displayFallback();
+  }
+
+  // A fresh cache is used as-is. Check RSS again only after 24 hours.
+  if (cacheIsFresh) return;
+
+  try {
+    const latestNews = await fetchNewsFromFeeds();
+    // Do not replace good cached content with an empty/failed feed response.
+    if (latestNews.length) {
+      currentNewsBatch = latestNews;
+      saveCachedNews(latestNews);
+      displayNews(latestNews);
+      startAutoScroll();
+    } else if (!cached) {
+      displayFallback();
+      startAutoScroll();
+    }
+  } catch (error) {
+    console.warn('Latest news refresh failed:', error);
+    // Keep showing the last saved news when RSS/proxy is temporarily unavailable.
+    if (!cached) displayFallback();
     startAutoScroll();
   }
 }
@@ -1789,14 +1948,9 @@ async function fetchNewsFromFeeds() {
     } catch {}
   }
 
-  return all.length ? shuffle(all).slice(0, 8) : [{
-    title: "India-US Tech Collaboration Grows",
-    link: "#",
-    desc: "AI, space and defense partnerships expanding...",
-    date: new Date().toISOString(),
-    flag: "🇮🇳",
-    src: "Joint Update"
-  }];
+  // An empty array means no feed returned usable stories; callers can retain
+  // the previously cached headlines instead of replacing them with made-up news.
+  return all.length ? shuffle(all).slice(0, 8) : [];
 }
 
 function detect(u){
@@ -1858,11 +2012,20 @@ function handleManualScroll(e){
 }
 
 async function fetchMore(){
+  if (isLoadingMore) return;
   isLoadingMore=true;
-  const n=await fetchNewsFromFeeds();
-  currentNewsBatch=[...n];
-  appendNews(n);
-  isLoadingMore=false;
+  try {
+    const n=await fetchNewsFromFeeds();
+    if (n.length) {
+      currentNewsBatch=[...n];
+      saveCachedNews(currentNewsBatch);
+      appendNews(n);
+    }
+  } catch (error) {
+    console.warn('Could not load more headlines:', error);
+  } finally {
+    isLoadingMore=false;
+  }
 }
 
 function appendNews(n){
